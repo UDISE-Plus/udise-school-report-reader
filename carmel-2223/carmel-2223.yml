@@ -196,12 +196,28 @@ academic:
       state_district: 0
   hours:
     instructional:
-      days: 210
-      student_hours: 6.0
-      teacher_hours: 8.0
+      days:
+        primary: 210
+        upper_primary: 0
+        secondary: 169
+        higher_secondary: 165
+      student_hours:
+        primary: 6.0
+        upper_primary: 6.0
+        secondary: 7.0
+        higher_secondary: 7.0
+      teacher_hours:
+        primary: 8.0
+        upper_primary: 8.0
+        secondary: 8.0
+        higher_secondary: 8.0
   assessments:
     cce:
-      implemented: 1-Yes
+      implemented:
+        primary: 1-Yes
+        upper_primary: 1-Yes
+        secondary: 1-Yes
+        higher_secondary: 1-Yes
 facilities:
   residential:
     details:

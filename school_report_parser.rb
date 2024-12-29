@@ -216,14 +216,34 @@ class SchoolReportParser
         },
         'hours' => {
           'instructional' => {
-            'days' => nil,
-            'student_hours' => nil,
-            'teacher_hours' => nil
+            'days' => {
+              'primary' => nil,
+              'upper_primary' => nil,
+              'secondary' => nil,
+              'higher_secondary' => nil
+            },
+            'student_hours' => {
+              'primary' => nil,
+              'upper_primary' => nil,
+              'secondary' => nil,
+              'higher_secondary' => nil
+            },
+            'teacher_hours' => {
+              'primary' => nil,
+              'upper_primary' => nil,
+              'secondary' => nil,
+              'higher_secondary' => nil
+            }
           }
         },
         'assessments' => {
           'cce' => {
-            'implemented' => nil
+            'implemented' => {
+              'primary' => nil,
+              'upper_primary' => nil,
+              'secondary' => nil,
+              'higher_secondary' => nil
+            }
           }
         }
       },
@@ -526,19 +546,33 @@ class SchoolReportParser
       
       # Academic Hours and Days
       when "Instructional days"
-        if next_line =~ /^\d+$/
-          data['academic']['hours']['instructional']['days'] = next_line.to_i
+        if lines[i + 1] =~ /^\d+$/
+          data['academic']['hours']['instructional']['days']['primary'] = lines[i + 1].to_i
+          data['academic']['hours']['instructional']['days']['upper_primary'] = lines[i + 2].to_i if lines[i + 2] =~ /^\d+$/
+          data['academic']['hours']['instructional']['days']['secondary'] = lines[i + 3].to_i if lines[i + 3] =~ /^\d+$/
+          data['academic']['hours']['instructional']['days']['higher_secondary'] = lines[i + 4].to_i if lines[i + 4] =~ /^\d+$/
         end
       when "Avg.School hrs.Std."
-        if next_line =~ /^\d+\.?\d*$/
-          data['academic']['hours']['instructional']['student_hours'] = next_line.to_f
+        if lines[i + 1] =~ /^\d+\.?\d*$/
+          data['academic']['hours']['instructional']['student_hours']['primary'] = lines[i + 1].to_f
+          data['academic']['hours']['instructional']['student_hours']['upper_primary'] = lines[i + 2].to_f if lines[i + 2] =~ /^\d+\.?\d*$/
+          data['academic']['hours']['instructional']['student_hours']['secondary'] = lines[i + 3].to_f if lines[i + 3] =~ /^\d+\.?\d*$/
+          data['academic']['hours']['instructional']['student_hours']['higher_secondary'] = lines[i + 4].to_f if lines[i + 4] =~ /^\d+\.?\d*$/
         end
       when "Avg.School hrs.Tch."
-        if next_line =~ /^\d+\.?\d*$/
-          data['academic']['hours']['instructional']['teacher_hours'] = next_line.to_f
+        if lines[i + 1] =~ /^\d+\.?\d*$/
+          data['academic']['hours']['instructional']['teacher_hours']['primary'] = lines[i + 1].to_f
+          data['academic']['hours']['instructional']['teacher_hours']['upper_primary'] = lines[i + 2].to_f if lines[i + 2] =~ /^\d+\.?\d*$/
+          data['academic']['hours']['instructional']['teacher_hours']['secondary'] = lines[i + 3].to_f if lines[i + 3] =~ /^\d+\.?\d*$/
+          data['academic']['hours']['instructional']['teacher_hours']['higher_secondary'] = lines[i + 4].to_f if lines[i + 4] =~ /^\d+\.?\d*$/
         end
       when "CCE"
-        data['academic']['assessments']['cce']['implemented'] = next_line if next_line && !next_line.match?(/Total/)
+        if next_line
+          data['academic']['assessments']['cce']['implemented']['primary'] = next_line
+          data['academic']['assessments']['cce']['implemented']['upper_primary'] = lines[i + 2] if lines[i + 2]
+          data['academic']['assessments']['cce']['implemented']['secondary'] = lines[i + 3] if lines[i + 3]
+          data['academic']['assessments']['cce']['implemented']['higher_secondary'] = lines[i + 4] if lines[i + 4]
+        end
       
       # Teachers
       when "Teachers"
