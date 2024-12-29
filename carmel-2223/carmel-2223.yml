@@ -64,7 +64,6 @@ infrastructure:
       handrails: 1-Yes
   furniture:
     count: 2118
-    condition: {}
   library:
     available: 1-Yes
 teachers:

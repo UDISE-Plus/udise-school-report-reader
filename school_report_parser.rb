@@ -117,8 +117,7 @@ class SchoolReportParser
           }
         },
         'furniture' => {
-          'count' => {},
-          'condition' => {}
+          'count' => nil
         },
         'library' => {
           'available' => nil
