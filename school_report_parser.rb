@@ -102,7 +102,17 @@ class SchoolReportParser
           'needs_major_repair' => 0,
           'other_rooms' => 0
         },
-        'digital_facilities' => {},
+        'digital_facilities' => {
+          'ict_lab' => nil,
+          'internet' => nil,
+          'desktop' => nil,
+          'laptop' => nil,
+          'tablet' => nil,
+          'printer' => nil,
+          'projector' => nil,
+          'digiboard' => nil,
+          'dth' => nil
+        },
         'other_facilities' => {},
         'building' => {
           'details' => {

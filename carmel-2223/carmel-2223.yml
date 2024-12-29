@@ -51,6 +51,16 @@ infrastructure:
     needs_minor_repair: 0
     needs_major_repair: 0
     other_rooms: 7
+  digital_facilities:
+    ict_lab:
+    internet:
+    desktop:
+    laptop:
+    tablet:
+    printer:
+    projector:
+    digiboard:
+    dth:
   other_facilities:
     hm_room: 1-Yes
   building:
