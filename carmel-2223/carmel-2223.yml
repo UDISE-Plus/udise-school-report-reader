@@ -264,9 +264,6 @@ facilities:
       nurse: {}
       doctor: {}
   anganwadi:
-    center: {}
-    staff: {}
-    children: {}
     at_premises: NA
     boys: 0
     girls: 0

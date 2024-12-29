@@ -250,9 +250,10 @@ class SchoolReportParser
           }
         },
         'anganwadi' => {
-          'center' => {},
-          'staff' => {},
-          'children' => {}
+          'at_premises' => nil,
+          'boys' => nil,
+          'girls' => nil,
+          'worker' => nil
         }
       },
       'committees' => {
