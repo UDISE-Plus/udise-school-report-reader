@@ -63,6 +63,8 @@ class SchoolReportParser
   end
 
   def self.extract_data_points(compressed_content)
+    lines = compressed_content.split("\n").map(&:strip)
+    
     data = {
       'basic_info' => {},
       'location' => {},
@@ -74,9 +76,18 @@ class SchoolReportParser
       },
       'infrastructure' => {
         'toilets' => {
-          'general' => {},
-          'cwsn' => {},
-          'urinals' => {}
+          'boys' => {
+            'total' => 0,
+            'functional' => 0,
+            'cwsn' => 0,
+            'urinals' => 0
+          },
+          'girls' => {
+            'total' => 0,
+            'functional' => 0,
+            'cwsn' => 0,
+            'urinals' => 0
+          }
         },
         'classrooms' => {
           'count' => {},
@@ -363,12 +374,6 @@ class SchoolReportParser
       'special_rooms' => {}
     }
 
-    lines = compressed_content.split("\n").map(&:strip)
-    current_section = nil
-    in_toilet_section = false
-    in_digital_section = false
-    in_teacher_section = false
-
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
       next_next_line = lines[i + 2]&.strip
@@ -466,25 +471,53 @@ class SchoolReportParser
       when "Toilets"
         in_toilet_section = true
         current_section = 'toilets'
-      when "Total(Excluding CWSN)" && in_toilet_section
-        if next_line =~ /^\d+$/ && next_next_line =~ /^\d+$/
-          data['infrastructure']['toilets']['boys'] = next_line.to_i
-          data['infrastructure']['toilets']['girls'] = next_next_line.to_i
+        
+        # Look ahead for toilet data
+        toilet_data = []
+        (i+1..i+20).each do |j|
+          break if j >= lines.length
+          toilet_data << lines[j]
         end
-      when "Functional" && in_toilet_section
-        if next_line =~ /^\d+$/ && next_next_line =~ /^\d+$/
-          data['infrastructure']['toilets']['functional_boys'] = next_line.to_i
-          data['infrastructure']['toilets']['functional_girls'] = next_next_line.to_i
+        
+        # Try to find the values
+        total_idx = toilet_data.index { |l| l =~ /Total.*CWSN/ }
+        if total_idx && total_idx + 2 < toilet_data.length
+          boys = toilet_data[total_idx + 1]
+          girls = toilet_data[total_idx + 2]
+          if boys =~ /^\d+$/ && girls =~ /^\d+$/
+            data['infrastructure']['toilets']['boys']['total'] = boys.to_i
+            data['infrastructure']['toilets']['girls']['total'] = girls.to_i
+          end
         end
-      when "Func. CWSN Friendly" && in_toilet_section
-        if next_line =~ /^\d+$/ && next_next_line =~ /^\d+$/
-          data['infrastructure']['toilets']['cwsn_boys'] = next_line.to_i
-          data['infrastructure']['toilets']['cwsn_girls'] = next_next_line.to_i
+        
+        func_idx = toilet_data.index("Functional")
+        if func_idx && func_idx + 2 < toilet_data.length
+          boys = toilet_data[func_idx + 1]
+          girls = toilet_data[func_idx + 2]
+          if boys =~ /^\d+$/ && girls =~ /^\d+$/
+            data['infrastructure']['toilets']['boys']['functional'] = boys.to_i
+            data['infrastructure']['toilets']['girls']['functional'] = girls.to_i
+          end
         end
-      when "Urinal" && in_toilet_section
-        if next_line =~ /^\d+$/ && next_next_line =~ /^\d+$/
-          data['infrastructure']['toilets']['urinal_boys'] = next_line.to_i
-          data['infrastructure']['toilets']['urinal_girls'] = next_next_line.to_i
+        
+        cwsn_idx = toilet_data.index { |l| l =~ /CWSN Friendly/ }
+        if cwsn_idx && cwsn_idx + 2 < toilet_data.length
+          boys = toilet_data[cwsn_idx + 1]
+          girls = toilet_data[cwsn_idx + 2]
+          if boys =~ /^\d+$/ && girls =~ /^\d+$/
+            data['infrastructure']['toilets']['boys']['cwsn'] = boys.to_i
+            data['infrastructure']['toilets']['girls']['cwsn'] = girls.to_i
+          end
+        end
+        
+        urinal_idx = toilet_data.index("Urinal")
+        if urinal_idx && urinal_idx + 2 < toilet_data.length
+          boys = toilet_data[urinal_idx + 1]
+          girls = toilet_data[urinal_idx + 2]
+          if boys =~ /^\d+$/ && girls =~ /^\d+$/
+            data['infrastructure']['toilets']['boys']['urinals'] = boys.to_i
+            data['infrastructure']['toilets']['girls']['urinals'] = girls.to_i
+          end
         end
       
       # Basic Facilities

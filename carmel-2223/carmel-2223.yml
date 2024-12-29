@@ -31,9 +31,16 @@ school_details:
   is_special_school: 2-No
 infrastructure:
   toilets:
-    general: {}
-    cwsn: {}
-    urinals: {}
+    boys:
+      total: 61
+      functional: 55
+      cwsn: 25
+      urinals: 165
+    girls:
+      total: 13
+      functional: 12
+      cwsn: 4
+      urinals: 24
   classrooms:
     count: {}
     condition: {}
