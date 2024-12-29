@@ -251,23 +251,8 @@ class SchoolReportParser
             'waste' => {}
           },
           'safety' => {
-            'building' => {},
-            'playground' => {},
-            'transport' => {}
-          }
-        },
-        'safety' => {
-          'fire' => {
-            'equipment' => {},
-            'training' => {}
-          },
-          'emergency' => {
-            'exits' => {},
-            'procedures' => {}
-          },
-          'security' => {
-            'personnel' => {},
-            'equipment' => {}
+            'playground' => nil,
+            'all_weather_road' => nil
           }
         },
         'medical' => {

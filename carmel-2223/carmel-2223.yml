@@ -267,20 +267,8 @@ facilities:
       cleaning: {}
       waste: {}
     safety:
-      building: {}
       playground: 1-Yes
-      transport: {}
       all_weather_road: 1-Yes
-  safety:
-    fire:
-      equipment: {}
-      training: {}
-    emergency:
-      exits: {}
-      procedures: {}
-    security:
-      personnel: {}
-      equipment: {}
   medical:
     checkups:
       regular:
