@@ -365,21 +365,13 @@ class SchoolReportParser
 
     lines = compressed_content.split("\n").map(&:strip)
     current_section = nil
-    current_subsection = nil
     in_toilet_section = false
     in_digital_section = false
     in_teacher_section = false
-    in_medium_section = false
-    in_student_section = false
-    in_grant_section = false
-    in_enrollment_section = false
-    in_class_section = false
-    in_ews_section = false
 
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
       next_next_line = lines[i + 2]&.strip
-      prev_line = lines[i - 1]&.strip if i > 0
 
       case line
       # Basic Info
@@ -583,7 +575,6 @@ class SchoolReportParser
       
       # Academic Inspections
       when "Visit of school for / by"
-        in_medium_section = false
       when "Acad. Inspections"
         data['academic']['inspections']['visits']['academic'] = next_line.to_i if next_line =~ /^\d+$/
       when "CRC Coordinator"
@@ -613,7 +604,6 @@ class SchoolReportParser
       when "Teachers"
         in_teacher_section = true
         in_digital_section = false
-        in_medium_section = false
       when "Regular" && in_teacher_section
         if next_line =~ /^\d+$/
           data['teachers']['count_by_level']['regular'] = next_line.to_i
@@ -690,7 +680,6 @@ class SchoolReportParser
       
       # Student Enrollment - RTE
       when "Total no. of Students Enrolled Under Section 12 of the RTE Act"
-        in_enrollment_section = true
         current_section = 'rte'
       when /^Class ([IVX]+)$/ && current_section == 'rte'
         class_num = roman_to_arabic($1)
@@ -706,7 +695,6 @@ class SchoolReportParser
       # Student Enrollment - EWS
       when "Total no. of Economically Weaker Section"
         current_section = 'ews'
-        in_ews_section = true
       when /^Class ([IVX]+)$/ && current_section == 'ews'
         class_num = roman_to_arabic($1)
         if class_num && next_line =~ /^B\s+G$/
