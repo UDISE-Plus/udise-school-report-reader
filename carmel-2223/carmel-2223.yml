@@ -226,13 +226,6 @@ academic:
       teacher_hours: 8.0
     working: {}
     shifts: {}
-  subjects:
-    languages:
-      details: {}
-    core:
-      details: {}
-    electives:
-      details: {}
   assessments:
     cce:
       implemented: 1-Yes

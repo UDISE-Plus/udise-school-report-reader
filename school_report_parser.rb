@@ -202,14 +202,13 @@ class SchoolReportParser
           'reports' => {}
         },
         'hours' => {
-          'instructional' => {},
+          'instructional' => {
+            'days' => nil,
+            'student_hours' => nil,
+            'teacher_hours' => nil
+          },
           'working' => {},
           'shifts' => {}
-        },
-        'subjects' => {
-          'languages' => {},
-          'core' => {},
-          'electives' => {}
         },
         'assessments' => {
           'cce' => {
@@ -270,10 +269,6 @@ class SchoolReportParser
     }
 
     # Add new sections to the data structure
-    data['academic']['subjects']['languages']['details'] = {}
-    data['academic']['subjects']['core']['details'] = {}
-    data['academic']['subjects']['electives']['details'] = {}
-    
     data['students']['attendance']['monthly'] = {}
     data['students']['attendance']['term_wise'] = {}
     
