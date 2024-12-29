@@ -220,16 +220,6 @@ class SchoolReportParser
             'class_10' => {},
             'class_12' => {}
           }
-        },
-        'vocational' => {
-          'courses' => {},
-          'trainers' => {},
-          'facilities' => {}
-        },
-        'sports' => {
-          'facilities' => {},
-          'equipment' => {},
-          'instructors' => {}
         }
       },
       'facilities' => {
