@@ -54,32 +54,58 @@ class SchoolReportParser
     data = {
       'basic_info' => {},
       'location' => {},
-      'school_details' => {},
+      'school_details' => {
+        'recognition' => {},
+        'affiliation' => {}
+      },
       'infrastructure' => {
         'toilets' => {},
         'classrooms' => {},
         'digital_facilities' => {},
         'other_facilities' => {},
-        'building' => {}
+        'building' => {},
+        'furniture' => {}
       },
       'teachers' => {
         'count_by_level' => {},
-        'qualifications' => {},
+        'qualifications' => {
+          'academic' => {},
+          'professional' => {}
+        },
         'demographics' => {},
-        'training' => {}
+        'training' => {},
+        'age_distribution' => {}
       },
       'students' => {
-        'enrollment' => {},
-        'facilities' => {}
+        'enrollment' => {
+          'general' => {},
+          'by_class' => {},
+          'by_social_category' => {},
+          'cwsn' => {}
+        },
+        'facilities' => {},
+        'scholarships' => {}
       },
       'academic' => {
         'medium_of_instruction' => {},
         'inspections' => {},
-        'hours' => {}
+        'hours' => {},
+        'subjects' => {},
+        'assessments' => {}
       },
       'facilities' => {
         'residential' => {},
-        'basic' => {}
+        'basic' => {},
+        'safety' => {},
+        'medical' => {}
+      },
+      'committees' => {
+        'smc' => {},
+        'smdc' => {}
+      },
+      'grants' => {
+        'received' => {},
+        'expenditure' => {}
       }
     }
 
@@ -90,6 +116,8 @@ class SchoolReportParser
     in_digital_section = false
     in_teacher_section = false
     in_medium_section = false
+    in_student_section = false
+    in_grant_section = false
 
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
@@ -128,6 +156,10 @@ class SchoolReportParser
         data['location']['cluster'] = next_line if next_line
       when "Municipality"
         data['location']['municipality'] = next_line if next_line
+      when "Assembly Const."
+        data['location']['assembly_constituency'] = next_line if next_line
+      when "Parl. Constituency"
+        data['location']['parliamentary_constituency'] = next_line if next_line
       
       # School Details
       when "School Category"
@@ -142,12 +174,34 @@ class SchoolReportParser
         data['school_details']['pre_primary'] = next_line if next_line
       when "Year of Establishment"
         data['school_details']['established'] = next_line.to_i if next_line
+      when "Year of Recognition-Pri."
+        data['school_details']['recognition']['primary'] = next_line.to_i if next_line =~ /^\d+$/
+      when "Year of Recognition-Sec."
+        data['school_details']['recognition']['secondary'] = next_line.to_i if next_line =~ /^\d+$/
+      when "Year of Recognition-Higher Sec."
+        data['school_details']['recognition']['higher_secondary'] = next_line.to_i if next_line =~ /^\d+$/
+      when "Affiliation Board-Sec"
+        data['school_details']['affiliation']['secondary'] = next_line if next_line
+      when "Affiliation Board-HSec"
+        data['school_details']['affiliation']['higher_secondary'] = next_line if next_line
       when "Building Status"
         data['school_details']['building_status'] = next_line if next_line
+      when "Is this a Shift School?"
+        data['school_details']['is_shift_school'] = next_line if next_line
+      when "Is Special School for CWSN?"
+        data['school_details']['is_special_school'] = next_line if next_line
+      
+      # Infrastructure - Building
       when "Boundary wall"
         data['infrastructure']['building']['boundary_wall'] = next_line if next_line
       when "No.of Building Blocks"
         data['infrastructure']['building']['blocks'] = next_line.to_i if next_line =~ /^\d+$/
+      when "Pucca Building Blocks"
+        data['infrastructure']['building']['pucca_blocks'] = next_line.to_i if next_line =~ /^\d+$/
+      when "Availability of Ramps"
+        data['infrastructure']['building']['ramps'] = next_line if next_line
+      when "Availability of Handrails"
+        data['infrastructure']['building']['handrails'] = next_line if next_line
       
       # Infrastructure - Toilets
       when "Toilets"
@@ -193,6 +247,10 @@ class SchoolReportParser
         data['facilities']['basic']['solar_panel'] = next_line if next_line
       when "Library Availability"
         data['facilities']['basic']['library'] = next_line if next_line
+      when "Separate Room for HM"
+        data['facilities']['basic']['separate_hm_room'] = next_line if next_line
+      when "Furniture Availability"
+        data['infrastructure']['furniture']['count'] = next_line.to_i if next_line =~ /^\d+$/
       
       # Infrastructure - Classrooms
       when "Total Class Rooms"
@@ -237,6 +295,8 @@ class SchoolReportParser
         data['infrastructure']['digital_facilities']['projector'] = next_line.to_i if next_line =~ /^\d+$/
       when "DigiBoard" && in_digital_section
         data['infrastructure']['digital_facilities']['digiboard'] = next_line.to_i if next_line =~ /^\d+$/
+      when "DTH" && in_digital_section
+        data['infrastructure']['digital_facilities']['dth'] = next_line if next_line
       
       # Academic
       when "Medium of Instruction"
@@ -260,6 +320,8 @@ class SchoolReportParser
         if next_line =~ /^\d+\.?\d*$/
           data['academic']['hours']['avg_school_hours_tch'] = next_line.to_f
         end
+      when "CCE"
+        data['academic']['assessments']['cce'] = next_line if next_line
       
       # Teachers
       when "Teachers"
@@ -294,15 +356,35 @@ class SchoolReportParser
       # Teacher Qualifications
       when "Below Graduate"
         if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['below_graduate'] = next_line.to_i
+          data['teachers']['qualifications']['academic']['below_graduate'] = next_line.to_i
+        end
+      when "Graduate"
+        if next_line =~ /^\d+$/
+          data['teachers']['qualifications']['academic']['graduate'] = next_line.to_i
         end
       when "Post Graduate and Above"
         if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['post_graduate_and_above'] = next_line.to_i
+          data['teachers']['qualifications']['academic']['post_graduate_and_above'] = next_line.to_i
+        end
+      when "Diploma or Certificate in basic teachers training"
+        if next_line =~ /^\d+$/
+          data['teachers']['qualifications']['professional']['basic_training'] = next_line.to_i
+        end
+      when "B.Ed. or Equivalent"
+        if next_line =~ /^\d+$/
+          data['teachers']['qualifications']['professional']['bed'] = next_line.to_i
+        end
+      when "M.Ed. or Equivalent"
+        if next_line =~ /^\d+$/
+          data['teachers']['qualifications']['professional']['med'] = next_line.to_i
         end
       when "Total Teacher Trained in Computer"
         if next_line =~ /^\d+$/
           data['teachers']['training']['computer_trained'] = next_line.to_i
+        end
+      when "Teachers Aged above 55"
+        if next_line =~ /^\d+$/
+          data['teachers']['age_distribution']['above_55'] = next_line.to_i
         end
       
       # Residential Info
@@ -312,6 +394,8 @@ class SchoolReportParser
         data['facilities']['residential']['category'] = next_line if next_line
       when "Minority School"
         data['facilities']['residential']['minority_school'] = next_line if next_line
+      when "Approachable By All Weather Road"
+        data['facilities']['residential']['all_weather_road'] = next_line if next_line
       
       # Student Facilities
       when "Free text books"
@@ -325,6 +409,24 @@ class SchoolReportParser
       when "Free uniform"
         if next_line =~ /^\d+$/
           data['students']['facilities']['free_uniform'] = next_line.to_i
+        end
+      
+      # Committees
+      when "SMC Exists"
+        data['committees']['smc']['exists'] = next_line if next_line
+      when "SMC & SMDC Same"
+        data['committees']['smc']['same_as_smdc'] = next_line if next_line
+      when "SMDC Constituted"
+        data['committees']['smdc']['constituted'] = next_line if next_line
+      
+      # Grants
+      when "Grants Receipt"
+        if next_line =~ /^\d+\.?\d*$/
+          data['grants']['received']['amount'] = next_line.to_f
+        end
+      when "Grants Expenditure"
+        if next_line =~ /^\d+\.?\d*$/
+          data['grants']['expenditure']['amount'] = next_line.to_f
         end
       end
     end

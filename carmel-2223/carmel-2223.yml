@@ -11,14 +11,25 @@ location:
   ward: RACE COURSE - 26
   pincode: '641045'
   municipality: Assembly Const.
+  assembly_constituency: Parl. Constituency
+  parliamentary_constituency: School Category
 school_details:
+  recognition:
+    primary: 1964
+    secondary: 1987
+    higher_secondary: 1987
+  affiliation:
+    secondary: 2-State Board
+    higher_secondary: 2-State Board
   category: 3 - Pr. with Up.Pr. sec. and H.Sec.
   management: 5-Private Unaided \(Recognized\)
   type: 3-Co-educational
   class_range: 1  -   12
   pre_primary: 1-Yes
   established: 1964
+  is_shift_school: 2-No
   building_status: 2-Rented
+  is_special_school: 2-No
 infrastructure:
   classrooms:
     total: 59
@@ -29,17 +40,35 @@ infrastructure:
   building:
     boundary_wall: 1-Pucca
     blocks: 3
+    pucca_blocks: 3
+    ramps: 1-Yes
+    handrails: 1-Yes
+  furniture:
+    count: 2118
 teachers:
   qualifications:
-    below_graduate: 4
-    post_graduate_and_above: 27
+    academic:
+      below_graduate: 4
+      graduate: 38
+      post_graduate_and_above: 27
+    professional:
+      basic_training: 13
+      bed: 46
+      med: 3
   demographics:
     male: 14
     female: 55
     transgender: 0
   training:
     computer_trained: 67
+  age_distribution:
+    above_55: 0
 students:
+  enrollment:
+    general: {}
+    by_class: {}
+    by_social_category: {}
+    cwsn: {}
   facilities:
     free_textbooks: 0
     transport: 0
@@ -49,18 +78,33 @@ academic:
     instructional_days: 210
     avg_school_hours_std: 6.0
     avg_school_hours_tch: 8.0
+  assessments:
+    cce: 1-Yes
 facilities:
   residential:
     type: 3 - Non-
     category: Minority School
     minority_school: 1-Yes
+    all_weather_road: 1-Yes
   basic:
     handwash_near_toilet: 1-Yes
     handwash_for_meal: 1-Yes
     library: 1-Yes
+    separate_hm_room: 1-Yes
     drinking_water: 1-Yes
     drinking_water_functional: 1-Yes
     rain_water_harvesting: 1-Yes
     playground: 1-Yes
     electricity: 1-Yes
     solar_panel: 2-No
+committees:
+  smc:
+    exists: SMC & SMDC Same
+    same_as_smdc: NA
+  smdc:
+    constituted: Text Books Received
+grants:
+  received:
+    amount: 0.0
+  expenditure:
+    amount: 0.0
