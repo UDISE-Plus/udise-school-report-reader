@@ -139,7 +139,6 @@ class SchoolReportParser
       },
       'students' => {
         'enrollment' => {
-          'general' => {},
           'by_class' => {
             'pre_primary' => { 'boys' => 0, 'girls' => 0 },
             'class_1' => { 'boys' => 0, 'girls' => 0 },
@@ -160,38 +159,16 @@ class SchoolReportParser
             'sc' => { 'boys' => 0, 'girls' => 0 },
             'st' => { 'boys' => 0, 'girls' => 0 },
             'obc' => { 'boys' => 0, 'girls' => 0 }
-          },
-          'cwsn' => {
-            'by_type' => {},
-            'facilities' => {}
-          },
-          'rte' => {
-            'section_12' => {},
-            'ews' => {}
-          },
-          'minority' => {
-            'by_religion' => {}
           }
         },
         'facilities' => {
-          'general' => {},
-          'scholarships' => {
-            'government' => {},
-            'private' => {}
+          'general' => {
+            'transport' => nil
           },
           'incentives' => {
-            'books' => {},
-            'uniform' => {},
-            'transport' => {}
+            'free_textbooks' => nil,
+            'free_uniform' => nil
           }
-        },
-        'attendance' => {
-          'by_class' => {},
-          'average' => {}
-        },
-        'performance' => {
-          'by_class' => {},
-          'board_results' => {}
         }
       },
       'academic' => {
@@ -270,9 +247,6 @@ class SchoolReportParser
     }
 
     # Add new sections to the data structure
-    data['students']['attendance']['monthly'] = {}
-    data['students']['attendance']['term_wise'] = {}
-    
     data['teachers']['workload'] = {
       'teaching_hours' => {},
       'non_teaching_hours' => {},

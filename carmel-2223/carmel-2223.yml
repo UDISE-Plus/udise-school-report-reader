@@ -124,7 +124,6 @@ teachers:
     by_subject: {}
 students:
   enrollment:
-    general: {}
     by_class:
       pre_primary:
         boys: 0
@@ -178,34 +177,12 @@ students:
       obc:
         boys: 0
         girls: 0
-    cwsn:
-      by_type: {}
-      facilities: {}
-    rte:
-      section_12: {}
-      ews: {}
-    minority:
-      by_religion: {}
   facilities:
     general:
       transport: 0
-    scholarships:
-      government: {}
-      private: {}
     incentives:
-      books: {}
-      uniform: {}
-      transport: {}
       free_textbooks: 0
       free_uniform: 0
-  attendance:
-    by_class: {}
-    average: {}
-    monthly: {}
-    term_wise: {}
-  performance:
-    by_class: {}
-    board_results: {}
 academic:
   medium_of_instruction:
     medium_1:
