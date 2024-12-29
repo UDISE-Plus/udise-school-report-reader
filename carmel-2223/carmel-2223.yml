@@ -80,6 +80,10 @@ infrastructure:
   library:
     available: 1-Yes
 teachers:
+  count_by_level:
+    regular: 69
+    part_time: 0
+    contract: 0
   qualifications:
     academic:
       below_graduate: 4
@@ -184,10 +188,16 @@ students:
         girls: 0
   facilities:
     general:
-      transport: 0
+      transport:
+        primary: 0
+        upper_primary: 0
     incentives:
-      free_textbooks: 0
-      free_uniform: 0
+      free_textbooks:
+        primary: 0
+        upper_primary: 0
+      free_uniform:
+        primary: 0
+        upper_primary: 0
 academic:
   medium_of_instruction:
     medium_1:

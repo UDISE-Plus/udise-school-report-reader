@@ -187,11 +187,20 @@ class SchoolReportParser
         },
         'facilities' => {
           'general' => {
-            'transport' => nil
+            'transport' => {
+              'primary' => 0,
+              'upper_primary' => 0
+            }
           },
           'incentives' => {
-            'free_textbooks' => nil,
-            'free_uniform' => nil
+            'free_textbooks' => {
+              'primary' => 0,
+              'upper_primary' => 0
+            },
+            'free_uniform' => {
+              'primary' => 0,
+              'upper_primary' => 0
+            }
           }
         }
       },
@@ -651,17 +660,24 @@ class SchoolReportParser
         data['facilities']['basic']['safety']['all_weather_road'] = next_line if next_line && !next_line.match?(/Toilets/)
       
       # Student Facilities
-      when "Free text books"
-        if next_line =~ /^\d+$/
-          data['students']['facilities']['incentives']['free_textbooks'] = next_line.to_i
+      when /No\.of Students Received/
+        current_section = 'facilities'
+        # Skip the header lines
+        i += 2 # Skip "Primary" and "Up.Primary" lines
+      when /Free text books/ && current_section == 'facilities'
+        if lines[i + 1] =~ /^\d+$/ && lines[i + 2] =~ /^\d+$/
+          data['students']['facilities']['incentives']['free_textbooks']['primary'] = lines[i + 1].to_i
+          data['students']['facilities']['incentives']['free_textbooks']['upper_primary'] = lines[i + 2].to_i
         end
-      when "Transport"
-        if next_line =~ /^\d+$/
-          data['students']['facilities']['general']['transport'] = next_line.to_i
+      when /Transport/ && current_section == 'facilities'
+        if lines[i + 1] =~ /^\d+$/ && lines[i + 2] =~ /^\d+$/
+          data['students']['facilities']['general']['transport']['primary'] = lines[i + 1].to_i
+          data['students']['facilities']['general']['transport']['upper_primary'] = lines[i + 2].to_i
         end
-      when "Free uniform"
-        if next_line =~ /^\d+$/
-          data['students']['facilities']['incentives']['free_uniform'] = next_line.to_i
+      when /Free uniform/ && current_section == 'facilities'
+        if lines[i + 1] =~ /^\d+$/ && lines[i + 2] =~ /^\d+$/
+          data['students']['facilities']['incentives']['free_uniform']['primary'] = lines[i + 1].to_i
+          data['students']['facilities']['incentives']['free_uniform']['upper_primary'] = lines[i + 2].to_i
         end
       
       # Committees
