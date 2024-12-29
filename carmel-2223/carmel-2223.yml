@@ -67,9 +67,6 @@ infrastructure:
     count: 2118
     condition: {}
   library:
-    details: {}
-    books: {}
-    staff: {}
     available: 1-Yes
 teachers:
   qualifications:

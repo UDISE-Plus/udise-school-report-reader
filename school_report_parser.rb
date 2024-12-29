@@ -114,9 +114,7 @@ class SchoolReportParser
           'condition' => {}
         },
         'library' => {
-          'details' => {},
-          'books' => {},
-          'staff' => {}
+          'available' => nil
         }
       },
       'teachers' => {
@@ -538,7 +536,7 @@ class SchoolReportParser
       when "Solar Panel"
         data['facilities']['basic']['electricity']['solar_panel'] = next_line if next_line && !next_line.match?(/Medical/)
       when "Library Availability"
-        data['infrastructure']['library']['available'] = next_line if next_line && !next_line.match?(/Separate/)
+        data['infrastructure']['library']['available'] = next_line if next_line && !next_line.match?(/Solar/)
       when "Separate Room for HM"
         data['infrastructure']['other_facilities']['hm_room'] = next_line if next_line && !next_line.match?(/Drinking/)
       when "Furniture Availability"
