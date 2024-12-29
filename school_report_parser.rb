@@ -382,7 +382,6 @@ class SchoolReportParser
 
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
-      next_next_line = lines[i + 2]&.strip
 
       case line
       # Basic Info
@@ -475,7 +474,6 @@ class SchoolReportParser
       
       # Infrastructure - Toilets
       when "Toilets"
-        in_toilet_section = true
         current_section = 'toilets'
         
         # Look ahead for toilet data
@@ -554,7 +552,6 @@ class SchoolReportParser
       
       # Infrastructure - Classrooms
       when "Total Class Rooms"
-        in_toilet_section = false
         if next_line =~ /^\d+$/
           data['infrastructure']['classrooms']['total'] = next_line.to_i
         end
@@ -578,7 +575,6 @@ class SchoolReportParser
       # Digital Facilities
       when "Digital Facilities (Functional)"
         in_digital_section = true
-        in_toilet_section = false
       when "ICT Lab" && in_digital_section
         data['infrastructure']['digital_facilities']['ict_lab'] = next_line if next_line && !next_line.match?(/Internet/)
       when "Internet" && in_digital_section
