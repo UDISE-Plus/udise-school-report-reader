@@ -217,15 +217,11 @@ academic:
       crc_coordinator: 0
       block_level: 0
       state_district: 0
-    officers: {}
-    reports: {}
   hours:
     instructional:
       days: 210
       student_hours: 6.0
       teacher_hours: 8.0
-    working: {}
-    shifts: {}
   assessments:
     cce:
       implemented: 1-Yes

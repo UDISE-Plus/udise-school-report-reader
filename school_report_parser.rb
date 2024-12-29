@@ -197,18 +197,19 @@ class SchoolReportParser
       'academic' => {
         'medium_of_instruction' => {},
         'inspections' => {
-          'visits' => {},
-          'officers' => {},
-          'reports' => {}
+          'visits' => {
+            'academic' => nil,
+            'crc_coordinator' => nil,
+            'block_level' => nil,
+            'state_district' => nil
+          }
         },
         'hours' => {
           'instructional' => {
             'days' => nil,
             'student_hours' => nil,
             'teacher_hours' => nil
-          },
-          'working' => {},
-          'shifts' => {}
+          }
         },
         'assessments' => {
           'cce' => {
