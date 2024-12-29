@@ -577,10 +577,8 @@ class SchoolReportParser
         class_level = $1
         description = $2.strip
         if next_line =~ /^\d+$/
-          data['teachers']['classes_taught'][class_level] = {
-            'description' => description,
-            'count' => next_line.to_i
-          }
+          key = description.downcase.gsub(/[^a-z0-9]+/, '_').gsub(/^_|_$/, '')
+          data['teachers']['classes_taught'][key] = next_line.to_i
         end
       
       # Teacher Qualifications
