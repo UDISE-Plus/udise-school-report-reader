@@ -331,6 +331,26 @@ class SchoolReportParser
       }
     }
 
+    # Add new sections to the data structure
+    data['academic']['subjects']['languages']['details'] = {}
+    data['academic']['subjects']['core']['details'] = {}
+    data['academic']['subjects']['electives']['details'] = {}
+    
+    data['students']['attendance']['monthly'] = {}
+    data['students']['attendance']['term_wise'] = {}
+    
+    data['teachers']['workload'] = {
+      'teaching_hours' => {},
+      'non_teaching_hours' => {},
+      'by_subject' => {}
+    }
+    
+    data['infrastructure']['classrooms']['usage'] = {
+      'regular' => {},
+      'labs' => {},
+      'special_rooms' => {}
+    }
+
     lines = compressed_content.split("\n").map(&:strip)
     current_section = nil
     current_subsection = nil
@@ -801,6 +821,123 @@ class SchoolReportParser
             'girls' => $2.to_i
           }
         end
+      
+      # Teacher workload
+      when /Teaching Hours per Week/
+        if next_line =~ /(\d+)/
+          data['teachers']['workload']['teaching_hours']['per_week'] = $1.to_i
+        end
+      when /Non-Teaching Hours/
+        if next_line =~ /(\d+)/
+          data['teachers']['workload']['non_teaching_hours']['per_week'] = $1.to_i
+        end
+      
+      # Teacher subject-wise allocation
+      when /^Subject:\s*(.+?)(?:\s*,\s*Teachers:\s*(\d+))?$/
+        subject = $1.strip
+        count = $2&.to_i || 0
+        data['teachers']['workload']['by_subject'][subject.downcase] = count
+      
+      # Student attendance
+      when /Monthly Attendance/
+        current_section = 'attendance'
+      when /^(\w+)\s+(\d+\.?\d*)%$/ && current_section == 'attendance'
+        month = $1.downcase
+        percentage = $2.to_f
+        data['students']['attendance']['monthly'][month] = percentage
+      
+      # Language subjects
+      when /^Language (\d+):\s*(.+)$/
+        num = $1
+        lang = $2.strip
+        data['academic']['subjects']['languages']['details']["language_#{num}"] = lang
+      
+      # Core subjects
+      when /^Core Subject (\d+):\s*(.+)$/
+        num = $1
+        subject = $2.strip
+        data['academic']['subjects']['core']['details']["subject_#{num}"] = subject
+      
+      # Elective subjects
+      when /^Elective (\d+):\s*(.+)$/
+        num = $1
+        subject = $2.strip
+        data['academic']['subjects']['electives']['details']["elective_#{num}"] = subject
+      
+      # Classroom usage
+      when /^Room (\d+) Usage:\s*(.+)$/
+        room = $1
+        usage = $2.strip
+        data['infrastructure']['classrooms']['usage']['regular']["room_#{room}"] = usage
+      
+      # Lab details
+      when /^Lab Type:\s*(.+?)(?:\s*,\s*Capacity:\s*(\d+))?$/
+        type = $1.strip
+        capacity = $2&.to_i
+        data['infrastructure']['classrooms']['usage']['labs'][type.downcase] = {
+          'capacity' => capacity
+        }
+      
+      # Special room details
+      when /^Special Room:\s*(.+?)(?:\s*,\s*Purpose:\s*(.+))?$/
+        room = $1.strip
+        purpose = $2&.strip
+        data['infrastructure']['classrooms']['usage']['special_rooms'][room.downcase] = {
+          'purpose' => purpose
+        }
+      
+      # Student performance details
+      when /^Class (\d+) Performance$/
+        current_class = $1
+        in_performance_section = true
+      when /^(\w+)\s+(\d+\.?\d*)%$/ && in_performance_section
+        subject = $1.strip.downcase
+        percentage = $2.to_f
+        data['students']['performance']['by_class']["class_#{current_class}"] ||= {}
+        data['students']['performance']['by_class']["class_#{current_class}"][subject] = percentage
+      
+      # Committee details
+      when /^Committee:\s*(.+?)(?:\s*,\s*Members:\s*(\d+))?$/
+        committee = $1.strip.downcase
+        members = $2&.to_i
+        data['committees'][committee] ||= {}
+        data['committees'][committee]['members'] = members if members
+      
+      # Safety measures
+      when /^Safety Measure:\s*(.+?)(?:\s*,\s*Status:\s*(.+))?$/
+        measure = $1.strip.downcase
+        status = $2&.strip
+        data['facilities']['safety']['measures'] ||= {}
+        data['facilities']['safety']['measures'][measure] = status
+      
+      # Medical facilities
+      when /^Medical Facility:\s*(.+?)(?:\s*,\s*Availability:\s*(.+))?$/
+        facility = $1.strip.downcase
+        availability = $2&.strip
+        data['facilities']['medical']['facilities'] ||= {}
+        data['facilities']['medical']['facilities'][facility] = availability
+      
+      # Sports facilities
+      when /^Sport:\s*(.+?)(?:\s*,\s*Equipment:\s*(\d+))?$/
+        sport = $1.strip.downcase
+        equipment = $2&.to_i
+        data['academic']['sports']['facilities'][sport] = {
+          'equipment_count' => equipment
+        }
+      
+      # Library resources
+      when /^Book Category:\s*(.+?)(?:\s*,\s*Count:\s*(\d+))?$/
+        category = $1.strip.downcase
+        count = $2&.to_i
+        data['infrastructure']['library']['books']['by_category'] ||= {}
+        data['infrastructure']['library']['books']['by_category'][category] = count
+      
+      # Grant utilization
+      when /^Grant Type:\s*(.+?)(?:\s*,\s*Utilization:\s*(\d+\.?\d*)%)?$/
+        type = $1.strip.downcase
+        utilization = $2&.to_f
+        data['grants']['utilization']['by_type'] ||= {}
+        data['grants']['utilization']['by_type'][type] = utilization
       end
     end
 

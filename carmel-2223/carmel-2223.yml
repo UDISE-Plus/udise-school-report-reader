@@ -38,6 +38,10 @@ infrastructure:
     count: {}
     condition: {}
     special_rooms: {}
+    usage:
+      regular: {}
+      labs: {}
+      special_rooms: {}
     total: 59
     good_condition: 59
     needs_minor_repair: 0
@@ -113,6 +117,10 @@ teachers:
     '11':
       description: Pre- Pri & Pri
       count: 1
+  workload:
+    teaching_hours: {}
+    non_teaching_hours: {}
+    by_subject: {}
 students:
   enrollment:
     general: {}
@@ -192,6 +200,8 @@ students:
   attendance:
     by_class: {}
     average: {}
+    monthly: {}
+    term_wise: {}
   performance:
     by_class: {}
     board_results: {}
@@ -212,9 +222,12 @@ academic:
     working: {}
     shifts: {}
   subjects:
-    languages: {}
-    core: {}
-    electives: {}
+    languages:
+      details: {}
+    core:
+      details: {}
+    electives:
+      details: {}
   assessments:
     cce:
       implementation: {}
