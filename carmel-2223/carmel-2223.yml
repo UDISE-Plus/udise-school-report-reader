@@ -254,13 +254,6 @@ facilities:
     details:
       type: 3 - Non-Residential
       minority_school: 1-Yes
-    hostel:
-      boys: {}
-      girls: {}
-      staff: {}
-    mess:
-      kitchen: {}
-      dining: {}
   basic:
     water:
       available: 1-Yes

@@ -234,15 +234,9 @@ class SchoolReportParser
       },
       'facilities' => {
         'residential' => {
-          'details' => {},
-          'hostel' => {
-            'boys' => {},
-            'girls' => {},
-            'staff' => {}
-          },
-          'mess' => {
-            'kitchen' => {},
-            'dining' => {}
+          'details' => {
+            'type' => nil,
+            'minority_school' => nil
           }
         },
         'basic' => {
