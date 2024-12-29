@@ -105,12 +105,12 @@ class SchoolReportParser
         'digital_facilities' => {
           'ict_lab' => nil,
           'internet' => nil,
-          'desktop' => 0,
-          'laptop' => 0,
-          'tablet' => 0,
-          'printer' => 0,
-          'projector' => 0,
-          'digiboard' => 0,
+          'desktop' => nil,
+          'laptop' => nil,
+          'tablet' => nil,
+          'printer' => nil,
+          'projector' => nil,
+          'digiboard' => nil,
           'dth' => nil
         },
         'other_facilities' => {},
