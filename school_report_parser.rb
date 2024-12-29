@@ -574,7 +574,6 @@ class SchoolReportParser
           data['teachers']['assignments']['non_teaching'] = next_line.to_i
         end
       when /^(\d+)-(\w+.*?)$/
-        class_level = $1
         description = $2.strip
         if next_line =~ /^\d+$/
           key = description.downcase.gsub(/[^a-z0-9]+/, '_').gsub(/^_|_$/, '')
