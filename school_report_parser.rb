@@ -73,15 +73,18 @@ class SchoolReportParser
       }
     }
 
-    lines = compressed_content.split("\n")
+    lines = compressed_content.split("\n").map(&:strip)
     current_section = nil
     current_subsection = nil
+    in_toilet_section = false
+    in_digital_section = false
+    in_teacher_section = false
 
     lines.each_with_index do |line, i|
-      next_line = lines[i + 1]
-      prev_line = lines[i - 1] if i > 0
+      next_line = lines[i + 1]&.strip
+      next_next_line = lines[i + 2]&.strip
 
-      case line.strip
+      case line
       # Basic Info
       when "UDISE CODE"
         if next_line && (match = next_line.match(/(\d{2})\s*(\d{2})\s*(\d{2})\s*(\d{2})\s*(\d{3})/))
@@ -118,56 +121,101 @@ class SchoolReportParser
       when "Building Status"
         data['school_details']['building_status'] = next_line if next_line
       
-      # Infrastructure
+      # Infrastructure - Toilets
       when "Toilets"
+        in_toilet_section = true
         current_section = 'toilets'
-      when /^Total\(Excluding CWSN\)$/ && current_section == 'toilets'
-        if next_line && next_line.match?(/^\d+$/)
+      when "Boys" && in_toilet_section
+        current_subsection = 'boys'
+      when "Girls" && in_toilet_section
+        current_subsection = 'girls'
+      when "Total(Excluding CWSN)" && in_toilet_section
+        if next_line =~ /^\d+$/ && next_next_line =~ /^\d+$/
           data['infrastructure']['toilets']['boys'] = next_line.to_i
-          data['infrastructure']['toilets']['girls'] = lines[i + 2].to_i if lines[i + 2]
+          data['infrastructure']['toilets']['girls'] = next_next_line.to_i
         end
-      when /^Functional$/ && current_section == 'toilets'
-        if next_line && next_line.match?(/^\d+$/)
+      when "Functional" && in_toilet_section
+        if next_line =~ /^\d+$/ && next_next_line =~ /^\d+$/
           data['infrastructure']['toilets']['functional_boys'] = next_line.to_i
-          data['infrastructure']['toilets']['functional_girls'] = lines[i + 2].to_i if lines[i + 2]
+          data['infrastructure']['toilets']['functional_girls'] = next_next_line.to_i
+        end
+      when "Func. CWSN Friendly" && in_toilet_section
+        if next_line =~ /^\d+$/ && next_next_line =~ /^\d+$/
+          data['infrastructure']['toilets']['cwsn_boys'] = next_line.to_i
+          data['infrastructure']['toilets']['cwsn_girls'] = next_next_line.to_i
         end
       
-      # Classrooms
+      # Infrastructure - Classrooms
       when "Total Class Rooms"
-        if next_line && next_line.match?(/^\d+$/)
+        in_toilet_section = false
+        if next_line =~ /^\d+$/
           data['infrastructure']['classrooms']['total'] = next_line.to_i
         end
       when "In Good Condition"
-        if next_line && next_line.match?(/^\d+$/)
+        if next_line =~ /^\d+$/
           data['infrastructure']['classrooms']['good_condition'] = next_line.to_i
+        end
+      when "Needs Minor Repair"
+        if next_line =~ /^\d+$/
+          data['infrastructure']['classrooms']['needs_minor_repair'] = next_line.to_i
+        end
+      when "Needs Major Repair"
+        if next_line =~ /^\d+$/
+          data['infrastructure']['classrooms']['needs_major_repair'] = next_line.to_i
         end
       
       # Digital Facilities
       when "Digital Facilities (Functional)"
-        current_section = 'digital'
-      when "ICT Lab" && current_section == 'digital'
-        data['infrastructure']['digital_facilities']['ict_lab'] = next_line if next_line
-      when "Desktop" && current_section == 'digital'
-        data['infrastructure']['digital_facilities']['desktop'] = next_line.to_i if next_line
-      when "Internet" && current_section == 'digital'
-        data['infrastructure']['digital_facilities']['internet'] = next_line if next_line
+        in_digital_section = true
+        in_toilet_section = false
+      when "ICT Lab" && in_digital_section
+        data['infrastructure']['digital_facilities']['ict_lab'] = next_line
+      when "Internet" && in_digital_section
+        data['infrastructure']['digital_facilities']['internet'] = next_line
+      when "Desktop" && in_digital_section
+        data['infrastructure']['digital_facilities']['desktop'] = next_line.to_i if next_line =~ /^\d+$/
+      when "Laptop" && in_digital_section
+        data['infrastructure']['digital_facilities']['laptop'] = next_line.to_i if next_line =~ /^\d+$/
+      when "Tablet" && in_digital_section
+        data['infrastructure']['digital_facilities']['tablet'] = next_line.to_i if next_line =~ /^\d+$/
+      when "DigiBoard" && in_digital_section
+        data['infrastructure']['digital_facilities']['digiboard'] = next_line.to_i if next_line =~ /^\d+$/
       
       # Academic
+      when "Medium of Instruction"
+        in_digital_section = false
       when /^Medium (\d)$/
-        if next_line
+        if next_line && !next_line.match?(/^Medium/)
           data['academic']['medium_of_instruction']["medium_#{$1}"] = next_line
         end
       
       # Teachers
-      when "Nature of Appointment"
-        current_section = 'teachers'
-      when "Regular" && current_section == 'teachers'
-        data['teachers']['count_by_level']['regular'] = next_line.to_i if next_line
-      when "Gender"
-        if lines[i + 1] && lines[i + 2] && lines[i + 3]
-          data['teachers']['demographics']['male'] = lines[i + 1].to_i
-          data['teachers']['demographics']['female'] = lines[i + 2].to_i
-          data['teachers']['demographics']['transgender'] = lines[i + 3].to_i
+      when "Teachers"
+        in_teacher_section = true
+        in_digital_section = false
+      when "Regular" && in_teacher_section
+        if next_line =~ /^\d+$/
+          data['teachers']['count_by_level']['regular'] = next_line.to_i
+        end
+      when "Part-time" && in_teacher_section
+        if next_line =~ /^\d+$/
+          data['teachers']['count_by_level']['part_time'] = next_line.to_i
+        end
+      when "Contract" && in_teacher_section
+        if next_line =~ /^\d+$/
+          data['teachers']['count_by_level']['contract'] = next_line.to_i
+        end
+      when "Male"
+        if next_line =~ /^\d+$/
+          data['teachers']['demographics']['male'] = next_line.to_i
+        end
+      when "Female"
+        if next_line =~ /^\d+$/
+          data['teachers']['demographics']['female'] = next_line.to_i
+        end
+      when "Transgender"
+        if next_line =~ /^\d+$/
+          data['teachers']['demographics']['transgender'] = next_line.to_i
         end
       end
     end

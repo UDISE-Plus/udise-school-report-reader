@@ -19,14 +19,14 @@ infrastructure:
   classrooms:
     total: 59
     good_condition: 59
+    needs_minor_repair: 0
+    needs_major_repair: 0
 teachers:
   demographics:
-    male: 0
-    female: 69
+    male: 14
+    female: 55
     transgender: 0
 academic:
   medium_of_instruction:
     medium_1: 19-English
-    medium_2: Medium 3
-    medium_3: Medium 4
     medium_4: Visit of school for / by
