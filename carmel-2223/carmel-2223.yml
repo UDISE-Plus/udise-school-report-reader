@@ -54,12 +54,12 @@ infrastructure:
   digital_facilities:
     ict_lab:
     internet:
-    desktop:
-    laptop:
-    tablet:
-    printer:
-    projector:
-    digiboard:
+    desktop: 0
+    laptop: 0
+    tablet: 0
+    printer: 0
+    projector: 0
+    digiboard: 0
     dth:
   other_facilities:
     hm_room: 1-Yes
