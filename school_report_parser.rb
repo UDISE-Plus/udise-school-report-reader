@@ -258,24 +258,13 @@ class SchoolReportParser
       'committees' => {
         'smc' => {
           'details' => {
-            'composition' => {},
-            'meetings' => {}
-          },
-          'activities' => {},
-          'funds' => {}
+            'same_as_smdc' => nil
+          }
         },
         'smdc' => {
           'details' => {
-            'composition' => {},
-            'meetings' => {}
-          },
-          'activities' => {},
-          'funds' => {}
-        },
-        'pta' => {
-          'details' => {},
-          'meetings' => {},
-          'activities' => {}
+            'constituted' => nil
+          }
         }
       },
       'grants' => {

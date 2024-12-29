@@ -274,21 +274,10 @@ facilities:
 committees:
   smc:
     details:
-      composition: {}
-      meetings: {}
       same_as_smdc: NA
-    activities: {}
-    funds: {}
   smdc:
     details:
-      composition: {}
-      meetings: {}
-    activities: {}
-    funds: {}
-  pta:
-    details: {}
-    meetings: {}
-    activities: {}
+      constituted:
 grants:
   received:
     amount: 0.0
