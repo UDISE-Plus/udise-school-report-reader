@@ -65,7 +65,6 @@ class SchoolReportParser
   def self.extract_data_points(compressed_content)
     lines = compressed_content.split("\n").map(&:strip)
     current_section = nil
-    in_digital_section = false
     
     data = {
       'basic_info' => {},
@@ -493,7 +492,7 @@ class SchoolReportParser
       
       # Academic
       when "Medium of Instruction"
-        in_digital_section = false
+        current_section = nil
       when /^Medium (\d)$/
         medium_num = $1
         if next_line && next_line =~ /^(\d+)-(.+)$/
@@ -534,17 +533,16 @@ class SchoolReportParser
       
       # Teachers
       when "Teachers"
-        in_teacher_section = true
-        in_digital_section = false
-      when "Regular" && in_teacher_section
+        current_section = nil
+      when "Regular"
         if next_line =~ /^\d+$/
           data['teachers']['count_by_level']['regular'] = next_line.to_i
         end
-      when "Part-time" && in_teacher_section
+      when "Part-time"
         if next_line =~ /^\d+$/
           data['teachers']['count_by_level']['part_time'] = next_line.to_i
         end
-      when "Contract" && in_teacher_section
+      when "Contract"
         if next_line =~ /^\d+$/
           data['teachers']['count_by_level']['contract'] = next_line.to_i
         end
