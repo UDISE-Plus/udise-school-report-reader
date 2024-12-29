@@ -263,9 +263,6 @@ facilities:
       dining: {}
   basic:
     water:
-      source: {}
-      quality: {}
-      storage: {}
       available: 1-Yes
       functional: 1-Yes
       rain_water_harvesting: 1-Yes

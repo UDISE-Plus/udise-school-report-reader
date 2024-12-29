@@ -246,11 +246,7 @@ class SchoolReportParser
           }
         },
         'basic' => {
-          'water' => {
-            'source' => {},
-            'quality' => {},
-            'storage' => {}
-          },
+          'water' => {},
           'electricity' => {
             'connection' => {},
             'backup' => {},
