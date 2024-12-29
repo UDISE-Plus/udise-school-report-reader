@@ -57,19 +57,36 @@ class SchoolReportParser
       'school_details' => {
         'recognition' => {},
         'affiliation' => {},
-        'shifts' => {}
+        'shifts' => {},
+        'special_focus' => {}
       },
       'infrastructure' => {
-        'toilets' => {},
-        'classrooms' => {},
+        'toilets' => {
+          'general' => {},
+          'cwsn' => {},
+          'urinals' => {}
+        },
+        'classrooms' => {
+          'count' => {},
+          'condition' => {},
+          'special_rooms' => {}
+        },
         'digital_facilities' => {},
         'other_facilities' => {},
         'building' => {
           'details' => {},
-          'accessibility' => {}
+          'accessibility' => {},
+          'safety' => {}
         },
-        'furniture' => {},
-        'library' => {}
+        'furniture' => {
+          'count' => {},
+          'condition' => {}
+        },
+        'library' => {
+          'details' => {},
+          'books' => {},
+          'staff' => {}
+        }
       },
       'teachers' => {
         'count_by_level' => {},
@@ -78,10 +95,18 @@ class SchoolReportParser
           'professional' => {}
         },
         'demographics' => {},
-        'training' => {},
+        'training' => {
+          'computer' => {},
+          'service' => {},
+          'special' => {}
+        },
         'age_distribution' => {},
-        'assignments' => {},
-        'classes_taught' => {}
+        'assignments' => {
+          'teaching' => {},
+          'non_teaching' => {}
+        },
+        'classes_taught' => {},
+        'attendance' => {}
       },
       'students' => {
         'enrollment' => {
@@ -101,80 +126,207 @@ class SchoolReportParser
             'class_11' => { 'boys' => 0, 'girls' => 0 },
             'class_12' => { 'boys' => 0, 'girls' => 0 }
           },
-          'by_social_category' => {},
-          'cwsn' => {},
+          'by_social_category' => {
+            'general' => { 'boys' => 0, 'girls' => 0 },
+            'sc' => { 'boys' => 0, 'girls' => 0 },
+            'st' => { 'boys' => 0, 'girls' => 0 },
+            'obc' => { 'boys' => 0, 'girls' => 0 }
+          },
+          'cwsn' => {
+            'by_type' => {},
+            'facilities' => {}
+          },
           'rte' => {
             'section_12' => {},
             'ews' => {}
+          },
+          'minority' => {
+            'by_religion' => {}
           }
         },
         'facilities' => {
           'general' => {},
-          'scholarships' => {},
-          'incentives' => {}
+          'scholarships' => {
+            'government' => {},
+            'private' => {}
+          },
+          'incentives' => {
+            'books' => {},
+            'uniform' => {},
+            'transport' => {}
+          }
+        },
+        'attendance' => {
+          'by_class' => {},
+          'average' => {}
+        },
+        'performance' => {
+          'by_class' => {},
+          'board_results' => {}
         }
       },
       'academic' => {
         'medium_of_instruction' => {},
         'inspections' => {
           'visits' => {},
-          'officers' => {}
+          'officers' => {},
+          'reports' => {}
         },
         'hours' => {
           'instructional' => {},
-          'working' => {}
+          'working' => {},
+          'shifts' => {}
         },
-        'subjects' => {},
+        'subjects' => {
+          'languages' => {},
+          'core' => {},
+          'electives' => {}
+        },
         'assessments' => {
-          'cce' => {},
-          'board_results' => {}
+          'cce' => {
+            'implementation' => {},
+            'records' => {}
+          },
+          'board_results' => {
+            'class_10' => {},
+            'class_12' => {}
+          }
         },
-        'vocational' => {}
+        'vocational' => {
+          'courses' => {},
+          'trainers' => {},
+          'facilities' => {}
+        },
+        'sports' => {
+          'facilities' => {},
+          'equipment' => {},
+          'instructors' => {}
+        }
       },
       'facilities' => {
         'residential' => {
           'details' => {},
-          'hostel' => {},
-          'mess' => {}
+          'hostel' => {
+            'boys' => {},
+            'girls' => {},
+            'staff' => {}
+          },
+          'mess' => {
+            'kitchen' => {},
+            'dining' => {}
+          }
         },
         'basic' => {
-          'water' => {},
-          'electricity' => {},
-          'sanitation' => {},
-          'safety' => {}
+          'water' => {
+            'source' => {},
+            'quality' => {},
+            'storage' => {}
+          },
+          'electricity' => {
+            'connection' => {},
+            'backup' => {},
+            'renewable' => {}
+          },
+          'sanitation' => {
+            'toilets' => {},
+            'cleaning' => {},
+            'waste' => {}
+          },
+          'safety' => {
+            'building' => {},
+            'playground' => {},
+            'transport' => {}
+          }
         },
         'safety' => {
-          'fire' => {},
-          'emergency' => {},
-          'security' => {}
+          'fire' => {
+            'equipment' => {},
+            'training' => {}
+          },
+          'emergency' => {
+            'exits' => {},
+            'procedures' => {}
+          },
+          'security' => {
+            'personnel' => {},
+            'equipment' => {}
+          }
         },
         'medical' => {
-          'checkups' => {},
-          'first_aid' => {}
+          'checkups' => {
+            'regular' => {},
+            'special' => {}
+          },
+          'first_aid' => {
+            'equipment' => {},
+            'training' => {}
+          },
+          'staff' => {
+            'nurse' => {},
+            'doctor' => {}
+          }
         },
-        'anganwadi' => {}
+        'anganwadi' => {
+          'center' => {},
+          'staff' => {},
+          'children' => {}
+        }
       },
       'committees' => {
         'smc' => {
-          'details' => {},
-          'meetings' => {}
+          'details' => {
+            'composition' => {},
+            'meetings' => {}
+          },
+          'activities' => {},
+          'funds' => {}
         },
         'smdc' => {
-          'details' => {},
-          'meetings' => {}
+          'details' => {
+            'composition' => {},
+            'meetings' => {}
+          },
+          'activities' => {},
+          'funds' => {}
         },
-        'pta' => {}
+        'pta' => {
+          'details' => {},
+          'meetings' => {},
+          'activities' => {}
+        }
       },
       'grants' => {
         'received' => {
-          'composite' => {},
-          'maintenance' => {},
-          'development' => {}
+          'composite' => {
+            'amount' => {},
+            'date' => {}
+          },
+          'maintenance' => {
+            'amount' => {},
+            'purpose' => {}
+          },
+          'development' => {
+            'amount' => {},
+            'purpose' => {}
+          }
         },
         'expenditure' => {
-          'composite' => {},
-          'maintenance' => {},
-          'development' => {}
+          'composite' => {
+            'amount' => {},
+            'details' => {}
+          },
+          'maintenance' => {
+            'amount' => {},
+            'details' => {}
+          },
+          'development' => {
+            'amount' => {},
+            'details' => {}
+          }
+        },
+        'utilization' => {
+          'certificates' => {},
+          'reports' => {}
         }
       }
     }
@@ -569,6 +721,85 @@ class SchoolReportParser
       when "Grants Expenditure"
         if next_line =~ /^\d+\.?\d*$/
           data['grants']['expenditure']['composite']['amount'] = next_line.to_f
+        end
+      
+      # Add new pattern matches
+      when "Medical checkups"
+        data['facilities']['medical']['checkups']['regular']['available'] = next_line if next_line
+      when "First Aid Kit"
+        data['facilities']['medical']['first_aid']['equipment']['available'] = next_line if next_line
+      when "School Medical Officer"
+        data['facilities']['medical']['staff']['doctor']['available'] = next_line if next_line
+      
+      # Library details
+      when "Library Books"
+        data['infrastructure']['library']['books']['total'] = next_line.to_i if next_line =~ /^\d+$/
+      when "Library Type"
+        data['infrastructure']['library']['details']['type'] = next_line if next_line
+      when "Librarian"
+        data['infrastructure']['library']['staff']['librarian'] = next_line if next_line
+      
+      # Teacher training
+      when "No. of Total Teacher Received Service Training"
+        data['teachers']['training']['service']['total'] = next_line.to_i if next_line =~ /^\d+$/
+      when "Special Training Received"
+        data['teachers']['training']['special']['received'] = next_line if next_line
+      
+      # Student performance
+      when /Pass % Class (\d+)/
+        class_num = $1
+        if next_line =~ /^\d+\.?\d*$/
+          data['academic']['assessments']['board_results']["class_#{class_num}"]['pass_percentage'] = next_line.to_f
+        end
+      
+      # Sports facilities
+      when "Sports Equipment"
+        data['academic']['sports']['equipment']['available'] = next_line if next_line
+      when "Physical Education Teacher"
+        data['academic']['sports']['instructors']['available'] = next_line if next_line
+      
+      # Safety measures
+      when "Fire Extinguisher"
+        data['facilities']['safety']['fire']['equipment']['extinguisher'] = next_line if next_line
+      when "Emergency Exit"
+        data['facilities']['safety']['emergency']['exits']['available'] = next_line if next_line
+      when "Security Guard"
+        data['facilities']['safety']['security']['personnel']['guard'] = next_line if next_line
+      
+      # Committee meetings
+      when "SMC Meetings Conducted"
+        data['committees']['smc']['details']['meetings']['count'] = next_line.to_i if next_line =~ /^\d+$/
+      when "SMDC Meetings Conducted"
+        data['committees']['smdc']['details']['meetings']['count'] = next_line.to_i if next_line =~ /^\d+$/
+      
+      # Vocational courses
+      when "Vocational Courses"
+        data['academic']['vocational']['courses']['available'] = next_line if next_line
+      when "Vocational Trainer"
+        data['academic']['vocational']['trainers']['available'] = next_line if next_line
+      
+      # Student social categories
+      when /^([A-Z]+)\s+Boys\s+(\d+)\s+Girls\s+(\d+)$/
+        category = $1.downcase
+        boys = $2.to_i
+        girls = $3.to_i
+        if ['sc', 'st', 'obc', 'general'].include?(category)
+          data['students']['enrollment']['by_social_category'][category] = {
+            'boys' => boys,
+            'girls' => girls
+          }
+        end
+      
+      # CWSN details
+      when "CWSN Facilities"
+        data['students']['enrollment']['cwsn']['facilities']['available'] = next_line if next_line
+      when /CWSN Type:\s+(.+)/
+        type = $1
+        if next_line =~ /Boys\s+(\d+)\s+Girls\s+(\d+)/
+          data['students']['enrollment']['cwsn']['by_type'][type.downcase] = {
+            'boys' => $1.to_i,
+            'girls' => $2.to_i
+          }
         end
       end
     end

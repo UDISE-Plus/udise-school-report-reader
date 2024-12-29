@@ -30,7 +30,14 @@ school_details:
   established: 1964
   is_special_school: 2-No
 infrastructure:
+  toilets:
+    general: {}
+    cwsn: {}
+    urinals: {}
   classrooms:
+    count: {}
+    condition: {}
+    special_rooms: {}
     total: 59
     good_condition: 59
     needs_minor_repair: 0
@@ -47,9 +54,14 @@ infrastructure:
     accessibility:
       ramps: 1-Yes
       handrails: 1-Yes
+    safety: {}
   furniture:
     count: 2118
+    condition: {}
   library:
+    details: {}
+    books: {}
+    staff: {}
     available: 1-Yes
 teachers:
   qualifications:
@@ -66,10 +78,15 @@ teachers:
     female: 55
     transgender: 0
   training:
+    computer: {}
+    service:
+      total: 0
+    special: {}
     computer_trained: 67
   age_distribution:
     above_55: 0
   assignments:
+    teaching: {}
     non_teaching: 0
   classes_taught:
     '1':
@@ -139,18 +156,45 @@ students:
       class_12:
         boys: 0
         girls: 0
-    by_social_category: {}
-    cwsn: {}
+    by_social_category:
+      general:
+        boys: 0
+        girls: 0
+      sc:
+        boys: 0
+        girls: 0
+      st:
+        boys: 0
+        girls: 0
+      obc:
+        boys: 0
+        girls: 0
+    cwsn:
+      by_type: {}
+      facilities: {}
     rte:
       section_12: {}
       ews: {}
+    minority:
+      by_religion: {}
   facilities:
     general:
       transport: 0
-    scholarships: {}
+    scholarships:
+      government: {}
+      private: {}
     incentives:
+      books: {}
+      uniform: {}
+      transport: {}
       free_textbooks: 0
       free_uniform: 0
+  attendance:
+    by_class: {}
+    average: {}
+  performance:
+    by_class: {}
+    board_results: {}
 academic:
   inspections:
     visits:
@@ -159,45 +203,96 @@ academic:
       block_level: 0
       state_district: 0
     officers: {}
+    reports: {}
   hours:
     instructional:
       days: 210
       student_hours: 6.0
       teacher_hours: 8.0
     working: {}
+    shifts: {}
+  subjects:
+    languages: {}
+    core: {}
+    electives: {}
   assessments:
     cce:
+      implementation: {}
+      records: {}
       implemented: 1-Yes
-    board_results: {}
+    board_results:
+      class_10: {}
+      class_12: {}
+  vocational:
+    courses: {}
+    trainers: {}
+    facilities: {}
+  sports:
+    facilities: {}
+    equipment: {}
+    instructors: {}
 facilities:
   residential:
     details:
       type: 3 - Non-
       minority_school: 1-Yes
-    hostel: {}
-    mess: {}
+    hostel:
+      boys: {}
+      girls: {}
+      staff: {}
+    mess:
+      kitchen: {}
+      dining: {}
   basic:
     water:
+      source: {}
+      quality: {}
+      storage: {}
       available: 1-Yes
       functional: 1-Yes
       rain_water_harvesting: 1-Yes
     electricity:
+      connection: {}
+      backup: {}
+      renewable: {}
       available: 1-Yes
       solar_panel: 2-No
     sanitation:
+      toilets: {}
+      cleaning: {}
+      waste: {}
       handwash_near_toilet: 1-Yes
       handwash_for_meal: 1-Yes
     safety:
-      all_weather_road: 1-Yes
+      building: {}
       playground: 1-Yes
+      transport: {}
+      all_weather_road: 1-Yes
   safety:
-    fire: {}
-    emergency: {}
-    security: {}
+    fire:
+      equipment: {}
+      training: {}
+    emergency:
+      exits: {}
+      procedures: {}
+    security:
+      personnel: {}
+      equipment: {}
   medical:
-    checkups: {}
-    first_aid: {}
+    checkups:
+      regular:
+        available: 1-Yes
+      special: {}
+    first_aid:
+      equipment: {}
+      training: {}
+    staff:
+      nurse: {}
+      doctor: {}
   anganwadi:
+    center: {}
+    staff: {}
+    children: {}
     at_premises: NA
     boys: 0
     girls: 0
@@ -205,19 +300,42 @@ facilities:
 committees:
   smc:
     details:
+      composition: {}
+      meetings: {}
       same_as_smdc: NA
-    meetings: {}
+    activities: {}
+    funds: {}
   smdc:
+    details:
+      composition: {}
+      meetings: {}
+    activities: {}
+    funds: {}
+  pta:
     details: {}
     meetings: {}
+    activities: {}
 grants:
   received:
     composite:
       amount: 0.0
-    maintenance: {}
-    development: {}
+      date: {}
+    maintenance:
+      amount: {}
+      purpose: {}
+    development:
+      amount: {}
+      purpose: {}
   expenditure:
     composite:
       amount: 0.0
-    maintenance: {}
-    development: {}
+      details: {}
+    maintenance:
+      amount: {}
+      details: {}
+    development:
+      amount: {}
+      details: {}
+  utilization:
+    certificates: {}
+    reports: {}
