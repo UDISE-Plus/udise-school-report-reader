@@ -1,0 +1,4 @@
+You should never modify the yaml file.
+You should only modify the ruby file.
+after modification run `./parse_report.sh` to generate the yaml file.
+dumb func!
