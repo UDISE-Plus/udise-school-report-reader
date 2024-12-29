@@ -2,6 +2,7 @@
 basic_info:
   udise_code: '33120101401'
   name: CARMEL GARDEN MATRICULATION HIGHER SECONDARY SCHOOL
+  academic_year: 2022-23
 location:
   state: Tamilnadu
   district: COIMBATORE
@@ -10,12 +11,10 @@ location:
   cluster: CPS GANESHAPURAM
   ward: RACE COURSE - 26
   pincode: '641045'
-  municipality: Assembly Const.
-  assembly_constituency: Parl. Constituency
-  parliamentary_constituency: School Category
 school_details:
   recognition:
     primary: 1964
+    upper_primary: 1964
     secondary: 1987
     higher_secondary: 1987
   affiliation:
@@ -63,10 +62,51 @@ teachers:
     computer_trained: 67
   age_distribution:
     above_55: 0
+  assignments:
+    non_teaching: 0
 students:
   enrollment:
     general: {}
-    by_class: {}
+    by_class:
+      pre_primary:
+        boys: 0
+        girls: 0
+      class_1:
+        boys: 0
+        girls: 0
+      class_2:
+        boys: 0
+        girls: 0
+      class_3:
+        boys: 0
+        girls: 0
+      class_4:
+        boys: 0
+        girls: 0
+      class_5:
+        boys: 0
+        girls: 0
+      class_6:
+        boys: 0
+        girls: 0
+      class_7:
+        boys: 0
+        girls: 0
+      class_8:
+        boys: 0
+        girls: 0
+      class_9:
+        boys: 0
+        girls: 0
+      class_10:
+        boys: 0
+        girls: 0
+      class_11:
+        boys: 0
+        girls: 0
+      class_12:
+        boys: 0
+        girls: 0
     by_social_category: {}
     cwsn: {}
   facilities:
@@ -74,6 +114,13 @@ students:
     transport: 0
     free_uniform: 0
 academic:
+  inspections:
+    visits:
+      academic: 0
+      crc_coordinator: 0
+      block_level: 0
+      state_district: 0
+    officers: {}
   hours:
     instructional_days: 210
     avg_school_hours_std: 6.0
@@ -83,7 +130,6 @@ academic:
 facilities:
   residential:
     type: 3 - Non-
-    category: Minority School
     minority_school: 1-Yes
     all_weather_road: 1-Yes
   basic:
@@ -97,12 +143,14 @@ facilities:
     playground: 1-Yes
     electricity: 1-Yes
     solar_panel: 2-No
+  anganwadi:
+    at_premises: NA
+    boys: 0
+    girls: 0
+    worker: NA
 committees:
   smc:
-    exists: SMC & SMDC Same
     same_as_smdc: NA
-  smdc:
-    constituted: Text Books Received
 grants:
   received:
     amount: 0.0
