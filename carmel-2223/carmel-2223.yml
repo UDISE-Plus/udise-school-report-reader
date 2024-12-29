@@ -46,13 +46,6 @@ infrastructure:
       near_toilet: 1-Yes
       for_meal: 1-Yes
   classrooms:
-    count: {}
-    condition: {}
-    special_rooms: {}
-    usage:
-      regular: {}
-      labs: {}
-      special_rooms: {}
     total: 59
     good_condition: 59
     needs_minor_repair: 0

@@ -96,9 +96,11 @@ class SchoolReportParser
           }
         },
         'classrooms' => {
-          'count' => {},
-          'condition' => {},
-          'special_rooms' => {}
+          'total' => 0,
+          'good_condition' => 0,
+          'needs_minor_repair' => 0,
+          'needs_major_repair' => 0,
+          'other_rooms' => 0
         },
         'digital_facilities' => {},
         'other_facilities' => {},
@@ -374,12 +376,6 @@ class SchoolReportParser
       'by_subject' => {}
     }
     
-    data['infrastructure']['classrooms']['usage'] = {
-      'regular' => {},
-      'labs' => {},
-      'special_rooms' => {}
-    }
-
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
 
@@ -912,23 +908,30 @@ class SchoolReportParser
       when /^Room (\d+) Usage:\s*(.+)$/
         room = $1
         usage = $2.strip
-        data['infrastructure']['classrooms']['usage']['regular']["room_#{room}"] = usage
+        data['infrastructure']['classrooms']['usage'] ||= {}
+        data['infrastructure']['classrooms']['usage'][room] = usage if usage
       
       # Lab details
       when /^Lab Type:\s*(.+?)(?:\s*,\s*Capacity:\s*(\d+))?$/
         type = $1.strip
         capacity = $2&.to_i
-        data['infrastructure']['classrooms']['usage']['labs'][type.downcase] = {
-          'capacity' => capacity
-        }
+        if type && capacity
+          data['infrastructure']['classrooms']['labs'] ||= {}
+          data['infrastructure']['classrooms']['labs'][type.downcase] = {
+            'capacity' => capacity
+          }
+        end
       
       # Special room details
       when /^Special Room:\s*(.+?)(?:\s*,\s*Purpose:\s*(.+))?$/
         room = $1.strip
         purpose = $2&.strip
-        data['infrastructure']['classrooms']['usage']['special_rooms'][room.downcase] = {
-          'purpose' => purpose
-        }
+        if room && purpose
+          data['infrastructure']['classrooms']['special_rooms'] ||= {}
+          data['infrastructure']['classrooms']['special_rooms'][room.downcase] = {
+            'purpose' => purpose
+          }
+        end
       
       # Student performance details
       when /^Class (\d+) Performance$/
