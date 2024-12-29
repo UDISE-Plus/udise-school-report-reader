@@ -32,14 +32,15 @@ class SchoolReportParser
         current_block = []
       elsif line.include?('ET')
         in_bt_block = false
-        compressed << current_block.join("\n") unless current_block.empty?
+        block_text = current_block.reject(&:empty?).join(" ")
+        compressed << block_text unless block_text.empty?
       elsif in_bt_block && line =~ /\((.*?)\)\s*Tj/
         # Extract text between (...) followed by Tj
-        text = $1
-        current_block << text unless text.strip.empty?
+        text = $1.strip
+        current_block << text unless text.empty?
       end
     end
 
-    compressed.join("\n\n")
+    compressed.reject(&:empty?).join("\n")
   end
 end
