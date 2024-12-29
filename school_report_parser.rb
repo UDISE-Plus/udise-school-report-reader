@@ -242,9 +242,8 @@ class SchoolReportParser
         'basic' => {
           'water' => {},
           'electricity' => {
-            'connection' => {},
-            'backup' => {},
-            'renewable' => {}
+            'available' => nil,
+            'solar_panel' => nil
           },
           'sanitation' => {
             'toilets' => {},

@@ -260,9 +260,6 @@ facilities:
       functional: 1-Yes
       rain_water_harvesting: 1-Yes
     electricity:
-      connection: {}
-      backup: {}
-      renewable: {}
       available: 1-Yes
       solar_panel: 2-No
     sanitation:
