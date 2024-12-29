@@ -75,18 +75,24 @@ class SchoolReportParser
         'special_focus' => {}
       },
       'infrastructure' => {
-        'toilets' => {
-          'boys' => {
-            'total' => 0,
-            'functional' => 0,
-            'cwsn' => 0,
-            'urinals' => 0
+        'sanitation' => {
+          'toilets' => {
+            'boys' => {
+              'total' => 0,
+              'functional' => 0,
+              'cwsn' => 0,
+              'urinals' => 0
+            },
+            'girls' => {
+              'total' => 0,
+              'functional' => 0,
+              'cwsn' => 0,
+              'urinals' => 0
+            }
           },
-          'girls' => {
-            'total' => 0,
-            'functional' => 0,
-            'cwsn' => 0,
-            'urinals' => 0
+          'handwash' => {
+            'near_toilet' => nil,
+            'for_meal' => nil
           }
         },
         'classrooms' => {
@@ -485,8 +491,8 @@ class SchoolReportParser
           boys = toilet_data[total_idx + 1]
           girls = toilet_data[total_idx + 2]
           if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['toilets']['boys']['total'] = boys.to_i
-            data['infrastructure']['toilets']['girls']['total'] = girls.to_i
+            data['infrastructure']['sanitation']['toilets']['boys']['total'] = boys.to_i
+            data['infrastructure']['sanitation']['toilets']['girls']['total'] = girls.to_i
           end
         end
         
@@ -495,8 +501,8 @@ class SchoolReportParser
           boys = toilet_data[func_idx + 1]
           girls = toilet_data[func_idx + 2]
           if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['toilets']['boys']['functional'] = boys.to_i
-            data['infrastructure']['toilets']['girls']['functional'] = girls.to_i
+            data['infrastructure']['sanitation']['toilets']['boys']['functional'] = boys.to_i
+            data['infrastructure']['sanitation']['toilets']['girls']['functional'] = girls.to_i
           end
         end
         
@@ -505,8 +511,8 @@ class SchoolReportParser
           boys = toilet_data[cwsn_idx + 1]
           girls = toilet_data[cwsn_idx + 2]
           if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['toilets']['boys']['cwsn'] = boys.to_i
-            data['infrastructure']['toilets']['girls']['cwsn'] = girls.to_i
+            data['infrastructure']['sanitation']['toilets']['boys']['cwsn'] = boys.to_i
+            data['infrastructure']['sanitation']['toilets']['girls']['cwsn'] = girls.to_i
           end
         end
         
@@ -515,16 +521,16 @@ class SchoolReportParser
           boys = toilet_data[urinal_idx + 1]
           girls = toilet_data[urinal_idx + 2]
           if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['toilets']['boys']['urinals'] = boys.to_i
-            data['infrastructure']['toilets']['girls']['urinals'] = girls.to_i
+            data['infrastructure']['sanitation']['toilets']['boys']['urinals'] = boys.to_i
+            data['infrastructure']['sanitation']['toilets']['girls']['urinals'] = girls.to_i
           end
         end
       
       # Basic Facilities
       when "Handwash Near Toilet"
-        data['facilities']['basic']['sanitation']['handwash_near_toilet'] = next_line if next_line && !next_line.match?(/Handwash Facility/)
+        data['infrastructure']['sanitation']['handwash']['near_toilet'] = next_line if next_line && !next_line.match?(/Handwash Facility/)
       when "Handwash Facility for Meal"
-        data['facilities']['basic']['sanitation']['handwash_for_meal'] = next_line if next_line && !next_line.match?(/Total Class/)
+        data['infrastructure']['sanitation']['handwash']['for_meal'] = next_line if next_line && !next_line.match?(/Total Class/)
       when "Drinking Water Available"
         data['facilities']['basic']['water']['available'] = next_line if next_line && !next_line.match?(/Drinking Water Fun/)
       when "Drinking Water Functional"

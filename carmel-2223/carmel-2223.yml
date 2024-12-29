@@ -30,17 +30,21 @@ school_details:
   established: 1964
   is_special_school: 2-No
 infrastructure:
-  toilets:
-    boys:
-      total: 61
-      functional: 55
-      cwsn: 25
-      urinals: 165
-    girls:
-      total: 13
-      functional: 12
-      cwsn: 4
-      urinals: 24
+  sanitation:
+    toilets:
+      boys:
+        total: 61
+        functional: 55
+        cwsn: 25
+        urinals: 165
+      girls:
+        total: 13
+        functional: 12
+        cwsn: 4
+        urinals: 24
+    handwash:
+      near_toilet: 1-Yes
+      for_meal: 1-Yes
   classrooms:
     count: {}
     condition: {}
@@ -285,8 +289,6 @@ facilities:
       toilets: {}
       cleaning: {}
       waste: {}
-      handwash_near_toilet: 1-Yes
-      handwash_for_meal: 1-Yes
     safety:
       building: {}
       playground: 1-Yes
