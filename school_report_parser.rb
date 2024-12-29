@@ -558,10 +558,15 @@ class SchoolReportParser
       # Academic
       when "Medium of Instruction"
         in_digital_section = false
-        in_medium_section = true
-      when /^Medium (\d)$/ && in_medium_section
-        if next_line && !next_line.match?(/^Medium/) && !next_line.match?(/^Visit/)
-          data['academic']['medium_of_instruction']["medium_#{$1}"] = next_line
+      when /^Medium (\d)$/
+        medium_num = $1
+        if next_line && next_line =~ /^(\d+)-(.+)$/
+          code = $1
+          name = $2.strip
+          data['academic']['medium_of_instruction']["medium_#{medium_num}"] = {
+            'code' => code,
+            'name' => name
+          }
         end
       
       # Academic Inspections

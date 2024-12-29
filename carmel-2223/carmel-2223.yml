@@ -206,6 +206,10 @@ students:
     by_class: {}
     board_results: {}
 academic:
+  medium_of_instruction:
+    medium_1:
+      code: '19'
+      name: English
   inspections:
     visits:
       academic: 0
