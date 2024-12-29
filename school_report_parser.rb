@@ -213,12 +213,7 @@ class SchoolReportParser
         },
         'assessments' => {
           'cce' => {
-            'implementation' => {},
-            'records' => {}
-          },
-          'board_results' => {
-            'class_10' => {},
-            'class_12' => {}
+            'implemented' => nil
           }
         }
       },

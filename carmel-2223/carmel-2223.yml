@@ -235,12 +235,7 @@ academic:
       details: {}
   assessments:
     cce:
-      implementation: {}
-      records: {}
       implemented: 1-Yes
-    board_results:
-      class_10: {}
-      class_12: {}
 facilities:
   residential:
     details:
