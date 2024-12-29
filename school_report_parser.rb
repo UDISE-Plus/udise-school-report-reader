@@ -11,6 +11,35 @@ class SchoolReportParser
     txt_path = pdf_path.sub(/\.pdf$/i, '.txt')
     File.write(txt_path, content)
     
-    txt_path
+    # Create compressed version
+    compressed_content = compress_content(content)
+    compressed_path = pdf_path.sub(/\.pdf$/i, '_compressed.txt')
+    File.write(compressed_path, compressed_content)
+    
+    [txt_path, compressed_path]
+  end
+
+  private
+
+  def self.compress_content(content)
+    compressed = []
+    current_block = []
+    in_bt_block = false
+
+    content.each_line do |line|
+      if line.include?('BT')
+        in_bt_block = true
+        current_block = []
+      elsif line.include?('ET')
+        in_bt_block = false
+        compressed << current_block.join("\n") unless current_block.empty?
+      elsif in_bt_block && line =~ /\((.*?)\)\s*Tj/
+        # Extract text between (...) followed by Tj
+        text = $1
+        current_block << text unless text.strip.empty?
+      end
+    end
+
+    compressed.join("\n\n")
   end
 end
