@@ -31,19 +31,31 @@ class SchoolReportParser
     compressed = []
     current_block = []
     in_bt_block = false
+    current_text = ""
 
     content.each_line do |line|
       if line.include?('BT')
         in_bt_block = true
         current_block = []
+        current_text = ""
       elsif line.include?('ET')
         in_bt_block = false
-        block_text = current_block.reject(&:empty?).join("\n")
-        compressed << block_text unless block_text.empty?
+        current_text = current_block.join("")
+        compressed << current_text unless current_text.empty?
       elsif in_bt_block && line =~ /\((.*?)\)\s*Tj/
         # Extract text between (...) followed by Tj
         text = $1.strip
-        current_block << text unless text.empty?
+        if text =~ /^(?:Non|Residenti|al)$/
+          # Special handling for split residential text
+          current_text += text
+          current_block << text
+        else
+          if !current_text.empty?
+            compressed << current_text
+          end
+          current_text = text
+          current_block = [text]
+        end
       end
     end
 
@@ -708,7 +720,11 @@ class SchoolReportParser
       
       # Residential Info
       when "Residential School"
-        data['facilities']['residential']['details']['type'] = next_line if next_line && !next_line.match?(/Residential Type/)
+        if next_line && next_line =~ /^(\d+)\s*-\s*(.+)$/
+          code = $1
+          type = $2.strip
+          data['facilities']['residential']['details']['type'] = "#{code} - #{type}"
+        end
       when "Residential Type"
         data['facilities']['residential']['details']['category'] = next_line if next_line && !next_line.match?(/Minority/)
       when "Minority School"

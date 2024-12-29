@@ -251,7 +251,7 @@ academic:
 facilities:
   residential:
     details:
-      type: 3 - Non-
+      type: 3 - Non-Residential
       minority_school: 1-Yes
     hostel:
       boys: {}
