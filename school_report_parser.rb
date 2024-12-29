@@ -125,9 +125,10 @@ class SchoolReportParser
         },
         'demographics' => {},
         'training' => {
-          'computer' => {},
-          'service' => {},
-          'special' => {}
+          'service' => {
+            'total' => nil
+          },
+          'computer_trained' => nil
         },
         'age_distribution' => {},
         'assignments' => {

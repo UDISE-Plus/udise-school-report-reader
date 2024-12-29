@@ -83,10 +83,8 @@ teachers:
     female: 55
     transgender: 0
   training:
-    computer: {}
     service:
       total: 0
-    special: {}
     computer_trained: 67
   age_distribution:
     above_55: 0
