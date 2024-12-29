@@ -245,11 +245,6 @@ class SchoolReportParser
             'available' => nil,
             'solar_panel' => nil
           },
-          'sanitation' => {
-            'toilets' => {},
-            'cleaning' => {},
-            'waste' => {}
-          },
           'safety' => {
             'playground' => nil,
             'all_weather_road' => nil

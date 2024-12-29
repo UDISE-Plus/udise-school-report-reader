@@ -262,10 +262,6 @@ facilities:
     electricity:
       available: 1-Yes
       solar_panel: 2-No
-    sanitation:
-      toilets: {}
-      cleaning: {}
-      waste: {}
     safety:
       playground: 1-Yes
       all_weather_road: 1-Yes
