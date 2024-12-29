@@ -45,8 +45,8 @@ class SchoolReportParser
       elsif in_bt_block && line =~ /\((.*?)\)\s*Tj/
         # Extract text between (...) followed by Tj
         text = $1.strip
-        if text =~ /^(?:Non|Residenti|al)$/
-          # Special handling for split residential text
+        if text =~ /^(?:Non|Residenti|al|Digit|al Facil|ities)$/
+          # Special handling for split text
           current_text += text
           current_block << text
         else
@@ -64,6 +64,8 @@ class SchoolReportParser
 
   def self.extract_data_points(compressed_content)
     lines = compressed_content.split("\n").map(&:strip)
+    current_section = nil
+    in_digital_section = false
     
     data = {
       'basic_info' => {},
@@ -105,13 +107,19 @@ class SchoolReportParser
         'digital_facilities' => {
           'ict_lab' => nil,
           'internet' => nil,
-          'desktop' => nil,
-          'laptop' => nil,
-          'tablet' => nil,
-          'printer' => nil,
-          'projector' => nil,
-          'digiboard' => nil,
-          'dth' => nil
+          'computers' => {
+            'desktop' => 0,
+            'laptop' => 0,
+            'tablet' => 0
+          },
+          'peripherals' => {
+            'printer' => 0,
+            'projector' => 0
+          },
+          'smart_classroom' => {
+            'digiboard' => 0,
+            'dth' => nil
+          }
         },
         'other_facilities' => {},
         'building' => {
@@ -457,26 +465,31 @@ class SchoolReportParser
         end
       
       # Digital Facilities
-      when "Digital Facilities (Functional)"
-        in_digital_section = true
-      when "ICT Lab" && in_digital_section
-        data['infrastructure']['digital_facilities']['ict_lab'] = next_line if next_line && !next_line.match?(/Internet/)
-      when "Internet" && in_digital_section
-        data['infrastructure']['digital_facilities']['internet'] = next_line if next_line && !next_line.match?(/Desktop/)
-      when "Desktop" && in_digital_section
-        data['infrastructure']['digital_facilities']['desktop'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Laptop" && in_digital_section
-        data['infrastructure']['digital_facilities']['laptop'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Tablet" && in_digital_section
-        data['infrastructure']['digital_facilities']['tablet'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Printer" && in_digital_section
-        data['infrastructure']['digital_facilities']['printer'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Projector" && in_digital_section
-        data['infrastructure']['digital_facilities']['projector'] = next_line.to_i if next_line =~ /^\d+$/
-      when "DigiBoard" && in_digital_section
-        data['infrastructure']['digital_facilities']['digiboard'] = next_line.to_i if next_line =~ /^\d+$/
-      when "DTH" && in_digital_section
-        data['infrastructure']['digital_facilities']['dth'] = next_line if next_line && !next_line.match?(/DigiBoard/)
+      when /Digital/
+        current_section = 'digital'
+        data['infrastructure']['digital_facilities']['ict_lab'] = lines[i + 2] if lines[i + 2] =~ /^[12]-/
+        data['infrastructure']['digital_facilities']['internet'] = lines[i + 4] if lines[i + 4] =~ /^[12]-/
+        if lines[i + 6] =~ /^\d+$/
+          data['infrastructure']['digital_facilities']['computers']['desktop'] = lines[i + 6].to_i
+        end
+        if lines[i + 8] =~ /^\d+$/
+          data['infrastructure']['digital_facilities']['computers']['laptop'] = lines[i + 8].to_i
+        end
+        if lines[i + 10] =~ /^\d+$/
+          data['infrastructure']['digital_facilities']['computers']['tablet'] = lines[i + 10].to_i
+        end
+        if lines[i + 12] =~ /^\d+$/
+          data['infrastructure']['digital_facilities']['peripherals']['printer'] = lines[i + 12].to_i
+        end
+        if lines[i + 14] =~ /^\d+$/
+          data['infrastructure']['digital_facilities']['peripherals']['projector'] = lines[i + 14].to_i
+        end
+        data['infrastructure']['digital_facilities']['smart_classroom']['dth'] = lines[i + 16] if lines[i + 16] =~ /^[12]-/
+        if lines[i + 18] =~ /^\d+$/
+          data['infrastructure']['digital_facilities']['smart_classroom']['digiboard'] = lines[i + 18].to_i
+        end
+      when /Students/
+        current_section = nil
       
       # Academic
       when "Medium of Instruction"
