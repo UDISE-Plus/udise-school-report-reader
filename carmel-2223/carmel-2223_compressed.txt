@@ -88,7 +88,9 @@ Anganwadi Girls
 Anganwadi Worker
 NA
 Residential School
-3 - Non- Residenti al
+3 - Non-
+Residenti
+al
 Residential Type
 Minority School
 1-Yes
@@ -533,9 +535,11 @@ OBC
 15
 115
 2
-150 9
+150
+9
 289
-179 8
+179
+8
 Total
 224
 80
@@ -907,7 +911,16 @@ Total
 349
 2118
 Disclaimer
-Though all the efforts have been made to ensure the accuracy and currency of the content on this website \(https://udiseplus.gov.in/ \) the same should not be construed as a statement of law or used for any legal purposes. In case of any ambiguity or doubts, users are advised to verify/check with the appropriate Government Functionary/Authority and/or other source\(s\) and to obtain appropriate professional advice. As per Section 79 of the Information Technology Act 2000\(as amended Act 2008\),This Report is based on voluntary uploading of data by the schools having active UDISE+ codes in a reference year, with 30th September as the reference date, using specially designed data collection formats \(DCF\).The UDISE+ code of a school is allotted by the State/UT  Government where the school is located. The responsibility for the accuracy of the data filled in the DCFs rests with the concerned Nodal Officers,namely Principal/ Vice-Principal/ Head Master/ Head Teacher/ Senior most teacher at the school level, Cluster Resource Officer at the cluster level, Block Education Officer for the  block level District Education Officer at the district level and State MIS coordinator at the Samagra Siksha SPD Office at the State level. The Ministry of Education, therefore, assumes no responsibility or liability for any errors or omissions in the data and indicators reported in the document.Inclusion of name of a school in any of the lists in the portal https://udiseplus.gov.in or any of the reports generated in the portal does not confer the status of recognition to the school by the Ministry of Education, Govt. of India.
+Though all the efforts have been made to ensure the accuracy and currency of the content on this website \(https://udiseplus.gov.in/ \) the same should not be construed as
+a statement of law or used for any legal purposes. In case of any ambiguity or doubts, users are advised to verify/check with the appropriate Government
+Functionary/Authority and/or other source\(s\) and to obtain appropriate professional advice.
+As per Section 79 of the Information Technology Act 2000\(as amended Act 2008\),This Report is based on voluntary uploading of data by the schools having active UDISE+
+codes in a reference year, with 30th September as the reference date, using specially designed data collection formats \(DCF\).The UDISE+ code of a school is allotted by the
+State/UT  Government where the school is located. The responsibility for the accuracy of the data filled in the DCFs rests with the concerned Nodal Officers,namely Principal/
+Vice-Principal/ Head Master/ Head Teacher/ Senior most teacher at the school level, Cluster Resource Officer at the cluster level, Block Education Officer for the  block level
+District Education Officer at the district level and State MIS coordinator at the Samagra Siksha SPD Office at the State level. The Ministry of Education, therefore, assumes no
+responsibility or liability for any errors or omissions in the data and indicators reported in the document.Inclusion of name of a school in any of the lists in the portal
+https://udiseplus.gov.in or any of the reports generated in the portal does not confer the status of recognition to the school by the Ministry of Education, Govt. of India.
 Page 2
 Academic Year : 2022-23
 Generated On : 28 December 2024 06:57:07 AM\( https://src.udiseplus.gov.in\)

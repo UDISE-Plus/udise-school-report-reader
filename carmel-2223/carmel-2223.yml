@@ -1,0 +1,32 @@
+---
+basic_info:
+  udise_code: '33120101401'
+  name: CARMEL GARDEN MATRICULATION HIGHER SECONDARY SCHOOL
+location:
+  state: Tamilnadu
+  district: COIMBATORE
+  block: COIMBATORE CITY
+  area_type: 2-Urban
+  ward: RACE COURSE - 26
+  pincode: '641045'
+school_details:
+  category: 3 - Pr. with Up.Pr. sec. and H.Sec.
+  management: 5-Private Unaided \(Recognized\)
+  type: 3-Co-educational
+  established: 1964
+  building_status: 2-Rented
+infrastructure:
+  classrooms:
+    total: 59
+    good_condition: 59
+teachers:
+  demographics:
+    male: 0
+    female: 69
+    transgender: 0
+academic:
+  medium_of_instruction:
+    medium_1: 19-English
+    medium_2: Medium 3
+    medium_3: Medium 4
+    medium_4: Visit of school for / by
