@@ -254,15 +254,7 @@ facilities:
       all_weather_road: 1-Yes
   medical:
     checkups:
-      regular:
-        available: 1-Yes
-      special: {}
-    first_aid:
-      equipment: {}
-      training: {}
-    staff:
-      nurse: {}
-      doctor: {}
+      available: 1-Yes
   anganwadi:
     at_premises: NA
     boys: 0

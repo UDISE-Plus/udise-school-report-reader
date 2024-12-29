@@ -237,16 +237,7 @@ class SchoolReportParser
         },
         'medical' => {
           'checkups' => {
-            'regular' => {},
-            'special' => {}
-          },
-          'first_aid' => {
-            'equipment' => {},
-            'training' => {}
-          },
-          'staff' => {
-            'nurse' => {},
-            'doctor' => {}
+            'available' => nil
           }
         },
         'anganwadi' => {
@@ -701,11 +692,7 @@ class SchoolReportParser
       
       # Add new pattern matches
       when "Medical checkups"
-        data['facilities']['medical']['checkups']['regular']['available'] = next_line if next_line
-      when "First Aid Kit"
-        data['facilities']['medical']['first_aid']['equipment']['available'] = next_line if next_line
-      when "School Medical Officer"
-        data['facilities']['medical']['staff']['doctor']['available'] = next_line if next_line
+        data['facilities']['medical']['checkups']['available'] = next_line if next_line
       
       # Library details
       when "Library Books"
