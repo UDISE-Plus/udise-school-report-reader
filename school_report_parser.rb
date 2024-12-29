@@ -105,9 +105,16 @@ class SchoolReportParser
         'digital_facilities' => {},
         'other_facilities' => {},
         'building' => {
-          'details' => {},
-          'accessibility' => {},
-          'safety' => {}
+          'details' => {
+            'status' => nil,
+            'boundary_wall' => nil,
+            'blocks' => nil,
+            'pucca_blocks' => nil
+          },
+          'accessibility' => {
+            'ramps' => nil,
+            'handrails' => nil
+          }
         },
         'furniture' => {
           'count' => {},

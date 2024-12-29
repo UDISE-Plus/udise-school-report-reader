@@ -62,7 +62,6 @@ infrastructure:
     accessibility:
       ramps: 1-Yes
       handrails: 1-Yes
-    safety: {}
   furniture:
     count: 2118
     condition: {}
