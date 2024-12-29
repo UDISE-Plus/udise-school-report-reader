@@ -291,25 +291,6 @@ committees:
     activities: {}
 grants:
   received:
-    composite:
-      amount: 0.0
-      date: {}
-    maintenance:
-      amount: {}
-      purpose: {}
-    development:
-      amount: {}
-      purpose: {}
+    amount: 0.0
   expenditure:
-    composite:
-      amount: 0.0
-      details: {}
-    maintenance:
-      amount: {}
-      details: {}
-    development:
-      amount: {}
-      details: {}
-  utilization:
-    certificates: {}
-    reports: {}
+    amount: 0.0

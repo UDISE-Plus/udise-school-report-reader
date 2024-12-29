@@ -280,36 +280,10 @@ class SchoolReportParser
       },
       'grants' => {
         'received' => {
-          'composite' => {
-            'amount' => {},
-            'date' => {}
-          },
-          'maintenance' => {
-            'amount' => {},
-            'purpose' => {}
-          },
-          'development' => {
-            'amount' => {},
-            'purpose' => {}
-          }
+          'amount' => nil
         },
         'expenditure' => {
-          'composite' => {
-            'amount' => {},
-            'details' => {}
-          },
-          'maintenance' => {
-            'amount' => {},
-            'details' => {}
-          },
-          'development' => {
-            'amount' => {},
-            'details' => {}
-          }
-        },
-        'utilization' => {
-          'certificates' => {},
-          'reports' => {}
+          'amount' => nil
         }
       }
     }
@@ -728,11 +702,11 @@ class SchoolReportParser
       # Grants
       when "Grants Receipt"
         if next_line =~ /^\d+\.?\d*$/
-          data['grants']['received']['composite']['amount'] = next_line.to_f
+          data['grants']['received']['amount'] = next_line.to_f
         end
       when "Grants Expenditure"
         if next_line =~ /^\d+\.?\d*$/
-          data['grants']['expenditure']['composite']['amount'] = next_line.to_f
+          data['grants']['expenditure']['amount'] = next_line.to_f
         end
       
       # Add new pattern matches
