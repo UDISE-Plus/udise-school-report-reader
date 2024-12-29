@@ -20,14 +20,14 @@ school_details:
   affiliation:
     secondary: 2-State Board
     higher_secondary: 2-State Board
+  shifts:
+    has_shifts: 2-No
   category: 3 - Pr. with Up.Pr. sec. and H.Sec.
   management: 5-Private Unaided \(Recognized\)
   type: 3-Co-educational
   class_range: 1  -   12
   pre_primary: 1-Yes
   established: 1964
-  is_shift_school: 2-No
-  building_status: 2-Rented
   is_special_school: 2-No
 infrastructure:
   classrooms:
@@ -36,14 +36,21 @@ infrastructure:
     needs_minor_repair: 0
     needs_major_repair: 0
     other_rooms: 7
+  other_facilities:
+    hm_room: 1-Yes
   building:
-    boundary_wall: 1-Pucca
-    blocks: 3
-    pucca_blocks: 3
-    ramps: 1-Yes
-    handrails: 1-Yes
+    details:
+      status: 2-Rented
+      boundary_wall: 1-Pucca
+      blocks: 3
+      pucca_blocks: 3
+    accessibility:
+      ramps: 1-Yes
+      handrails: 1-Yes
   furniture:
     count: 2118
+  library:
+    available: 1-Yes
 teachers:
   qualifications:
     academic:
@@ -64,6 +71,31 @@ teachers:
     above_55: 0
   assignments:
     non_teaching: 0
+  classes_taught:
+    '1':
+      description: Primary
+      count: 22
+    '2':
+      description: Up.Pr.
+      count: 1
+    '3':
+      description: Pr. & Up.Pr.
+      count: 14
+    '5':
+      description: Sec. only
+      count: 9
+    '6':
+      description: H Sec only.
+      count: 7
+    '7':
+      description: Up pri and Sec.
+      count: 3
+    '8':
+      description: Sec and H Sec
+      count: 6
+    '11':
+      description: Pre- Pri & Pri
+      count: 1
 students:
   enrollment:
     general: {}
@@ -109,10 +141,16 @@ students:
         girls: 0
     by_social_category: {}
     cwsn: {}
+    rte:
+      section_12: {}
+      ews: {}
   facilities:
-    free_textbooks: 0
-    transport: 0
-    free_uniform: 0
+    general:
+      transport: 0
+    scholarships: {}
+    incentives:
+      free_textbooks: 0
+      free_uniform: 0
 academic:
   inspections:
     visits:
@@ -122,27 +160,43 @@ academic:
       state_district: 0
     officers: {}
   hours:
-    instructional_days: 210
-    avg_school_hours_std: 6.0
-    avg_school_hours_tch: 8.0
+    instructional:
+      days: 210
+      student_hours: 6.0
+      teacher_hours: 8.0
+    working: {}
   assessments:
-    cce: 1-Yes
+    cce:
+      implemented: 1-Yes
+    board_results: {}
 facilities:
   residential:
-    type: 3 - Non-
-    minority_school: 1-Yes
-    all_weather_road: 1-Yes
+    details:
+      type: 3 - Non-
+      minority_school: 1-Yes
+    hostel: {}
+    mess: {}
   basic:
-    handwash_near_toilet: 1-Yes
-    handwash_for_meal: 1-Yes
-    library: 1-Yes
-    separate_hm_room: 1-Yes
-    drinking_water: 1-Yes
-    drinking_water_functional: 1-Yes
-    rain_water_harvesting: 1-Yes
-    playground: 1-Yes
-    electricity: 1-Yes
-    solar_panel: 2-No
+    water:
+      available: 1-Yes
+      functional: 1-Yes
+      rain_water_harvesting: 1-Yes
+    electricity:
+      available: 1-Yes
+      solar_panel: 2-No
+    sanitation:
+      handwash_near_toilet: 1-Yes
+      handwash_for_meal: 1-Yes
+    safety:
+      all_weather_road: 1-Yes
+      playground: 1-Yes
+  safety:
+    fire: {}
+    emergency: {}
+    security: {}
+  medical:
+    checkups: {}
+    first_aid: {}
   anganwadi:
     at_premises: NA
     boys: 0
@@ -150,9 +204,20 @@ facilities:
     worker: NA
 committees:
   smc:
-    same_as_smdc: NA
+    details:
+      same_as_smdc: NA
+    meetings: {}
+  smdc:
+    details: {}
+    meetings: {}
 grants:
   received:
-    amount: 0.0
+    composite:
+      amount: 0.0
+    maintenance: {}
+    development: {}
   expenditure:
-    amount: 0.0
+    composite:
+      amount: 0.0
+    maintenance: {}
+    development: {}
