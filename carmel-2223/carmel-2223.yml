@@ -108,13 +108,14 @@ teachers:
     non_teaching: 0
   classes_taught:
     primary: 22
-    up_pr: 1
-    pr_up_pr: 14
-    sec_only: 9
-    h_sec_only: 7
-    up_pri_and_sec: 3
-    sec_and_h_sec: 6
-    pre_pri_pri: 1
+    upper_primary: 1
+    primary_and_upper_primary: 14
+    secondary_only: 9
+    higher_secondary_only: 7
+    upper_primary_and_secondary: 3
+    secondary_and_higher_secondary: 6
+    pre_primary_only: 6
+    pre_primary_and_primary: 1
 students:
   enrollment:
     by_class:

@@ -573,10 +573,32 @@ class SchoolReportParser
         if next_line =~ /^\d+$/
           data['teachers']['assignments']['non_teaching'] = next_line.to_i
         end
-      when /^(\d+)-(\w+.*?)$/
-        description = $2.strip
+      when /^(\d+)-(.+)$/
+        category = $2.strip
         if next_line =~ /^\d+$/
-          key = description.downcase.gsub(/[^a-z0-9]+/, '_').gsub(/^_|_$/, '')
+          key = case category
+          when 'Primary'
+            'primary'
+          when 'Up.Pr.'
+            'upper_primary'
+          when 'Pr. & Up.Pr.'
+            'primary_and_upper_primary'
+          when 'Sec. only'
+            'secondary_only'
+          when 'H Sec only.'
+            'higher_secondary_only'
+          when 'Up pri and Sec.'
+            'upper_primary_and_secondary'
+          when 'Sec and H Sec'
+            'secondary_and_higher_secondary'
+          when 'Pre-Primary Only.'
+            'pre_primary_only'
+          when 'Pre- Pri & Pri'
+            'pre_primary_and_primary'
+          else
+            category.downcase.gsub(/[^a-z0-9]+/, '_').gsub(/^_|_$/, '')
+          end
+          
           data['teachers']['classes_taught'][key] = next_line.to_i
         end
       
