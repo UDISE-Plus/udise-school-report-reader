@@ -118,10 +118,6 @@ teachers:
     '11':
       description: Pre- Pri & Pri
       count: 1
-  workload:
-    teaching_hours: {}
-    non_teaching_hours: {}
-    by_subject: {}
 students:
   enrollment:
     by_class:

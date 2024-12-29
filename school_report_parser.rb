@@ -247,12 +247,6 @@ class SchoolReportParser
     }
 
     # Add new sections to the data structure
-    data['teachers']['workload'] = {
-      'teaching_hours' => {},
-      'non_teaching_hours' => {},
-      'by_subject' => {}
-    }
-    
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
 
