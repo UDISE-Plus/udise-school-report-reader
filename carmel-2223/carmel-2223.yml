@@ -7,12 +7,16 @@ location:
   district: COIMBATORE
   block: COIMBATORE CITY
   area_type: 2-Urban
+  cluster: CPS GANESHAPURAM
   ward: RACE COURSE - 26
   pincode: '641045'
+  municipality: Assembly Const.
 school_details:
   category: 3 - Pr. with Up.Pr. sec. and H.Sec.
   management: 5-Private Unaided \(Recognized\)
   type: 3-Co-educational
+  class_range: 1  -   12
+  pre_primary: 1-Yes
   established: 1964
   building_status: 2-Rented
 infrastructure:
@@ -21,12 +25,42 @@ infrastructure:
     good_condition: 59
     needs_minor_repair: 0
     needs_major_repair: 0
+    other_rooms: 7
+  building:
+    boundary_wall: 1-Pucca
+    blocks: 3
 teachers:
+  qualifications:
+    below_graduate: 4
+    post_graduate_and_above: 27
   demographics:
     male: 14
     female: 55
     transgender: 0
+  training:
+    computer_trained: 67
+students:
+  facilities:
+    free_textbooks: 0
+    transport: 0
+    free_uniform: 0
 academic:
-  medium_of_instruction:
-    medium_1: 19-English
-    medium_4: Visit of school for / by
+  hours:
+    instructional_days: 210
+    avg_school_hours_std: 6.0
+    avg_school_hours_tch: 8.0
+facilities:
+  residential:
+    type: 3 - Non-
+    category: Minority School
+    minority_school: 1-Yes
+  basic:
+    handwash_near_toilet: 1-Yes
+    handwash_for_meal: 1-Yes
+    library: 1-Yes
+    drinking_water: 1-Yes
+    drinking_water_functional: 1-Yes
+    rain_water_harvesting: 1-Yes
+    playground: 1-Yes
+    electricity: 1-Yes
+    solar_panel: 2-No
