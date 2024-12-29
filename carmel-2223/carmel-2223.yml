@@ -91,8 +91,13 @@ teachers:
       post_graduate_and_above: 27
     professional:
       basic_training: 13
+      beled: 0
       bed: 46
       med: 3
+      other: 4
+      none: 3
+      special_education: 0
+      pursuing_course: 0
   demographics:
     male: 14
     female: 55

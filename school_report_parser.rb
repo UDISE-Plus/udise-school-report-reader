@@ -144,7 +144,16 @@ class SchoolReportParser
         'count_by_level' => {},
         'qualifications' => {
           'academic' => {},
-          'professional' => {}
+          'professional' => {
+            'basic_training' => 0,
+            'beled' => 0,
+            'bed' => 0,
+            'med' => 0,
+            'other' => 0,
+            'none' => 0,
+            'special_education' => 0,
+            'pursuing_course' => 0
+          }
         },
         'demographics' => {},
         'training' => {
@@ -949,6 +958,28 @@ class SchoolReportParser
         utilization = $2&.to_f
         data['grants']['utilization']['by_type'] ||= {}
         data['grants']['utilization']['by_type'][type] = utilization
+      when "Bachelor of Elementary Education (B.El.Ed.)"
+        if next_line =~ /^\d+$/
+          data['teachers']['qualifications']['professional']['beled'] = next_line.to_i
+        else
+          data['teachers']['qualifications']['professional']['beled'] = 0
+        end
+      when "Other"
+        if next_line =~ /^\d+$/
+          data['teachers']['qualifications']['professional']['other'] = next_line.to_i
+        end
+      when "None"
+        if next_line =~ /^\d+$/
+          data['teachers']['qualifications']['professional']['none'] = next_line.to_i
+        end
+      when "Diploma/degree in special Education"
+        if next_line =~ /^\d+$/
+          data['teachers']['qualifications']['professional']['special_education'] = next_line.to_i
+        end
+      when "Pursuing any Relevant Professional Course"
+        if next_line =~ /^\d+$/
+          data['teachers']['qualifications']['professional']['pursuing_course'] = next_line.to_i
+        end
       end
     end
 
