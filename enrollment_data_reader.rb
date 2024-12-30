@@ -20,7 +20,7 @@ class EnrollmentDataReader
     numbers
   end
 
-  def self.read_data(combined_path)
+  def self.read_data(combined_data_csv_path)
     # Initialize arrays for different row types
     grade_rows = []
     bg_rows = []
@@ -60,7 +60,7 @@ class EnrollmentDataReader
     age_21_rows = []
     age_22_rows = []
 
-    CSV.foreach(combined_path, headers: true) do |row|
+    CSV.foreach(combined_data_csv_path, headers: true) do |row|
       if row['page'] == '2'
         if ['Pre-Pr', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'].include?(row['text'])
           if row['text_y'].to_f == 780.0
