@@ -363,6 +363,15 @@ students:
         - '592'
         - '106'
         - '698'
+      sikh:
+        coordinates:
+          x: 31.5
+          "y": 646.5
+          page: 2
+          font: F1
+          font_size: 6.0
+        entries:
+        - Sikh
   facilities:
     general:
       transport:
