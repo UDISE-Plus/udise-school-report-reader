@@ -47,6 +47,7 @@ class SchoolReportParser
     # Read the combined CSV file
     header_row = nil
     grade_rows = []
+    bg_rows = []
     
     CSV.foreach(combined_path, headers: true) do |row|
       if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
@@ -56,6 +57,11 @@ class SchoolReportParser
         if row['text_y'].to_f == 780.0
           grade_rows << row
         end
+      elsif header_row && row['page'] == '2' && ['B', 'G'].include?(row['text'])
+        # Get the B,G row at y=768.0
+        if row['text_y'].to_f == 768.0
+          bg_rows << row
+        end
       end
     end
 
@@ -63,6 +69,8 @@ class SchoolReportParser
 
     # Sort grade rows by x coordinate to maintain order
     grade_rows.sort_by! { |row| row['text_x'].to_f }
+    # Sort B,G rows by x coordinate to maintain order
+    bg_rows.sort_by! { |row| row['text_x'].to_f }
 
     # Create HTML file with the header and grade information
     html_content = <<~HTML
@@ -92,6 +100,26 @@ class SchoolReportParser
             <th>Font Size</th>
           </tr>
           #{grade_rows.map { |row| 
+            "<tr>
+              <td>#{row['text']}</td>
+              <td>#{row['text_x']}</td>
+              <td>#{row['text_y']}</td>
+              <td>#{row['font']}</td>
+              <td>#{row['font_size']}</td>
+            </tr>"
+          }.join("\n")}
+        </table>
+
+        <h2>B,G Row Information</h2>
+        <table>
+          <tr>
+            <th>Text</th>
+            <th>X</th>
+            <th>Y</th>
+            <th>Font</th>
+            <th>Font Size</th>
+          </tr>
+          #{bg_rows.map { |row| 
             "<tr>
               <td>#{row['text']}</td>
               <td>#{row['text_x']}</td>
