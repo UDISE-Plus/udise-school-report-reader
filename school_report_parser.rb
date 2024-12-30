@@ -65,6 +65,24 @@ class SchoolReportParser
     cwsn_rows = []
     age_3_rows = []
     age_4_rows = []
+    age_5_rows = []
+    age_6_rows = []
+    age_7_rows = []
+    age_8_rows = []
+    age_9_rows = []
+    age_10_rows = []
+    age_11_rows = []
+    age_12_rows = []
+    age_13_rows = []
+    age_14_rows = []
+    age_15_rows = []
+    age_16_rows = []
+    age_17_rows = []
+    age_18_rows = []
+    age_19_rows = []
+    age_20_rows = []
+    age_21_rows = []
+    age_22_rows = []
 
     CSV.foreach(combined_path, headers: true) do |row|
       if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
@@ -116,6 +134,42 @@ class SchoolReportParser
           age_3_rows << row
         elsif y_coord == 483.5
           age_4_rows << row
+        elsif y_coord == 472.0
+          age_5_rows << row
+        elsif y_coord == 460.5
+          age_6_rows << row
+        elsif y_coord == 449.0
+          age_7_rows << row
+        elsif y_coord == 437.5
+          age_8_rows << row
+        elsif y_coord == 426.0
+          age_9_rows << row
+        elsif y_coord == 414.5
+          age_10_rows << row
+        elsif y_coord == 403.0
+          age_11_rows << row
+        elsif y_coord == 391.5
+          age_12_rows << row
+        elsif y_coord == 380.0
+          age_13_rows << row
+        elsif y_coord == 368.5
+          age_14_rows << row
+        elsif y_coord == 357.0
+          age_15_rows << row
+        elsif y_coord == 345.5
+          age_16_rows << row
+        elsif y_coord == 334.0
+          age_17_rows << row
+        elsif y_coord == 322.5
+          age_18_rows << row
+        elsif y_coord == 311.0
+          age_19_rows << row
+        elsif y_coord == 299.5
+          age_20_rows << row
+        elsif y_coord == 288.0
+          age_21_rows << row
+        elsif y_coord == 276.5
+          age_22_rows << row
         end
       end
     end
@@ -126,7 +180,10 @@ class SchoolReportParser
     grade_rows.sort_by! { |row| row['text_x'].to_f }
     bg_rows.sort_by! { |row| row['text_x'].to_f }
     [gen_rows, sc_rows, st_rows, obc_rows, musl_rows, chris_rows, sikh_rows, budd_rows, 
-     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, age_3_rows, age_4_rows].each do |rows|
+     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, age_3_rows, age_4_rows, age_5_rows,
+     age_6_rows, age_7_rows, age_8_rows, age_9_rows, age_10_rows, age_11_rows, age_12_rows,
+     age_13_rows, age_14_rows, age_15_rows, age_16_rows, age_17_rows, age_18_rows, age_19_rows,
+     age_20_rows, age_21_rows, age_22_rows].each do |rows|
       rows.sort_by! { |row| row['text_x'].to_f }
     end
 
@@ -134,7 +191,10 @@ class SchoolReportParser
     grade_rows.reject! { |row| row['text_x'].to_f >= 500 }
     bg_rows.reject! { |row| row['text_x'].to_f >= 500 }
     [gen_rows, sc_rows, st_rows, obc_rows, musl_rows, chris_rows, sikh_rows, budd_rows,
-     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, age_3_rows, age_4_rows].each do |rows|
+     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, age_3_rows, age_4_rows, age_5_rows,
+     age_6_rows, age_7_rows, age_8_rows, age_9_rows, age_10_rows, age_11_rows, age_12_rows,
+     age_13_rows, age_14_rows, age_15_rows, age_16_rows, age_17_rows, age_18_rows, age_19_rows,
+     age_20_rows, age_21_rows, age_22_rows].each do |rows|
       rows.reject! { |row| row['text_x'].to_f >= 500 }
     end
 
@@ -162,6 +222,24 @@ class SchoolReportParser
     cwsn_numbers = match_numbers_to_pairs(cwsn_rows, bg_pairs)
     age_3_numbers = match_numbers_to_pairs(age_3_rows, bg_pairs)
     age_4_numbers = match_numbers_to_pairs(age_4_rows, bg_pairs)
+    age_5_numbers = match_numbers_to_pairs(age_5_rows, bg_pairs)
+    age_6_numbers = match_numbers_to_pairs(age_6_rows, bg_pairs)
+    age_7_numbers = match_numbers_to_pairs(age_7_rows, bg_pairs)
+    age_8_numbers = match_numbers_to_pairs(age_8_rows, bg_pairs)
+    age_9_numbers = match_numbers_to_pairs(age_9_rows, bg_pairs)
+    age_10_numbers = match_numbers_to_pairs(age_10_rows, bg_pairs)
+    age_11_numbers = match_numbers_to_pairs(age_11_rows, bg_pairs)
+    age_12_numbers = match_numbers_to_pairs(age_12_rows, bg_pairs)
+    age_13_numbers = match_numbers_to_pairs(age_13_rows, bg_pairs)
+    age_14_numbers = match_numbers_to_pairs(age_14_rows, bg_pairs)
+    age_15_numbers = match_numbers_to_pairs(age_15_rows, bg_pairs)
+    age_16_numbers = match_numbers_to_pairs(age_16_rows, bg_pairs)
+    age_17_numbers = match_numbers_to_pairs(age_17_rows, bg_pairs)
+    age_18_numbers = match_numbers_to_pairs(age_18_rows, bg_pairs)
+    age_19_numbers = match_numbers_to_pairs(age_19_rows, bg_pairs)
+    age_20_numbers = match_numbers_to_pairs(age_20_rows, bg_pairs)
+    age_21_numbers = match_numbers_to_pairs(age_21_rows, bg_pairs)
+    age_22_numbers = match_numbers_to_pairs(age_22_rows, bg_pairs)
 
     # Create HTML file with the header and grade information
     html_content = <<~HTML
@@ -324,7 +402,7 @@ class SchoolReportParser
             }.join}
           </tr>
           <tr>
-            <td class="category">Age >3</td>
+            <td class="category">Age 3</td>
             #{bg_pairs.map { |x_mid, _|
               numbers = age_3_numbers[x_mid]
               b_num = numbers&.first
@@ -334,8 +412,170 @@ class SchoolReportParser
           </tr>
           <tr>
             <td class="category">Age 4</td>
-            #{bg_pairs.map.with_index { |(x_mid, _), index|
+            #{bg_pairs.map { |x_mid, _|
               numbers = age_4_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 5</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_5_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 6</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_6_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 7</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_7_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 8</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_8_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 9</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_9_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 10</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_10_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 11</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_11_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 12</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_12_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 13</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_13_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 14</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_14_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 15</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_15_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 16</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_16_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 17</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_17_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 18</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_18_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 19</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_19_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 20</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_20_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 21</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_21_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 22</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_22_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
@@ -348,165 +588,6 @@ class SchoolReportParser
 
     File.write(html_path, html_content)
   end
-
-  def self.combine_blocks_and_rects(blocks_path, rects_path, output_path)
-    # Read blocks
-    blocks = []
-    CSV.foreach(blocks_path, headers: true) do |row|
-      blocks << {
-        page: row['page'].to_i,
-        x: row['x'].to_f,
-        y: row['y'].to_f,
-        text: row['text'],
-        font: row['font'],
-        font_size: row['font_size'].to_f
-      }
-    end
-    
-    # Read rectangles
-    rects = []
-    CSV.foreach(rects_path, headers: true) do |row|
-      rects << {
-        page: row['page'].to_i,
-        x: row['x'].to_f,
-        y: row['y'].to_f,
-        width: row['width'].to_f,
-        height: row['height'].to_f,
-        stroke_color: row['stroke_color'],
-        fill_color: row['fill_color'],
-        line_width: row['line_width'].to_f
-      }
-    end
-    
-    # For each text block, find its smallest containing rectangle
-    combined_data = blocks.map do |block|
-      # Find rectangles on the same page that contain this text block
-      containing_rects = rects.select do |rect|
-        rect[:page] == block[:page] &&
-        block[:x] >= rect[:x] &&
-        block[:x] <= (rect[:x] + rect[:width]) &&
-        block[:y] >= rect[:y] &&
-        block[:y] <= (rect[:y] + rect[:height])
-      end
-      
-      # Find the smallest containing rectangle by area
-      smallest_rect = containing_rects.min_by { |r| r[:width] * r[:height] }
-      
-      # Create entry with block data and rectangle data (if found)
-      if smallest_rect
-        {
-          page: block[:page],
-          text: block[:text],
-          text_x: block[:x],
-          text_y: block[:y],
-          font: block[:font],
-          font_size: block[:font_size],
-          rect_x: smallest_rect[:x],
-          rect_y: smallest_rect[:y],
-          rect_width: smallest_rect[:width],
-          rect_height: smallest_rect[:height],
-          stroke_color: smallest_rect[:stroke_color],
-          fill_color: smallest_rect[:fill_color],
-          line_width: smallest_rect[:line_width]
-        }
-      else
-        {
-          page: block[:page],
-          text: block[:text],
-          text_x: block[:x],
-          text_y: block[:y],
-          font: block[:font],
-          font_size: block[:font_size],
-          rect_x: nil,
-          rect_y: nil,
-          rect_width: nil,
-          rect_height: nil,
-          stroke_color: nil,
-          fill_color: nil,
-          line_width: nil
-        }
-      end
-    end
-    
-    # Add empty rectangles that don't contain any text
-    rects.each do |rect|
-      # Check if this rectangle contains any text blocks
-      has_text = blocks.any? do |block|
-        block[:page] == rect[:page] &&
-        block[:x] >= rect[:x] &&
-        block[:x] <= (rect[:x] + rect[:width]) &&
-        block[:y] >= rect[:y] &&
-        block[:y] <= (rect[:y] + rect[:height])
-      end
-      
-      # If it doesn't contain text, add it as an empty entry
-      unless has_text
-        combined_data << {
-          page: rect[:page],
-          text: "",
-          text_x: nil,
-          text_y: nil,
-          font: nil,
-          font_size: nil,
-          rect_x: rect[:x],
-          rect_y: rect[:y],
-          rect_width: rect[:width],
-          rect_height: rect[:height],
-          stroke_color: rect[:stroke_color],
-          fill_color: rect[:fill_color],
-          line_width: rect[:line_width]
-        }
-      end
-    end
-    
-    # Sort by page, then y (top to bottom), then x (left to right)
-    combined_data.sort_by! do |data|
-      [
-        data[:page],
-        -(data[:rect_y] || data[:text_y] || 0),  # Negative for top-to-bottom
-        data[:rect_x] || data[:text_x] || 0
-      ]
-    end
-    
-    # Write combined data to CSV
-    CSV.open(output_path, 'wb') do |csv|
-      csv << [
-        'page',
-        'text',
-        'text_x',
-        'text_y',
-        'font',
-        'font_size',
-        'rect_x',
-        'rect_y',
-        'rect_width',
-        'rect_height',
-        'stroke_color',
-        'fill_color',
-        'line_width'
-      ]
-      
-      combined_data.each do |data|
-        csv << [
-          data[:page],
-          data[:text],
-          data[:text_x],
-          data[:text_y],
-          data[:font],
-          data[:font_size],
-          data[:rect_x],
-          data[:rect_y],
-          data[:rect_width],
-          data[:rect_height],
-          data[:stroke_color],
-          data[:fill_color],
-          data[:line_width]
-        ]
-      end
-    end
-  end
-
-  private
 
   def self.extract_bt_et_blocks(reader, csv_path)
     blocks = []
@@ -1568,5 +1649,162 @@ class SchoolReportParser
     end
 
     numbers
+  end
+
+  def self.combine_blocks_and_rects(blocks_path, rects_path, output_path)
+    # Read blocks
+    blocks = []
+    CSV.foreach(blocks_path, headers: true) do |row|
+      blocks << {
+        page: row['page'].to_i,
+        x: row['x'].to_f,
+        y: row['y'].to_f,
+        text: row['text'],
+        font: row['font'],
+        font_size: row['font_size'].to_f
+      }
+    end
+    
+    # Read rectangles
+    rects = []
+    CSV.foreach(rects_path, headers: true) do |row|
+      rects << {
+        page: row['page'].to_i,
+        x: row['x'].to_f,
+        y: row['y'].to_f,
+        width: row['width'].to_f,
+        height: row['height'].to_f,
+        stroke_color: row['stroke_color'],
+        fill_color: row['fill_color'],
+        line_width: row['line_width'].to_f
+      }
+    end
+    
+    # For each text block, find its smallest containing rectangle
+    combined_data = blocks.map do |block|
+      # Find rectangles on the same page that contain this text block
+      containing_rects = rects.select do |rect|
+        rect[:page] == block[:page] &&
+        block[:x] >= rect[:x] &&
+        block[:x] <= (rect[:x] + rect[:width]) &&
+        block[:y] >= rect[:y] &&
+        block[:y] <= (rect[:y] + rect[:height])
+      end
+      
+      # Find the smallest containing rectangle by area
+      smallest_rect = containing_rects.min_by { |r| r[:width] * r[:height] }
+      
+      # Create entry with block data and rectangle data (if found)
+      if smallest_rect
+        {
+          page: block[:page],
+          text: block[:text],
+          text_x: block[:x],
+          text_y: block[:y],
+          font: block[:font],
+          font_size: block[:font_size],
+          rect_x: smallest_rect[:x],
+          rect_y: smallest_rect[:y],
+          rect_width: smallest_rect[:width],
+          rect_height: smallest_rect[:height],
+          stroke_color: smallest_rect[:stroke_color],
+          fill_color: smallest_rect[:fill_color],
+          line_width: smallest_rect[:line_width]
+        }
+      else
+        {
+          page: block[:page],
+          text: block[:text],
+          text_x: block[:x],
+          text_y: block[:y],
+          font: block[:font],
+          font_size: block[:font_size],
+          rect_x: nil,
+          rect_y: nil,
+          rect_width: nil,
+          rect_height: nil,
+          stroke_color: nil,
+          fill_color: nil,
+          line_width: nil
+        }
+      end
+    end
+    
+    # Add empty rectangles that don't contain any text
+    rects.each do |rect|
+      # Check if this rectangle contains any text blocks
+      has_text = blocks.any? do |block|
+        block[:page] == rect[:page] &&
+        block[:x] >= rect[:x] &&
+        block[:x] <= (rect[:x] + rect[:width]) &&
+        block[:y] >= rect[:y] &&
+        block[:y] <= (rect[:y] + rect[:height])
+      end
+      
+      # If it doesn't contain text, add it as an empty entry
+      unless has_text
+        combined_data << {
+          page: rect[:page],
+          text: "",
+          text_x: nil,
+          text_y: nil,
+          font: nil,
+          font_size: nil,
+          rect_x: rect[:x],
+          rect_y: rect[:y],
+          rect_width: rect[:width],
+          rect_height: rect[:height],
+          stroke_color: rect[:stroke_color],
+          fill_color: rect[:fill_color],
+          line_width: rect[:line_width]
+        }
+      end
+    end
+    
+    # Sort by page, then y (top to bottom), then x (left to right)
+    combined_data.sort_by! do |data|
+      [
+        data[:page],
+        -(data[:rect_y] || data[:text_y] || 0),  # Negative for top-to-bottom
+        data[:rect_x] || data[:text_x] || 0
+      ]
+    end
+    
+    # Write combined data to CSV
+    CSV.open(output_path, 'wb') do |csv|
+      csv << [
+        'page',
+        'text',
+        'text_x',
+        'text_y',
+        'font',
+        'font_size',
+        'rect_x',
+        'rect_y',
+        'rect_width',
+        'rect_height',
+        'stroke_color',
+        'fill_color',
+        'line_width'
+      ]
+      
+      combined_data.each do |data|
+        csv << [
+          data[:page],
+          data[:text],
+          data[:text_x],
+          data[:text_y],
+          data[:font],
+          data[:font_size],
+          data[:rect_x],
+          data[:rect_y],
+          data[:rect_width],
+          data[:rect_height],
+          data[:stroke_color],
+          data[:fill_color],
+          data[:line_width]
+        ]
+      end
+    end
   end
 end
