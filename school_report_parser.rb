@@ -7,10 +7,10 @@ class SchoolReportParser
     raise ArgumentError, "PDF file not found" unless File.exist?(pdf_path)
     
     reader = PDF::Reader.new(pdf_path)
-    content = reader.pages.map(&:raw_content).join("\n")
     
     # Create text file with same name as PDF
     txt_path = pdf_path.sub(/\.pdf$/i, '.txt')
+    content = reader.pages.map(&:raw_content).join("\n")
     File.write(txt_path, content)
     
     # Create compressed version
@@ -20,7 +20,7 @@ class SchoolReportParser
     
     # Extract BT-ET blocks to CSV
     csv_path = pdf_path.sub(/\.pdf$/i, '_blocks.csv')
-    extract_bt_et_blocks(content, csv_path)
+    extract_bt_et_blocks(reader, csv_path)
     
     # Extract data points to YAML
     data_points = extract_data_points(compressed_content)
@@ -32,46 +32,43 @@ class SchoolReportParser
 
   private
 
-  def self.extract_bt_et_blocks(content, csv_path)
+  def self.extract_bt_et_blocks(reader, csv_path)
     blocks = []
-    current_block = {}
-    page_number = 1
     
-    content.each_line do |line|
-      # Track page numbers
-      if line.match?(/^page\s+\d+$/i)
-        page_number = line.strip.split(/\s+/).last.to_i
-        next
-      end
+    reader.pages.each_with_index do |page, index|
+      page_number = index + 1
+      current_block = {}
       
-      if line.include?('BT')
-        current_block = {
-          page: page_number,
-          start_line: line.strip,
-          text: []  # Initialize as array to collect multiple text blocks
-        }
-      elsif line.match?(/1\s+0\s+0\s+1\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+Tm/)
-        # Only set coordinates if not already set
-        unless current_block[:x] && current_block[:y]
-          matches = line.match(/1\s+0\s+0\s+1\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+Tm/)
-          current_block[:x] = matches[1].to_f
-          current_block[:y] = matches[2].to_f
+      page.raw_content.each_line do |line|
+        if line.include?('BT')
+          current_block = {
+            page: page_number,
+            start_line: line.strip,
+            text: []  # Initialize as array to collect multiple text blocks
+          }
+        elsif line.match?(/1\s+0\s+0\s+1\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+Tm/)
+          # Only set coordinates if not already set
+          unless current_block[:x] && current_block[:y]
+            matches = line.match(/1\s+0\s+0\s+1\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+Tm/)
+            current_block[:x] = matches[1].to_f
+            current_block[:y] = matches[2].to_f
+          end
+        elsif line.match?(/\/F(\d+)\s+(\d+(\.\d+)?)\s+Tf/)
+          # Only set font if not already set
+          unless current_block[:font] && current_block[:font_size]
+            matches = line.match(/\/F(\d+)\s+(\d+(\.\d+)?)\s+Tf/)
+            current_block[:font] = "F#{matches[1]}"
+            current_block[:font_size] = matches[2].to_f
+          end
+        elsif line.match?(/\((.*?)\)\s*Tj/)
+          # Collect all text blocks
+          current_block[:text] << line.match(/\((.*?)\)\s*Tj/)[1]
+        elsif line.include?('ET')
+          current_block[:end_line] = line.strip
+          # Join all text blocks with space
+          current_block[:text] = current_block[:text].join(' ')
+          blocks << current_block.dup
         end
-      elsif line.match?(/\/F(\d+)\s+(\d+(\.\d+)?)\s+Tf/)
-        # Only set font if not already set
-        unless current_block[:font] && current_block[:font_size]
-          matches = line.match(/\/F(\d+)\s+(\d+(\.\d+)?)\s+Tf/)
-          current_block[:font] = "F#{matches[1]}"
-          current_block[:font_size] = matches[2].to_f
-        end
-      elsif line.match?(/\((.*?)\)\s*Tj/)
-        # Collect all text blocks
-        current_block[:text] << line.match(/\((.*?)\)\s*Tj/)[1]
-      elsif line.include?('ET')
-        current_block[:end_line] = line.strip
-        # Join all text blocks with space
-        current_block[:text] = current_block[:text].join(' ')
-        blocks << current_block.dup
       end
     end
     
