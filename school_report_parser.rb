@@ -58,6 +58,7 @@ class SchoolReportParser
     budd_rows = []
     parsi_rows = []
     jain_rows = []
+    others_rows = []
     
     CSV.foreach(combined_path, headers: true) do |row|
       if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
@@ -95,6 +96,8 @@ class SchoolReportParser
           parsi_rows << row
         elsif y_coord == 612.0
           jain_rows << row
+        elsif y_coord == 600.5
+          others_rows << row
         end
       end
     end
@@ -127,6 +130,7 @@ class SchoolReportParser
     budd_rows.sort_by! { |row| row['text_x'].to_f }
     parsi_rows.sort_by! { |row| row['text_x'].to_f }
     jain_rows.sort_by! { |row| row['text_x'].to_f }
+    others_rows.sort_by! { |row| row['text_x'].to_f }
 
     # Filter out total columns (those with x >= 500)
     grade_rows.reject! { |row| row['text_x'].to_f >= 500 }
@@ -368,6 +372,28 @@ class SchoolReportParser
       jain_numbers[x_mid] = [b_num, g_num]
     end
 
+    # Match Others numbers to B,G pairs based on x-coordinate proximity
+    others_numbers = {}
+    remaining_others_numbers = others_rows.dup
+
+    bg_pairs.each do |x_mid, bg_pair|
+      b_x = bg_pair[0]['text_x'].to_f
+      g_x = bg_pair[1]['text_x'].to_f
+      
+      # Find numbers closest to B and G positions
+      b_num = remaining_others_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
+      if b_num
+        remaining_others_numbers.delete(b_num)
+      end
+
+      g_num = remaining_others_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
+      if g_num
+        remaining_others_numbers.delete(g_num)
+      end
+      
+      others_numbers[x_mid] = [b_num, g_num]
+    end
+
     # Create HTML file with the header and grade information
     html_content = <<~HTML
       <!DOCTYPE html>
@@ -481,6 +507,15 @@ class SchoolReportParser
             <td class="category">Jain</td>
             #{bg_pairs.map { |x_mid, pair|
               numbers = jain_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join("\n")}
+          </tr>
+          <tr>
+            <td class="category">Others</td>
+            #{bg_pairs.map { |x_mid, pair|
+              numbers = others_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
@@ -910,6 +945,10 @@ class SchoolReportParser
               'entries' => []
             },
             'jain' => {
+              'coordinates' => {},
+              'entries' => []
+            },
+            'others' => {
               'coordinates' => {},
               'entries' => []
             }
@@ -1784,6 +1823,32 @@ class SchoolReportParser
           'font_size' => 6.0
         }
         data['students']['enrollment']['by_social_category']['jain']['entries'] = entries.map { |_, text| text }
+
+      when /^Others$/
+        y_coord = 600.5  # Positioned below Jain
+        page_num = 2
+        margin = 4.0  # Allow 4 units of difference for Others since entries span more vertically
+        
+        # Parse CSV content to find matching entries
+        entries = []
+        csv_content = File.read(csv_path)
+        CSV.parse(csv_content, headers: true) do |row|
+          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
+            entries << [row['x'].to_f, row['text']]
+          end
+        end
+        
+        # Sort by x coordinate to get entries in order
+        entries.sort_by! { |x, _| x }
+        
+        data['students']['enrollment']['by_social_category']['others']['coordinates'] = {
+          'x' => 31.5,
+          'y' => 600.5,
+          'page' => 2,
+          'font' => 'F1',
+          'font_size' => 6.0
+        }
+        data['students']['enrollment']['by_social_category']['others']['entries'] = entries.map { |_, text| text }
       
       # CWSN details
       when "CWSN Facilities"

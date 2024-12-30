@@ -392,6 +392,9 @@ students:
           font: F1
           font_size: 6.0
         entries: []
+      others:
+        coordinates: {}
+        entries: []
   facilities:
     general:
       transport:
