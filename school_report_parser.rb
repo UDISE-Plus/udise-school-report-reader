@@ -1651,311 +1651,34 @@ class SchoolReportParser
       
       # Student social categories
       when /^Gen$/
-        y_coord = 757.25
-        page_num = 2
-        margin = 2.0  # Allow 2 units of difference
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['gen']['coordinates'] = {
-          'x' => 32.33,
-          'y' => 757.25,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['gen']['entries'] = entries.map { |_, text| text }
+        extract_enrollment_data('Gen', 757.25, csv_path, data)
       when /^SC$/
-        y_coord = 745.5
-        page_num = 2
-        margin = 2.0  # Allow 2 units of difference
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['sc']['coordinates'] = {
-          'x' => 34.0,
-          'y' => 745.5,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['sc']['entries'] = entries.map { |_, text| text }
+        extract_enrollment_data('SC', 745.5, csv_path, data)
       when /^ST$/
-        y_coord = 734.25
-        page_num = 2
-        margin = 2.0  # Allow 2 units of difference
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['st']['coordinates'] = {
-          'x' => 34.33,
-          'y' => 734.25,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['st']['entries'] = entries.map { |_, text| text }
+        extract_enrollment_data('ST', 734.25, csv_path, data)
       when /^OBC$/
-        y_coord = 719.0
-        page_num = 2
-        margin = 4.0  # Allow 4 units of difference for OBC since entries span more vertically
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['obc']['coordinates'] = {
-          'x' => 31.5,
-          'y' => 719.0,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['obc']['entries'] = entries.map { |_, text| text }
+        extract_enrollment_data('OBC', 719.0, csv_path, data)
       when /^Musl$/
-        y_coord = 669.5
-        page_num = 2
-        margin = 4.0  # Allow 4 units of difference for Musl since entries span more vertically
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['musl']['coordinates'] = {
-          'x' => 31.5,
-          'y' => 669.5,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['musl']['entries'] = entries.map { |_, text| text }
+        extract_enrollment_data('Musl', 669.5, csv_path, data)
       when /^Chris$/
-        y_coord = 658.0
-        page_num = 2
-        margin = 4.0  # Allow 4 units of difference for Christian since entries span more vertically
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['chris']['coordinates'] = {
-          'x' => 31.5,
-          'y' => 658.0,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['chris']['entries'] = entries.map { |_, text| text }
+        extract_enrollment_data('Chris', 658.0, csv_path, data)
       when /^Sikh$/
-        y_coord = 646.5
-        page_num = 2
-        margin = 4.0  # Allow 4 units of difference for Sikh since entries span more vertically
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['sikh']['coordinates'] = {
-          'x' => 31.5,
-          'y' => 646.5,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['sikh']['entries'] = entries.map { |_, text| text }
+        extract_enrollment_data('Sikh', 646.5, csv_path, data)
       when /^Budd$/
-        y_coord = 635.0
-        page_num = 2
-        margin = 4.0  # Allow 4 units of difference for Buddhist since entries span more vertically
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['budd']['coordinates'] = {
-          'x' => 31.5,
-          'y' => 635.0,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['budd']['entries'] = entries.map { |_, text| text }
+        extract_enrollment_data('Budd', 635.0, csv_path, data)
       when /^Parsi$/
-        y_coord = 623.5
-        page_num = 2
-        margin = 4.0  # Allow 4 units of difference for Parsi since entries span more vertically
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['parsi']['coordinates'] = {
-          'x' => 31.5,
-          'y' => 623.5,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['parsi']['entries'] = entries.map { |_, text| text }
-
+        extract_enrollment_data('Parsi', 623.5, csv_path, data)
       when /^Jain$/
-        y_coord = 612.0  # Positioned below Parsi
-        page_num = 2
-        margin = 4.0  # Allow 4 units of difference for Jain since entries span more vertically
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['jain']['coordinates'] = {
-          'x' => 31.5,
-          'y' => 612.0,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['jain']['entries'] = entries.map { |_, text| text }
-
+        extract_enrollment_data('Jain', 612.0, csv_path, data)
       when /^Others$/
-        y_coord = 600.5  # Positioned below Jain
-        page_num = 2
-        margin = 4.0  # Allow 4 units of difference for Others since entries span more vertically
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['others']['coordinates'] = {
-          'x' => 31.5,
-          'y' => 600.5,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['others']['entries'] = entries.map { |_, text| text }
-
+        extract_enrollment_data('Others', 600.5, csv_path, data)
       when /^Aadh$/
-        y_coord = 589.0  # Positioned below Others
-        page_num = 2
-        margin = 4.0  # Allow 4 units of difference for Aadh since entries span more vertically
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['aadh']['coordinates'] = {
-          'x' => 31.5,
-          'y' => 589.0,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['aadh']['entries'] = entries.map { |_, text| text }
-      
-      # CWSN details
-      when "CWSN Facilities"
+        extract_enrollment_data('Aadh', 589.0, csv_path, data)
+      when /^BPL$/
+        extract_enrollment_data('BPL', 566.5, csv_path, data)
+      when /^BPL$/
+        extract_enrollment_data('BPL', 566.5, csv_path, data)
+      when /^CWSN$/
         data['students']['enrollment']['cwsn']['facilities']['available'] = next_line if next_line
       when /CWSN Type:\s+(.+)/
         type = $1
@@ -2112,30 +1835,7 @@ class SchoolReportParser
           data['teachers']['qualifications']['professional']['pursuing_course'] = next_line.to_i
         end
       when /^BPL$/
-        y_coord = 566.5  # Positioned below Aadh
-        page_num = 2
-        margin = 4.0  # Allow 4 units of difference for BPL since entries span more vertically
-        
-        # Parse CSV content to find matching entries
-        entries = []
-        csv_content = File.read(csv_path)
-        CSV.parse(csv_content, headers: true) do |row|
-          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-            entries << [row['x'].to_f, row['text']]
-          end
-        end
-        
-        # Sort by x coordinate to get entries in order
-        entries.sort_by! { |x, _| x }
-        
-        data['students']['enrollment']['by_social_category']['bpl']['coordinates'] = {
-          'x' => 31.5,
-          'y' => 566.5,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-        data['students']['enrollment']['by_social_category']['bpl']['entries'] = entries.map { |_, text| text }
+        extract_enrollment_data('BPL', 566.5, csv_path, data)
       end
     end
 
@@ -2148,6 +1848,41 @@ class SchoolReportParser
     data.reject! { |_, v| v.empty? }
     
     data
+  end
+
+  def self.extract_enrollment_data(category, y_coord, csv_path, data)
+    page_num = 2
+    margin = 4.0  # Allow 4 units of difference since entries span vertically
+    
+    # Parse CSV content to find matching entries
+    entries = []
+    csv_content = File.read(csv_path)
+    CSV.parse(csv_content, headers: true) do |row|
+      if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
+        entries << [row['x'].to_f, row['text']]
+      end
+    end
+    
+    # Sort by x coordinate to get entries in order
+    entries.sort_by! { |x, _| x }
+    
+    # Map category names to their data structure keys
+    category_key = category.downcase
+    
+    data['students']['enrollment']['by_social_category'][category_key]['coordinates'] = {
+      'x' => 31.5,  # Most categories use this x coordinate
+      'y' => y_coord,
+      'page' => page_num,
+      'font' => 'F1',
+      'font_size' => 6.0
+    }
+    
+    # Special case for Gen category which has slightly different x coordinate
+    if category == 'Gen'
+      data['students']['enrollment']['by_social_category'][category_key]['coordinates']['x'] = 32.33
+    end
+    
+    data['students']['enrollment']['by_social_category'][category_key]['entries'] = entries.map { |_, text| text }
   end
 
   def self.roman_to_arabic(roman)
