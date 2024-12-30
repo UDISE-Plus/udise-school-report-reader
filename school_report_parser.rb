@@ -48,6 +48,7 @@ class SchoolReportParser
     header_row = nil
     grade_rows = []
     bg_rows = []
+    gen_rows = []
     
     CSV.foreach(combined_path, headers: true) do |row|
       if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
@@ -62,15 +63,55 @@ class SchoolReportParser
         if row['text_y'].to_f == 768.0
           bg_rows << row
         end
+      elsif header_row && row['page'] == '2' && row['text'] =~ /^\d+$/
+        # Get the Gen category numbers at y=757.0
+        y_coord = row['text_y'].to_f
+        if y_coord == 757.0
+          gen_rows << row
+        end
       end
     end
 
     return unless header_row
 
-    # Sort grade rows by x coordinate to maintain order
+    # Sort rows by x coordinate to maintain order
     grade_rows.sort_by! { |row| row['text_x'].to_f }
-    # Sort B,G rows by x coordinate to maintain order
     bg_rows.sort_by! { |row| row['text_x'].to_f }
+    gen_rows.sort_by! { |row| row['text_x'].to_f }
+
+    # Filter out total columns (those with x >= 500)
+    grade_rows.reject! { |row| row['text_x'].to_f >= 500 }
+    bg_rows.reject! { |row| row['text_x'].to_f >= 500 }
+    gen_rows.reject! { |row| row['text_x'].to_f >= 500 }
+
+    # Group B,G pairs by their x-coordinates
+    bg_pairs = bg_rows.each_slice(2).map do |b, g|
+      x_mid = (b['text_x'].to_f + g['text_x'].to_f) / 2
+      [x_mid, [b, g]]
+    end.to_h
+
+    # Match Gen numbers to B,G pairs based on x-coordinate proximity
+    gen_numbers = {}
+    remaining_numbers = gen_rows.dup
+    threshold = 10.0  # Maximum distance to consider a match
+
+    bg_pairs.each do |x_mid, bg_pair|
+      b_x = bg_pair[0]['text_x'].to_f
+      g_x = bg_pair[1]['text_x'].to_f
+      
+      # Find numbers closest to B and G positions
+      b_num = remaining_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
+      if b_num
+        remaining_numbers.delete(b_num)
+      end
+
+      g_num = remaining_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
+      if g_num
+        remaining_numbers.delete(g_num)
+      end
+      
+      gen_numbers[x_mid] = [b_num, g_num]
+    end
 
     # Create HTML file with the header and grade information
     html_content = <<~HTML
@@ -84,17 +125,29 @@ class SchoolReportParser
           .header { font-weight: bold; background-color: #f0f0f0; }
           .grade { font-weight: bold; }
           .bg-pair { }
+          .category { font-weight: bold; }
         </style>
       </head>
       <body>
         <h2>#{header_row['text']}</h2>
         <table>
           <tr class="grade">
+            <th></th>
             #{grade_rows.map { |row| "<th colspan='2'>#{row['text']}</th>" }.join("\n")}
           </tr>
           <tr class="bg-pair">
+            <td class="category">Gen</td>
             #{bg_rows.each_slice(2).map { |b, g| 
               "<td>#{b['text']}</td><td>#{g['text']}</td>"
+            }.join("\n")}
+          </tr>
+          <tr>
+            <td></td>
+            #{bg_pairs.map { |x_mid, pair|
+              numbers = gen_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
             }.join("\n")}
           </tr>
         </table>
