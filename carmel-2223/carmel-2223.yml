@@ -395,6 +395,15 @@ students:
       others:
         coordinates: {}
         entries: []
+      aadh:
+        coordinates:
+          x: 31.5
+          "y": 589.0
+          page: 2
+          font: F1
+          font_size: 6.0
+        entries:
+        - G.Tot
   facilities:
     general:
       transport:
