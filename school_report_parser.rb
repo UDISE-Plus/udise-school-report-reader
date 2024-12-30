@@ -60,6 +60,7 @@ class SchoolReportParser
     jain_rows = []
     others_rows = []
     aadh_rows = []
+    bpl_rows = []
     
     CSV.foreach(combined_path, headers: true) do |row|
       if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
@@ -101,6 +102,8 @@ class SchoolReportParser
           others_rows << row
         elsif y_coord == 589.0
           aadh_rows << row
+        elsif y_coord == 566.5
+          bpl_rows << row
         end
       end
     end
@@ -135,6 +138,7 @@ class SchoolReportParser
     jain_rows.sort_by! { |row| row['text_x'].to_f }
     others_rows.sort_by! { |row| row['text_x'].to_f }
     aadh_rows.sort_by! { |row| row['text_x'].to_f }
+    bpl_rows.sort_by! { |row| row['text_x'].to_f }
 
     # Filter out total columns (those with x >= 500)
     grade_rows.reject! { |row| row['text_x'].to_f >= 500 }
@@ -420,6 +424,28 @@ class SchoolReportParser
       aadh_numbers[x_mid] = [b_num, g_num]
     end
 
+    # Match BPL numbers to B,G pairs based on x-coordinate proximity
+    bpl_numbers = {}
+    remaining_bpl_numbers = bpl_rows.dup
+
+    bg_pairs.each do |x_mid, bg_pair|
+      b_x = bg_pair[0]['text_x'].to_f
+      g_x = bg_pair[1]['text_x'].to_f
+      
+      # Find numbers closest to B and G positions
+      b_num = remaining_bpl_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
+      if b_num
+        remaining_bpl_numbers.delete(b_num)
+      end
+      
+      g_num = remaining_bpl_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
+      if g_num
+        remaining_bpl_numbers.delete(g_num)
+      end
+      
+      bpl_numbers[x_mid] = [b_num, g_num]
+    end
+
     # Create HTML file with the header and grade information
     html_content = <<~HTML
       <!DOCTYPE html>
@@ -551,6 +577,15 @@ class SchoolReportParser
             <td class="category">Aadh</td>
             #{bg_pairs.map { |x_mid, pair|
               numbers = aadh_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join("\n")}
+          </tr>
+          <tr>
+            <td class="category">BPL</td>
+            #{bg_pairs.map { |x_mid, pair|
+              numbers = bpl_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
@@ -988,6 +1023,10 @@ class SchoolReportParser
               'entries' => []
             },
             'aadh' => {
+              'coordinates' => {},
+              'entries' => []
+            },
+            'bpl' => {
               'coordinates' => {},
               'entries' => []
             }
@@ -2072,6 +2111,31 @@ class SchoolReportParser
         if next_line =~ /^\d+$/
           data['teachers']['qualifications']['professional']['pursuing_course'] = next_line.to_i
         end
+      when /^BPL$/
+        y_coord = 566.5  # Positioned below Aadh
+        page_num = 2
+        margin = 4.0  # Allow 4 units of difference for BPL since entries span more vertically
+        
+        # Parse CSV content to find matching entries
+        entries = []
+        csv_content = File.read(csv_path)
+        CSV.parse(csv_content, headers: true) do |row|
+          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
+            entries << [row['x'].to_f, row['text']]
+          end
+        end
+        
+        # Sort by x coordinate to get entries in order
+        entries.sort_by! { |x, _| x }
+        
+        data['students']['enrollment']['by_social_category']['bpl']['coordinates'] = {
+          'x' => 31.5,
+          'y' => 566.5,
+          'page' => 2,
+          'font' => 'F1',
+          'font_size' => 6.0
+        }
+        data['students']['enrollment']['by_social_category']['bpl']['entries'] = entries.map { |_, text| text }
       end
     end
 
