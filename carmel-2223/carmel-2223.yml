@@ -384,6 +384,14 @@ students:
           font_size: 6.0
         entries:
         - Parsi
+      jain:
+        coordinates:
+          x: 31.5
+          "y": 612.0
+          page: 2
+          font: F1
+          font_size: 6.0
+        entries: []
   facilities:
     general:
       transport:
