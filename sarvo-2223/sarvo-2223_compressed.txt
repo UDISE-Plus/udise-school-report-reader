@@ -1,0 +1,739 @@
+SCHOOL REPORT CARD
+UDISE CODE
+07  06  01  07  902
+School Name
+Govt. Sarvodaya Kanya Vidyalaya No.1 \(Hindi Medium\), Jama Masjid, Delhi
+State
+Delhi
+District
+CENTRAL
+Block
+DOE ZONE-27
+Rural / Urban
+2-Urban
+Cluster
+2162037-North DMC Primary School \(Boys\) ,  Faiz Bazar, Near Darya Ganj Post
+Office, New Delhi
+Ward
+084-N \(Chandni Chowk\)
+Mohalla
+Pincode
+110006
+Panchayat
+NA
+City
+Municipality
+Assembly Const.
+Parl. Constituency
+School Category
+3 - Pr. with Up.Pr. sec. and H.Sec.
+School Management
+1-Department of Education
+School Type
+2-Girls
+Lowest & Highest Class
+1  -   12
+Pre Primary
+1-Yes
+Medium of Instruction
+Medium 1
+04-Hindi
+Medium 2
+19-English
+Medium 3
+Medium 4
+Visit of school for / by
+Acad. Inspections
+5
+CRC Coordinator
+25
+Block Level Officers
+5
+State/District Officers
+4
+Year of Establishment
+1945
+Year of Recognition-Pri.
+1945
+Year of Recognition-Upr.Pri.
+1945
+Year of Recognition-Sec.
+1945
+Year of Recognition-Higher Sec.
+1945
+Affiliation Board-Sec
+1-CBSE
+Affiliation Board-HSec
+1-CBSE
+Is this a Shift School?
+2-No
+Building Status
+3-Government
+Boundary wall
+1-Pucca
+No.of Building Blocks
+1
+Pucca Building Blocks
+1
+Is Special School for CWSN?
+2-No
+Availability of Ramps
+1-Yes
+Availability of Handrails
+1-Yes
+Anganwadi At Premises
+2-No
+Anganwadi Boys
+0
+Anganwadi Girls
+0
+Anganwadi Worker
+NA
+Residential School
+3 - Non-Residential
+Residential Type
+Minority School
+2-No
+Approachable By All Weather Road
+1-Yes
+Toilets
+Boys
+Girls
+Total\(Excluding CWSN\)
+0
+18
+Functional
+0
+18
+Func. CWSN Friendly
+0
+1
+Urinal
+0
+19
+Handwash Near Toilet
+1-Yes
+Handwash Facility for Meal
+1-Yes
+Total Class Rooms
+24
+In Good Condition
+24
+Needs Minor Repair
+0
+Needs Major Repair
+0
+Other Rooms
+4
+Library Availability
+1-Yes
+Separate Room for HM
+1-Yes
+Drinking Water Available
+1-Yes
+Drinking Water Functional
+1-Yes
+Rain Water Harvesting
+1-Yes
+Playground Available
+1-Yes
+Furniture Availability
+939
+Electricity Availability
+1-Yes
+Solar Panel
+2-No
+Medical checkups
+2-No
+Digital Facilities \(Functional\)
+ICT Lab
+2-No
+Internet
+1-Yes
+Desktop
+10
+Laptop
+0
+Tablet
+40
+Printer
+3
+Projector
+1
+DTH
+2-No
+DigiBoard
+0
+No.of Students Received \(DCF 5.1 , 5.2\)
+Primary
+Up.Primary
+Free text books
+0
+0
+Transport
+0
+0
+Free uniform
+0
+0
+SMC & SMDC Information
+SMC Exists
+1-Yes
+SMC & SMDC Same
+NA
+SMDC Constituted
+1-Yes
+Text Books Received
+1-Yes
+Special Training
+2-No
+Material for Training
+1-Yes
+Grants Details under Samagra Shiksha \(DCF Sl. No.  8.3\)
+Grants Receipt
+0.0
+Grants Expenditure
+0.0
+Indicators
+Pri.
+Up.Pri
+Sec.
+H.Sec
+Instructional days
+220
+220
+220
+220
+Avg.School hrs.Std.
+5.0
+6.0
+6.0
+6.0
+Avg.School hrs.Tch.
+6.3
+6.3
+6.3
+6.3
+CCE
+1-Yes
+1-Yes
+1-Yes
+1-Yes
+Total no. of Students Enrolled Under Section 12 of the RTE Act In Private Unaided and Specified Category Schools \(DCF Sl. No. 1.42\(a\)\)
+Pre-Pri.
+Class I
+Class II
+Class III
+Class IV
+Class V
+Class VI
+Class VII
+Class VIII
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Total no. of Economically Weaker Section*\(EWS\) students Enrolled in Schools \(DCF Sl. No. 1.42\(b\)\)
+Pre-Pri.
+Class I
+Class II
+Class III
+Class IV
+Class V
+Class VI
+Class VII
+Class VIII
+Class IX
+Class X
+Class XI
+Class XII
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+Teachers
+Classes Taught
+1-Primary
+9
+2-Up.Pr.
+11
+3-Pr. & Up.Pr.
+0
+5-Sec. only
+6
+6-H Sec only.
+9
+7-Up pri and Sec.
+0
+8-Sec and H Sec
+0
+10- Pre-Primary Only.
+2
+11-Pre- Pri & Pri
+0
+Teachers Aged above 55
+0
+No. of Total Teacher Received Service Training
+0
+Total Teacher Involve in Non Teaching Assignment
+6
+Total
+37
+Nature of Appointment
+Gender
+Regular
+18
+Male
+1
+Part-time
+19
+Female
+36
+Contract
+0
+Transgender
+0
+Academic Qualification
+Below Graduate
+1
+Graduate
+13
+Post Graduate and Above
+23
+Total Teacher Trained in Computer
+14
+Teacher With Professional Qualification
+Diploma or Certificate in basic teachers training
+10
+Bachelor of Elementary Education \(B.El.Ed.\)
+0
+B.Ed. or Equivalent
+24
+M.Ed. or Equivalent
+0
+Other
+1
+None
+0
+Diploma/degree in special Education
+2
+Pursuing any Relevant Professional Course
+0
+Page 1
+Academic Year : 2022-23
+Generated On : 30 December 2024 11:29:01 PM\( https://src.udiseplus.gov.in\)
+SCHOOL REPORT CARD
+UDISE CODE: 07  06  01  07  902
+School Name: Govt. Sarvodaya Kanya Vidyalaya No.1 \(Hindi Medium\), Jama Masjid, Delhi
+Enrolment \(By Social Category\)
+Note : Gen = General,G.Tot = Grand Total
+Pre-Pr
+I
+II
+III
+IV
+V
+VI
+VII
+VIII
+IX
+X
+XI
+XII
+Total
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+All
+Gen
+49
+53
+51
+67
+75
+77
+72
+93
+84
+72
+64
+61
+80
+898
+898
+SC
+1
+1
+2
+4
+2
+2
+1
+13
+13
+ST
+1
+1
+2
+2
+OBC
+2
+2
+2
+1
+1
+1
+9
+9
+Total
+52
+53
+52
+68
+78
+79
+78
+96
+87
+72
+64
+62
+81
+922
+922
+G.Tot
+52
+53
+52
+68
+78
+79
+78
+96
+87
+72
+64
+62
+81
+922
+922
+Minority Details
+Note : Musl = Muslim, Chris = Christian , Budh = Buddhist ,Aadh = Aadhar ,Rept = Repeater
+Musl
+46
+52
+50
+68
+76
+75
+69
+83
+68
+72
+60
+59
+79
+857
+857
+Chris
+Sikh
+Budh
+Parsi
+Jain
+Other
+Total
+G.Tot
+Aadh
+BPL
+3
+6
+2
+11
+11
+Rept
+Cwsn
+1
+1
+4
+1
+1
+1
+9
+9
+Enrolment by grade in the current academic session \(by Age in completed years\)
+Class
+Pre-Pr
+I
+II
+III
+IV
+V
+VI
+VII
+VIII
+IX
+X
+XI
+XII
+Total
+Age
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+B
+G
+All
+>3
+16
+16
+16
+4
+36
+1
+37
+37
+5
+48
+48
+48
+6
+4
+48
+1
+53
+53
+7
+4
+61
+7
+72
+72
+8
+4
+66
+4
+74
+74
+9
+2
+5
+69
+2
+78
+78
+10
+6
+70
+2
+78
+78
+11
+4
+88
+92
+92
+12
+2
+6
+78
+86
+86
+13
+8
+64
+1
+73
+73
+14
+1
+8
+57
+2
+68
+68
+15
+6
+51
+1
+58
+58
+16
+8
+51
+59
+59
+17
+1
+23
+24
+24
+18
+5
+5
+5
+19
+1
+1
+1
+20
+21
+>=22
+Total
+0
+16
+53
+52
+68
+78
+79
+78
+96
+87
+72
+64
+62
+81
+922
+922
+Disclaimer
+Though all the efforts have been made to ensure the accuracy and currency of the content on this website \(https://udiseplus.gov.in/ \) the same should not be construed as
+a statement of law or used for any legal purposes. In case of any ambiguity or doubts, users are advised to verify/check with the appropriate Government
+Functionary/Authority and/or other source\(s\) and to obtain appropriate professional advice.
+As per Section 79 of the Information Technology Act 2000\(as amended Act 2008\),This Report is based on voluntary uploading of data by the schools having active UDISE+
+codes in a reference year, with 30th September as the reference date, using specially designed data collection formats \(DCF\).The UDISE+ code of a school is allotted by the
+State/UT  Government where the school is located. The responsibility for the accuracy of the data filled in the DCFs rests with the concerned Nodal Officers,namely Principal/
+Vice-Principal/ Head Master/ Head Teacher/ Senior most teacher at the school level, Cluster Resource Officer at the cluster level, Block Education Officer for the  block level
+District Education Officer at the district level and State MIS coordinator at the Samagra Siksha SPD Office at the State level. The Ministry of Education, therefore, assumes no
+responsibility or liability for any errors or omissions in the data and indicators reported in the document.Inclusion of name of a school in any of the lists in the portal
+https://udiseplus.gov.in or any of the reports generated in the portal does not confer the status of recognition to the school by the Ministry of Education, Govt. of India.
+Page 2
+Academic Year : 2022-23
+Generated On : 30 December 2024 11:29:01 PM\( https://src.udiseplus.gov.in\)

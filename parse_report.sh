@@ -5,4 +5,9 @@ yml_file="${1%.*}.yml"
 rm ./carmel-2223/carmel-2223.yml
 rm ./carmel-2223/carmel-2223_enrollment.html
 ruby -r "./school_report_parser.rb" -e "SchoolReportParser.extract_to_text('./carmel-2223/carmel-2223.pdf')"
+
+rm ./sarvo-2223/sarvo-2223.yml
+rm ./sarvo-2223/sarvo-2223_enrollment.html
+ruby -r "./school_report_parser.rb" -e "SchoolReportParser.extract_to_text('./sarvo-2223/sarvo-2223.pdf')"
+
 echo "Done! Check the output files in the same directory as the PDF." 

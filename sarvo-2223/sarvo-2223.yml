@@ -1,0 +1,1614 @@
+---
+basic_info:
+  udise_code: '07060107902'
+  academic_year: 2022-23
+location:
+  state: Delhi
+  district: CENTRAL
+  block: DOE ZONE-27
+  area_type: 2-Urban
+  cluster: 2162037-North DMC Primary School \(Boys\) ,  Faiz Bazar, Near Darya Ganj
+    Post
+  ward: '084-N \(Chandni Chowk\)'
+  pincode: '110006'
+school_details:
+  recognition:
+    primary: 1945
+    upper_primary: 1945
+    secondary: 1945
+    higher_secondary: 1945
+  affiliation:
+    secondary: 1-CBSE
+    higher_secondary: 1-CBSE
+  shifts:
+    has_shifts: 2-No
+  category: 3 - Pr. with Up.Pr. sec. and H.Sec.
+  management: 1-Department of Education
+  type: 2-Girls
+  class_range: 1  -   12
+  pre_primary: 1-Yes
+  established: 1945
+  is_special_school: 2-No
+infrastructure:
+  sanitation:
+    toilets:
+      boys:
+        total: 0
+        functional: 0
+        cwsn: 0
+        urinals: 0
+      girls:
+        total: 18
+        functional: 18
+        cwsn: 1
+        urinals: 19
+    handwash:
+      near_toilet: 1-Yes
+      for_meal: 1-Yes
+  classrooms:
+    total: 24
+    good_condition: 24
+    needs_minor_repair: 0
+    needs_major_repair: 0
+    other_rooms: 4
+  digital_facilities:
+    ict_lab: 2-No
+    internet: 1-Yes
+    computers:
+      desktop: 10
+      laptop: 0
+      tablet: 40
+    peripherals:
+      printer: 3
+      projector: 1
+    smart_classroom:
+      digiboard: 0
+      dth: 2-No
+  other_facilities:
+    hm_room: 1-Yes
+  building:
+    details:
+      status: 3-Government
+      boundary_wall: 1-Pucca
+      blocks: 1
+      pucca_blocks: 1
+    accessibility:
+      ramps: 1-Yes
+      handrails: 1-Yes
+  furniture:
+    count: 939
+  library:
+    available: 1-Yes
+teachers:
+  count_by_level:
+    regular: 18
+    part_time: 19
+    contract: 0
+  qualifications:
+    academic:
+      below_graduate: 1
+      graduate: 13
+      post_graduate_and_above: 23
+    professional:
+      basic_training: 10
+      beled: 0
+      bed: 24
+      med: 0
+      other: 1
+      none: 0
+      special_education: 2
+      pursuing_course: 0
+  demographics:
+    male: 1
+    female: 36
+    transgender: 0
+  training:
+    service:
+      total: 0
+    computer_trained: 14
+  age_distribution:
+    above_55: 0
+  assignments:
+    teaching: {}
+    non_teaching: 6
+  classes_taught:
+    primary: 9
+    upper_primary: 11
+    primary_and_upper_primary: 0
+    secondary_only: 6
+    higher_secondary_only: 9
+    upper_primary_and_secondary: 0
+    secondary_and_higher_secondary: 0
+    pre_primary_only: 2
+    pre_primary_and_primary: 0
+students:
+  facilities:
+    general:
+      transport:
+        primary: 0
+        upper_primary: 0
+    incentives:
+      free_textbooks:
+        primary: 0
+        upper_primary: 0
+      free_uniform:
+        primary: 0
+        upper_primary: 0
+academic:
+  medium_of_instruction:
+    medium_1:
+      code: '04'
+      name: Hindi
+    medium_2:
+      code: '19'
+      name: English
+  inspections:
+    visits:
+      academic: 5
+      crc_coordinator: 25
+      block_level: 5
+      state_district: 4
+  hours:
+    instructional:
+      days:
+        primary: 220
+        upper_primary: 220
+        secondary: 220
+        higher_secondary: 220
+      student_hours:
+        primary: 5.0
+        upper_primary: 6.0
+        secondary: 6.0
+        higher_secondary: 6.0
+      teacher_hours:
+        primary: 6.3
+        upper_primary: 6.3
+        secondary: 6.3
+        higher_secondary: 6.3
+  assessments:
+    cce:
+      implemented:
+        primary: 1-Yes
+        upper_primary: 1-Yes
+        secondary: 1-Yes
+        higher_secondary: 1-Yes
+facilities:
+  residential:
+    details:
+      type: 3 - Non-Residential
+      minority_school: 2-No
+  basic:
+    water:
+      available: 1-Yes
+      functional: 1-Yes
+      rain_water_harvesting: 1-Yes
+    electricity:
+      available: 1-Yes
+      solar_panel: 2-No
+    safety:
+      playground: 1-Yes
+      all_weather_road: 1-Yes
+  medical:
+    checkups:
+      available: 2-No
+  anganwadi:
+    at_premises: 2-No
+    boys: 0
+    girls: 0
+    worker: NA
+committees:
+  smc:
+    details:
+      same_as_smdc: NA
+      exists: 1-Yes
+  smdc:
+    details:
+      constituted: 1-Yes
+grants:
+  received:
+    amount: 0.0
+  expenditure:
+    amount: 0.0
+enrollment_data:
+  gen:
+    pre-pr:
+      boys:
+      girls: 49
+    i:
+      boys:
+      girls: 53
+    ii:
+      boys:
+      girls: 51
+    iii:
+      boys:
+      girls: 67
+    iv:
+      boys:
+      girls: 75
+    v:
+      boys:
+      girls: 77
+    vi:
+      boys:
+      girls: 72
+    vii:
+      boys:
+      girls: 93
+    viii:
+      boys:
+      girls: 84
+    ix:
+      boys:
+      girls: 72
+    x:
+      boys:
+      girls: 64
+    xi:
+      boys:
+      girls: 61
+    xii:
+      boys:
+      girls: 80
+  sc:
+    pre-pr:
+      boys:
+      girls: 1
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls: 1
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls: 2
+    vi:
+      boys:
+      girls: 4
+    vii:
+      boys:
+      girls: 2
+    viii:
+      boys:
+      girls: 2
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  st:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls: 1
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls: 1
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  obc:
+    pre-pr:
+      boys:
+      girls: 2
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls: 2
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls: 2
+    vii:
+      boys:
+      girls: 1
+    viii:
+      boys:
+      girls: 1
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls: 1
+    xii:
+      boys:
+      girls:
+  muslim:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  christian:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  sikh:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  buddhist:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  parsi:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  jain:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  others:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  aadhaar:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  bpl:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  repeater:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  cwsn:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_3:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_4:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_5:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_6:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_7:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_8:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_9:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_10:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_11:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_12:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_13:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_14:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_15:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_16:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_17:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_18:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_19:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_20:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_21:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_22:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+ews_data:
+s12_data:
