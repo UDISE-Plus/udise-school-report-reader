@@ -127,7 +127,6 @@ class SchoolReportParser
   def self.extract_data_points(compressed_content)
     lines = compressed_content.split("\n").map(&:strip)
     current_section = nil
-    current_block = nil
     in_performance_section = false
     current_class = nil
     csv_path = compressed_content.instance_variable_get(:@csv_path)
@@ -417,27 +416,6 @@ class SchoolReportParser
     # Process each line
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
-
-      # Update current_block based on line content
-      if line =~ /^(Gen|SC|ST|OBC)$/
-        current_block = {
-          'x' => case line
-                when 'Gen' then 32.33
-                when 'SC' then 34.0
-                when 'ST' then 34.33
-                when 'OBC' then 31.5
-                end,
-          'y' => case line
-                when 'Gen' then 757.25
-                when 'SC' then 745.75
-                when 'ST' then 734.25
-                when 'OBC' then 719.0
-                end,
-          'page' => 2,
-          'font' => 'F1',
-          'font_size' => 6.0
-        }
-      end
 
       case line
       # Basic Info
