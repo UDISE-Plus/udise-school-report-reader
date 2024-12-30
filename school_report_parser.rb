@@ -63,8 +63,9 @@ class SchoolReportParser
     bpl_rows = []
     rept_rows = []
     cwsn_rows = []
-    age_above_3_rows = []
-    
+    age_3_rows = []
+    age_4_rows = []
+
     CSV.foreach(combined_path, headers: true) do |row|
       if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
         header_row = row
@@ -112,7 +113,9 @@ class SchoolReportParser
         elsif y_coord == 543.5
           cwsn_rows << row
         elsif y_coord == 495.0
-          age_above_3_rows << row
+          age_3_rows << row
+        elsif y_coord == 483.5
+          age_4_rows << row
         end
       end
     end
@@ -123,7 +126,7 @@ class SchoolReportParser
     grade_rows.sort_by! { |row| row['text_x'].to_f }
     bg_rows.sort_by! { |row| row['text_x'].to_f }
     [gen_rows, sc_rows, st_rows, obc_rows, musl_rows, chris_rows, sikh_rows, budd_rows, 
-     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, age_above_3_rows].each do |rows|
+     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, age_3_rows, age_4_rows].each do |rows|
       rows.sort_by! { |row| row['text_x'].to_f }
     end
 
@@ -131,7 +134,7 @@ class SchoolReportParser
     grade_rows.reject! { |row| row['text_x'].to_f >= 500 }
     bg_rows.reject! { |row| row['text_x'].to_f >= 500 }
     [gen_rows, sc_rows, st_rows, obc_rows, musl_rows, chris_rows, sikh_rows, budd_rows,
-     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, age_above_3_rows].each do |rows|
+     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, age_3_rows, age_4_rows].each do |rows|
       rows.reject! { |row| row['text_x'].to_f >= 500 }
     end
 
@@ -157,7 +160,8 @@ class SchoolReportParser
     bpl_numbers = match_numbers_to_pairs(bpl_rows, bg_pairs)
     rept_numbers = match_numbers_to_pairs(rept_rows, bg_pairs)
     cwsn_numbers = match_numbers_to_pairs(cwsn_rows, bg_pairs)
-    age_above_3_numbers = match_numbers_to_pairs(age_above_3_rows, bg_pairs)
+    age_3_numbers = match_numbers_to_pairs(age_3_rows, bg_pairs)
+    age_4_numbers = match_numbers_to_pairs(age_4_rows, bg_pairs)
 
     # Create HTML file with the header and grade information
     html_content = <<~HTML
@@ -322,7 +326,7 @@ class SchoolReportParser
           <tr>
             <td class="category">Age >3</td>
             #{bg_pairs.map { |x_mid, _|
-              numbers = age_above_3_numbers[x_mid]
+              numbers = age_3_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
@@ -331,13 +335,10 @@ class SchoolReportParser
           <tr>
             <td class="category">Age 4</td>
             #{bg_pairs.map.with_index { |(x_mid, _), index|
-              if index == 0  # Pre-Primary
-                "<td>#{data['students']['enrollment']['by_age']['4']['data']['pre_primary']['boys']}</td><td>#{data['students']['enrollment']['by_age']['4']['data']['pre_primary']['girls']}</td>"
-              elsif index == 1  # Class 1
-                "<td>#{data['students']['enrollment']['by_age']['4']['data']['class_1']['boys']}</td><td>#{data['students']['enrollment']['by_age']['4']['data']['class_1']['girls']}</td>"
-              else
-                "<td></td><td></td>"
-              end
+              numbers = age_4_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
             }.join}
           </tr>
         </table>
@@ -603,7 +604,6 @@ class SchoolReportParser
     current_section = nil
     in_performance_section = false
     current_class = nil
-    csv_path = compressed_content.instance_variable_get(:@csv_path)
     
     data = {
       'basic_info' => {},
@@ -710,117 +710,6 @@ class SchoolReportParser
         'attendance' => {}
       },
       'students' => {
-        'enrollment' => {
-          'by_class' => {
-            'pre_primary' => { 'boys' => 0, 'girls' => 0 },
-            'class_1' => { 'boys' => 0, 'girls' => 0 },
-            'class_2' => { 'boys' => 0, 'girls' => 0 },
-            'class_3' => { 'boys' => 0, 'girls' => 0 },
-            'class_4' => { 'boys' => 0, 'girls' => 0 },
-            'class_5' => { 'boys' => 0, 'girls' => 0 },
-            'class_6' => { 'boys' => 0, 'girls' => 0 },
-            'class_7' => { 'boys' => 0, 'girls' => 0 },
-            'class_8' => { 'boys' => 0, 'girls' => 0 },
-            'class_9' => { 'boys' => 0, 'girls' => 0 },
-            'class_10' => { 'boys' => 0, 'girls' => 0 },
-            'class_11' => { 'boys' => 0, 'girls' => 0 },
-            'class_12' => { 'boys' => 0, 'girls' => 0 }
-          },
-          'by_social_category' => {
-            'gen' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'sc' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'st' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'obc' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'musl' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'chris' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'sikh' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'budd' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'parsi' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'jain' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'others' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'aadh' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'bpl' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'rept' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'cwsn' => {
-              'coordinates' => {},
-              'entries' => []
-            },
-            'by_age' => {}
-          },
-          'by_age' => {},
-          'rte' => {
-            'section_12' => {
-              'class_1' => { 'boys' => 0, 'girls' => 0 },
-              'class_2' => { 'boys' => 0, 'girls' => 0 },
-              'class_3' => { 'boys' => 0, 'girls' => 0 },
-              'class_4' => { 'boys' => 0, 'girls' => 0 },
-              'class_5' => { 'boys' => 0, 'girls' => 0 },
-              'class_6' => { 'boys' => 0, 'girls' => 0 },
-              'class_7' => { 'boys' => 0, 'girls' => 0 },
-              'class_8' => { 'boys' => 0, 'girls' => 0 },
-              'class_9' => { 'boys' => 0, 'girls' => 0 },
-              'class_10' => { 'boys' => 0, 'girls' => 0 },
-              'class_11' => { 'boys' => 0, 'girls' => 0 },
-              'class_12' => { 'boys' => 0, 'girls' => 0 }
-            },
-            'ews' => {
-              'class_1' => { 'boys' => 0, 'girls' => 0 },
-              'class_2' => { 'boys' => 0, 'girls' => 0 },
-              'class_3' => { 'boys' => 0, 'girls' => 0 },
-              'class_4' => { 'boys' => 0, 'girls' => 0 },
-              'class_5' => { 'boys' => 0, 'girls' => 0 },
-              'class_6' => { 'boys' => 0, 'girls' => 0 },
-              'class_7' => { 'boys' => 0, 'girls' => 0 },
-              'class_8' => { 'boys' => 0, 'girls' => 0 },
-              'class_9' => { 'boys' => 0, 'girls' => 0 },
-              'class_10' => { 'boys' => 0, 'girls' => 0 },
-              'class_11' => { 'boys' => 0, 'girls' => 0 },
-              'class_12' => { 'boys' => 0, 'girls' => 0 }
-            }
-          }
-        },
         'facilities' => {
           'general' => {
             'transport' => {
@@ -1305,35 +1194,6 @@ class SchoolReportParser
         if next_line =~ /^\d+$/
           data['teachers']['age_distribution']['above_55'] = next_line.to_i
         end
-      
-      # Student Enrollment - RTE
-      when "Total no. of Students Enrolled Under Section 12 of the RTE Act"
-        current_section = 'rte'
-      when /^Class ([IVX]+)$/ && current_section == 'rte'
-        class_num = roman_to_arabic($1)
-        if class_num && next_line =~ /^B\s+G$/
-          boys = lines[i + 2]&.strip.to_i
-          girls = lines[i + 3]&.strip.to_i
-          data['students']['enrollment']['rte']['section_12']["class_#{class_num}"] = {
-            'boys' => boys,
-            'girls' => girls
-          }
-        end
-      
-      # Student Enrollment - EWS
-      when "Total no. of Economically Weaker Section"
-        current_section = 'ews'
-      when /^Class ([IVX]+)$/ && current_section == 'ews'
-        class_num = roman_to_arabic($1)
-        if class_num && next_line =~ /^B\s+G$/
-          boys = lines[i + 2]&.strip.to_i
-          girls = lines[i + 3]&.strip.to_i
-          data['students']['enrollment']['rte']['ews']["class_#{class_num}"] = {
-            'boys' => boys,
-            'girls' => girls
-          }
-        end
-      
       # Residential Info
       when "Residential School"
         if next_line && next_line =~ /^(\d+)\s*-\s*(.+)$/
@@ -1437,152 +1297,6 @@ class SchoolReportParser
         data['academic']['vocational']['courses']['available'] = next_line if next_line
       when "Vocational Trainer"
         data['academic']['vocational']['trainers']['available'] = next_line if next_line
-      
-      # Student social categories
-      when /^Gen$/
-        extract_enrollment_data('Gen', 757.25, csv_path, data)
-      when /^SC$/
-        extract_enrollment_data('SC', 745.5, csv_path, data)
-      when /^ST$/
-        extract_enrollment_data('ST', 734.25, csv_path, data)
-      when /^OBC$/
-        extract_enrollment_data('OBC', 719.0, csv_path, data)
-      when /^Musl$/
-        extract_enrollment_data('Musl', 669.5, csv_path, data)
-      when /^Chris$/
-        extract_enrollment_data('Chris', 658.0, csv_path, data)
-      when /^Sikh$/
-        extract_enrollment_data('Sikh', 646.5, csv_path, data)
-      when /^Budd$/
-        extract_enrollment_data('Budd', 635.0, csv_path, data)
-      when /^Parsi$/
-        extract_enrollment_data('Parsi', 623.5, csv_path, data)
-      when /^Jain$/
-        extract_enrollment_data('Jain', 612.0, csv_path, data)
-      when /^Others$/
-        extract_enrollment_data('Others', 600.5, csv_path, data)
-      when /^Aadh$/
-        extract_enrollment_data('Aadh', 589.0, csv_path, data)
-      when /^BPL$/
-        extract_enrollment_data('BPL', 566.5, csv_path, data)
-      when /^Rept$/
-        extract_enrollment_data('Rept', 555.0, csv_path, data)
-      when /^CWSN$/
-        extract_enrollment_data('CWSN', 543.5, csv_path, data)
-      when /^>3$/
-        # Initialize by_age at the correct level
-        data['students']['enrollment']['by_age'] = {
-          'above_3' => {
-            'coordinates' => {
-              'x' => 31.5,
-              'y' => 495.0,
-              'page' => 2,
-              'font' => 'F1',
-              'font_size' => 6.0
-            },
-            'entries' => ['>3'],
-            'data' => {
-              'pre_primary' => { 'boys' => 0, 'girls' => 0 },
-              'class_1' => { 'boys' => 0, 'girls' => 0 }
-            },
-            'total' => {
-              'boys' => 0,
-              'girls' => 0,
-              'all' => 0
-            }
-          },
-          '4' => {
-            'coordinates' => {
-              'x' => 31.5,
-              'y' => 485.0,
-              'page' => 2,
-              'font' => 'F1',
-              'font_size' => 6.0
-            },
-            'entries' => ['4'],
-            'data' => {
-              'pre_primary' => { 'boys' => 0, 'girls' => 0 },
-              'class_1' => { 'boys' => 0, 'girls' => 0 }
-            },
-            'total' => {
-              'boys' => 0,
-              'girls' => 0,
-              'all' => 0
-            }
-          }
-        }
-        
-        # Look ahead for age data
-        age_data = []
-        (i+1..i+20).each do |j|
-          break if j >= lines.length
-          age_data << lines[j]
-        end
-        
-        # Extract values for Pre-Primary and Class 1
-        if age_data.length >= 4
-          data['students']['enrollment']['by_age']['above_3']['entries'] += [
-            age_data[0], age_data[1], age_data[2], age_data[3]
-          ].compact
-          
-          data['students']['enrollment']['by_age']['above_3']['data'] = {
-            'pre_primary' => {
-              'boys' => age_data[0].to_i,
-              'girls' => age_data[1].to_i
-            },
-            'class_1' => {
-              'boys' => age_data[2].to_i,
-              'girls' => age_data[3].to_i
-            }
-          }
-          
-          # Calculate totals
-          total_boys = age_data[0].to_i + age_data[2].to_i
-          total_girls = age_data[1].to_i + age_data[3].to_i
-          data['students']['enrollment']['by_age']['above_3']['total'] = {
-            'boys' => total_boys,
-            'girls' => total_girls,
-            'all' => total_boys + total_girls
-          }
-        end
-      when /^4$/
-        # Look ahead for age data
-        age_data = []
-        (i+1..i+20).each do |j|
-          break if j >= lines.length
-          age_data << lines[j]
-        end
-        
-        # Extract values for Pre-Primary and Class 1
-        if age_data.length >= 4
-          # Initialize the entire structure for age 4
-          data['students']['enrollment']['by_age']['4'] = {
-            'coordinates' => {
-              'x' => 31.5,
-              'y' => 485.0,
-              'page' => 2,
-              'font' => 'F1',
-              'font_size' => 6.0
-            },
-            'entries' => ['4', '111', '42', '1', '1'],
-            'data' => {
-              'pre_primary' => {
-                'boys' => 111,
-                'girls' => 42
-              },
-              'class_1' => {
-                'boys' => 1,
-                'girls' => 1
-              }
-            },
-            'total' => {
-              'boys' => 112,
-              'girls' => 43,
-              'all' => 155
-            }
-          }
-        end
-      
       # Teacher workload
       when /Teaching Hours per Week/
         if next_line =~ /(\d+)/
@@ -1740,41 +1454,6 @@ class SchoolReportParser
     data.reject! { |_, v| v.empty? }
     
     data
-  end
-
-  def self.extract_enrollment_data(category, y_coord, csv_path, data)
-    page_num = 2
-    margin = 4.0  # Allow 4 units of difference since entries span vertically
-    
-    # Parse CSV content to find matching entries
-    entries = []
-    csv_content = File.read(csv_path)
-    CSV.parse(csv_content, headers: true) do |row|
-      if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
-        entries << [row['x'].to_f, row['text']]
-      end
-    end
-    
-    # Sort by x coordinate to get entries in order
-    entries.sort_by! { |x, _| x }
-    
-    # Map category names to their data structure keys
-    category_key = category.downcase
-    
-    data['students']['enrollment']['by_social_category'][category_key]['coordinates'] = {
-      'x' => 31.5,  # Most categories use this x coordinate
-      'y' => y_coord,
-      'page' => page_num,
-      'font' => 'F1',
-      'font_size' => 6.0
-    }
-    
-    # Special case for Gen category which has slightly different x coordinate
-    if category == 'Gen'
-      data['students']['enrollment']['by_social_category'][category_key]['coordinates']['x'] = 32.33
-    end
-    
-    data['students']['enrollment']['by_social_category'][category_key]['entries'] = entries.map { |_, text| text }
   end
 
   def self.roman_to_arabic(roman)
