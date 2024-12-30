@@ -68,10 +68,60 @@ class SchoolReportParser
       }
     end
     
-    # Start with all rectangles as base entries
-    combined_data = rects.map do |rect|
-      # Find all text blocks within this rectangle
-      contained_blocks = blocks.select do |block|
+    # For each text block, find its smallest containing rectangle
+    combined_data = blocks.map do |block|
+      # Find rectangles on the same page that contain this text block
+      containing_rects = rects.select do |rect|
+        rect[:page] == block[:page] &&
+        block[:x] >= rect[:x] &&
+        block[:x] <= (rect[:x] + rect[:width]) &&
+        block[:y] >= rect[:y] &&
+        block[:y] <= (rect[:y] + rect[:height])
+      end
+      
+      # Find the smallest containing rectangle by area
+      smallest_rect = containing_rects.min_by { |r| r[:width] * r[:height] }
+      
+      # Create entry with block data and rectangle data (if found)
+      if smallest_rect
+        {
+          page: block[:page],
+          text: block[:text],
+          text_x: block[:x],
+          text_y: block[:y],
+          font: block[:font],
+          font_size: block[:font_size],
+          rect_x: smallest_rect[:x],
+          rect_y: smallest_rect[:y],
+          rect_width: smallest_rect[:width],
+          rect_height: smallest_rect[:height],
+          stroke_color: smallest_rect[:stroke_color],
+          fill_color: smallest_rect[:fill_color],
+          line_width: smallest_rect[:line_width]
+        }
+      else
+        {
+          page: block[:page],
+          text: block[:text],
+          text_x: block[:x],
+          text_y: block[:y],
+          font: block[:font],
+          font_size: block[:font_size],
+          rect_x: nil,
+          rect_y: nil,
+          rect_width: nil,
+          rect_height: nil,
+          stroke_color: nil,
+          fill_color: nil,
+          line_width: nil
+        }
+      end
+    end
+    
+    # Add empty rectangles that don't contain any text
+    rects.each do |rect|
+      # Check if this rectangle contains any text blocks
+      has_text = blocks.any? do |block|
         block[:page] == rect[:page] &&
         block[:x] >= rect[:x] &&
         block[:x] <= (rect[:x] + rect[:width]) &&
@@ -79,28 +129,9 @@ class SchoolReportParser
         block[:y] <= (rect[:y] + rect[:height])
       end
       
-      # If there are contained blocks, create an entry for each
-      if contained_blocks.any?
-        contained_blocks.map do |block|
-          {
-            page: rect[:page],
-            text: block[:text],
-            text_x: block[:x],
-            text_y: block[:y],
-            font: block[:font],
-            font_size: block[:font_size],
-            rect_x: rect[:x],
-            rect_y: rect[:y],
-            rect_width: rect[:width],
-            rect_height: rect[:height],
-            stroke_color: rect[:stroke_color],
-            fill_color: rect[:fill_color],
-            line_width: rect[:line_width]
-          }
-        end
-      else
-        # Create an entry for empty rectangle
-        [{
+      # If it doesn't contain text, add it as an empty entry
+      unless has_text
+        combined_data << {
           page: rect[:page],
           text: "",
           text_x: nil,
@@ -114,37 +145,8 @@ class SchoolReportParser
           stroke_color: rect[:stroke_color],
           fill_color: rect[:fill_color],
           line_width: rect[:line_width]
-        }]
+        }
       end
-    end.flatten
-    
-    # Add any text blocks that aren't in any rectangle
-    orphan_blocks = blocks.reject do |block|
-      rects.any? do |rect|
-        block[:page] == rect[:page] &&
-        block[:x] >= rect[:x] &&
-        block[:x] <= (rect[:x] + rect[:width]) &&
-        block[:y] >= rect[:y] &&
-        block[:y] <= (rect[:y] + rect[:height])
-      end
-    end
-    
-    orphan_blocks.each do |block|
-      combined_data << {
-        page: block[:page],
-        text: block[:text],
-        text_x: block[:x],
-        text_y: block[:y],
-        font: block[:font],
-        font_size: block[:font_size],
-        rect_x: nil,
-        rect_y: nil,
-        rect_width: nil,
-        rect_height: nil,
-        stroke_color: nil,
-        fill_color: nil,
-        line_width: nil
-      }
     end
     
     # Sort by page, then y (top to bottom), then x (left to right)
