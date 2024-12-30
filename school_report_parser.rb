@@ -23,6 +23,7 @@ class SchoolReportParser
     extract_bt_et_blocks(reader, csv_path)
     
     # Extract data points to YAML
+    compressed_content.instance_variable_set(:@csv_path, csv_path)
     data_points = extract_data_points(compressed_content)
     yaml_path = pdf_path.sub(/\.pdf$/i, '.yml')
     File.write(yaml_path, data_points.to_yaml)
@@ -129,6 +130,7 @@ class SchoolReportParser
     current_block = nil
     in_performance_section = false
     current_class = nil
+    csv_path = compressed_content.instance_variable_get(:@csv_path)
     
     data = {
       'basic_info' => {},
@@ -938,6 +940,22 @@ class SchoolReportParser
       
       # Student social categories
       when /^Gen$/
+        y_coord = 757.25
+        page_num = 2
+        margin = 2.0  # Allow 2 units of difference
+        
+        # Parse CSV content to find matching entries
+        entries = []
+        csv_content = File.read(csv_path)
+        CSV.parse(csv_content, headers: true) do |row|
+          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
+            entries << [row['x'].to_f, row['text']]
+          end
+        end
+        
+        # Sort by x coordinate to get entries in order
+        entries.sort_by! { |x, _| x }
+        
         data['students']['enrollment']['by_social_category']['general']['coordinates'] = {
           'x' => 32.33,
           'y' => 757.25,
@@ -945,7 +963,24 @@ class SchoolReportParser
           'font' => 'F1',
           'font_size' => 6.0
         }
+        data['students']['enrollment']['by_social_category']['general']['entries'] = entries.map { |_, text| text }
       when /^SC$/
+        y_coord = 745.75
+        page_num = 2
+        margin = 2.0  # Allow 2 units of difference
+        
+        # Parse CSV content to find matching entries
+        entries = []
+        csv_content = File.read(csv_path)
+        CSV.parse(csv_content, headers: true) do |row|
+          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
+            entries << [row['x'].to_f, row['text']]
+          end
+        end
+        
+        # Sort by x coordinate to get entries in order
+        entries.sort_by! { |x, _| x }
+        
         data['students']['enrollment']['by_social_category']['sc']['coordinates'] = {
           'x' => 34.0,
           'y' => 745.75,
@@ -953,7 +988,24 @@ class SchoolReportParser
           'font' => 'F1',
           'font_size' => 6.0
         }
+        data['students']['enrollment']['by_social_category']['sc']['entries'] = entries.map { |_, text| text }
       when /^ST$/
+        y_coord = 734.25
+        page_num = 2
+        margin = 2.0  # Allow 2 units of difference
+        
+        # Parse CSV content to find matching entries
+        entries = []
+        csv_content = File.read(csv_path)
+        CSV.parse(csv_content, headers: true) do |row|
+          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
+            entries << [row['x'].to_f, row['text']]
+          end
+        end
+        
+        # Sort by x coordinate to get entries in order
+        entries.sort_by! { |x, _| x }
+        
         data['students']['enrollment']['by_social_category']['st']['coordinates'] = {
           'x' => 34.33,
           'y' => 734.25,
@@ -961,7 +1013,24 @@ class SchoolReportParser
           'font' => 'F1',
           'font_size' => 6.0
         }
+        data['students']['enrollment']['by_social_category']['st']['entries'] = entries.map { |_, text| text }
       when /^OBC$/
+        y_coord = 719.0
+        page_num = 2
+        margin = 4.0  # Allow 4 units of difference for OBC since entries span more vertically
+        
+        # Parse CSV content to find matching entries
+        entries = []
+        csv_content = File.read(csv_path)
+        CSV.parse(csv_content, headers: true) do |row|
+          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
+            entries << [row['x'].to_f, row['text']]
+          end
+        end
+        
+        # Sort by x coordinate to get entries in order
+        entries.sort_by! { |x, _| x }
+        
         data['students']['enrollment']['by_social_category']['obc']['coordinates'] = {
           'x' => 31.5,
           'y' => 719.0,
@@ -969,6 +1038,7 @@ class SchoolReportParser
           'font' => 'F1',
           'font_size' => 6.0
         }
+        data['students']['enrollment']['by_social_category']['obc']['entries'] = entries.map { |_, text| text }
       
       # CWSN details
       when "CWSN Facilities"
