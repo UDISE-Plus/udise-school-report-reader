@@ -476,6 +476,30 @@ students:
           boys: 69
           girls: 24
           all: 93
+      '4':
+        coordinates:
+          x: 31.5
+          "y": 485.0
+          page: 2
+          font: F1
+          font_size: 6.0
+        entries:
+        - '4'
+        - '111'
+        - '42'
+        - '1'
+        - '1'
+        data:
+          pre_primary:
+            boys: 111
+            girls: 42
+          class_1:
+            boys: 1
+            girls: 1
+        total:
+          boys: 112
+          girls: 43
+          all: 155
     rte:
       section_12:
         class_1:

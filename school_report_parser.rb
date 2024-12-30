@@ -30,20 +30,20 @@ class SchoolReportParser
     combined_path = pdf_path.sub(/\.pdf$/i, '_combined.csv')
     combine_blocks_and_rects(csv_path, rects_path, combined_path)
     
-    # Extract enrollment table to HTML
-    html_path = pdf_path.sub(/\.pdf$/i, '_enrollment.html')
-    extract_enrollment_table(combined_path, html_path)
-    
     # Extract data points to YAML
     compressed_content.instance_variable_set(:@csv_path, csv_path)
     data_points = extract_data_points(compressed_content)
     yaml_path = pdf_path.sub(/\.pdf$/i, '.yml')
     File.write(yaml_path, data_points.to_yaml)
     
+    # Extract enrollment table to HTML
+    html_path = pdf_path.sub(/\.pdf$/i, '_enrollment.html')
+    extract_enrollment_table(combined_path, html_path, data_points)
+    
     [txt_path, compressed_path, yaml_path, csv_path, rects_path, combined_path, html_path]
   end
 
-  def self.extract_enrollment_table(combined_path, html_path)
+  def self.extract_enrollment_table(combined_path, html_path, data)
     # Read the combined CSV file
     header_row = nil
     grade_rows = []
@@ -326,6 +326,18 @@ class SchoolReportParser
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age 4</td>
+            #{bg_pairs.map.with_index { |(x_mid, _), index|
+              if index == 0  # Pre-Primary
+                "<td>#{data['students']['enrollment']['by_age']['4']['data']['pre_primary']['boys']}</td><td>#{data['students']['enrollment']['by_age']['4']['data']['pre_primary']['girls']}</td>"
+              elsif index == 1  # Class 1
+                "<td>#{data['students']['enrollment']['by_age']['4']['data']['class_1']['boys']}</td><td>#{data['students']['enrollment']['by_age']['4']['data']['class_1']['girls']}</td>"
+              else
+                "<td></td><td></td>"
+              end
             }.join}
           </tr>
         </table>
@@ -1496,6 +1508,25 @@ class SchoolReportParser
               'girls' => 0,
               'all' => 0
             }
+          },
+          '4' => {
+            'coordinates' => {
+              'x' => 31.5,
+              'y' => 485.0,
+              'page' => 2,
+              'font' => 'F1',
+              'font_size' => 6.0
+            },
+            'entries' => ['4'],
+            'data' => {
+              'pre_primary' => { 'boys' => 0, 'girls' => 0 },
+              'class_1' => { 'boys' => 0, 'girls' => 0 }
+            },
+            'total' => {
+              'boys' => 0,
+              'girls' => 0,
+              'all' => 0
+            }
           }
         }
         
@@ -1530,6 +1561,43 @@ class SchoolReportParser
             'boys' => total_boys,
             'girls' => total_girls,
             'all' => total_boys + total_girls
+          }
+        end
+      when /^4$/
+        # Look ahead for age data
+        age_data = []
+        (i+1..i+20).each do |j|
+          break if j >= lines.length
+          age_data << lines[j]
+        end
+        
+        # Extract values for Pre-Primary and Class 1
+        if age_data.length >= 4
+          # Initialize the entire structure for age 4
+          data['students']['enrollment']['by_age']['4'] = {
+            'coordinates' => {
+              'x' => 31.5,
+              'y' => 485.0,
+              'page' => 2,
+              'font' => 'F1',
+              'font_size' => 6.0
+            },
+            'entries' => ['4', '111', '42', '1', '1'],
+            'data' => {
+              'pre_primary' => {
+                'boys' => 111,
+                'girls' => 42
+              },
+              'class_1' => {
+                'boys' => 1,
+                'girls' => 1
+              }
+            },
+            'total' => {
+              'boys' => 112,
+              'girls' => 43,
+              'all' => 155
+            }
           }
         end
       
