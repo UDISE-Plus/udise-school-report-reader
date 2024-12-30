@@ -167,15 +167,39 @@ students:
       general:
         boys: 0
         girls: 0
+        coordinates:
+          x: 32.33
+          "y": 757.25
+          page: 2
+          font: F1
+          font_size: 6.0
       sc:
         boys: 0
         girls: 0
+        coordinates:
+          x: 34.0
+          "y": 745.75
+          page: 2
+          font: F1
+          font_size: 6.0
       st:
         boys: 0
         girls: 0
+        coordinates:
+          x: 34.33
+          "y": 734.25
+          page: 2
+          font: F1
+          font_size: 6.0
       obc:
         boys: 0
         girls: 0
+        coordinates:
+          x: 31.5
+          "y": 719.0
+          page: 2
+          font: F1
+          font_size: 6.0
   facilities:
     general:
       transport:

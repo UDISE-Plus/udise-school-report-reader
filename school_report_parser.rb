@@ -126,6 +126,9 @@ class SchoolReportParser
   def self.extract_data_points(compressed_content)
     lines = compressed_content.split("\n").map(&:strip)
     current_section = nil
+    current_block = nil
+    in_performance_section = false
+    current_class = nil
     
     data = {
       'basic_info' => {},
@@ -249,10 +252,50 @@ class SchoolReportParser
             'class_12' => { 'boys' => 0, 'girls' => 0 }
           },
           'by_social_category' => {
-            'general' => { 'boys' => 0, 'girls' => 0 },
-            'sc' => { 'boys' => 0, 'girls' => 0 },
-            'st' => { 'boys' => 0, 'girls' => 0 },
-            'obc' => { 'boys' => 0, 'girls' => 0 }
+            'general' => { 
+              'boys' => 0, 
+              'girls' => 0,
+              'coordinates' => {
+                'x' => nil,
+                'y' => nil,
+                'page' => nil,
+                'font' => nil,
+                'font_size' => nil
+              }
+            },
+            'sc' => { 
+              'boys' => 0, 
+              'girls' => 0,
+              'coordinates' => {
+                'x' => nil,
+                'y' => nil,
+                'page' => nil,
+                'font' => nil,
+                'font_size' => nil
+              }
+            },
+            'st' => { 
+              'boys' => 0, 
+              'girls' => 0,
+              'coordinates' => {
+                'x' => nil,
+                'y' => nil,
+                'page' => nil,
+                'font' => nil,
+                'font_size' => nil
+              }
+            },
+            'obc' => { 
+              'boys' => 0, 
+              'girls' => 0,
+              'coordinates' => {
+                'x' => nil,
+                'y' => nil,
+                'page' => nil,
+                'font' => nil,
+                'font_size' => nil
+              }
+            }
           }
         },
         'facilities' => {
@@ -369,9 +412,30 @@ class SchoolReportParser
       }
     }
 
-    # Add new sections to the data structure
+    # Process each line
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
+
+      # Update current_block based on line content
+      if line =~ /^(Gen|SC|ST|OBC)$/
+        current_block = {
+          'x' => case line
+                when 'Gen' then 32.33
+                when 'SC' then 34.0
+                when 'ST' then 34.33
+                when 'OBC' then 31.5
+                end,
+          'y' => case line
+                when 'Gen' then 757.25
+                when 'SC' then 745.75
+                when 'ST' then 734.25
+                when 'OBC' then 719.0
+                end,
+          'page' => 2,
+          'font' => 'F1',
+          'font_size' => 6.0
+        }
+      end
 
       case line
       # Basic Info
@@ -873,16 +937,38 @@ class SchoolReportParser
         data['academic']['vocational']['trainers']['available'] = next_line if next_line
       
       # Student social categories
-      when /^([A-Z]+)\s+Boys\s+(\d+)\s+Girls\s+(\d+)$/
-        category = $1.downcase
-        boys = $2.to_i
-        girls = $3.to_i
-        if ['sc', 'st', 'obc', 'general'].include?(category)
-          data['students']['enrollment']['by_social_category'][category] = {
-            'boys' => boys,
-            'girls' => girls
-          }
-        end
+      when /^Gen$/
+        data['students']['enrollment']['by_social_category']['general']['coordinates'] = {
+          'x' => 32.33,
+          'y' => 757.25,
+          'page' => 2,
+          'font' => 'F1',
+          'font_size' => 6.0
+        }
+      when /^SC$/
+        data['students']['enrollment']['by_social_category']['sc']['coordinates'] = {
+          'x' => 34.0,
+          'y' => 745.75,
+          'page' => 2,
+          'font' => 'F1',
+          'font_size' => 6.0
+        }
+      when /^ST$/
+        data['students']['enrollment']['by_social_category']['st']['coordinates'] = {
+          'x' => 34.33,
+          'y' => 734.25,
+          'page' => 2,
+          'font' => 'F1',
+          'font_size' => 6.0
+        }
+      when /^OBC$/
+        data['students']['enrollment']['by_social_category']['obc']['coordinates'] = {
+          'x' => 31.5,
+          'y' => 719.0,
+          'page' => 2,
+          'font' => 'F1',
+          'font_size' => 6.0
+        }
       
       # CWSN details
       when "CWSN Facilities"
