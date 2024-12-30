@@ -4,6 +4,7 @@ class SchoolReportParser
   require 'csv'
   require_relative 'enrollment_data_reader'
   require_relative 'enrollment_html_writer'
+  require_relative 'enrollment_yaml_writer'
 
   def self.extract_to_text(pdf_path)
     raise ArgumentError, "PDF file not found" unless File.exist?(pdf_path)
@@ -45,6 +46,9 @@ class SchoolReportParser
     # Extract enrollment table to HTML
     html_path = pdf_path.sub(/\.pdf$/i, '_enrollment.html')
     EnrollmentHtmlWriter.generate_html(enrollment_data, html_path)
+
+    enrollment_yaml_path = pdf_path.sub(/\.pdf$/i, '_enrollment.yml')
+    EnrollmentYamlWriter.generate_yaml(enrollment_data, enrollment_yaml_path)
     
     [txt_path, compressed_path, yaml_path, csv_path, rects_path, combined_path, html_path]
   end
