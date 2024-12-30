@@ -46,16 +46,25 @@ class SchoolReportParser
   def self.extract_enrollment_table(combined_path, html_path)
     # Read the combined CSV file
     header_row = nil
+    grade_rows = []
+    
     CSV.foreach(combined_path, headers: true) do |row|
       if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
         header_row = row
-        break
+      elsif header_row && row['page'] == '2' && ['Pre-Pr', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'].include?(row['text'])
+        # Only keep rows with y=780.0 (closest to header)
+        if row['text_y'].to_f == 780.0
+          grade_rows << row
+        end
       end
     end
 
     return unless header_row
 
-    # Create HTML file with the header information
+    # Sort grade rows by x coordinate to maintain order
+    grade_rows.sort_by! { |row| row['text_x'].to_f }
+
+    # Create HTML file with the header and grade information
     html_content = <<~HTML
       <!DOCTYPE html>
       <html>
@@ -72,6 +81,26 @@ class SchoolReportParser
         <p>Coordinates: x=#{header_row['text_x']}, y=#{header_row['text_y']}</p>
         <p>Page: #{header_row['page']}</p>
         <p>Font: #{header_row['font']}, Size: #{header_row['font_size']}</p>
+        
+        <h2>Grade Row Information</h2>
+        <table>
+          <tr>
+            <th>Grade</th>
+            <th>X</th>
+            <th>Y</th>
+            <th>Font</th>
+            <th>Font Size</th>
+          </tr>
+          #{grade_rows.map { |row| 
+            "<tr>
+              <td>#{row['text']}</td>
+              <td>#{row['text_x']}</td>
+              <td>#{row['text_y']}</td>
+              <td>#{row['font']}</td>
+              <td>#{row['font_size']}</td>
+            </tr>"
+          }.join("\n")}
+        </table>
       </body>
       </html>
     HTML
