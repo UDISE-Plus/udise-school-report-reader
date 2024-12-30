@@ -30,13 +30,53 @@ class SchoolReportParser
     combined_path = pdf_path.sub(/\.pdf$/i, '_combined.csv')
     combine_blocks_and_rects(csv_path, rects_path, combined_path)
     
+    # Extract enrollment table to HTML
+    html_path = pdf_path.sub(/\.pdf$/i, '_enrollment.html')
+    extract_enrollment_table(combined_path, html_path)
+    
     # Extract data points to YAML
     compressed_content.instance_variable_set(:@csv_path, csv_path)
     data_points = extract_data_points(compressed_content)
     yaml_path = pdf_path.sub(/\.pdf$/i, '.yml')
     File.write(yaml_path, data_points.to_yaml)
     
-    [txt_path, compressed_path, yaml_path, csv_path, rects_path, combined_path]
+    [txt_path, compressed_path, yaml_path, csv_path, rects_path, combined_path, html_path]
+  end
+
+  def self.extract_enrollment_table(combined_path, html_path)
+    # Read the combined CSV file
+    header_row = nil
+    CSV.foreach(combined_path, headers: true) do |row|
+      if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
+        header_row = row
+        break
+      end
+    end
+
+    return unless header_row
+
+    # Create HTML file with the header information
+    html_content = <<~HTML
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Enrollment Table</title>
+        <style>
+          table { border-collapse: collapse; }
+          th, td { border: 1px solid black; padding: 8px; }
+        </style>
+      </head>
+      <body>
+        <h2>Table Header Information</h2>
+        <p>Text: #{header_row['text']}</p>
+        <p>Coordinates: x=#{header_row['text_x']}, y=#{header_row['text_y']}</p>
+        <p>Page: #{header_row['page']}</p>
+        <p>Font: #{header_row['font']}, Size: #{header_row['font_size']}</p>
+      </body>
+      </html>
+    HTML
+
+    File.write(html_path, html_content)
   end
 
   def self.combine_blocks_and_rects(blocks_path, rects_path, output_path)
