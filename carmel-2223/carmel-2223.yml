@@ -372,6 +372,9 @@ students:
           font_size: 6.0
         entries:
         - Sikh
+      budd:
+        coordinates: {}
+        entries: []
   facilities:
     general:
       transport:
