@@ -1,26 +1,9 @@
 class EnrollmentDataReader
-  def self.match_numbers_to_pairs(remaining_numbers, bg_pairs, threshold = 10.0)
-    numbers = {}
-    remaining = remaining_numbers.dup
+  def self.read(csv_path) = new(csv_path).read
 
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      remaining.delete(b_num) if b_num
+  def initialize(csv_path) = @csv_path = csv_path
 
-      g_num = remaining.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      remaining.delete(g_num) if g_num
-      
-      numbers[x_mid] = [b_num, g_num]
-    end
-
-    numbers
-  end
-
-  def self.read_data(combined_data_csv_path)
+  def read
     # Initialize arrays for different row types
     grade_rows = []
     bg_rows = []
@@ -60,7 +43,7 @@ class EnrollmentDataReader
     age_21_rows = []
     age_22_rows = []
 
-    CSV.foreach(combined_data_csv_path, headers: true) do |row|
+    CSV.foreach(@csv_path, headers: true) do |row|
       if row['page'] == '2'
         if ['Pre-Pr', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'].include?(row['text'])
           if row['text_y'].to_f == 780.0
@@ -181,4 +164,26 @@ class EnrollmentDataReader
       age_22_numbers: match_numbers_to_pairs(age_22_rows, bg_pairs)
     }
   end
+
+  private
+    def match_numbers_to_pairs(remaining_numbers, bg_pairs, threshold = 10.0)
+      numbers = {}
+      remaining = remaining_numbers.dup
+
+      bg_pairs.each do |x_mid, bg_pair|
+        b_x = bg_pair[0]['text_x'].to_f
+        g_x = bg_pair[1]['text_x'].to_f
+        
+        # Find numbers closest to B and G positions
+        b_num = remaining.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
+        remaining.delete(b_num) if b_num
+
+        g_num = remaining.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
+        remaining.delete(g_num) if g_num
+        
+        numbers[x_mid] = [b_num, g_num]
+      end
+
+      numbers
+    end
 end 

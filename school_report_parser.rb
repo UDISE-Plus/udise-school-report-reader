@@ -32,7 +32,6 @@ class SchoolReportParser
     combine_blocks_and_rects(csv_path, rects_path, combined_path)
     
     # Extract data points to YAML
-    compressed_content.instance_variable_set(:@csv_path, csv_path)
     data_points = extract_data_points(compressed_content)
     yaml_path = pdf_path.sub(/\.pdf$/i, '.yml')
     File.write(yaml_path, data_points.to_yaml)

@@ -3,8 +3,8 @@ require_relative 'enrollment_html_writer'
 require 'csv'
 
 class EnrollmentTableExtractor
-  def self.extract_table(combined_path, html_path)
-    data = EnrollmentDataReader.read_data(combined_path)
+  def self.extract_table(csv_path, html_path)
+    data = EnrollmentDataReader.read(csv_path)
     EnrollmentHtmlWriter.generate_html(data, html_path)
   end
 end 
