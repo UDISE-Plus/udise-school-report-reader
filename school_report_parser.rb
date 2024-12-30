@@ -79,55 +79,24 @@ class SchoolReportParser
       <head>
         <title>Enrollment Table</title>
         <style>
-          table { border-collapse: collapse; }
-          th, td { border: 1px solid black; padding: 8px; }
+          table { border-collapse: collapse; margin-top: 20px; }
+          th, td { border: 1px solid black; padding: 8px; text-align: center; }
+          .header { font-weight: bold; background-color: #f0f0f0; }
+          .grade { font-weight: bold; }
+          .bg-pair { }
         </style>
       </head>
       <body>
-        <h2>Table Header Information</h2>
-        <p>Text: #{header_row['text']}</p>
-        <p>Coordinates: x=#{header_row['text_x']}, y=#{header_row['text_y']}</p>
-        <p>Page: #{header_row['page']}</p>
-        <p>Font: #{header_row['font']}, Size: #{header_row['font_size']}</p>
-        
-        <h2>Grade Row Information</h2>
+        <h2>#{header_row['text']}</h2>
         <table>
-          <tr>
-            <th>Grade</th>
-            <th>X</th>
-            <th>Y</th>
-            <th>Font</th>
-            <th>Font Size</th>
+          <tr class="grade">
+            #{grade_rows.map { |row| "<th colspan='2'>#{row['text']}</th>" }.join("\n")}
           </tr>
-          #{grade_rows.map { |row| 
-            "<tr>
-              <td>#{row['text']}</td>
-              <td>#{row['text_x']}</td>
-              <td>#{row['text_y']}</td>
-              <td>#{row['font']}</td>
-              <td>#{row['font_size']}</td>
-            </tr>"
-          }.join("\n")}
-        </table>
-
-        <h2>B,G Row Information</h2>
-        <table>
-          <tr>
-            <th>Text</th>
-            <th>X</th>
-            <th>Y</th>
-            <th>Font</th>
-            <th>Font Size</th>
+          <tr class="bg-pair">
+            #{bg_rows.each_slice(2).map { |b, g| 
+              "<td>#{b['text']}</td><td>#{g['text']}</td>"
+            }.join("\n")}
           </tr>
-          #{bg_rows.map { |row| 
-            "<tr>
-              <td>#{row['text']}</td>
-              <td>#{row['text_x']}</td>
-              <td>#{row['text_y']}</td>
-              <td>#{row['font']}</td>
-              <td>#{row['font_size']}</td>
-            </tr>"
-          }.join("\n")}
         </table>
       </body>
       </html>
