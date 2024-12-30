@@ -1466,27 +1466,9 @@ class SchoolReportParser
       when /^BPL$/
         extract_enrollment_data('BPL', 566.5, csv_path, data)
       when /^Rept$/
-        data['students']['enrollment']['by_social_category']['rept'] = {
-          'coordinates' => {
-            'x' => 31.5,
-            'y' => 555.0,
-            'page' => 2,
-            'font' => 'F1',
-            'font_size' => 6.0
-          },
-          'entries' => ['Rept']
-        }
+        extract_enrollment_data('Rept', 555.0, csv_path, data)
       when /^CWSN$/
-        data['students']['enrollment']['by_social_category']['cwsn'] = {
-          'coordinates' => {
-            'x' => 31.5,
-            'y' => 543.5,
-            'page' => 2,
-            'font' => 'F1',
-            'font_size' => 6.0
-          },
-          'entries' => ['CWSN']
-        }
+        extract_enrollment_data('CWSN', 543.5, csv_path, data)
       when /^>3$/
         # Initialize by_age at the correct level
         data['students']['enrollment']['by_age'] = {
