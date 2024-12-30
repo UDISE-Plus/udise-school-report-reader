@@ -22,7 +22,6 @@ class EnrollmentTableExtractor
 
   def self.extract_table(combined_path, html_path)
     # Read the combined CSV file
-    header_row = nil
     grade_rows = []
     bg_rows = []
     gen_rows = []
@@ -62,96 +61,96 @@ class EnrollmentTableExtractor
     age_22_rows = []
 
     CSV.foreach(combined_path, headers: true) do |row|
-      if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
-        header_row = row
-      elsif header_row && row['page'] == '2' && ['Pre-Pr', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'].include?(row['text'])
-        # Only keep rows with y=780.0 (closest to header)
-        if row['text_y'].to_f == 780.0
-          grade_rows << row
-        end
-      elsif header_row && row['page'] == '2' && ['B', 'G'].include?(row['text'])
-        # Get the B,G row at y=768.0
-        if row['text_y'].to_f == 768.0
-          bg_rows << row
-        end
-      elsif header_row && row['page'] == '2' && row['text'] =~ /^\d+$/
-        # Get the Gen category numbers at y=757.0, SC at y=745.5, ST at y=734.0, OBC at y=722.5, Musl at y=669.5, Chris at y=658.0, Sikh at y=646.5, Buddhist at y=635.0, and Parsi at y=623.5
-        y_coord = row['text_y'].to_f
-        if y_coord == 757.0
-          gen_rows << row
-        elsif y_coord == 745.5
-          sc_rows << row
-        elsif y_coord == 734.0
-          st_rows << row
-        elsif y_coord == 722.5 || y_coord == 718.25
-          obc_rows << row
-        elsif y_coord == 669.5
-          musl_rows << row
-        elsif y_coord == 658.0
-          chris_rows << row
-        elsif y_coord == 646.5
-          sikh_rows << row
-        elsif y_coord == 635.0
-          budd_rows << row
-        elsif y_coord == 623.5
-          parsi_rows << row
-        elsif y_coord == 612.0
-          jain_rows << row
-        elsif y_coord == 600.5
-          others_rows << row
-        elsif y_coord == 589.0
-          aadh_rows << row
-        elsif y_coord == 566.5
-          bpl_rows << row
-        elsif y_coord == 555.0
-          rept_rows << row
-        elsif y_coord == 543.5
-          cwsn_rows << row
-        elsif y_coord == 495.0
-          age_3_rows << row
-        elsif y_coord == 483.5
-          age_4_rows << row
-        elsif y_coord == 472.0
-          age_5_rows << row
-        elsif y_coord == 460.5
-          age_6_rows << row
-        elsif y_coord == 449.0
-          age_7_rows << row
-        elsif y_coord == 437.5
-          age_8_rows << row
-        elsif y_coord == 426.0
-          age_9_rows << row
-        elsif y_coord == 414.5
-          age_10_rows << row
-        elsif y_coord == 403.0
-          age_11_rows << row
-        elsif y_coord == 391.5
-          age_12_rows << row
-        elsif y_coord == 380.0
-          age_13_rows << row
-        elsif y_coord == 368.5
-          age_14_rows << row
-        elsif y_coord == 357.0
-          age_15_rows << row
-        elsif y_coord == 345.5
-          age_16_rows << row
-        elsif y_coord == 334.0
-          age_17_rows << row
-        elsif y_coord == 322.5
-          age_18_rows << row
-        elsif y_coord == 311.0
-          age_19_rows << row
-        elsif y_coord == 299.5
-          age_20_rows << row
-        elsif y_coord == 288.0
-          age_21_rows << row
-        elsif y_coord == 276.5
-          age_22_rows << row
+      if row['page'] == '2'
+        if ['Pre-Pr', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'].include?(row['text'])
+          # Only keep rows with y=780.0 (closest to header)
+          if row['text_y'].to_f == 780.0
+            grade_rows << row
+          end
+        elsif ['B', 'G'].include?(row['text'])
+          # Get the B,G row at y=768.0
+          if row['text_y'].to_f == 768.0
+            bg_rows << row
+          end
+        elsif row['text'] =~ /^\d+$/
+          # Get the Gen category numbers at y=757.0, SC at y=745.5, ST at y=734.0, OBC at y=722.5, Musl at y=669.5, Chris at y=658.0, Sikh at y=646.5, Buddhist at y=635.0, and Parsi at y=623.5
+          y_coord = row['text_y'].to_f
+          if y_coord == 757.0
+            gen_rows << row
+          elsif y_coord == 745.5
+            sc_rows << row
+          elsif y_coord == 734.0
+            st_rows << row
+          elsif y_coord == 722.5 || y_coord == 718.25
+            obc_rows << row
+          elsif y_coord == 669.5
+            musl_rows << row
+          elsif y_coord == 658.0
+            chris_rows << row
+          elsif y_coord == 646.5
+            sikh_rows << row
+          elsif y_coord == 635.0
+            budd_rows << row
+          elsif y_coord == 623.5
+            parsi_rows << row
+          elsif y_coord == 612.0
+            jain_rows << row
+          elsif y_coord == 600.5
+            others_rows << row
+          elsif y_coord == 589.0
+            aadh_rows << row
+          elsif y_coord == 566.5
+            bpl_rows << row
+          elsif y_coord == 555.0
+            rept_rows << row
+          elsif y_coord == 543.5
+            cwsn_rows << row
+          elsif y_coord == 495.0
+            age_3_rows << row
+          elsif y_coord == 483.5
+            age_4_rows << row
+          elsif y_coord == 472.0
+            age_5_rows << row
+          elsif y_coord == 460.5
+            age_6_rows << row
+          elsif y_coord == 449.0
+            age_7_rows << row
+          elsif y_coord == 437.5
+            age_8_rows << row
+          elsif y_coord == 426.0
+            age_9_rows << row
+          elsif y_coord == 414.5
+            age_10_rows << row
+          elsif y_coord == 403.0
+            age_11_rows << row
+          elsif y_coord == 391.5
+            age_12_rows << row
+          elsif y_coord == 380.0
+            age_13_rows << row
+          elsif y_coord == 368.5
+            age_14_rows << row
+          elsif y_coord == 357.0
+            age_15_rows << row
+          elsif y_coord == 345.5
+            age_16_rows << row
+          elsif y_coord == 334.0
+            age_17_rows << row
+          elsif y_coord == 322.5
+            age_18_rows << row
+          elsif y_coord == 311.0
+            age_19_rows << row
+          elsif y_coord == 299.5
+            age_20_rows << row
+          elsif y_coord == 288.0
+            age_21_rows << row
+          elsif y_coord == 276.5
+            age_22_rows << row
+          end
         end
       end
     end
 
-    return unless header_row
+    return if grade_rows.empty?
 
     # Sort rows by x coordinate to maintain order
     grade_rows.sort_by! { |row| row['text_x'].to_f }
@@ -234,7 +233,7 @@ class EnrollmentTableExtractor
         </style>
       </head>
       <body>
-        <h2>#{header_row['text']}</h2>
+        <h2>Enrolment (By Social Category)</h2>
         <table>
           <tr class="grade">
             <th rowspan="2">Category</th>
