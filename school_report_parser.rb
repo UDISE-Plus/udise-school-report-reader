@@ -6,36 +6,36 @@ class SchoolReportParser
 
   def self.extract_to_text(pdf_path)
     raise ArgumentError, "PDF file not found" unless File.exist?(pdf_path)
-    
+
     reader = PDF::Reader.new(pdf_path)
-    
+
     # Create text file with same name as PDF
     txt_path = pdf_path.sub(/\.pdf$/i, '.txt')
     content = reader.pages.map(&:raw_content).join("\n")
     File.write(txt_path, content)
-    
+
     # Create compressed version
     compressed_content = compress_content(content)
     compressed_path = pdf_path.sub(/\.pdf$/i, '_compressed.txt')
     File.write(compressed_path, compressed_content)
-    
+
     # Extract BT-ET blocks to CSV
     csv_path = pdf_path.sub(/\.pdf$/i, '_blocks.csv')
     extract_bt_et_blocks(reader, csv_path)
-    
+
     # Extract rectangles to CSV
     rects_path = pdf_path.sub(/\.pdf$/i, '_rects.csv')
     extract_rectangles(reader, rects_path)
-    
+
     # Combine blocks and rectangles
     combined_path = pdf_path.sub(/\.pdf$/i, '_combined.csv')
     combine_blocks_and_rects(csv_path, rects_path, combined_path)
-    
+
     # Extract data points to YAML
     data_points = extract_data_points(compressed_content)
     yaml_path = pdf_path.sub(/\.pdf$/i, '.yml')
     File.write(yaml_path, data_points.to_yaml)
-    
+
     # Extract enrollment table to HTML
     html_path = pdf_path.sub(/\.pdf$/i, '_enrollment.html')
     EnrollmentTableExtractor.extract_table(combined_path, html_path)
@@ -45,11 +45,11 @@ class SchoolReportParser
 
   def self.extract_bt_et_blocks(reader, csv_path)
     blocks = []
-    
+
     reader.pages.each_with_index do |page, index|
       page_number = index + 1
       current_block = {}
-      
+
       page.raw_content.each_line do |line|
         if line.include?('BT')
           current_block = {
@@ -82,7 +82,7 @@ class SchoolReportParser
         end
       end
     end
-    
+
     # Write to CSV
     CSV.open(csv_path, 'wb') do |csv|
       csv << ['page', 'x', 'y', 'text', 'font', 'font_size']
@@ -139,7 +139,7 @@ class SchoolReportParser
     current_section = nil
     in_performance_section = false
     current_class = nil
-    
+
     data = {
       'basic_info' => {},
       'location' => {},
@@ -375,7 +375,7 @@ class SchoolReportParser
         end
       when /Academic Year.*:\s*(\d{4}-\d{2})/
         data['basic_info']['academic_year'] = $1
-      
+
       # Location
       when "State"
         data['location']['state'] = next_line if next_line && !next_line.match?(/District/)
@@ -397,7 +397,7 @@ class SchoolReportParser
         data['location']['assembly_constituency'] = next_line if next_line && !next_line.match?(/Parl/)
       when "Parl. Constituency"
         data['location']['parliamentary_constituency'] = next_line if next_line && !next_line.match?(/School/)
-      
+
       # School Details
       when "School Category"
         data['school_details']['category'] = next_line if next_line && !next_line.match?(/School Management/)
@@ -429,7 +429,7 @@ class SchoolReportParser
         data['school_details']['shifts']['has_shifts'] = next_line if next_line && !next_line.match?(/Building/)
       when "Is Special School for CWSN?"
         data['school_details']['is_special_school'] = next_line if next_line && !next_line.match?(/Availability/)
-      
+
       # Infrastructure - Building
       when "Boundary wall"
         data['infrastructure']['building']['details']['boundary_wall'] = next_line if next_line && !next_line.match?(/No\.of/)
@@ -441,7 +441,7 @@ class SchoolReportParser
         data['infrastructure']['building']['accessibility']['ramps'] = next_line if next_line && !next_line.match?(/Availability of Hand/)
       when "Availability of Handrails"
         data['infrastructure']['building']['accessibility']['handrails'] = next_line if next_line && !next_line.match?(/Anganwadi/)
-      
+
       # Anganwadi
       when "Anganwadi At Premises"
         data['facilities']['anganwadi']['at_premises'] = next_line if next_line
@@ -451,18 +451,18 @@ class SchoolReportParser
         data['facilities']['anganwadi']['girls'] = next_line.to_i if next_line =~ /^\d+$/
       when "Anganwadi Worker"
         data['facilities']['anganwadi']['worker'] = next_line if next_line
-      
+
       # Infrastructure - Toilets
       when "Toilets"
         current_section = 'toilets'
-        
+
         # Look ahead for toilet data
         toilet_data = []
         (i+1..i+20).each do |j|
           break if j >= lines.length
           toilet_data << lines[j]
         end
-        
+
         # Try to find the values
         total_idx = toilet_data.index { |l| l =~ /Total.*CWSN/ }
         if total_idx && total_idx + 2 < toilet_data.length
@@ -473,7 +473,7 @@ class SchoolReportParser
             data['infrastructure']['sanitation']['toilets']['girls']['total'] = girls.to_i
           end
         end
-        
+
         func_idx = toilet_data.index("Functional")
         if func_idx && func_idx + 2 < toilet_data.length
           boys = toilet_data[func_idx + 1]
@@ -483,7 +483,7 @@ class SchoolReportParser
             data['infrastructure']['sanitation']['toilets']['girls']['functional'] = girls.to_i
           end
         end
-        
+
         cwsn_idx = toilet_data.index { |l| l =~ /CWSN Friendly/ }
         if cwsn_idx && cwsn_idx + 2 < toilet_data.length
           boys = toilet_data[cwsn_idx + 1]
@@ -493,7 +493,7 @@ class SchoolReportParser
             data['infrastructure']['sanitation']['toilets']['girls']['cwsn'] = girls.to_i
           end
         end
-        
+
         urinal_idx = toilet_data.index("Urinal")
         if urinal_idx && urinal_idx + 2 < toilet_data.length
           boys = toilet_data[urinal_idx + 1]
@@ -503,7 +503,7 @@ class SchoolReportParser
             data['infrastructure']['sanitation']['toilets']['girls']['urinals'] = girls.to_i
           end
         end
-      
+
       # Basic Facilities
       when "Handwash Near Toilet"
         data['infrastructure']['sanitation']['handwash']['near_toilet'] = next_line if next_line && !next_line.match?(/Handwash Facility/)
@@ -529,7 +529,7 @@ class SchoolReportParser
         if next_line =~ /^\d+$/
           data['infrastructure']['furniture']['count'] = next_line.to_i
         end
-      
+
       # Infrastructure - Classrooms
       when "Total Class Rooms"
         if next_line =~ /^\d+$/
@@ -551,7 +551,7 @@ class SchoolReportParser
         if next_line =~ /^\d+$/
           data['infrastructure']['classrooms']['other_rooms'] = next_line.to_i
         end
-      
+
       # Digital Facilities
       when /Digital/
         current_section = 'digital'
@@ -578,7 +578,7 @@ class SchoolReportParser
         end
       when /Students/
         current_section = nil
-      
+
       # Academic
       when "Medium of Instruction"
         current_section = nil
@@ -592,7 +592,7 @@ class SchoolReportParser
             'name' => name
           }
         end
-      
+
       # Academic Inspections
       when "Visit of school for / by"
       when "Acad. Inspections"
@@ -603,7 +603,7 @@ class SchoolReportParser
         data['academic']['inspections']['visits']['block_level'] = next_line.to_i if next_line =~ /^\d+$/
       when "State/District Officers"
         data['academic']['inspections']['visits']['state_district'] = next_line.to_i if next_line =~ /^\d+$/
-      
+
       # Academic Hours and Days
       when "Instructional days"
         if lines[i + 1] =~ /^\d+$/
@@ -633,7 +633,7 @@ class SchoolReportParser
           data['academic']['assessments']['cce']['implemented']['secondary'] = lines[i + 3] if lines[i + 3]
           data['academic']['assessments']['cce']['implemented']['higher_secondary'] = lines[i + 4] if lines[i + 4]
         end
-      
+
       # Teachers
       when "Teachers"
         current_section = nil
@@ -692,10 +692,10 @@ class SchoolReportParser
           else
             category.downcase.gsub(/[^a-z0-9]+/, '_').gsub(/^_|_$/, '')
           end
-          
+
           data['teachers']['classes_taught'][key] = next_line.to_i
         end
-      
+
       # Teacher Qualifications
       when "Below Graduate"
         if next_line =~ /^\d+$/
@@ -742,7 +742,7 @@ class SchoolReportParser
         data['facilities']['residential']['details']['minority_school'] = next_line if next_line && !next_line.match?(/Approachable/)
       when "Approachable By All Weather Road"
         data['facilities']['basic']['safety']['all_weather_road'] = next_line if next_line && !next_line.match?(/Toilets/)
-      
+
       # Student Facilities
       when /No\.of Students Received/
         current_section = 'facilities'
@@ -763,7 +763,7 @@ class SchoolReportParser
           data['students']['facilities']['incentives']['free_uniform']['primary'] = lines[i + 1].to_i
           data['students']['facilities']['incentives']['free_uniform']['upper_primary'] = lines[i + 2].to_i
         end
-      
+
       # Committees
       when "SMC Exists"
         data['committees']['smc']['details']['exists'] = next_line if next_line && !next_line.match?(/SMC & SMDC/)
@@ -771,7 +771,7 @@ class SchoolReportParser
         data['committees']['smc']['details']['same_as_smdc'] = next_line if next_line && !next_line.match?(/SMDC Con/)
       when "SMDC Constituted"
         data['committees']['smdc']['details']['constituted'] = next_line if next_line && !next_line.match?(/Text Books/)
-      
+
       # Grants
       when "Grants Receipt"
         if next_line =~ /^\d+\.?\d*$/
@@ -781,11 +781,11 @@ class SchoolReportParser
         if next_line =~ /^\d+\.?\d*$/
           data['grants']['expenditure']['amount'] = next_line.to_f
         end
-      
+
       # Add new pattern matches
       when "Medical checkups"
         data['facilities']['medical']['checkups']['available'] = next_line if next_line
-      
+
       # Library details
       when "Library Books"
         data['infrastructure']['library']['books']['total'] = next_line.to_i if next_line =~ /^\d+$/
@@ -793,26 +793,26 @@ class SchoolReportParser
         data['infrastructure']['library']['details']['type'] = next_line if next_line
       when "Librarian"
         data['infrastructure']['library']['staff']['librarian'] = next_line if next_line
-      
+
       # Teacher training
       when "No. of Total Teacher Received Service Training"
         data['teachers']['training']['service']['total'] = next_line.to_i if next_line =~ /^\d+$/
       when "Special Training Received"
         data['teachers']['training']['special']['received'] = next_line if next_line
-      
+
       # Student performance
       when /Pass % Class (\d+)/
         class_num = $1
         if next_line =~ /^\d+\.?\d*$/
           data['academic']['assessments']['board_results']["class_#{class_num}"]['pass_percentage'] = next_line.to_f
         end
-      
+
       # Sports facilities
       when "Sports Equipment"
         data['academic']['sports']['equipment']['available'] = next_line if next_line
       when "Physical Education Teacher"
         data['academic']['sports']['instructors']['available'] = next_line if next_line
-      
+
       # Safety measures
       when "Fire Extinguisher"
         data['facilities']['safety']['fire']['equipment']['extinguisher'] = next_line if next_line
@@ -820,13 +820,13 @@ class SchoolReportParser
         data['facilities']['safety']['emergency']['exits']['available'] = next_line if next_line
       when "Security Guard"
         data['facilities']['safety']['security']['personnel']['guard'] = next_line if next_line
-      
+
       # Committee meetings
       when "SMC Meetings Conducted"
         data['committees']['smc']['details']['meetings']['count'] = next_line.to_i if next_line =~ /^\d+$/
       when "SMDC Meetings Conducted"
         data['committees']['smdc']['details']['meetings']['count'] = next_line.to_i if next_line =~ /^\d+$/
-      
+
       # Vocational courses
       when "Vocational Courses"
         data['academic']['vocational']['courses']['available'] = next_line if next_line
@@ -841,13 +841,13 @@ class SchoolReportParser
         if next_line =~ /(\d+)/
           data['teachers']['workload']['non_teaching_hours']['per_week'] = $1.to_i
         end
-      
+
       # Teacher subject-wise allocation
       when /^Subject:\s*(.+?)(?:\s*,\s*Teachers:\s*(\d+))?$/
         subject = $1.strip
         count = $2&.to_i || 0
         data['teachers']['workload']['by_subject'][subject.downcase] = count
-      
+
       # Student attendance
       when /Monthly Attendance/
         current_section = 'attendance'
@@ -855,32 +855,32 @@ class SchoolReportParser
         month = $1.downcase
         percentage = $2.to_f
         data['students']['attendance']['monthly'][month] = percentage
-      
+
       # Language subjects
       when /^Language (\d+):\s*(.+)$/
         num = $1
         lang = $2.strip
         data['academic']['subjects']['languages']['details']["language_#{num}"] = lang
-      
+
       # Core subjects
       when /^Core Subject (\d+):\s*(.+)$/
         num = $1
         subject = $2.strip
         data['academic']['subjects']['core']['details']["subject_#{num}"] = subject
-      
+
       # Elective subjects
       when /^Elective (\d+):\s*(.+)$/
         num = $1
         subject = $2.strip
         data['academic']['subjects']['electives']['details']["elective_#{num}"] = subject
-      
+
       # Classroom usage
       when /^Room (\d+) Usage:\s*(.+)$/
         room = $1
         usage = $2.strip
         data['infrastructure']['classrooms']['usage'] ||= {}
         data['infrastructure']['classrooms']['usage'][room] = usage if usage
-      
+
       # Lab details
       when /^Lab Type:\s*(.+?)(?:\s*,\s*Capacity:\s*(\d+))?$/
         type = $1.strip
@@ -891,7 +891,7 @@ class SchoolReportParser
             'capacity' => capacity
           }
         end
-      
+
       # Special room details
       when /^Special Room:\s*(.+?)(?:\s*,\s*Purpose:\s*(.+))?$/
         room = $1.strip
@@ -902,7 +902,7 @@ class SchoolReportParser
             'purpose' => purpose
           }
         end
-      
+
       # Student performance details
       when /^Class (\d+) Performance$/
         current_class = $1
@@ -912,28 +912,28 @@ class SchoolReportParser
         percentage = $2.to_f
         data['students']['performance']['by_class']["class_#{current_class}"] ||= {}
         data['students']['performance']['by_class']["class_#{current_class}"][subject] = percentage
-      
+
       # Committee details
       when /^Committee:\s*(.+?)(?:\s*,\s*Members:\s*(\d+))?$/
         committee = $1.strip.downcase
         members = $2&.to_i
         data['committees'][committee] ||= {}
         data['committees'][committee]['members'] = members if members
-      
+
       # Safety measures
       when /^Safety Measure:\s*(.+?)(?:\s*,\s*Status:\s*(.+))?$/
         measure = $1.strip.downcase
         status = $2&.strip
         data['facilities']['safety']['measures'] ||= {}
         data['facilities']['safety']['measures'][measure] = status
-      
+
       # Medical facilities
       when /^Medical Facility:\s*(.+?)(?:\s*,\s*Availability:\s*(.+))?$/
         facility = $1.strip.downcase
         availability = $2&.strip
         data['facilities']['medical']['facilities'] ||= {}
         data['facilities']['medical']['facilities'][facility] = availability
-      
+
       # Sports facilities
       when /^Sport:\s*(.+?)(?:\s*,\s*Equipment:\s*(\d+))?$/
         sport = $1.strip.downcase
@@ -941,14 +941,14 @@ class SchoolReportParser
         data['academic']['sports']['facilities'][sport] = {
           'equipment_count' => equipment
         }
-      
+
       # Library resources
       when /^Book Category:\s*(.+?)(?:\s*,\s*Count:\s*(\d+))?$/
         category = $1.strip.downcase
         count = $2&.to_i
         data['infrastructure']['library']['books']['by_category'] ||= {}
         data['infrastructure']['library']['books']['by_category'][category] = count
-      
+
       # Grant utilization
       when /^Grant Type:\s*(.+?)(?:\s*,\s*Utilization:\s*(\d+\.?\d*)%)?$/
         type = $1.strip.downcase
@@ -987,7 +987,7 @@ class SchoolReportParser
       end
     end
     data.reject! { |_, v| v.empty? }
-    
+
     data
   end
 
@@ -1001,10 +1001,10 @@ class SchoolReportParser
       'D' => 500,
       'M' => 1000
     }
-    
+
     result = 0
     prev_value = 0
-    
+
     roman.reverse.each_char do |char|
       curr_value = roman_values[char]
       if curr_value >= prev_value
@@ -1014,7 +1014,7 @@ class SchoolReportParser
       end
       prev_value = curr_value
     end
-    
+
     result
   end
 
@@ -1023,33 +1023,33 @@ class SchoolReportParser
     current_color = '0 G'  # Default stroke color (black)
     current_fill_color = '1 1 1 rg'  # Default fill color (white)
     current_line_width = 1.0  # Default line width
-    
+
     reader.pages.each_with_index do |page, index|
       page_number = index + 1
-      
+
       page.raw_content.each_line do |line|
         # Track stroke color changes
         if line.match?(/[\d.]+ [\d.]+ [\d.]+ RG/) || line.match?(/[\d.]+ G/)
           current_color = line.strip
         end
-        
+
         # Track fill color changes
         if line.match?(/[\d.]+ [\d.]+ [\d.]+ rg/) || line.match?(/[\d.]+ g/)
           current_fill_color = line.strip
         end
-        
+
         # Track line width changes
         if line.match?(/[\d.]+\s+w/)
           if match = line.match(/(\d+\.?\d*)\s+w/)
             current_line_width = match[1].to_f
           end
         end
-        
+
         # Look for rectangles (table cells)
         if line.match?(/(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+re/)
           matches = line.match(/(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+re/)
           x, y, width, height = matches[1..4].map(&:to_f)
-          
+
           # Store the rectangle with its properties
           rectangles << {
             page: page_number,
@@ -1064,7 +1064,7 @@ class SchoolReportParser
         end
       end
     end
-    
+
     # Write to CSV
     CSV.open(rects_path, 'wb') do |csv|
       csv << ['page', 'x', 'y', 'width', 'height', 'stroke_color', 'fill_color', 'line_width']
@@ -1096,7 +1096,7 @@ class SchoolReportParser
         font_size: row['font_size'].to_f
       }
     end
-    
+
     # Read rectangles
     rects = []
     CSV.foreach(rects_path, headers: true) do |row|
@@ -1111,7 +1111,7 @@ class SchoolReportParser
         line_width: row['line_width'].to_f
       }
     end
-    
+
     # For each text block, find its smallest containing rectangle
     combined_data = blocks.map do |block|
       # Find rectangles on the same page that contain this text block
@@ -1122,10 +1122,10 @@ class SchoolReportParser
         block[:y] >= rect[:y] &&
         block[:y] <= (rect[:y] + rect[:height])
       end
-      
+
       # Find the smallest containing rectangle by area
       smallest_rect = containing_rects.min_by { |r| r[:width] * r[:height] }
-      
+
       # Create entry with block data and rectangle data (if found)
       if smallest_rect
         {
@@ -1161,7 +1161,7 @@ class SchoolReportParser
         }
       end
     end
-    
+
     # Add empty rectangles that don't contain any text
     rects.each do |rect|
       # Check if this rectangle contains any text blocks
@@ -1172,7 +1172,7 @@ class SchoolReportParser
         block[:y] >= rect[:y] &&
         block[:y] <= (rect[:y] + rect[:height])
       end
-      
+
       # If it doesn't contain text, add it as an empty entry
       unless has_text
         combined_data << {
@@ -1192,7 +1192,7 @@ class SchoolReportParser
         }
       end
     end
-    
+
     # Sort by page, then y (top to bottom), then x (left to right)
     combined_data.sort_by! do |data|
       [
@@ -1201,7 +1201,7 @@ class SchoolReportParser
         data[:rect_x] || data[:text_x] || 0
       ]
     end
-    
+
     # Write combined data to CSV
     CSV.open(output_path, 'wb') do |csv|
       csv << [
@@ -1219,7 +1219,7 @@ class SchoolReportParser
         'fill_color',
         'line_width'
       ]
-      
+
       combined_data.each do |data|
         csv << [
           data[:page],
