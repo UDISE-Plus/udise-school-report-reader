@@ -38,7 +38,12 @@ class SchoolReportParser
 
     # Get enrollment data
     enrollment_data = EnrollmentDataReader.read(combined_path)
-    data_points['enrollment'] = enrollment_data if enrollment_data
+
+    # Format enrollment data for YAML
+    if enrollment_data
+      yaml_enrollment = EnrollmentYamlWriter.format_yaml(enrollment_data)
+      data_points['enrollment_data'] = yaml_enrollment
+    end
 
     yaml_path = pdf_path.sub(/\.pdf$/i, '.yml')
     File.write(yaml_path, data_points.to_yaml)
@@ -47,9 +52,6 @@ class SchoolReportParser
     html_path = pdf_path.sub(/\.pdf$/i, '_enrollment.html')
     EnrollmentHtmlWriter.generate_html(enrollment_data, html_path)
 
-    enrollment_yaml_path = pdf_path.sub(/\.pdf$/i, '_enrollment.yml')
-    EnrollmentYamlWriter.generate_yaml(enrollment_data, enrollment_yaml_path)
-    
     [txt_path, compressed_path, yaml_path, csv_path, rects_path, combined_path, html_path]
   end
 

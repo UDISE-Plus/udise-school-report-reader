@@ -1,5 +1,5 @@
 class EnrollmentYamlWriter
-  def self.generate_yaml(data, yaml_path)
+  def self.format_yaml(data)
     return unless data
 
     grade_rows = data[:grade_rows]
@@ -57,7 +57,6 @@ class EnrollmentYamlWriter
       end
     end
 
-    require 'yaml'
-    File.write(yaml_path, yaml_data.to_yaml)
+    yaml_data
   end
 end

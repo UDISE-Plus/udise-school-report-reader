@@ -205,9102 +205,1404 @@ grants:
     amount: 0.0
   expenditure:
     amount: 0.0
-enrollment:
-  :grade_rows:
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - Pre-Pr
-    - - text_x
-      - '54.01'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '49.33'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '32.48'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - I
-    - - text_x
-      - '98.46'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '81.81'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '35.53'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - II
-    - - text_x
-      - '132.87'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '117.34'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '35.53'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - III
-    - - text_x
-      - '167.29'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '152.86'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '35.53'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - IV
-    - - text_x
-      - '202.37'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '188.39'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '35.53'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - V
-    - - text_x
-      - '239.01'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '223.91'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '35.53'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - VI
-    - - text_x
-      - '273.42'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '259.44'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '35.53'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - VII
-    - - text_x
-      - '307.83'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '294.96'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '35.53'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - VIII
-    - - text_x
-      - '342.25'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '330.49'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '35.53'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - IX
-    - - text_x
-      - '380.0'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '366.01'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '35.53'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - X
-    - - text_x
-      - '416.63'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '401.54'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '35.53'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - XI
-    - - text_x
-      - '451.05'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '437.06'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '35.53'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  - !ruby/object:CSV::Row
-    header_row: false
-    row:
-    - - page
-      - '2'
-    - - text
-      - XII
-    - - text_x
-      - '484.95'
-    - - text_y
-      - '780.0'
-    - - font
-      - F2
-    - - font_size
-      - '8.0'
-    - - rect_x
-      - '472.59'
-    - - rect_y
-      - '778.0'
-    - - rect_width
-      - '34.51'
-    - - rect_height
-      - '12.0'
-    - - stroke_color
-      - 0.66275 0.66275 0.66275 RG
-    - - fill_color
-      - 0 g
-    - - line_width
-      - '0.01'
-  :bg_pairs:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '54.78'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '70.58'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '65.57'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '88.28'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '105.6'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '100.08'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    132.46:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '123.8'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '117.34'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '141.12'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '135.61'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    167.99:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '159.33'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '152.86'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '176.65'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '171.13'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    203.51:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '194.85'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '188.39'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '212.17'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '206.66'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    239.04:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '230.38'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '223.91'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '247.7'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '242.18'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    274.56:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '265.9'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '259.44'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '283.22'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '277.71'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '301.43'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '318.75'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '313.23'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    345.61:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '336.95'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '330.49'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '354.27'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '348.76'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    381.14:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '372.48'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '366.01'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '389.8'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '384.28'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    416.66499999999996:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '408.01'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '401.54'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '425.32'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '419.81'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    452.19:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '443.53'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '437.06'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '460.85'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '455.33'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    486.95500000000004:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - B
-      - - text_x
-        - '478.55'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '472.59'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - G
-      - - text_x
-        - '495.36'
-      - - text_y
-        - '768.0'
-      - - font
-        - F2
-      - - font_size
-        - '8.0'
-      - - rect_x
-        - '489.84'
-      - - rect_y
-        - '766.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '12.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.01'
-  :gen_numbers:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '7'
-      - - text_x
-        - '59.68'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '4'
-      - - text_x
-        - '75.92'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '65.57'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '94.19'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '4'
-      - - text_x
-        - '111.44'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '100.08'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    132.46:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '129.71'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '117.34'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '146.97'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '135.61'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    167.99:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '4'
-      - - text_x
-        - '165.24'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '152.86'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '182.49'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '171.13'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    203.51:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '5'
-      - - text_x
-        - '200.76'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '188.39'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '218.02'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '206.66'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    239.04:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '6'
-      - - text_x
-        - '236.29'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '223.91'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '253.55'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '242.18'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    274.56:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '6'
-      - - text_x
-        - '271.82'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '259.44'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '289.07'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '277.71'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '8'
-      - - text_x
-        - '307.34'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '324.6'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '313.23'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    345.61:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '13'
-      - - text_x
-        - '338.97'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '330.49'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    381.14:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '9'
-      - - text_x
-        - '378.39'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '366.01'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    416.66499999999996:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '9'
-      - - text_x
-        - '413.92'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '401.54'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '431.17'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '419.81'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    452.19:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '16'
-      - - text_x
-        - '445.55'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '437.06'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '466.7'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '455.33'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    486.95500000000004:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '16'
-      - - text_x
-        - '480.06'
-      - - text_y
-        - '757.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '472.59'
-      - - rect_y
-        - '754.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-  :sc_numbers:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '21'
-      - - text_x
-        - '55.79'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '9'
-      - - text_x
-        - '75.92'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '65.57'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '10'
-      - - text_x
-        - '90.3'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '111.44'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '100.08'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    132.46:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '7'
-      - - text_x
-        - '129.71'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '117.34'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '4'
-      - - text_x
-        - '146.97'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '135.61'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    167.99:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '10'
-      - - text_x
-        - '161.35'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '152.86'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '182.49'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '171.13'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    203.51:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '9'
-      - - text_x
-        - '200.76'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '188.39'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '5'
-      - - text_x
-        - '218.02'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '206.66'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    239.04:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '14'
-      - - text_x
-        - '232.4'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '223.91'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '253.55'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '242.18'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    274.56:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '13'
-      - - text_x
-        - '267.92'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '259.44'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '289.07'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '277.71'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '12'
-      - - text_x
-        - '303.45'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '324.6'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '313.23'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    345.61:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '13'
-      - - text_x
-        - '338.97'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '330.49'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '360.12'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '348.76'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    381.14:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '14'
-      - - text_x
-        - '374.5'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '366.01'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '395.65'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '384.28'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    416.66499999999996:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '12'
-      - - text_x
-        - '410.02'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '401.54'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    452.19:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '9'
-      - - text_x
-        - '449.44'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '437.06'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '466.7'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '455.33'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    486.95500000000004:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '8'
-      - - text_x
-        - '483.95'
-      - - text_y
-        - '745.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '472.59'
-      - - rect_y
-        - '743.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-  :st_numbers:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '59.68'
-      - - text_y
-        - '734.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '731.5'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '236.29'
-      - - text_y
-        - '734.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '223.91'
-      - - rect_y
-        - '731.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '307.34'
-      - - text_y
-        - '734.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '731.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '431.17'
-      - - text_y
-        - '734.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '419.81'
-      - - rect_y
-        - '731.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :obc_numbers:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '195'
-      - - text_x
-        - '51.89'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '67'
-      - - text_x
-        - '72.03'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '65.57'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '99'
-      - - text_x
-        - '90.3'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '28'
-      - - text_x
-        - '107.55'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '100.08'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    132.46:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '95'
-      - - text_x
-        - '125.82'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '117.34'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '29'
-      - - text_x
-        - '143.08'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '135.61'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    167.99:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '85'
-      - - text_x
-        - '161.35'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '152.86'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '25'
-      - - text_x
-        - '178.6'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '171.13'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    203.51:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '121'
-      - - text_x
-        - '192.98'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '188.39'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '24'
-      - - text_x
-        - '214.13'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '206.66'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    239.04:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '101'
-      - - text_x
-        - '228.51'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '223.91'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '26'
-      - - text_x
-        - '249.65'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '242.18'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    274.56:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '110'
-      - - text_x
-        - '264.03'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '259.44'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '27'
-      - - text_x
-        - '285.18'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '277.71'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '105'
-      - - text_x
-        - '299.56'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '11'
-      - - text_x
-        - '320.7'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '313.23'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    345.61:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '122'
-      - - text_x
-        - '335.08'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '330.49'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '19'
-      - - text_x
-        - '356.23'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '348.76'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    381.14:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '136'
-      - - text_x
-        - '370.61'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '366.01'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '9'
-      - - text_x
-        - '395.65'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '384.28'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    416.66499999999996:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '121'
-      - - text_x
-        - '406.13'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '401.54'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '7'
-      - - text_x
-        - '431.17'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '419.81'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    452.19:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '104'
-      - - text_x
-        - '441.66'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '437.06'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '15'
-      - - text_x
-        - '462.81'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '455.33'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    486.95500000000004:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '115'
-      - - text_x
-        - '476.17'
-      - - text_y
-        - '722.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '472.59'
-      - - rect_y
-        - '712.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '19.0'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-  :musl_numbers:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '82'
-      - - text_x
-        - '55.79'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '16'
-      - - text_x
-        - '72.03'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '65.57'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '39'
-      - - text_x
-        - '90.3'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '111.44'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '100.08'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    132.46:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '36'
-      - - text_x
-        - '125.82'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '117.34'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '5'
-      - - text_x
-        - '146.97'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '135.61'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    167.99:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '23'
-      - - text_x
-        - '161.35'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '152.86'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '4'
-      - - text_x
-        - '182.49'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '171.13'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    203.51:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '39'
-      - - text_x
-        - '196.87'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '188.39'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '6'
-      - - text_x
-        - '218.02'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '206.66'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    239.04:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '30'
-      - - text_x
-        - '232.4'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '223.91'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '253.55'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '242.18'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    274.56:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '36'
-      - - text_x
-        - '267.92'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '259.44'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '289.07'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '277.71'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '26'
-      - - text_x
-        - '303.45'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '324.6'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '313.23'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    345.61:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '43'
-      - - text_x
-        - '338.97'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '330.49'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '360.12'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '348.76'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    381.14:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '34'
-      - - text_x
-        - '374.5'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '366.01'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    416.66499999999996:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '36'
-      - - text_x
-        - '410.02'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '401.54'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '431.17'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '419.81'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    452.19:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '26'
-      - - text_x
-        - '445.55'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '437.06'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '466.7'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '455.33'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    486.95500000000004:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '25'
-      - - text_x
-        - '480.06'
-      - - text_y
-        - '669.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '472.59'
-      - - rect_y
-        - '667.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-  :chris_numbers:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '58'
-      - - text_x
-        - '55.79'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '18'
-      - - text_x
-        - '72.03'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '65.57'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '26'
-      - - text_x
-        - '90.3'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '13'
-      - - text_x
-        - '107.55'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '100.08'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    132.46:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '34'
-      - - text_x
-        - '125.82'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '117.34'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '8'
-      - - text_x
-        - '146.97'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '135.61'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    167.99:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '37'
-      - - text_x
-        - '161.35'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '152.86'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '10'
-      - - text_x
-        - '178.6'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '171.13'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    203.51:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '44'
-      - - text_x
-        - '196.87'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '188.39'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '7'
-      - - text_x
-        - '218.02'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '206.66'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    239.04:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '45'
-      - - text_x
-        - '232.4'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '223.91'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '9'
-      - - text_x
-        - '253.55'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '242.18'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    274.56:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '39'
-      - - text_x
-        - '267.92'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '259.44'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '12'
-      - - text_x
-        - '285.18'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '277.71'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '45'
-      - - text_x
-        - '303.45'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '4'
-      - - text_x
-        - '324.6'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '313.23'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    345.61:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '52'
-      - - text_x
-        - '338.97'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '330.49'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '6'
-      - - text_x
-        - '360.12'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '348.76'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    381.14:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '52'
-      - - text_x
-        - '374.5'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '366.01'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '6'
-      - - text_x
-        - '395.65'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '384.28'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    416.66499999999996:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '51'
-      - - text_x
-        - '410.02'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '401.54'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '5'
-      - - text_x
-        - '431.17'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '419.81'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    452.19:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '56'
-      - - text_x
-        - '445.55'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '437.06'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '8'
-      - - text_x
-        - '466.7'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '455.33'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    486.95500000000004:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '53'
-      - - text_x
-        - '480.06'
-      - - text_y
-        - '658.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '472.59'
-      - - rect_y
-        - '655.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-  :sikh_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :budd_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :parsi_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :jain_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :others_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :aadh_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :bpl_numbers:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '5'
-      - - text_x
-        - '59.68'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '75.92'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '65.57'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '94.19'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '111.44'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '100.08'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    132.46:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '129.71'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '117.34'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '146.97'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '135.61'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    167.99:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '165.24'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '152.86'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '182.49'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '171.13'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    203.51:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '5'
-      - - text_x
-        - '200.76'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '188.39'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '218.02'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '206.66'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    239.04:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '5'
-      - - text_x
-        - '236.29'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '223.91'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    274.56:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '5'
-      - - text_x
-        - '271.82'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '259.44'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '289.07'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '277.71'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '6'
-      - - text_x
-        - '307.34'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '324.6'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '313.23'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    345.61:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '12'
-      - - text_x
-        - '338.97'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '330.49'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    381.14:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '7'
-      - - text_x
-        - '378.39'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '366.01'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    416.66499999999996:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '8'
-      - - text_x
-        - '413.92'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '401.54'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '431.17'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '419.81'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    452.19:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '15'
-      - - text_x
-        - '445.55'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '437.06'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '466.7'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '455.33'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    486.95500000000004:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '12'
-      - - text_x
-        - '480.06'
-      - - text_y
-        - '566.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '472.59'
-      - - rect_y
-        - '564.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-  :rept_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :cwsn_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_3_numbers:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '68'
-      - - text_x
-        - '55.79'
-      - - text_y
-        - '495.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '492.5'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '23'
-      - - text_x
-        - '72.03'
-      - - text_y
-        - '495.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '65.57'
-      - - rect_y
-        - '492.5'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '94.19'
-      - - text_y
-        - '495.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '492.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '111.44'
-      - - text_y
-        - '495.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '100.08'
-      - - rect_y
-        - '492.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_4_numbers:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '111'
-      - - text_x
-        - '51.89'
-      - - text_y
-        - '483.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '481.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '42'
-      - - text_x
-        - '72.03'
-      - - text_y
-        - '483.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '65.57'
-      - - rect_y
-        - '481.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '94.19'
-      - - text_y
-        - '483.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '481.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '111.44'
-      - - text_y
-        - '483.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '100.08'
-      - - rect_y
-        - '481.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_5_numbers:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '40'
-      - - text_x
-        - '55.79'
-      - - text_y
-        - '472.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '469.5'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '13'
-      - - text_x
-        - '72.03'
-      - - text_y
-        - '472.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '65.57'
-      - - rect_y
-        - '469.5'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '78'
-      - - text_x
-        - '90.3'
-      - - text_y
-        - '472.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '469.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '20'
-      - - text_x
-        - '107.55'
-      - - text_y
-        - '472.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '100.08'
-      - - rect_y
-        - '469.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    132.46:
-    -
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '146.97'
-      - - text_y
-        - '472.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '135.61'
-      - - rect_y
-        - '469.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_6_numbers:
-    62.68:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '5'
-      - - text_x
-        - '59.68'
-      - - text_y
-        - '460.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '49.33'
-      - - rect_y
-        - '458.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '75.92'
-      - - text_y
-        - '460.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '65.57'
-      - - rect_y
-        - '458.0'
-      - - rect_width
-        - '16.24'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '31'
-      - - text_x
-        - '90.3'
-      - - text_y
-        - '460.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '458.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '13'
-      - - text_x
-        - '107.55'
-      - - text_y
-        - '460.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '100.08'
-      - - rect_y
-        - '458.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    132.46:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '72'
-      - - text_x
-        - '125.82'
-      - - text_y
-        - '460.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '117.34'
-      - - rect_y
-        - '458.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '30'
-      - - text_x
-        - '143.08'
-      - - text_y
-        - '460.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '135.61'
-      - - rect_y
-        - '458.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    167.99:
-    -
-    -
-    203.51:
-    -
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '218.02'
-      - - text_y
-        - '460.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '206.66'
-      - - rect_y
-        - '458.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    239.04:
-    -
-    -
-    274.56:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '271.82'
-      - - text_y
-        - '460.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '259.44'
-      - - rect_y
-        - '458.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_7_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '94.19'
-      - - text_y
-        - '449.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '81.81'
-      - - rect_y
-        - '446.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    132.46:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '31'
-      - - text_x
-        - '125.82'
-      - - text_y
-        - '449.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '117.34'
-      - - rect_y
-        - '446.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '5'
-      - - text_x
-        - '146.97'
-      - - text_y
-        - '449.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '135.61'
-      - - rect_y
-        - '446.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    167.99:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '81'
-      - - text_x
-        - '161.35'
-      - - text_y
-        - '449.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '152.86'
-      - - rect_y
-        - '446.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '25'
-      - - text_x
-        - '178.6'
-      - - text_y
-        - '449.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '171.13'
-      - - rect_y
-        - '446.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    203.51:
-    -
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '218.02'
-      - - text_y
-        - '449.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '206.66'
-      - - rect_y
-        - '446.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_8_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '129.71'
-      - - text_y
-        - '437.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '117.34'
-      - - rect_y
-        - '435.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    167.99:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '16'
-      - - text_x
-        - '161.35'
-      - - text_y
-        - '437.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '152.86'
-      - - rect_y
-        - '435.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '182.49'
-      - - text_y
-        - '437.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '171.13'
-      - - rect_y
-        - '435.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    203.51:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '97'
-      - - text_x
-        - '196.87'
-      - - text_y
-        - '437.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '188.39'
-      - - rect_y
-        - '435.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '21'
-      - - text_x
-        - '214.13'
-      - - text_y
-        - '437.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '206.66'
-      - - rect_y
-        - '435.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    239.04:
-    -
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '253.55'
-      - - text_y
-        - '437.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '242.18'
-      - - rect_y
-        - '435.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_9_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '165.24'
-      - - text_y
-        - '426.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '152.86'
-      - - rect_y
-        - '423.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '182.49'
-      - - text_y
-        - '426.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '171.13'
-      - - rect_y
-        - '423.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    203.51:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '37'
-      - - text_x
-        - '196.87'
-      - - text_y
-        - '426.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '188.39'
-      - - rect_y
-        - '423.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '7'
-      - - text_x
-        - '218.02'
-      - - text_y
-        - '426.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '206.66'
-      - - rect_y
-        - '423.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    239.04:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '100'
-      - - text_x
-        - '228.51'
-      - - text_y
-        - '426.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '223.91'
-      - - rect_y
-        - '423.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '24'
-      - - text_x
-        - '249.65'
-      - - text_y
-        - '426.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '242.18'
-      - - rect_y
-        - '423.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    274.56:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '271.82'
-      - - text_y
-        - '426.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '259.44'
-      - - rect_y
-        - '423.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '289.07'
-      - - text_y
-        - '426.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '277.71'
-      - - rect_y
-        - '423.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_10_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '200.76'
-      - - text_y
-        - '414.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '188.39'
-      - - rect_y
-        - '412.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    239.04:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '21'
-      - - text_x
-        - '232.4'
-      - - text_y
-        - '414.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '223.91'
-      - - rect_y
-        - '412.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '4'
-      - - text_x
-        - '253.55'
-      - - text_y
-        - '414.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '242.18'
-      - - rect_y
-        - '412.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    274.56:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '87'
-      - - text_x
-        - '267.92'
-      - - text_y
-        - '414.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '259.44'
-      - - rect_y
-        - '412.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '24'
-      - - text_x
-        - '285.18'
-      - - text_y
-        - '414.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '277.71'
-      - - rect_y
-        - '412.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '307.34'
-      - - text_y
-        - '414.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '412.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '324.6'
-      - - text_y
-        - '414.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '313.23'
-      - - rect_y
-        - '412.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_11_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '38'
-      - - text_x
-        - '267.92'
-      - - text_y
-        - '403.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '259.44'
-      - - rect_y
-        - '400.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '5'
-      - - text_x
-        - '289.07'
-      - - text_y
-        - '403.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '277.71'
-      - - rect_y
-        - '400.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '94'
-      - - text_x
-        - '303.45'
-      - - text_y
-        - '403.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '400.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '14'
-      - - text_x
-        - '320.7'
-      - - text_y
-        - '403.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '313.23'
-      - - rect_y
-        - '400.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    345.61:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '342.87'
-      - - text_y
-        - '403.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '330.49'
-      - - rect_y
-        - '400.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '360.12'
-      - - text_y
-        - '403.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '348.76'
-      - - rect_y
-        - '400.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_12_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '236.29'
-      - - text_y
-        - '391.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '223.91'
-      - - rect_y
-        - '389.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    274.56:
-    -
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '289.07'
-      - - text_y
-        - '391.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '277.71'
-      - - rect_y
-        - '389.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '30'
-      - - text_x
-        - '303.45'
-      - - text_y
-        - '391.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '389.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '324.6'
-      - - text_y
-        - '391.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '313.23'
-      - - rect_y
-        - '389.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    345.61:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '111'
-      - - text_x
-        - '335.08'
-      - - text_y
-        - '391.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '330.49'
-      - - rect_y
-        - '389.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '16'
-      - - text_x
-        - '356.23'
-      - - text_y
-        - '391.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '348.76'
-      - - rect_y
-        - '389.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    381.14:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '378.39'
-      - - text_y
-        - '391.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '366.01'
-      - - rect_y
-        - '389.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '395.65'
-      - - text_y
-        - '391.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '384.28'
-      - - rect_y
-        - '389.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_13_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '307.34'
-      - - text_y
-        - '380.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '294.96'
-      - - rect_y
-        - '377.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    345.61:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '34'
-      - - text_x
-        - '338.97'
-      - - text_y
-        - '380.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '330.49'
-      - - rect_y
-        - '377.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '360.12'
-      - - text_y
-        - '380.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '348.76'
-      - - rect_y
-        - '377.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    381.14:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '122'
-      - - text_x
-        - '370.61'
-      - - text_y
-        - '380.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '366.01'
-      - - rect_y
-        - '377.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '7'
-      - - text_x
-        - '395.65'
-      - - text_y
-        - '380.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '384.28'
-      - - rect_y
-        - '377.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    416.66499999999996:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '3'
-      - - text_x
-        - '413.92'
-      - - text_y
-        - '380.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '401.54'
-      - - rect_y
-        - '377.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '431.17'
-      - - text_y
-        - '380.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '419.81'
-      - - rect_y
-        - '377.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_14_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '342.87'
-      - - text_y
-        - '368.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '330.49'
-      - - rect_y
-        - '366.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-    381.14:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '34'
-      - - text_x
-        - '374.5'
-      - - text_y
-        - '368.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '366.01'
-      - - rect_y
-        - '366.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '395.65'
-      - - text_y
-        - '368.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '384.28'
-      - - rect_y
-        - '366.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    416.66499999999996:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '121'
-      - - text_x
-        - '406.13'
-      - - text_y
-        - '368.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '401.54'
-      - - rect_y
-        - '366.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '7'
-      - - text_x
-        - '431.17'
-      - - text_y
-        - '368.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '419.81'
-      - - rect_y
-        - '366.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    452.19:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '4'
-      - - text_x
-        - '449.44'
-      - - text_y
-        - '368.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '437.06'
-      - - rect_y
-        - '366.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '466.7'
-      - - text_y
-        - '368.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '455.33'
-      - - rect_y
-        - '366.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    486.95500000000004:
-    -
-    -
-  :age_15_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '378.39'
-      - - text_y
-        - '357.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '366.01'
-      - - rect_y
-        - '354.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '395.65'
-      - - text_y
-        - '357.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '384.28'
-      - - rect_y
-        - '354.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    416.66499999999996:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '18'
-      - - text_x
-        - '410.02'
-      - - text_y
-        - '357.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '401.54'
-      - - rect_y
-        - '354.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '1'
-      - - text_x
-        - '431.17'
-      - - text_y
-        - '357.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '419.81'
-      - - rect_y
-        - '354.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    452.19:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '96'
-      - - text_x
-        - '445.55'
-      - - text_y
-        - '357.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '437.06'
-      - - rect_y
-        - '354.5'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '15'
-      - - text_x
-        - '462.81'
-      - - text_y
-        - '357.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '455.33'
-      - - rect_y
-        - '354.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    486.95500000000004:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '2'
-      - - text_x
-        - '483.95'
-      - - text_y
-        - '357.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '472.59'
-      - - rect_y
-        - '354.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-  :age_16_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '29'
-      - - text_x
-        - '445.55'
-      - - text_y
-        - '345.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '437.06'
-      - - rect_y
-        - '343.0'
-      - - rect_width
-        - '18.27'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '4'
-      - - text_x
-        - '466.7'
-      - - text_y
-        - '345.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '455.33'
-      - - rect_y
-        - '343.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    486.95500000000004:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '110'
-      - - text_x
-        - '476.17'
-      - - text_y
-        - '345.5'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '472.59'
-      - - rect_y
-        - '343.0'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-  :age_17_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    - !ruby/object:CSV::Row
-      header_row: false
-      row:
-      - - page
-        - '2'
-      - - text
-        - '27'
-      - - text_x
-        - '480.06'
-      - - text_y
-        - '334.0'
-      - - font
-        - F2
-      - - font_size
-        - '7.0'
-      - - rect_x
-        - '472.59'
-      - - rect_y
-        - '331.5'
-      - - rect_width
-        - '17.26'
-      - - rect_height
-        - '11.5'
-      - - stroke_color
-        - 0.66275 0.66275 0.66275 RG
-      - - fill_color
-        - 0 g
-      - - line_width
-        - '0.5'
-    -
-  :age_18_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_19_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_20_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_21_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
-  :age_22_numbers:
-    62.68:
-    -
-    -
-    96.94:
-    -
-    -
-    132.46:
-    -
-    -
-    167.99:
-    -
-    -
-    203.51:
-    -
-    -
-    239.04:
-    -
-    -
-    274.56:
-    -
-    -
-    310.09000000000003:
-    -
-    -
-    345.61:
-    -
-    -
-    381.14:
-    -
-    -
-    416.66499999999996:
-    -
-    -
-    452.19:
-    -
-    -
-    486.95500000000004:
-    -
-    -
+enrollment_data:
+  gen:
+    pre-pr:
+      boys: 7
+      girls: 4
+    i:
+      boys: 3
+      girls: 4
+    ii:
+      boys: 3
+      girls: 3
+    iii:
+      boys: 4
+      girls: 1
+    iv:
+      boys: 5
+      girls: 1
+    v:
+      boys: 6
+      girls: 1
+    vi:
+      boys: 6
+      girls: 3
+    vii:
+      boys: 8
+      girls: 3
+    viii:
+      boys: 13
+      girls:
+    ix:
+      boys: 9
+      girls:
+    x:
+      boys: 9
+      girls: 1
+    xi:
+      boys: 16
+      girls: 2
+    xii:
+      boys: 16
+      girls:
+  sc:
+    pre-pr:
+      boys: 21
+      girls: 9
+    i:
+      boys: 10
+      girls: 3
+    ii:
+      boys: 7
+      girls: 4
+    iii:
+      boys: 10
+      girls: 3
+    iv:
+      boys: 9
+      girls: 5
+    v:
+      boys: 14
+      girls: 2
+    vi:
+      boys: 13
+      girls: 3
+    vii:
+      boys: 12
+      girls: 2
+    viii:
+      boys: 13
+      girls: 1
+    ix:
+      boys: 14
+      girls: 1
+    x:
+      boys: 12
+      girls:
+    xi:
+      boys: 9
+      girls: 3
+    xii:
+      boys: 8
+      girls:
+  st:
+    pre-pr:
+      boys: 1
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys: 1
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys: 1
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls: 1
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  obc:
+    pre-pr:
+      boys: 195
+      girls: 67
+    i:
+      boys: 99
+      girls: 28
+    ii:
+      boys: 95
+      girls: 29
+    iii:
+      boys: 85
+      girls: 25
+    iv:
+      boys: 121
+      girls: 24
+    v:
+      boys: 101
+      girls: 26
+    vi:
+      boys: 110
+      girls: 27
+    vii:
+      boys: 105
+      girls: 11
+    viii:
+      boys: 122
+      girls: 19
+    ix:
+      boys: 136
+      girls: 9
+    x:
+      boys: 121
+      girls: 7
+    xi:
+      boys: 104
+      girls: 15
+    xii:
+      boys: 115
+      girls:
+  muslim:
+    pre-pr:
+      boys: 82
+      girls: 16
+    i:
+      boys: 39
+      girls: 2
+    ii:
+      boys: 36
+      girls: 5
+    iii:
+      boys: 23
+      girls: 4
+    iv:
+      boys: 39
+      girls: 6
+    v:
+      boys: 30
+      girls: 3
+    vi:
+      boys: 36
+      girls: 2
+    vii:
+      boys: 26
+      girls: 2
+    viii:
+      boys: 43
+      girls: 3
+    ix:
+      boys: 34
+      girls:
+    x:
+      boys: 36
+      girls: 1
+    xi:
+      boys: 26
+      girls: 2
+    xii:
+      boys: 25
+      girls:
+  christian:
+    pre-pr:
+      boys: 58
+      girls: 18
+    i:
+      boys: 26
+      girls: 13
+    ii:
+      boys: 34
+      girls: 8
+    iii:
+      boys: 37
+      girls: 10
+    iv:
+      boys: 44
+      girls: 7
+    v:
+      boys: 45
+      girls: 9
+    vi:
+      boys: 39
+      girls: 12
+    vii:
+      boys: 45
+      girls: 4
+    viii:
+      boys: 52
+      girls: 6
+    ix:
+      boys: 52
+      girls: 6
+    x:
+      boys: 51
+      girls: 5
+    xi:
+      boys: 56
+      girls: 8
+    xii:
+      boys: 53
+      girls:
+  sikh:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  buddhist:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  parsi:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  jain:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  others:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  aadhaar:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  bpl:
+    pre-pr:
+      boys: 5
+      girls: 2
+    i:
+      boys: 3
+      girls: 3
+    ii:
+      boys: 3
+      girls: 3
+    iii:
+      boys: 3
+      girls: 1
+    iv:
+      boys: 5
+      girls: 1
+    v:
+      boys: 5
+      girls:
+    vi:
+      boys: 5
+      girls: 2
+    vii:
+      boys: 6
+      girls: 2
+    viii:
+      boys: 12
+      girls:
+    ix:
+      boys: 7
+      girls:
+    x:
+      boys: 8
+      girls: 1
+    xi:
+      boys: 15
+      girls: 1
+    xii:
+      boys: 12
+      girls:
+  repeater:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  cwsn:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_3:
+    pre-pr:
+      boys: 68
+      girls: 23
+    i:
+      boys: 1
+      girls: 1
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_4:
+    pre-pr:
+      boys: 111
+      girls: 42
+    i:
+      boys: 1
+      girls: 1
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_5:
+    pre-pr:
+      boys: 40
+      girls: 13
+    i:
+      boys: 78
+      girls: 20
+    ii:
+      boys:
+      girls: 1
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_6:
+    pre-pr:
+      boys: 5
+      girls: 2
+    i:
+      boys: 31
+      girls: 13
+    ii:
+      boys: 72
+      girls: 30
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls: 1
+    v:
+      boys:
+      girls:
+    vi:
+      boys: 1
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_7:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys: 1
+      girls:
+    ii:
+      boys: 31
+      girls: 5
+    iii:
+      boys: 81
+      girls: 25
+    iv:
+      boys:
+      girls: 1
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_8:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys: 2
+      girls:
+    iii:
+      boys: 16
+      girls: 3
+    iv:
+      boys: 97
+      girls: 21
+    v:
+      boys:
+      girls: 1
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_9:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys: 2
+      girls: 1
+    iv:
+      boys: 37
+      girls: 7
+    v:
+      boys: 100
+      girls: 24
+    vi:
+      boys: 3
+      girls: 3
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_10:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys: 1
+      girls:
+    v:
+      boys: 21
+      girls: 4
+    vi:
+      boys: 87
+      girls: 24
+    vii:
+      boys: 1
+      girls: 1
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_11:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys: 38
+      girls: 5
+    vii:
+      boys: 94
+      girls: 14
+    viii:
+      boys: 2
+      girls: 1
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_12:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys: 1
+      girls:
+    vi:
+      boys:
+      girls: 1
+    vii:
+      boys: 30
+      girls: 1
+    viii:
+      boys: 111
+      girls: 16
+    ix:
+      boys: 2
+      girls: 1
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_13:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys: 1
+      girls:
+    viii:
+      boys: 34
+      girls: 3
+    ix:
+      boys: 122
+      girls: 7
+    x:
+      boys: 3
+      girls: 1
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_14:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys: 1
+      girls:
+    ix:
+      boys: 34
+      girls: 1
+    x:
+      boys: 121
+      girls: 7
+    xi:
+      boys: 4
+      girls: 1
+    xii:
+      boys:
+      girls:
+  age_15:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys: 1
+      girls: 1
+    x:
+      boys: 18
+      girls: 1
+    xi:
+      boys: 96
+      girls: 15
+    xii:
+      boys: 2
+      girls:
+  age_16:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys: 29
+      girls: 4
+    xii:
+      boys: 110
+      girls:
+  age_17:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys: 27
+      girls:
+  age_18:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_19:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_20:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_21:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_22:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
