@@ -136,13 +136,13 @@ class SchoolReportParser
             #{grade_rows.map { |row| "<th colspan='2'>#{row['text']}</th>" }.join("\n")}
           </tr>
           <tr class="bg-pair">
-            <td class="category">Gen</td>
+            <td></td>
             #{bg_rows.each_slice(2).map { |b, g| 
               "<td>#{b['text']}</td><td>#{g['text']}</td>"
             }.join("\n")}
           </tr>
           <tr>
-            <td></td>
+            <td class="category">Gen</td>
             #{bg_pairs.map { |x_mid, pair|
               numbers = gen_numbers[x_mid]
               b_num = numbers&.first
