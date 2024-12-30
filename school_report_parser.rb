@@ -132,32 +132,17 @@ class SchoolReportParser
     # Sort rows by x coordinate to maintain order
     grade_rows.sort_by! { |row| row['text_x'].to_f }
     bg_rows.sort_by! { |row| row['text_x'].to_f }
-    gen_rows.sort_by! { |row| row['text_x'].to_f }
-    sc_rows.sort_by! { |row| row['text_x'].to_f }
-    st_rows.sort_by! { |row| row['text_x'].to_f }
-    obc_rows.sort_by! { |row| row['text_x'].to_f }
-    musl_rows.sort_by! { |row| row['text_x'].to_f }
-    chris_rows.sort_by! { |row| row['text_x'].to_f }
-    sikh_rows.sort_by! { |row| row['text_x'].to_f }
-    budd_rows.sort_by! { |row| row['text_x'].to_f }
-    parsi_rows.sort_by! { |row| row['text_x'].to_f }
-    jain_rows.sort_by! { |row| row['text_x'].to_f }
-    others_rows.sort_by! { |row| row['text_x'].to_f }
-    aadh_rows.sort_by! { |row| row['text_x'].to_f }
-    bpl_rows.sort_by! { |row| row['text_x'].to_f }
+    [gen_rows, sc_rows, st_rows, obc_rows, musl_rows, chris_rows, sikh_rows, budd_rows, 
+     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, rept_rows, cwsn_rows].each do |rows|
+      rows.sort_by! { |row| row['text_x'].to_f }
+    end
 
     # Filter out total columns (those with x >= 500)
     grade_rows.reject! { |row| row['text_x'].to_f >= 500 }
     bg_rows.reject! { |row| row['text_x'].to_f >= 500 }
-    gen_rows.reject! { |row| row['text_x'].to_f >= 500 }
-    sc_rows.reject! { |row| row['text_x'].to_f >= 500 }
-    st_rows.reject! { |row| row['text_x'].to_f >= 500 }
-    # Don't filter out the last cell for Muslim, Christian, Sikh, Buddhist and Parsi rows
-    # musl_rows.reject! { |row| row['text_x'].to_f >= 500 }
-    # chris_rows.reject! { |row| row['text_x'].to_f >= 500 }
-    # sikh_rows.reject! { |row| row['text_x'].to_f >= 500 }
-    # budd_rows.reject! { |row| row['text_x'].to_f >= 500 }
-    # parsi_rows.reject! { |row| row['text_x'].to_f >= 500 }
+    [gen_rows, sc_rows, st_rows].each do |rows|
+      rows.reject! { |row| row['text_x'].to_f >= 500 }
+    end
 
     # Group B,G pairs by their x-coordinates
     bg_pairs = bg_rows.each_slice(2).map do |b, g|
@@ -165,336 +150,44 @@ class SchoolReportParser
       [x_mid, [b, g]]
     end.to_h
 
-    # Match Gen numbers to B,G pairs based on x-coordinate proximity
-    gen_numbers = {}
-    remaining_gen_numbers = gen_rows.dup
-    threshold = 10.0  # Maximum distance to consider a match
+    # Helper method to match numbers to B,G pairs
+    def self.match_numbers_to_pairs(remaining_numbers, bg_pairs, threshold = 10.0)
+      numbers = {}
+      remaining = remaining_numbers.dup
 
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_gen_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_gen_numbers.delete(b_num)
+      bg_pairs.each do |x_mid, bg_pair|
+        b_x = bg_pair[0]['text_x'].to_f
+        g_x = bg_pair[1]['text_x'].to_f
+        
+        # Find numbers closest to B and G positions
+        b_num = remaining.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
+        remaining.delete(b_num) if b_num
+
+        g_num = remaining.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
+        remaining.delete(g_num) if g_num
+        
+        numbers[x_mid] = [b_num, g_num]
       end
 
-      g_num = remaining_gen_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_gen_numbers.delete(g_num)
-      end
-      
-      gen_numbers[x_mid] = [b_num, g_num]
+      numbers
     end
 
-    # Match SC numbers to B,G pairs based on x-coordinate proximity
-    sc_numbers = {}
-    remaining_sc_numbers = sc_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_sc_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_sc_numbers.delete(b_num)
-      end
-
-      g_num = remaining_sc_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_sc_numbers.delete(g_num)
-      end
-      
-      sc_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Match ST numbers to B,G pairs based on x-coordinate proximity
-    st_numbers = {}
-    remaining_st_numbers = st_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_st_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_st_numbers.delete(b_num)
-      end
-
-      g_num = remaining_st_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_st_numbers.delete(g_num)
-      end
-      
-      st_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Match OBC numbers to B,G pairs based on x-coordinate proximity
-    obc_numbers = {}
-    remaining_obc_numbers = obc_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_obc_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_obc_numbers.delete(b_num)
-      end
-
-      g_num = remaining_obc_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_obc_numbers.delete(g_num)
-      end
-      
-      obc_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Match Muslim numbers to B,G pairs based on x-coordinate proximity
-    musl_numbers = {}
-    remaining_musl_numbers = musl_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_musl_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_musl_numbers.delete(b_num)
-      end
-
-      g_num = remaining_musl_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_musl_numbers.delete(g_num)
-      end
-      
-      musl_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Match Christian numbers to B,G pairs based on x-coordinate proximity
-    chris_numbers = {}
-    remaining_chris_numbers = chris_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_chris_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_chris_numbers.delete(b_num)
-      end
-
-      g_num = remaining_chris_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_chris_numbers.delete(g_num)
-      end
-      
-      chris_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Match Sikh numbers to B,G pairs based on x-coordinate proximity
-    sikh_numbers = {}
-    remaining_sikh_numbers = sikh_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_sikh_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_sikh_numbers.delete(b_num)
-      end
-
-      g_num = remaining_sikh_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_sikh_numbers.delete(g_num)
-      end
-      
-      sikh_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Match Buddhist numbers to B,G pairs based on x-coordinate proximity
-    budd_numbers = {}
-    remaining_budd_numbers = budd_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_budd_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_budd_numbers.delete(b_num)
-      end
-
-      g_num = remaining_budd_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_budd_numbers.delete(g_num)
-      end
-      
-      budd_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Match Parsi numbers to B,G pairs based on x-coordinate proximity
-    parsi_numbers = {}
-    remaining_parsi_numbers = parsi_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_parsi_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_parsi_numbers.delete(b_num)
-      end
-
-      g_num = remaining_parsi_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_parsi_numbers.delete(g_num)
-      end
-      
-      parsi_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Match Jain numbers to B,G pairs based on x-coordinate proximity
-    jain_numbers = {}
-    remaining_jain_numbers = jain_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_jain_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_jain_numbers.delete(b_num)
-      end
-
-      g_num = remaining_jain_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_jain_numbers.delete(g_num)
-      end
-      
-      jain_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Match Others numbers to B,G pairs based on x-coordinate proximity
-    others_numbers = {}
-    remaining_others_numbers = others_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_others_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_others_numbers.delete(b_num)
-      end
-
-      g_num = remaining_others_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_others_numbers.delete(g_num)
-      end
-      
-      others_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Match Aadh numbers to B,G pairs based on x-coordinate proximity
-    aadh_numbers = {}
-    remaining_aadh_numbers = aadh_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_aadh_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_aadh_numbers.delete(b_num)
-      end
-      
-      g_num = remaining_aadh_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_aadh_numbers.delete(g_num)
-      end
-      
-      aadh_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Match BPL numbers to B,G pairs based on x-coordinate proximity
-    bpl_numbers = {}
-    remaining_bpl_numbers = bpl_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_bpl_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_bpl_numbers.delete(b_num)
-      end
-      
-      g_num = remaining_bpl_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_bpl_numbers.delete(g_num)
-      end
-      
-      bpl_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Process Rept numbers
-    rept_numbers = {}
-    remaining_rept_numbers = rept_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_rept_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_rept_numbers.delete(b_num)
-      end
-      
-      g_num = remaining_rept_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_rept_numbers.delete(g_num)
-      end
-      
-      rept_numbers[x_mid] = [b_num, g_num]
-    end
-
-    # Process CWSN numbers
-    cwsn_numbers = {}
-    remaining_cwsn_numbers = cwsn_rows.dup
-
-    bg_pairs.each do |x_mid, bg_pair|
-      b_x = bg_pair[0]['text_x'].to_f
-      g_x = bg_pair[1]['text_x'].to_f
-      
-      # Find numbers closest to B and G positions
-      b_num = remaining_cwsn_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-      if b_num
-        remaining_cwsn_numbers.delete(b_num)
-      end
-      
-      g_num = remaining_cwsn_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-      if g_num
-        remaining_cwsn_numbers.delete(g_num)
-      end
-      
-      cwsn_numbers[x_mid] = [b_num, g_num]
-    end
+    # Match all category numbers to B,G pairs
+    gen_numbers = match_numbers_to_pairs(gen_rows, bg_pairs)
+    sc_numbers = match_numbers_to_pairs(sc_rows, bg_pairs)
+    st_numbers = match_numbers_to_pairs(st_rows, bg_pairs)
+    obc_numbers = match_numbers_to_pairs(obc_rows, bg_pairs)
+    musl_numbers = match_numbers_to_pairs(musl_rows, bg_pairs)
+    chris_numbers = match_numbers_to_pairs(chris_rows, bg_pairs)
+    sikh_numbers = match_numbers_to_pairs(sikh_rows, bg_pairs)
+    budd_numbers = match_numbers_to_pairs(budd_rows, bg_pairs)
+    parsi_numbers = match_numbers_to_pairs(parsi_rows, bg_pairs)
+    jain_numbers = match_numbers_to_pairs(jain_rows, bg_pairs)
+    others_numbers = match_numbers_to_pairs(others_rows, bg_pairs)
+    aadh_numbers = match_numbers_to_pairs(aadh_rows, bg_pairs)
+    bpl_numbers = match_numbers_to_pairs(bpl_rows, bg_pairs)
+    rept_numbers = match_numbers_to_pairs(rept_rows, bg_pairs)
+    cwsn_numbers = match_numbers_to_pairs(cwsn_rows, bg_pairs)
 
     # Create HTML file with the header and grade information
     html_content = <<~HTML
@@ -503,161 +196,158 @@ class SchoolReportParser
       <head>
         <title>Enrollment Table</title>
         <style>
-          table { border-collapse: collapse; margin-top: 20px; }
+          table { border-collapse: collapse; margin-top: 20px; width: 100%; }
           th, td { border: 1px solid black; padding: 8px; text-align: center; }
           .header { font-weight: bold; background-color: #f0f0f0; }
-          .grade { font-weight: bold; }
-          .bg-pair { }
-          .category { font-weight: bold; }
+          .grade { font-weight: bold; background-color: #e0e0e0; }
+          .bg-pair { background-color: #f8f8f8; }
+          .category { font-weight: bold; text-align: left; }
         </style>
       </head>
       <body>
         <h2>#{header_row['text']}</h2>
         <table>
           <tr class="grade">
-            <th></th>
-            #{grade_rows.map { |row| "<th colspan='2'>#{row['text']}</th>" }.join("\n")}
+            <th rowspan="2">Category</th>
+            #{grade_rows.map { |row| "<th colspan='2'>#{row['text']}</th>" }.join}
           </tr>
           <tr class="bg-pair">
-            <td></td>
-            #{bg_rows.each_slice(2).map { |b, g| 
-              "<td>#{b['text']}</td><td>#{g['text']}</td>"
-            }.join("\n")}
+            #{grade_rows.map { |_| "<td>B</td><td>G</td>" }.join}
           </tr>
           <tr>
             <td class="category">Gen</td>
-            #{bg_pairs.map { |x_mid, pair|
+            #{bg_pairs.map { |x_mid, _|
               numbers = gen_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
             <td class="category">SC</td>
-            #{bg_pairs.map { |x_mid, pair|
+            #{bg_pairs.map { |x_mid, _|
               numbers = sc_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
             <td class="category">ST</td>
-            #{bg_pairs.map { |x_mid, pair|
+            #{bg_pairs.map { |x_mid, _|
               numbers = st_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
             <td class="category">OBC</td>
-            #{bg_pairs.map { |x_mid, pair|
+            #{bg_pairs.map { |x_mid, _|
               numbers = obc_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
-            <td class="category">Musl</td>
-            #{bg_pairs.map { |x_mid, pair|
+            <td class="category">Muslim</td>
+            #{bg_pairs.map { |x_mid, _|
               numbers = musl_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
-            <td class="category">Chris</td>
-            #{bg_pairs.map { |x_mid, pair|
+            <td class="category">Christian</td>
+            #{bg_pairs.map { |x_mid, _|
               numbers = chris_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
             <td class="category">Sikh</td>
-            #{bg_pairs.map { |x_mid, pair|
+            #{bg_pairs.map { |x_mid, _|
               numbers = sikh_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
-            <td class="category">Budd</td>
-            #{bg_pairs.map { |x_mid, pair|
+            <td class="category">Buddhist</td>
+            #{bg_pairs.map { |x_mid, _|
               numbers = budd_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
             <td class="category">Parsi</td>
-            #{bg_pairs.map { |x_mid, pair|
+            #{bg_pairs.map { |x_mid, _|
               numbers = parsi_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
             <td class="category">Jain</td>
-            #{bg_pairs.map { |x_mid, pair|
+            #{bg_pairs.map { |x_mid, _|
               numbers = jain_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
             <td class="category">Others</td>
-            #{bg_pairs.map { |x_mid, pair|
+            #{bg_pairs.map { |x_mid, _|
               numbers = others_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
-            <td class="category">Aadh</td>
-            #{bg_pairs.map { |x_mid, pair|
+            <td class="category">Aadhaar</td>
+            #{bg_pairs.map { |x_mid, _|
               numbers = aadh_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
             <td class="category">BPL</td>
-            #{bg_pairs.map { |x_mid, pair|
+            #{bg_pairs.map { |x_mid, _|
               numbers = bpl_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
-            <td class="category">Rept</td>
-            #{bg_pairs.map { |x_mid, pair|
+            <td class="category">Repeater</td>
+            #{bg_pairs.map { |x_mid, _|
               numbers = rept_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
           <tr>
             <td class="category">CWSN</td>
-            #{bg_pairs.map { |x_mid, pair|
+            #{bg_pairs.map { |x_mid, _|
               numbers = cwsn_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
-            }.join("\n")}
+            }.join}
           </tr>
         </table>
       </body>
