@@ -26,13 +26,135 @@ class SchoolReportParser
     rects_path = pdf_path.sub(/\.pdf$/i, '_rects.csv')
     extract_rectangles(reader, rects_path)
     
+    # Combine blocks and rectangles
+    combined_path = pdf_path.sub(/\.pdf$/i, '_combined.csv')
+    combine_blocks_and_rects(csv_path, rects_path, combined_path)
+    
     # Extract data points to YAML
     compressed_content.instance_variable_set(:@csv_path, csv_path)
     data_points = extract_data_points(compressed_content)
     yaml_path = pdf_path.sub(/\.pdf$/i, '.yml')
     File.write(yaml_path, data_points.to_yaml)
     
-    [txt_path, compressed_path, yaml_path, csv_path, rects_path]
+    [txt_path, compressed_path, yaml_path, csv_path, rects_path, combined_path]
+  end
+
+  def self.combine_blocks_and_rects(blocks_path, rects_path, output_path)
+    # Read blocks
+    blocks = []
+    CSV.foreach(blocks_path, headers: true) do |row|
+      blocks << {
+        page: row['page'].to_i,
+        x: row['x'].to_f,
+        y: row['y'].to_f,
+        text: row['text'],
+        font: row['font'],
+        font_size: row['font_size'].to_f
+      }
+    end
+    
+    # Read rectangles
+    rects = []
+    CSV.foreach(rects_path, headers: true) do |row|
+      rects << {
+        page: row['page'].to_i,
+        x: row['x'].to_f,
+        y: row['y'].to_f,
+        width: row['width'].to_f,
+        height: row['height'].to_f,
+        stroke_color: row['stroke_color'],
+        fill_color: row['fill_color'],
+        line_width: row['line_width'].to_f
+      }
+    end
+    
+    # For each text block, find the smallest containing rectangle
+    combined_data = blocks.map do |block|
+      # Find rectangles on the same page
+      page_rects = rects.select { |r| r[:page] == block[:page] }
+      
+      # Find rectangles that contain this text block
+      containing_rects = page_rects.select do |rect|
+        block[:x] >= rect[:x] &&
+        block[:x] <= (rect[:x] + rect[:width]) &&
+        block[:y] >= rect[:y] &&
+        block[:y] <= (rect[:y] + rect[:height])
+      end
+      
+      # Find the smallest containing rectangle by area
+      smallest_rect = containing_rects.min_by { |r| r[:width] * r[:height] }
+      
+      if smallest_rect
+        {
+          page: block[:page],
+          text: block[:text],
+          text_x: block[:x],
+          text_y: block[:y],
+          font: block[:font],
+          font_size: block[:font_size],
+          rect_x: smallest_rect[:x],
+          rect_y: smallest_rect[:y],
+          rect_width: smallest_rect[:width],
+          rect_height: smallest_rect[:height],
+          stroke_color: smallest_rect[:stroke_color],
+          fill_color: smallest_rect[:fill_color],
+          line_width: smallest_rect[:line_width]
+        }
+      else
+        {
+          page: block[:page],
+          text: block[:text],
+          text_x: block[:x],
+          text_y: block[:y],
+          font: block[:font],
+          font_size: block[:font_size],
+          rect_x: nil,
+          rect_y: nil,
+          rect_width: nil,
+          rect_height: nil,
+          stroke_color: nil,
+          fill_color: nil,
+          line_width: nil
+        }
+      end
+    end
+    
+    # Write combined data to CSV
+    CSV.open(output_path, 'wb') do |csv|
+      csv << [
+        'page',
+        'text',
+        'text_x',
+        'text_y',
+        'font',
+        'font_size',
+        'rect_x',
+        'rect_y',
+        'rect_width',
+        'rect_height',
+        'stroke_color',
+        'fill_color',
+        'line_width'
+      ]
+      
+      combined_data.each do |data|
+        csv << [
+          data[:page],
+          data[:text],
+          data[:text_x],
+          data[:text_y],
+          data[:font],
+          data[:font_size],
+          data[:rect_x],
+          data[:rect_y],
+          data[:rect_width],
+          data[:rect_height],
+          data[:stroke_color],
+          data[:fill_color],
+          data[:line_width]
+        ]
+      end
+    end
   end
 
   private
