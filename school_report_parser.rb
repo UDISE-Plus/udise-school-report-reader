@@ -22,13 +22,17 @@ class SchoolReportParser
     csv_path = pdf_path.sub(/\.pdf$/i, '_blocks.csv')
     extract_bt_et_blocks(reader, csv_path)
     
+    # Extract rectangles to CSV
+    rects_path = pdf_path.sub(/\.pdf$/i, '_rects.csv')
+    extract_rectangles(reader, rects_path)
+    
     # Extract data points to YAML
     compressed_content.instance_variable_set(:@csv_path, csv_path)
     data_points = extract_data_points(compressed_content)
     yaml_path = pdf_path.sub(/\.pdf$/i, '.yml')
     File.write(yaml_path, data_points.to_yaml)
     
-    [txt_path, compressed_path, yaml_path, csv_path]
+    [txt_path, compressed_path, yaml_path, csv_path, rects_path]
   end
 
   private
@@ -1189,8 +1193,6 @@ class SchoolReportParser
     data
   end
 
-  private
-
   def self.roman_to_arabic(roman)
     roman_values = {
       'I' => 1,
@@ -1216,5 +1218,70 @@ class SchoolReportParser
     end
     
     result
+  end
+
+  def self.extract_rectangles(reader, rects_path)
+    rectangles = []
+    current_color = '0 G'  # Default stroke color (black)
+    current_fill_color = '1 1 1 rg'  # Default fill color (white)
+    current_line_width = 1.0  # Default line width
+    
+    reader.pages.each_with_index do |page, index|
+      page_number = index + 1
+      
+      page.raw_content.each_line do |line|
+        # Track stroke color changes
+        if line.match?(/[\d.]+ [\d.]+ [\d.]+ RG/) || line.match?(/[\d.]+ G/)
+          current_color = line.strip
+        end
+        
+        # Track fill color changes
+        if line.match?(/[\d.]+ [\d.]+ [\d.]+ rg/) || line.match?(/[\d.]+ g/)
+          current_fill_color = line.strip
+        end
+        
+        # Track line width changes
+        if line.match?(/[\d.]+\s+w/)
+          if match = line.match(/(\d+\.?\d*)\s+w/)
+            current_line_width = match[1].to_f
+          end
+        end
+        
+        # Look for rectangles (table cells)
+        if line.match?(/(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+re/)
+          matches = line.match(/(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+re/)
+          x, y, width, height = matches[1..4].map(&:to_f)
+          
+          # Store the rectangle with its properties
+          rectangles << {
+            page: page_number,
+            x: x,
+            y: y,
+            width: width,
+            height: height,
+            stroke_color: current_color,
+            fill_color: current_fill_color,
+            line_width: current_line_width
+          }
+        end
+      end
+    end
+    
+    # Write to CSV
+    CSV.open(rects_path, 'wb') do |csv|
+      csv << ['page', 'x', 'y', 'width', 'height', 'stroke_color', 'fill_color', 'line_width']
+      rectangles.each do |rect|
+        csv << [
+          rect[:page],
+          rect[:x],
+          rect[:y],
+          rect[:width],
+          rect[:height],
+          rect[:stroke_color],
+          rect[:fill_color],
+          rect[:line_width]
+        ]
+      end
+    end
   end
 end
