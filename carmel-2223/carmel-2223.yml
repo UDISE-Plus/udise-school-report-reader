@@ -365,7 +365,7 @@ enrollment_data:
       girls: 15
     xii:
       boys: 115
-      girls:
+      girls: 2
   muslim:
     pre-pr:
       boys: 82
@@ -405,7 +405,7 @@ enrollment_data:
       girls: 2
     xii:
       boys: 25
-      girls:
+      girls: 1
   christian:
     pre-pr:
       boys: 58
@@ -1365,7 +1365,7 @@ enrollment_data:
       girls: 4
     xii:
       boys: 110
-      girls:
+      girls: 2
   age_17:
     pre-pr:
       boys:

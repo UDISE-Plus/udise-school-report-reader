@@ -1,7 +1,10 @@
 class EnrollmentDataReader
   def self.read(csv_path) = new(csv_path).read
 
-  def initialize(csv_path) = @csv_path = csv_path
+  def initialize(csv_path)
+    @csv_path = csv_path
+    @x_cutoff = 0
+  end
 
   def read
     # Initialize arrays for different row types
@@ -45,6 +48,10 @@ class EnrollmentDataReader
 
     CSV.foreach(@csv_path, headers: true) do |row|
       if row['page'] == '2'
+        if row['text'] == "Total" && row['rect_y'].to_f == 778.0
+          @x_cutoff = row['rect_x'].to_f
+        end
+
         if ['Pre-Pr', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'].include?(row['text'])
           if row['text_y'].to_f == 780.0
             grade_rows << row
@@ -101,7 +108,7 @@ class EnrollmentDataReader
     # Sort and filter rows
     [grade_rows, bg_rows].each do |rows|
       rows.sort_by! { |row| row['text_x'].to_f }
-      rows.reject! { |row| row['text_x'].to_f >= 500 }
+      rows.reject! { |row| row['text_x'].to_f >= @x_cutoff }
     end
 
     all_data_rows = [
@@ -114,7 +121,7 @@ class EnrollmentDataReader
 
     all_data_rows.each do |rows|
       rows.sort_by! { |row| row['text_x'].to_f }
-      rows.reject! { |row| row['text_x'].to_f >= 500 }
+      rows.reject! { |row| row['text_x'].to_f >= @x_cutoff }
     end
 
     # Group B,G pairs
