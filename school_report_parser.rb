@@ -52,6 +52,7 @@ class SchoolReportParser
     sc_rows = []
     st_rows = []
     obc_rows = []
+    musl_rows = []
     
     CSV.foreach(combined_path, headers: true) do |row|
       if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
@@ -67,7 +68,7 @@ class SchoolReportParser
           bg_rows << row
         end
       elsif header_row && row['page'] == '2' && row['text'] =~ /^\d+$/
-        # Get the Gen category numbers at y=757.0, SC at y=745.5, ST at y=734.0, and OBC at y=722.5
+        # Get the Gen category numbers at y=757.0, SC at y=745.5, ST at y=734.0, OBC at y=722.5, and Musl at y=669.5
         y_coord = row['text_y'].to_f
         if y_coord == 757.0
           gen_rows << row
@@ -77,6 +78,8 @@ class SchoolReportParser
           st_rows << row
         elsif y_coord == 722.5 || y_coord == 718.25
           obc_rows << row
+        elsif y_coord == 669.5
+          musl_rows << row
         end
       end
     end
@@ -103,6 +106,7 @@ class SchoolReportParser
     sc_rows.sort_by! { |row| row['text_x'].to_f }
     st_rows.sort_by! { |row| row['text_x'].to_f }
     obc_rows.sort_by! { |row| row['text_x'].to_f }
+    musl_rows.sort_by! { |row| row['text_x'].to_f }
 
     # Filter out total columns (those with x >= 500)
     grade_rows.reject! { |row| row['text_x'].to_f >= 500 }
@@ -110,8 +114,8 @@ class SchoolReportParser
     gen_rows.reject! { |row| row['text_x'].to_f >= 500 }
     sc_rows.reject! { |row| row['text_x'].to_f >= 500 }
     st_rows.reject! { |row| row['text_x'].to_f >= 500 }
-    # Don't filter out the last cell for OBC row
-    # obc_rows.reject! { |row| row['text_x'].to_f >= 500 }
+    # Don't filter out the last cell for Muslim row
+    # musl_rows.reject! { |row| row['text_x'].to_f >= 500 }
 
     # Group B,G pairs by their x-coordinates
     bg_pairs = bg_rows.each_slice(2).map do |b, g|
@@ -208,6 +212,28 @@ class SchoolReportParser
       obc_numbers[x_mid] = [b_num, g_num]
     end
 
+    # Match Muslim numbers to B,G pairs based on x-coordinate proximity
+    musl_numbers = {}
+    remaining_musl_numbers = musl_rows.dup
+
+    bg_pairs.each do |x_mid, bg_pair|
+      b_x = bg_pair[0]['text_x'].to_f
+      g_x = bg_pair[1]['text_x'].to_f
+      
+      # Find numbers closest to B and G positions
+      b_num = remaining_musl_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
+      if b_num
+        remaining_musl_numbers.delete(b_num)
+      end
+
+      g_num = remaining_musl_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
+      if g_num
+        remaining_musl_numbers.delete(g_num)
+      end
+      
+      musl_numbers[x_mid] = [b_num, g_num]
+    end
+
     # Create HTML file with the header and grade information
     html_content = <<~HTML
       <!DOCTYPE html>
@@ -267,6 +293,15 @@ class SchoolReportParser
             <td class="category">OBC</td>
             #{bg_pairs.map { |x_mid, pair|
               numbers = obc_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join("\n")}
+          </tr>
+          <tr>
+            <td class="category">Musl</td>
+            #{bg_pairs.map { |x_mid, pair|
+              numbers = musl_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
@@ -659,49 +694,25 @@ class SchoolReportParser
             'class_12' => { 'boys' => 0, 'girls' => 0 }
           },
           'by_social_category' => {
-            'general' => { 
-              'boys' => 0, 
-              'girls' => 0,
-              'coordinates' => {
-                'x' => nil,
-                'y' => nil,
-                'page' => nil,
-                'font' => nil,
-                'font_size' => nil
-              }
+            'gen' => {
+              'coordinates' => {},
+              'entries' => []
             },
-            'sc' => { 
-              'boys' => 0, 
-              'girls' => 0,
-              'coordinates' => {
-                'x' => nil,
-                'y' => nil,
-                'page' => nil,
-                'font' => nil,
-                'font_size' => nil
-              }
+            'sc' => {
+              'coordinates' => {},
+              'entries' => []
             },
-            'st' => { 
-              'boys' => 0, 
-              'girls' => 0,
-              'coordinates' => {
-                'x' => nil,
-                'y' => nil,
-                'page' => nil,
-                'font' => nil,
-                'font_size' => nil
-              }
+            'st' => {
+              'coordinates' => {},
+              'entries' => []
             },
-            'obc' => { 
-              'boys' => 0, 
-              'girls' => 0,
-              'coordinates' => {
-                'x' => nil,
-                'y' => nil,
-                'page' => nil,
-                'font' => nil,
-                'font_size' => nil
-              }
+            'obc' => {
+              'coordinates' => {},
+              'entries' => []
+            },
+            'musl' => {
+              'coordinates' => {},
+              'entries' => []
             }
           }
         },
@@ -1340,14 +1351,14 @@ class SchoolReportParser
         # Sort by x coordinate to get entries in order
         entries.sort_by! { |x, _| x }
         
-        data['students']['enrollment']['by_social_category']['general']['coordinates'] = {
+        data['students']['enrollment']['by_social_category']['gen']['coordinates'] = {
           'x' => 32.33,
           'y' => 757.25,
           'page' => 2,
           'font' => 'F1',
           'font_size' => 6.0
         }
-        data['students']['enrollment']['by_social_category']['general']['entries'] = entries.map { |_, text| text }
+        data['students']['enrollment']['by_social_category']['gen']['entries'] = entries.map { |_, text| text }
       when /^SC$/
         y_coord = 745.5
         page_num = 2
@@ -1423,6 +1434,31 @@ class SchoolReportParser
           'font_size' => 6.0
         }
         data['students']['enrollment']['by_social_category']['obc']['entries'] = entries.map { |_, text| text }
+      when /^Musl$/
+        y_coord = 669.5
+        page_num = 2
+        margin = 4.0  # Allow 4 units of difference for Musl since entries span more vertically
+        
+        # Parse CSV content to find matching entries
+        entries = []
+        csv_content = File.read(csv_path)
+        CSV.parse(csv_content, headers: true) do |row|
+          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
+            entries << [row['x'].to_f, row['text']]
+          end
+        end
+        
+        # Sort by x coordinate to get entries in order
+        entries.sort_by! { |x, _| x }
+        
+        data['students']['enrollment']['by_social_category']['musl']['coordinates'] = {
+          'x' => 31.5,
+          'y' => 669.5,
+          'page' => 2,
+          'font' => 'F1',
+          'font_size' => 6.0
+        }
+        data['students']['enrollment']['by_social_category']['musl']['entries'] = entries.map { |_, text| text }
       
       # CWSN details
       when "CWSN Facilities"

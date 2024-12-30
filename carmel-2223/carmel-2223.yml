@@ -164,9 +164,7 @@ students:
         boys: 0
         girls: 0
     by_social_category:
-      general:
-        boys: 0
-        girls: 0
+      gen:
         coordinates:
           x: 32.33
           "y": 757.25
@@ -202,8 +200,6 @@ students:
         - '23'
         - '128'
       sc:
-        boys: 0
-        girls: 0
         coordinates:
           x: 34.0
           "y": 745.5
@@ -240,8 +236,6 @@ students:
         - '36'
         - '188'
       st:
-        boys: 0
-        girls: 0
         coordinates:
           x: 34.33
           "y": 734.25
@@ -258,8 +252,6 @@ students:
         - '1'
         - '4'
       obc:
-        boys: 0
-        girls: 0
         coordinates:
           x: 31.5
           "y": 719.0
@@ -297,6 +289,43 @@ students:
         - 150 9
         - '289'
         - 179 8
+      musl:
+        coordinates:
+          x: 31.5
+          "y": 669.5
+          page: 2
+          font: F1
+          font_size: 6.0
+        entries:
+        - Musl
+        - '82'
+        - '16'
+        - '39'
+        - '2'
+        - '36'
+        - '5'
+        - '23'
+        - '4'
+        - '39'
+        - '6'
+        - '30'
+        - '3'
+        - '36'
+        - '2'
+        - '26'
+        - '2'
+        - '43'
+        - '3'
+        - '34'
+        - '36'
+        - '1'
+        - '26'
+        - '2'
+        - '25'
+        - '1'
+        - '475'
+        - '47'
+        - '522'
   facilities:
     general:
       transport:
