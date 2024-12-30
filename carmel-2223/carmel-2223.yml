@@ -438,6 +438,93 @@ students:
         - '89'
         - '16'
         - '105'
+      rept:
+        coordinates:
+          x: 31.5
+          "y": 555.0
+          page: 2
+          font: F1
+          font_size: 6.0
+        entries:
+        - Rept
+      cwsn:
+        coordinates: {}
+        entries: []
+    rte:
+      section_12:
+        class_1:
+          boys: 0
+          girls: 0
+        class_2:
+          boys: 0
+          girls: 0
+        class_3:
+          boys: 0
+          girls: 0
+        class_4:
+          boys: 0
+          girls: 0
+        class_5:
+          boys: 0
+          girls: 0
+        class_6:
+          boys: 0
+          girls: 0
+        class_7:
+          boys: 0
+          girls: 0
+        class_8:
+          boys: 0
+          girls: 0
+        class_9:
+          boys: 0
+          girls: 0
+        class_10:
+          boys: 0
+          girls: 0
+        class_11:
+          boys: 0
+          girls: 0
+        class_12:
+          boys: 0
+          girls: 0
+      ews:
+        class_1:
+          boys: 0
+          girls: 0
+        class_2:
+          boys: 0
+          girls: 0
+        class_3:
+          boys: 0
+          girls: 0
+        class_4:
+          boys: 0
+          girls: 0
+        class_5:
+          boys: 0
+          girls: 0
+        class_6:
+          boys: 0
+          girls: 0
+        class_7:
+          boys: 0
+          girls: 0
+        class_8:
+          boys: 0
+          girls: 0
+        class_9:
+          boys: 0
+          girls: 0
+        class_10:
+          boys: 0
+          girls: 0
+        class_11:
+          boys: 0
+          girls: 0
+        class_12:
+          boys: 0
+          girls: 0
   facilities:
     general:
       transport:

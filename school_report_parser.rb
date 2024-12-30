@@ -61,6 +61,8 @@ class SchoolReportParser
     others_rows = []
     aadh_rows = []
     bpl_rows = []
+    rept_rows = []
+    cwsn_rows = []
     
     CSV.foreach(combined_path, headers: true) do |row|
       if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
@@ -104,6 +106,10 @@ class SchoolReportParser
           aadh_rows << row
         elsif y_coord == 566.5
           bpl_rows << row
+        elsif y_coord == 555.0
+          rept_rows << row
+        elsif y_coord == 543.5
+          cwsn_rows << row
         end
       end
     end
@@ -446,6 +452,50 @@ class SchoolReportParser
       bpl_numbers[x_mid] = [b_num, g_num]
     end
 
+    # Process Rept numbers
+    rept_numbers = {}
+    remaining_rept_numbers = rept_rows.dup
+
+    bg_pairs.each do |x_mid, bg_pair|
+      b_x = bg_pair[0]['text_x'].to_f
+      g_x = bg_pair[1]['text_x'].to_f
+      
+      # Find numbers closest to B and G positions
+      b_num = remaining_rept_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
+      if b_num
+        remaining_rept_numbers.delete(b_num)
+      end
+      
+      g_num = remaining_rept_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
+      if g_num
+        remaining_rept_numbers.delete(g_num)
+      end
+      
+      rept_numbers[x_mid] = [b_num, g_num]
+    end
+
+    # Process CWSN numbers
+    cwsn_numbers = {}
+    remaining_cwsn_numbers = cwsn_rows.dup
+
+    bg_pairs.each do |x_mid, bg_pair|
+      b_x = bg_pair[0]['text_x'].to_f
+      g_x = bg_pair[1]['text_x'].to_f
+      
+      # Find numbers closest to B and G positions
+      b_num = remaining_cwsn_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
+      if b_num
+        remaining_cwsn_numbers.delete(b_num)
+      end
+      
+      g_num = remaining_cwsn_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
+      if g_num
+        remaining_cwsn_numbers.delete(g_num)
+      end
+      
+      cwsn_numbers[x_mid] = [b_num, g_num]
+    end
+
     # Create HTML file with the header and grade information
     html_content = <<~HTML
       <!DOCTYPE html>
@@ -586,6 +636,24 @@ class SchoolReportParser
             <td class="category">BPL</td>
             #{bg_pairs.map { |x_mid, pair|
               numbers = bpl_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join("\n")}
+          </tr>
+          <tr>
+            <td class="category">Rept</td>
+            #{bg_pairs.map { |x_mid, pair|
+              numbers = rept_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join("\n")}
+          </tr>
+          <tr>
+            <td class="category">CWSN</td>
+            #{bg_pairs.map { |x_mid, pair|
+              numbers = cwsn_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
@@ -1029,6 +1097,44 @@ class SchoolReportParser
             'bpl' => {
               'coordinates' => {},
               'entries' => []
+            },
+            'rept' => {
+              'coordinates' => {},
+              'entries' => []
+            },
+            'cwsn' => {
+              'coordinates' => {},
+              'entries' => []
+            }
+          },
+          'rte' => {
+            'section_12' => {
+              'class_1' => { 'boys' => 0, 'girls' => 0 },
+              'class_2' => { 'boys' => 0, 'girls' => 0 },
+              'class_3' => { 'boys' => 0, 'girls' => 0 },
+              'class_4' => { 'boys' => 0, 'girls' => 0 },
+              'class_5' => { 'boys' => 0, 'girls' => 0 },
+              'class_6' => { 'boys' => 0, 'girls' => 0 },
+              'class_7' => { 'boys' => 0, 'girls' => 0 },
+              'class_8' => { 'boys' => 0, 'girls' => 0 },
+              'class_9' => { 'boys' => 0, 'girls' => 0 },
+              'class_10' => { 'boys' => 0, 'girls' => 0 },
+              'class_11' => { 'boys' => 0, 'girls' => 0 },
+              'class_12' => { 'boys' => 0, 'girls' => 0 }
+            },
+            'ews' => {
+              'class_1' => { 'boys' => 0, 'girls' => 0 },
+              'class_2' => { 'boys' => 0, 'girls' => 0 },
+              'class_3' => { 'boys' => 0, 'girls' => 0 },
+              'class_4' => { 'boys' => 0, 'girls' => 0 },
+              'class_5' => { 'boys' => 0, 'girls' => 0 },
+              'class_6' => { 'boys' => 0, 'girls' => 0 },
+              'class_7' => { 'boys' => 0, 'girls' => 0 },
+              'class_8' => { 'boys' => 0, 'girls' => 0 },
+              'class_9' => { 'boys' => 0, 'girls' => 0 },
+              'class_10' => { 'boys' => 0, 'girls' => 0 },
+              'class_11' => { 'boys' => 0, 'girls' => 0 },
+              'class_12' => { 'boys' => 0, 'girls' => 0 }
             }
           }
         },
@@ -1676,8 +1782,28 @@ class SchoolReportParser
         extract_enrollment_data('Aadh', 589.0, csv_path, data)
       when /^BPL$/
         extract_enrollment_data('BPL', 566.5, csv_path, data)
+      when /^Rept$/
+        data['students']['enrollment']['by_social_category']['rept'] = {
+          'coordinates' => {
+            'x' => 31.5,
+            'y' => 555.0,
+            'page' => 2,
+            'font' => 'F1',
+            'font_size' => 6.0
+          },
+          'entries' => ['Rept']
+        }
       when /^CWSN$/
-        data['students']['enrollment']['cwsn']['facilities']['available'] = next_line if next_line
+        data['students']['enrollment']['by_social_category']['cwsn'] = {
+          'coordinates' => {
+            'x' => 31.5,
+            'y' => 543.5,
+            'page' => 2,
+            'font' => 'F1',
+            'font_size' => 6.0
+          },
+          'entries' => ['CWSN']
+        }
       when /CWSN Type:\s+(.+)/
         type = $1
         if next_line =~ /Boys\s+(\d+)\s+Girls\s+(\d+)/
