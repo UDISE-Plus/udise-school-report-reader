@@ -63,6 +63,7 @@ class SchoolReportParser
     bpl_rows = []
     rept_rows = []
     cwsn_rows = []
+    age_above_3_rows = []
     
     CSV.foreach(combined_path, headers: true) do |row|
       if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
@@ -110,37 +111,27 @@ class SchoolReportParser
           rept_rows << row
         elsif y_coord == 543.5
           cwsn_rows << row
+        elsif y_coord == 495.0
+          age_above_3_rows << row
         end
       end
     end
 
     return unless header_row
 
-    # Debug: Print all y-coordinates for number rows on page 2
-    puts "Debug: Y-coordinates for number rows on page 2:"
-    CSV.foreach(combined_path, headers: true) do |row|
-      if row['page'] == '2' && row['text'] =~ /^\d+$/
-        puts "#{row['text']}: y=#{row['text_y']}"
-      end
-    end
-
-    puts "\nDebug: Found #{obc_rows.length} OBC rows:"
-    obc_rows.each do |row|
-      puts "#{row['text']}: x=#{row['text_x']}, y=#{row['text_y']}"
-    end
-
     # Sort rows by x coordinate to maintain order
     grade_rows.sort_by! { |row| row['text_x'].to_f }
     bg_rows.sort_by! { |row| row['text_x'].to_f }
     [gen_rows, sc_rows, st_rows, obc_rows, musl_rows, chris_rows, sikh_rows, budd_rows, 
-     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, rept_rows, cwsn_rows].each do |rows|
+     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, age_above_3_rows].each do |rows|
       rows.sort_by! { |row| row['text_x'].to_f }
     end
 
     # Filter out total columns (those with x >= 500)
     grade_rows.reject! { |row| row['text_x'].to_f >= 500 }
     bg_rows.reject! { |row| row['text_x'].to_f >= 500 }
-    [gen_rows, sc_rows, st_rows].each do |rows|
+    [gen_rows, sc_rows, st_rows, obc_rows, musl_rows, chris_rows, sikh_rows, budd_rows,
+     parsi_rows, jain_rows, others_rows, aadh_rows, bpl_rows, age_above_3_rows].each do |rows|
       rows.reject! { |row| row['text_x'].to_f >= 500 }
     end
 
@@ -150,29 +141,7 @@ class SchoolReportParser
       [x_mid, [b, g]]
     end.to_h
 
-    # Helper method to match numbers to B,G pairs
-    def self.match_numbers_to_pairs(remaining_numbers, bg_pairs, threshold = 10.0)
-      numbers = {}
-      remaining = remaining_numbers.dup
-
-      bg_pairs.each do |x_mid, bg_pair|
-        b_x = bg_pair[0]['text_x'].to_f
-        g_x = bg_pair[1]['text_x'].to_f
-        
-        # Find numbers closest to B and G positions
-        b_num = remaining.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
-        remaining.delete(b_num) if b_num
-
-        g_num = remaining.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
-        remaining.delete(g_num) if g_num
-        
-        numbers[x_mid] = [b_num, g_num]
-      end
-
-      numbers
-    end
-
-    # Match all category numbers to B,G pairs
+    # Match numbers to B,G pairs
     gen_numbers = match_numbers_to_pairs(gen_rows, bg_pairs)
     sc_numbers = match_numbers_to_pairs(sc_rows, bg_pairs)
     st_numbers = match_numbers_to_pairs(st_rows, bg_pairs)
@@ -188,6 +157,7 @@ class SchoolReportParser
     bpl_numbers = match_numbers_to_pairs(bpl_rows, bg_pairs)
     rept_numbers = match_numbers_to_pairs(rept_rows, bg_pairs)
     cwsn_numbers = match_numbers_to_pairs(cwsn_rows, bg_pairs)
+    age_above_3_numbers = match_numbers_to_pairs(age_above_3_rows, bg_pairs)
 
     # Create HTML file with the header and grade information
     html_content = <<~HTML
@@ -344,6 +314,15 @@ class SchoolReportParser
             <td class="category">CWSN</td>
             #{bg_pairs.map { |x_mid, _|
               numbers = cwsn_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join}
+          </tr>
+          <tr>
+            <td class="category">Age >3</td>
+            #{bg_pairs.map { |x_mid, _|
+              numbers = age_above_3_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
@@ -795,8 +774,10 @@ class SchoolReportParser
             'cwsn' => {
               'coordinates' => {},
               'entries' => []
-            }
+            },
+            'by_age' => {}
           },
+          'by_age' => {},
           'rte' => {
             'section_12' => {
               'class_1' => { 'boys' => 0, 'girls' => 0 },
@@ -1494,12 +1475,61 @@ class SchoolReportParser
           },
           'entries' => ['CWSN']
         }
-      when /CWSN Type:\s+(.+)/
-        type = $1
-        if next_line =~ /Boys\s+(\d+)\s+Girls\s+(\d+)/
-          data['students']['enrollment']['cwsn']['by_type'][type.downcase] = {
-            'boys' => $1.to_i,
-            'girls' => $2.to_i
+      when /^>3$/
+        # Initialize by_age at the correct level
+        data['students']['enrollment']['by_age'] = {
+          'above_3' => {
+            'coordinates' => {
+              'x' => 31.5,
+              'y' => 495.0,
+              'page' => 2,
+              'font' => 'F1',
+              'font_size' => 6.0
+            },
+            'entries' => ['>3'],
+            'data' => {
+              'pre_primary' => { 'boys' => 0, 'girls' => 0 },
+              'class_1' => { 'boys' => 0, 'girls' => 0 }
+            },
+            'total' => {
+              'boys' => 0,
+              'girls' => 0,
+              'all' => 0
+            }
+          }
+        }
+        
+        # Look ahead for age data
+        age_data = []
+        (i+1..i+20).each do |j|
+          break if j >= lines.length
+          age_data << lines[j]
+        end
+        
+        # Extract values for Pre-Primary and Class 1
+        if age_data.length >= 4
+          data['students']['enrollment']['by_age']['above_3']['entries'] += [
+            age_data[0], age_data[1], age_data[2], age_data[3]
+          ].compact
+          
+          data['students']['enrollment']['by_age']['above_3']['data'] = {
+            'pre_primary' => {
+              'boys' => age_data[0].to_i,
+              'girls' => age_data[1].to_i
+            },
+            'class_1' => {
+              'boys' => age_data[2].to_i,
+              'girls' => age_data[3].to_i
+            }
+          }
+          
+          # Calculate totals
+          total_boys = age_data[0].to_i + age_data[2].to_i
+          total_girls = age_data[1].to_i + age_data[3].to_i
+          data['students']['enrollment']['by_age']['above_3']['total'] = {
+            'boys' => total_boys,
+            'girls' => total_girls,
+            'all' => total_boys + total_girls
           }
         end
       
@@ -1787,5 +1817,27 @@ class SchoolReportParser
         ]
       end
     end
+  end
+
+  # Helper method to match numbers to B,G pairs
+  def self.match_numbers_to_pairs(remaining_numbers, bg_pairs, threshold = 10.0)
+    numbers = {}
+    remaining = remaining_numbers.dup
+
+    bg_pairs.each do |x_mid, bg_pair|
+      b_x = bg_pair[0]['text_x'].to_f
+      g_x = bg_pair[1]['text_x'].to_f
+      
+      # Find numbers closest to B and G positions
+      b_num = remaining.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
+      remaining.delete(b_num) if b_num
+
+      g_num = remaining.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
+      remaining.delete(g_num) if g_num
+      
+      numbers[x_mid] = [b_num, g_num]
+    end
+
+    numbers
   end
 end

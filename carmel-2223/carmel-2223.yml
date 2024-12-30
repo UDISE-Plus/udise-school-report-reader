@@ -450,6 +450,32 @@ students:
       cwsn:
         coordinates: {}
         entries: []
+      by_age: {}
+    by_age:
+      above_3:
+        coordinates:
+          x: 31.5
+          "y": 495.0
+          page: 2
+          font: F1
+          font_size: 6.0
+        entries:
+        - ">3"
+        - '68'
+        - '23'
+        - '1'
+        - '1'
+        data:
+          pre_primary:
+            boys: 68
+            girls: 23
+          class_1:
+            boys: 1
+            girls: 1
+        total:
+          boys: 69
+          girls: 24
+          all: 93
     rte:
       section_12:
         class_1:
