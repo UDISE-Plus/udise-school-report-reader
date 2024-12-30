@@ -2,7 +2,8 @@ class SchoolReportParser
   require 'pdf-reader'
   require 'yaml'
   require 'csv'
-  require_relative 'enrollment_table_extractor'
+  require_relative 'enrollment_data_reader'
+  require_relative 'enrollment_html_writer'
 
   def self.extract_to_text(pdf_path)
     raise ArgumentError, "PDF file not found" unless File.exist?(pdf_path)
@@ -33,12 +34,17 @@ class SchoolReportParser
 
     # Extract data points to YAML
     data_points = extract_data_points(compressed_content)
+
+    # Get enrollment data
+    enrollment_data = EnrollmentDataReader.read(combined_path)
+    data_points['enrollment'] = enrollment_data if enrollment_data
+
     yaml_path = pdf_path.sub(/\.pdf$/i, '.yml')
     File.write(yaml_path, data_points.to_yaml)
 
     # Extract enrollment table to HTML
     html_path = pdf_path.sub(/\.pdf$/i, '_enrollment.html')
-    EnrollmentTableExtractor.extract_table(combined_path, html_path)
+    EnrollmentHtmlWriter.generate_html(enrollment_data, html_path)
     
     [txt_path, compressed_path, yaml_path, csv_path, rects_path, combined_path, html_path]
   end
