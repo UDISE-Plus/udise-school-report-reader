@@ -206,7 +206,7 @@ students:
         girls: 0
         coordinates:
           x: 34.0
-          "y": 745.75
+          "y": 745.5
           page: 2
           font: F1
           font_size: 6.0
