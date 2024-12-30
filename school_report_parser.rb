@@ -38,12 +38,12 @@ class SchoolReportParser
     
     # Extract enrollment table to HTML
     html_path = pdf_path.sub(/\.pdf$/i, '_enrollment.html')
-    extract_enrollment_table(combined_path, html_path, data_points)
+    extract_enrollment_table(combined_path, html_path)
     
     [txt_path, compressed_path, yaml_path, csv_path, rects_path, combined_path, html_path]
   end
 
-  def self.extract_enrollment_table(combined_path, html_path, data)
+  def self.extract_enrollment_table(combined_path, html_path)
     # Read the combined CSV file
     header_row = nil
     grade_rows = []
