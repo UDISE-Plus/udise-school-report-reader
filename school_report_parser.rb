@@ -1676,8 +1676,6 @@ class SchoolReportParser
         extract_enrollment_data('Aadh', 589.0, csv_path, data)
       when /^BPL$/
         extract_enrollment_data('BPL', 566.5, csv_path, data)
-      when /^BPL$/
-        extract_enrollment_data('BPL', 566.5, csv_path, data)
       when /^CWSN$/
         data['students']['enrollment']['cwsn']['facilities']['available'] = next_line if next_line
       when /CWSN Type:\s+(.+)/
@@ -1834,8 +1832,6 @@ class SchoolReportParser
         if next_line =~ /^\d+$/
           data['teachers']['qualifications']['professional']['pursuing_course'] = next_line.to_i
         end
-      when /^BPL$/
-        extract_enrollment_data('BPL', 566.5, csv_path, data)
       end
     end
 
