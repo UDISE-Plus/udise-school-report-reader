@@ -56,6 +56,7 @@ class SchoolReportParser
     chris_rows = []
     sikh_rows = []
     budd_rows = []
+    parsi_rows = []
     
     CSV.foreach(combined_path, headers: true) do |row|
       if row['text'] == 'Enrolment \(By Social Category\)' && row['page'] == '2'
@@ -71,7 +72,7 @@ class SchoolReportParser
           bg_rows << row
         end
       elsif header_row && row['page'] == '2' && row['text'] =~ /^\d+$/
-        # Get the Gen category numbers at y=757.0, SC at y=745.5, ST at y=734.0, OBC at y=722.5, Musl at y=669.5, Chris at y=658.0, Sikh at y=646.5, and Buddhist at y=635.0
+        # Get the Gen category numbers at y=757.0, SC at y=745.5, ST at y=734.0, OBC at y=722.5, Musl at y=669.5, Chris at y=658.0, Sikh at y=646.5, Buddhist at y=635.0, and Parsi at y=623.5
         y_coord = row['text_y'].to_f
         if y_coord == 757.0
           gen_rows << row
@@ -89,6 +90,8 @@ class SchoolReportParser
           sikh_rows << row
         elsif y_coord == 635.0
           budd_rows << row
+        elsif y_coord == 623.5
+          parsi_rows << row
         end
       end
     end
@@ -119,6 +122,7 @@ class SchoolReportParser
     chris_rows.sort_by! { |row| row['text_x'].to_f }
     sikh_rows.sort_by! { |row| row['text_x'].to_f }
     budd_rows.sort_by! { |row| row['text_x'].to_f }
+    parsi_rows.sort_by! { |row| row['text_x'].to_f }
 
     # Filter out total columns (those with x >= 500)
     grade_rows.reject! { |row| row['text_x'].to_f >= 500 }
@@ -126,11 +130,12 @@ class SchoolReportParser
     gen_rows.reject! { |row| row['text_x'].to_f >= 500 }
     sc_rows.reject! { |row| row['text_x'].to_f >= 500 }
     st_rows.reject! { |row| row['text_x'].to_f >= 500 }
-    # Don't filter out the last cell for Muslim, Christian, Sikh and Buddhist rows
+    # Don't filter out the last cell for Muslim, Christian, Sikh, Buddhist and Parsi rows
     # musl_rows.reject! { |row| row['text_x'].to_f >= 500 }
     # chris_rows.reject! { |row| row['text_x'].to_f >= 500 }
     # sikh_rows.reject! { |row| row['text_x'].to_f >= 500 }
     # budd_rows.reject! { |row| row['text_x'].to_f >= 500 }
+    # parsi_rows.reject! { |row| row['text_x'].to_f >= 500 }
 
     # Group B,G pairs by their x-coordinates
     bg_pairs = bg_rows.each_slice(2).map do |b, g|
@@ -315,6 +320,28 @@ class SchoolReportParser
       budd_numbers[x_mid] = [b_num, g_num]
     end
 
+    # Match Parsi numbers to B,G pairs based on x-coordinate proximity
+    parsi_numbers = {}
+    remaining_parsi_numbers = parsi_rows.dup
+
+    bg_pairs.each do |x_mid, bg_pair|
+      b_x = bg_pair[0]['text_x'].to_f
+      g_x = bg_pair[1]['text_x'].to_f
+      
+      # Find numbers closest to B and G positions
+      b_num = remaining_parsi_numbers.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
+      if b_num
+        remaining_parsi_numbers.delete(b_num)
+      end
+
+      g_num = remaining_parsi_numbers.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
+      if g_num
+        remaining_parsi_numbers.delete(g_num)
+      end
+      
+      parsi_numbers[x_mid] = [b_num, g_num]
+    end
+
     # Create HTML file with the header and grade information
     html_content = <<~HTML
       <!DOCTYPE html>
@@ -410,6 +437,15 @@ class SchoolReportParser
             <td class="category">Budd</td>
             #{bg_pairs.map { |x_mid, pair|
               numbers = budd_numbers[x_mid]
+              b_num = numbers&.first
+              g_num = numbers&.last
+              "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
+            }.join("\n")}
+          </tr>
+          <tr>
+            <td class="category">Parsi</td>
+            #{bg_pairs.map { |x_mid, pair|
+              numbers = parsi_numbers[x_mid]
               b_num = numbers&.first
               g_num = numbers&.last
               "<td>#{b_num ? b_num['text'] : ''}</td><td>#{g_num ? g_num['text'] : ''}</td>"
@@ -831,6 +867,10 @@ class SchoolReportParser
               'entries' => []
             },
             'budd' => {
+              'coordinates' => {},
+              'entries' => []
+            },
+            'parsi' => {
               'coordinates' => {},
               'entries' => []
             }
@@ -1654,6 +1694,31 @@ class SchoolReportParser
           'font_size' => 6.0
         }
         data['students']['enrollment']['by_social_category']['budd']['entries'] = entries.map { |_, text| text }
+      when /^Parsi$/
+        y_coord = 623.5
+        page_num = 2
+        margin = 4.0  # Allow 4 units of difference for Parsi since entries span more vertically
+        
+        # Parse CSV content to find matching entries
+        entries = []
+        csv_content = File.read(csv_path)
+        CSV.parse(csv_content, headers: true) do |row|
+          if row['page'].to_i == page_num && (row['y'].to_f - y_coord).abs <= margin
+            entries << [row['x'].to_f, row['text']]
+          end
+        end
+        
+        # Sort by x coordinate to get entries in order
+        entries.sort_by! { |x, _| x }
+        
+        data['students']['enrollment']['by_social_category']['parsi']['coordinates'] = {
+          'x' => 31.5,
+          'y' => 623.5,
+          'page' => 2,
+          'font' => 'F1',
+          'font_size' => 6.0
+        }
+        data['students']['enrollment']['by_social_category']['parsi']['entries'] = entries.map { |_, text| text }
       
       # CWSN details
       when "CWSN Facilities"

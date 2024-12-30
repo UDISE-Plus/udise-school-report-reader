@@ -375,6 +375,15 @@ students:
       budd:
         coordinates: {}
         entries: []
+      parsi:
+        coordinates:
+          x: 31.5
+          "y": 623.5
+          page: 2
+          font: F1
+          font_size: 6.0
+        entries:
+        - Parsi
   facilities:
     general:
       transport:
