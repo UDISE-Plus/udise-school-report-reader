@@ -1,0 +1,167 @@
+basic_info: {}
+
+location: {}
+
+school_details:
+  recognition: {}
+  affiliation: {}
+  shifts: {}
+  special_focus: {}
+
+infrastructure:
+  sanitation:
+    toilets:
+      boys:
+        total: 0
+        functional: 0
+        cwsn: 0
+        urinals: 0
+      girls:
+        total: 0
+        functional: 0
+        cwsn: 0
+        urinals: 0
+    handwash:
+      near_toilet: null
+      for_meal: null
+  classrooms:
+    total: 0
+    good_condition: 0
+    needs_minor_repair: 0
+    needs_major_repair: 0
+    other_rooms: 0
+  digital_facilities:
+    ict_lab: null
+    internet: null
+    computers:
+      desktop: 0
+      laptop: 0
+      tablet: 0
+    peripherals:
+      printer: 0
+      projector: 0
+    smart_classroom:
+      digiboard: 0
+      dth: null
+  other_facilities: {}
+  building:
+    details:
+      status: null
+      boundary_wall: null
+      blocks: null
+      pucca_blocks: null
+    accessibility:
+      ramps: null
+      handrails: null
+  furniture:
+    count: null
+  library:
+    available: null
+
+teachers:
+  count_by_level: {}
+  qualifications:
+    academic: {}
+    professional:
+      basic_training: 0
+      beled: 0
+      bed: 0
+      med: 0
+      other: 0
+      none: 0
+      special_education: 0
+      pursuing_course: 0
+  demographics: {}
+  training:
+    service:
+      total: null
+    computer_trained: null
+  age_distribution: {}
+  assignments:
+    teaching: {}
+    non_teaching: {}
+  classes_taught: {}
+  attendance: {}
+
+students:
+  facilities:
+    general:
+      transport:
+        primary: 0
+        upper_primary: 0
+    incentives:
+      free_textbooks:
+        primary: 0
+        upper_primary: 0
+      free_uniform:
+        primary: 0
+        upper_primary: 0
+
+academic:
+  medium_of_instruction: {}
+  inspections:
+    visits:
+      academic: null
+      crc_coordinator: null
+      block_level: null
+      state_district: null
+  hours:
+    instructional:
+      days:
+        primary: null
+        upper_primary: null
+        secondary: null
+        higher_secondary: null
+      student_hours:
+        primary: null
+        upper_primary: null
+        secondary: null
+        higher_secondary: null
+      teacher_hours:
+        primary: null
+        upper_primary: null
+        secondary: null
+        higher_secondary: null
+  assessments:
+    cce:
+      implemented:
+        primary: null
+        upper_primary: null
+        secondary: null
+        higher_secondary: null
+
+facilities:
+  residential:
+    details:
+      type: null
+      minority_school: null
+  basic:
+    water: {}
+    electricity:
+      available: null
+      solar_panel: null
+    safety:
+      playground: null
+      all_weather_road: null
+  medical:
+    checkups:
+      available: null
+  anganwadi:
+    at_premises: null
+    boys: null
+    girls: null
+    worker: null
+
+committees:
+  smc:
+    details:
+      same_as_smdc: null
+  smdc:
+    details:
+      constituted: null
+
+grants:
+  received:
+    amount: null
+  expenditure:
+    amount: null 
