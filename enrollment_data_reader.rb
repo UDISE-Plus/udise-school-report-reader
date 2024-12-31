@@ -4,6 +4,7 @@ class EnrollmentDataReader
   def initialize(csv_path)
     @csv_path = csv_path
     @x_cutoff = 0
+    @category_y_coords = {}
   end
 
   def read
@@ -46,6 +47,49 @@ class EnrollmentDataReader
     age_21_rows = []
     age_22_rows = []
 
+    # First pass to collect y-coordinates for categories
+    CSV.foreach(@csv_path, headers: true) do |row|
+      if row['page'] == '2' && row['rect_x'].to_f == 27.0
+        case row['text']
+        when "Gen" then @category_y_coords['gen'] = row['rect_y'].to_f
+        when "SC" then @category_y_coords['sc'] = row['rect_y'].to_f
+        when "ST" then @category_y_coords['st'] = row['rect_y'].to_f
+        when "OBC" then @category_y_coords['obc'] = row['rect_y'].to_f
+        when "Musl" then @category_y_coords['musl'] = row['rect_y'].to_f
+        when "Chris" then @category_y_coords['chris'] = row['rect_y'].to_f
+        when "Sikh" then @category_y_coords['sikh'] = row['rect_y'].to_f
+        when "Budd" then @category_y_coords['budd'] = row['rect_y'].to_f
+        when "Parsi" then @category_y_coords['parsi'] = row['rect_y'].to_f
+        when "Jain" then @category_y_coords['jain'] = row['rect_y'].to_f
+        when "Others" then @category_y_coords['others'] = row['rect_y'].to_f
+        when "Aadh" then @category_y_coords['aadh'] = row['rect_y'].to_f
+        when "BPL" then @category_y_coords['bpl'] = row['rect_y'].to_f
+        when "Rept" then @category_y_coords['rept'] = row['rect_y'].to_f
+        when "CWSN" then @category_y_coords['cwsn'] = row['rect_y'].to_f
+        when ">3" then @category_y_coords['age_3'] = row['rect_y'].to_f
+        when "4" then @category_y_coords['age_4'] = row['rect_y'].to_f
+        when "5" then @category_y_coords['age_5'] = row['rect_y'].to_f
+        when "6" then @category_y_coords['age_6'] = row['rect_y'].to_f
+        when "7" then @category_y_coords['age_7'] = row['rect_y'].to_f
+        when "8" then @category_y_coords['age_8'] = row['rect_y'].to_f
+        when "9" then @category_y_coords['age_9'] = row['rect_y'].to_f
+        when "10" then @category_y_coords['age_10'] = row['rect_y'].to_f
+        when "11" then @category_y_coords['age_11'] = row['rect_y'].to_f
+        when "12" then @category_y_coords['age_12'] = row['rect_y'].to_f
+        when "13" then @category_y_coords['age_13'] = row['rect_y'].to_f
+        when "14" then @category_y_coords['age_14'] = row['rect_y'].to_f
+        when "15" then @category_y_coords['age_15'] = row['rect_y'].to_f
+        when "16" then @category_y_coords['age_16'] = row['rect_y'].to_f
+        when "17" then @category_y_coords['age_17'] = row['rect_y'].to_f
+        when "18" then @category_y_coords['age_18'] = row['rect_y'].to_f
+        when "19" then @category_y_coords['age_19'] = row['rect_y'].to_f
+        when "20" then @category_y_coords['age_20'] = row['rect_y'].to_f
+        when "21" then @category_y_coords['age_21'] = row['rect_y'].to_f
+        when "22" then @category_y_coords['age_22'] = row['rect_y'].to_f
+        end
+      end
+    end
+
     CSV.foreach(@csv_path, headers: true) do |row|
       if row['page'] == '2'
         if row['text'] == "Total" && row['rect_y'].to_f == 778.0
@@ -61,43 +105,43 @@ class EnrollmentDataReader
             bg_rows << row
           end
         elsif row['text'] =~ /^\d+$/
-          y_coord = row['text_y'].to_f
+          y_coord = row['rect_y'].to_f
           case y_coord
-          when 757.0 then gen_rows << row
-          when 745.5 then sc_rows << row
-          when 734.0 then st_rows << row
-          when 722.5, 718.25 then obc_rows << row
-          when 669.5 then musl_rows << row
-          when 658.0 then chris_rows << row
-          when 646.5 then sikh_rows << row
-          when 635.0 then budd_rows << row
-          when 623.5 then parsi_rows << row
-          when 612.0 then jain_rows << row
-          when 600.5 then others_rows << row
-          when 589.0 then aadh_rows << row
-          when 566.5 then bpl_rows << row
-          when 555.0 then rept_rows << row
-          when 543.5 then cwsn_rows << row
-          when 495.0 then age_3_rows << row
-          when 483.5 then age_4_rows << row
-          when 472.0 then age_5_rows << row
-          when 460.5 then age_6_rows << row
-          when 449.0 then age_7_rows << row
-          when 437.5 then age_8_rows << row
-          when 426.0 then age_9_rows << row
-          when 414.5 then age_10_rows << row
-          when 403.0 then age_11_rows << row
-          when 391.5 then age_12_rows << row
-          when 380.0 then age_13_rows << row
-          when 368.5 then age_14_rows << row
-          when 357.0 then age_15_rows << row
-          when 345.5 then age_16_rows << row
-          when 334.0 then age_17_rows << row
-          when 322.5 then age_18_rows << row
-          when 311.0 then age_19_rows << row
-          when 299.5 then age_20_rows << row
-          when 288.0 then age_21_rows << row
-          when 276.5 then age_22_rows << row
+          when @category_y_coords['gen'] then gen_rows << row
+          when @category_y_coords['sc'] then sc_rows << row
+          when @category_y_coords['st'] then st_rows << row
+          when @category_y_coords['obc'] then obc_rows << row
+          when @category_y_coords['musl'] then musl_rows << row
+          when @category_y_coords['chris'] then chris_rows << row
+          when @category_y_coords['sikh'] then sikh_rows << row
+          when @category_y_coords['budd'] then budd_rows << row
+          when @category_y_coords['parsi'] then parsi_rows << row
+          when @category_y_coords['jain'] then jain_rows << row
+          when @category_y_coords['others'] then others_rows << row
+          when @category_y_coords['aadh'] then aadh_rows << row
+          when @category_y_coords['bpl'] then bpl_rows << row
+          when @category_y_coords['rept'] then rept_rows << row
+          when @category_y_coords['cwsn'] then cwsn_rows << row
+          when @category_y_coords['age_3'] then age_3_rows << row
+          when @category_y_coords['age_4'] then age_4_rows << row
+          when @category_y_coords['age_5'] then age_5_rows << row
+          when @category_y_coords['age_6'] then age_6_rows << row
+          when @category_y_coords['age_7'] then age_7_rows << row
+          when @category_y_coords['age_8'] then age_8_rows << row
+          when @category_y_coords['age_9'] then age_9_rows << row
+          when @category_y_coords['age_10'] then age_10_rows << row
+          when @category_y_coords['age_11'] then age_11_rows << row
+          when @category_y_coords['age_12'] then age_12_rows << row
+          when @category_y_coords['age_13'] then age_13_rows << row
+          when @category_y_coords['age_14'] then age_14_rows << row
+          when @category_y_coords['age_15'] then age_15_rows << row
+          when @category_y_coords['age_16'] then age_16_rows << row
+          when @category_y_coords['age_17'] then age_17_rows << row
+          when @category_y_coords['age_18'] then age_18_rows << row
+          when @category_y_coords['age_19'] then age_19_rows << row
+          when @category_y_coords['age_20'] then age_20_rows << row
+          when @category_y_coords['age_21'] then age_21_rows << row
+          when @category_y_coords['age_22'] then age_22_rows << row
           end
         end
       end
@@ -193,4 +237,4 @@ class EnrollmentDataReader
 
       numbers
     end
-end 
+end

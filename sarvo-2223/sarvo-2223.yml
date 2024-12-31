@@ -373,43 +373,43 @@ enrollment_data:
   muslim:
     pre-pr:
       boys:
-      girls:
+      girls: 46
     i:
       boys:
-      girls:
+      girls: 52
     ii:
       boys:
-      girls:
+      girls: 50
     iii:
       boys:
-      girls:
+      girls: 68
     iv:
       boys:
-      girls:
+      girls: 76
     v:
       boys:
-      girls:
+      girls: 75
     vi:
       boys:
-      girls:
+      girls: 69
     vii:
       boys:
-      girls:
+      girls: 83
     viii:
       boys:
-      girls:
+      girls: 68
     ix:
       boys:
-      girls:
+      girls: 72
     x:
       boys:
-      girls:
+      girls: 60
     xi:
       boys:
-      girls:
+      girls: 59
     xii:
       boys:
-      girls:
+      girls: 79
   christian:
     pre-pr:
       boys:
@@ -714,7 +714,7 @@ enrollment_data:
       girls:
     vii:
       boys:
-      girls:
+      girls: 3
     viii:
       boys:
       girls:
@@ -726,10 +726,10 @@ enrollment_data:
       girls:
     xi:
       boys:
-      girls:
+      girls: 6
     xii:
       boys:
-      girls:
+      girls: 2
   repeater:
     pre-pr:
       boys:
@@ -813,7 +813,7 @@ enrollment_data:
   age_3:
     pre-pr:
       boys:
-      girls:
+      girls: 16
     i:
       boys:
       girls:
@@ -853,10 +853,10 @@ enrollment_data:
   age_4:
     pre-pr:
       boys:
-      girls:
+      girls: 36
     i:
       boys:
-      girls:
+      girls: 1
     ii:
       boys:
       girls:
@@ -896,7 +896,7 @@ enrollment_data:
       girls:
     i:
       boys:
-      girls:
+      girls: 48
     ii:
       boys:
       girls:
@@ -936,13 +936,13 @@ enrollment_data:
       girls:
     i:
       boys:
-      girls:
+      girls: 4
     ii:
       boys:
-      girls:
+      girls: 48
     iii:
       boys:
-      girls:
+      girls: 1
     iv:
       boys:
       girls:
@@ -979,13 +979,13 @@ enrollment_data:
       girls:
     ii:
       boys:
-      girls:
+      girls: 4
     iii:
       boys:
-      girls:
+      girls: 61
     iv:
       boys:
-      girls:
+      girls: 7
     v:
       boys:
       girls:
@@ -1022,13 +1022,13 @@ enrollment_data:
       girls:
     iii:
       boys:
-      girls:
+      girls: 4
     iv:
       boys:
-      girls:
+      girls: 66
     v:
       boys:
-      girls:
+      girls: 4
     vi:
       boys:
       girls:
@@ -1062,16 +1062,16 @@ enrollment_data:
       girls:
     iii:
       boys:
-      girls:
+      girls: 2
     iv:
       boys:
-      girls:
+      girls: 5
     v:
       boys:
-      girls:
+      girls: 69
     vi:
       boys:
-      girls:
+      girls: 2
     vii:
       boys:
       girls:
@@ -1108,13 +1108,13 @@ enrollment_data:
       girls:
     v:
       boys:
-      girls:
+      girls: 6
     vi:
       boys:
-      girls:
+      girls: 70
     vii:
       boys:
-      girls:
+      girls: 2
     viii:
       boys:
       girls:
@@ -1151,10 +1151,10 @@ enrollment_data:
       girls:
     vi:
       boys:
-      girls:
+      girls: 4
     vii:
       boys:
-      girls:
+      girls: 88
     viii:
       boys:
       girls:
@@ -1191,13 +1191,13 @@ enrollment_data:
       girls:
     vi:
       boys:
-      girls:
+      girls: 2
     vii:
       boys:
-      girls:
+      girls: 6
     viii:
       boys:
-      girls:
+      girls: 78
     ix:
       boys:
       girls:
@@ -1237,13 +1237,13 @@ enrollment_data:
       girls:
     viii:
       boys:
-      girls:
+      girls: 8
     ix:
       boys:
-      girls:
+      girls: 64
     x:
       boys:
-      girls:
+      girls: 1
     xi:
       boys:
       girls:
@@ -1277,16 +1277,16 @@ enrollment_data:
       girls:
     viii:
       boys:
-      girls:
+      girls: 1
     ix:
       boys:
-      girls:
+      girls: 8
     x:
       boys:
-      girls:
+      girls: 57
     xi:
       boys:
-      girls:
+      girls: 2
     xii:
       boys:
       girls:
@@ -1323,13 +1323,13 @@ enrollment_data:
       girls:
     x:
       boys:
-      girls:
+      girls: 6
     xi:
       boys:
-      girls:
+      girls: 51
     xii:
       boys:
-      girls:
+      girls: 1
   age_16:
     pre-pr:
       boys:
@@ -1366,10 +1366,10 @@ enrollment_data:
       girls:
     xi:
       boys:
-      girls:
+      girls: 8
     xii:
       boys:
-      girls:
+      girls: 51
   age_17:
     pre-pr:
       boys:
@@ -1406,10 +1406,10 @@ enrollment_data:
       girls:
     xi:
       boys:
-      girls:
+      girls: 1
     xii:
       boys:
-      girls:
+      girls: 23
   age_18:
     pre-pr:
       boys:
@@ -1449,7 +1449,7 @@ enrollment_data:
       girls:
     xii:
       boys:
-      girls:
+      girls: 5
   age_19:
     pre-pr:
       boys:
@@ -1489,7 +1489,7 @@ enrollment_data:
       girls:
     xii:
       boys:
-      girls:
+      girls: 1
   age_20:
     pre-pr:
       boys:
