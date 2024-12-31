@@ -3,6 +3,7 @@ require 'yaml'
 require 'csv'
 require 'fileutils'
 require 'tempfile'
+require_relative 'hash_extensions'
 require_relative 'enrollment_data_reader'
 require_relative 'enrollment_html_writer'
 require_relative 'enrollment_yaml_writer'
@@ -19,6 +20,7 @@ require_relative 'basic_info_data_reader'
 require_relative 'official_data_reader'
 require_relative 'digital_facilities_data_reader'
 require_relative 'anganwadi_data_reader'
+require_relative 'building_data_reader'
 require_relative 'pdf_block_extractor'
 require_relative 'csv_writer'
 require_relative 'pdf_rectangle_extractor'
@@ -217,6 +219,10 @@ class SchoolReportParser
     anganwadi_data = AnganwadiDataReader.read(lines)
     data.merge!(anganwadi_data) if anganwadi_data
 
+    # Extract building data
+    building_data = BuildingDataReader.read(lines)
+    data.deep_merge!(building_data) if building_data
+
     # Process each line
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
@@ -231,20 +237,10 @@ class SchoolReportParser
         data['school_details']['class_range'] = next_line if next_line && !next_line.match?(/Pre Primary/)
       when "Pre Primary"
         data['school_details']['pre_primary'] = next_line if next_line && !next_line.match?(/Medium/)
-      when "Building Status"
-        data['infrastructure']['building']['details']['status'] = next_line if next_line && !next_line.match?(/Boundary/)
-      when "Is this a Shift School?"
-        data['school_details']['shifts']['has_shifts'] = next_line if next_line && !next_line.match?(/Building/)
       when "Is Special School for CWSN?"
         data['school_details']['is_special_school'] = next_line if next_line && !next_line.match?(/Availability/)
 
       # Infrastructure - Building
-      when "Boundary wall"
-        data['infrastructure']['building']['details']['boundary_wall'] = next_line if next_line && !next_line.match?(/No\.of/)
-      when "No.of Building Blocks"
-        data['infrastructure']['building']['details']['blocks'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Pucca Building Blocks"
-        data['infrastructure']['building']['details']['pucca_blocks'] = next_line.to_i if next_line =~ /^\d+$/
       when "Availability of Ramps"
         data['infrastructure']['building']['accessibility']['ramps'] = next_line if next_line && !next_line.match?(/Availability of Hand/)
       when "Availability of Handrails"
