@@ -18,6 +18,7 @@ require_relative 'location_data_reader'
 require_relative 'basic_info_data_reader'
 require_relative 'official_data_reader'
 require_relative 'digital_facilities_data_reader'
+require_relative 'anganwadi_data_reader'
 require_relative 'pdf_block_extractor'
 require_relative 'csv_writer'
 require_relative 'pdf_rectangle_extractor'
@@ -212,6 +213,12 @@ class SchoolReportParser
     digital_facilities_data = DigitalFacilitiesDataReader.read(lines)
     data.merge!(digital_facilities_data) if digital_facilities_data
 
+    # Extract anganwadi data
+    anganwadi_data = AnganwadiDataReader.read(lines)
+    if anganwadi_data && anganwadi_data['facilities'] && anganwadi_data['facilities']['anganwadi']
+      data['facilities']['anganwadi'] = anganwadi_data['facilities']['anganwadi']
+    end
+
     # Process each line
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
@@ -244,16 +251,6 @@ class SchoolReportParser
         data['infrastructure']['building']['accessibility']['ramps'] = next_line if next_line && !next_line.match?(/Availability of Hand/)
       when "Availability of Handrails"
         data['infrastructure']['building']['accessibility']['handrails'] = next_line if next_line && !next_line.match?(/Anganwadi/)
-
-      # Anganwadi
-      when "Anganwadi At Premises"
-        data['facilities']['anganwadi']['at_premises'] = next_line if next_line
-      when "Anganwadi Boys"
-        data['facilities']['anganwadi']['boys'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Anganwadi Girls"
-        data['facilities']['anganwadi']['girls'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Anganwadi Worker"
-        data['facilities']['anganwadi']['worker'] = next_line if next_line
 
       # Basic Facilities
       when "Drinking Water Available"
