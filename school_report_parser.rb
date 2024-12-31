@@ -17,6 +17,7 @@ require_relative 'sanitation_data_reader'
 require_relative 'location_data_reader'
 require_relative 'basic_info_data_reader'
 require_relative 'official_data_reader'
+require_relative 'digital_facilities_data_reader'
 require_relative 'pdf_block_extractor'
 require_relative 'csv_writer'
 require_relative 'pdf_rectangle_extractor'
@@ -207,6 +208,12 @@ class SchoolReportParser
     official_data = OfficialDataReader.read(lines)
     data.merge!(official_data) if official_data
 
+    # Extract digital facilities data
+    digital_facilities_data = DigitalFacilitiesDataReader.read(lines)
+    if digital_facilities_data && digital_facilities_data['infrastructure'] && digital_facilities_data['infrastructure']['digital_facilities']
+      data['infrastructure']['digital_facilities'] = digital_facilities_data['infrastructure']['digital_facilities']
+    end
+
     # Process each line
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
@@ -292,30 +299,6 @@ class SchoolReportParser
       when "Other Rooms"
         if next_line =~ /^\d+$/
           data['infrastructure']['classrooms']['other_rooms'] = next_line.to_i
-        end
-
-      # Digital Facilities
-      when /Digital/
-        data['infrastructure']['digital_facilities']['ict_lab'] = lines[i + 2] if lines[i + 2] =~ /^[12]-/
-        data['infrastructure']['digital_facilities']['internet'] = lines[i + 4] if lines[i + 4] =~ /^[12]-/
-        if lines[i + 6] =~ /^\d+$/
-          data['infrastructure']['digital_facilities']['computers']['desktop'] = lines[i + 6].to_i
-        end
-        if lines[i + 8] =~ /^\d+$/
-          data['infrastructure']['digital_facilities']['computers']['laptop'] = lines[i + 8].to_i
-        end
-        if lines[i + 10] =~ /^\d+$/
-          data['infrastructure']['digital_facilities']['computers']['tablet'] = lines[i + 10].to_i
-        end
-        if lines[i + 12] =~ /^\d+$/
-          data['infrastructure']['digital_facilities']['peripherals']['printer'] = lines[i + 12].to_i
-        end
-        if lines[i + 14] =~ /^\d+$/
-          data['infrastructure']['digital_facilities']['peripherals']['projector'] = lines[i + 14].to_i
-        end
-        data['infrastructure']['digital_facilities']['smart_classroom']['dth'] = lines[i + 16] if lines[i + 16] =~ /^[12]-/
-        if lines[i + 18] =~ /^\d+$/
-          data['infrastructure']['digital_facilities']['smart_classroom']['digiboard'] = lines[i + 18].to_i
         end
 
       # Academic
