@@ -232,7 +232,6 @@ class SchoolReportParser
 
       # Academic
       when "Medium of Instruction"
-        current_section = nil
       when /^Medium (\d)$/
         medium_num = $1
         if next_line && next_line =~ /^(\d+)-(.+)$/
@@ -303,17 +302,17 @@ class SchoolReportParser
       when /No\.of Students Received/
         # Skip the header lines
         i += 2 # Skip "Primary" and "Up.Primary" lines
-      when /Free text books/ && current_section == 'facilities'
+      when /Free text books/
         if lines[i + 1] =~ /^\d+$/ && lines[i + 2] =~ /^\d+$/
           data['students']['facilities']['incentives']['free_textbooks']['primary'] = lines[i + 1].to_i
           data['students']['facilities']['incentives']['free_textbooks']['upper_primary'] = lines[i + 2].to_i
         end
-      when /Transport/ && current_section == 'facilities'
+      when /Transport/
         if lines[i + 1] =~ /^\d+$/ && lines[i + 2] =~ /^\d+$/
           data['students']['facilities']['general']['transport']['primary'] = lines[i + 1].to_i
           data['students']['facilities']['general']['transport']['upper_primary'] = lines[i + 2].to_i
         end
-      when /Free uniform/ && current_section == 'facilities'
+      when /Free uniform/
         if lines[i + 1] =~ /^\d+$/ && lines[i + 2] =~ /^\d+$/
           data['students']['facilities']['incentives']['free_uniform']['primary'] = lines[i + 1].to_i
           data['students']['facilities']['incentives']['free_uniform']['upper_primary'] = lines[i + 2].to_i
