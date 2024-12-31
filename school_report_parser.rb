@@ -15,6 +15,7 @@ require_relative 'rte_yaml_writer'
 require_relative 'teacher_data_reader'
 require_relative 'sanitation_data_reader'
 require_relative 'location_data_reader'
+require_relative 'basic_info_data_reader'
 require_relative 'pdf_block_extractor'
 require_relative 'csv_writer'
 require_relative 'pdf_rectangle_extractor'
@@ -197,23 +198,15 @@ class SchoolReportParser
     location_data = LocationDataReader.read(lines)
     data.merge!(location_data) if location_data
 
+    # Extract basic info data
+    basic_info_data = BasicInfoDataReader.read(lines)
+    data.merge!(basic_info_data) if basic_info_data
+
     # Process each line
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
 
       case line
-      # Basic Info
-      when "UDISE CODE"
-        if next_line && (match = next_line.match(/(\d{2})\s*(\d{2})\s*(\d{2})\s*(\d{2})\s*(\d{3})/))
-          data['basic_info']['udise_code'] = match[1..5].join('')
-        end
-      when "School Name"
-        if next_line && next_line.include?("CARMEL")
-          data['basic_info']['name'] = next_line
-        end
-      when /Academic Year.*:\s*(\d{4}-\d{2})/
-        data['basic_info']['academic_year'] = $1
-
       # School Details
       when "School Category"
         data['school_details']['category'] = next_line if next_line && !next_line.match?(/School Management/)
