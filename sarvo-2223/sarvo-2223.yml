@@ -1611,4 +1611,44 @@ enrollment_data:
       boys:
       girls:
 ews_data:
+  ews:
+    pre-pri.:
+      boys:
+      girls: 0
+    class_i:
+      boys: 0
+      girls: 0
+    class_ii:
+      boys: 0
+      girls: 0
+    class_iii:
+      boys: 0
+      girls: 0
+    class_iv:
+      boys: 0
+      girls: 0
+    class_v:
+      boys: 0
+      girls: 0
+    class_vi:
+      boys: 0
+      girls: 0
+    class_vii:
+      boys: 0
+      girls: 0
+    class_viii:
+      boys: 0
+      girls: 0
+    class_ix:
+      boys: 0
+      girls: 0
+    class_x:
+      boys: 0
+      girls: 0
+    class_xi:
+      boys: 0
+      girls: 0
+    class_xii:
+      boys: 0
+      girls: 0
 s12_data:

@@ -24,75 +24,44 @@ class EwsDataReader
     title_y = @title_row&.first
     return unless title_y
 
-    sorted_rows = @rows.keys.sort
+    sorted_rows = @rows.keys.sort.reverse
     title_index = sorted_rows.index(title_y)
     return unless title_index
 
     # Find the rows after title
-    rows_after_title = sorted_rows[title_index + 1..title_index + 4].map { |y| @rows[y] }
-    
-    # Identify rows by their content
-    @grades_row = rows_after_title.find { |row| row.any? { |cell| GRADES.include?(cell['text']) } }
+    rows_after_title = sorted_rows[title_index + 1..title_index + 8].map { |y| @rows[y] }
+
+  # Identify rows by their content
+    grade_rows = rows_after_title.select { |row| row.any? { |cell| GRADES.include?(cell['text']) } }
+    @grades_row = grade_rows.flat_map(&:itself)
     @bg_row = rows_after_title.find { |row| row.any? { |cell| ['B', 'G'].include?(cell['text']) } }
-    @dashes_row = rows_after_title.find { |row| row.any? { |cell| cell['text'] == '-' } }
+    @values_row = rows_after_title.find { |row| row.any? { |cell| cell['text'] == '-' } }
 
     # Sort cells within each row by x coordinate
-    [@grades_row, @bg_row, @dashes_row].each do |row|
+    [@grades_row, @bg_row, @values_row].each do |row|
       next unless row
       row.sort_by! { |cell| cell['text_x'].to_f }
+    end
+
+    # Ensure we have all grades
+    found_grades = @grades_row.map { |cell| cell['text'] }
+    missing_grades = GRADES - found_grades
+    if missing_grades.any?
+      puts "Warning: Missing grades: #{missing_grades.join(', ')}"
     end
 
     puts "Title Row: #{@title_row[1].map { |cell| cell['text'] }}"
     puts "Grades Row: #{@grades_row&.map { |cell| cell['text'] }}"
     puts "BG Row: #{@bg_row&.map { |cell| cell['text'] }}"
-    puts "Dashes Row: #{@dashes_row&.map { |cell| cell['text'] }}"
+    puts "values Row: #{@values_row&.map { |cell| cell['text'] }}"
   end
 
   def read
-    # Initialize arrays for different cell types
-    grade_cells = []
-    bg_cells = []
-    ews_cells = []
-
-    CSV.foreach(@csv_path, headers: true) do |cell|
-      if cell['page'] == '1'
-        if ['Pre-Pri.', 'Class I', 'Class II', 'Class III', 'Class IV', 'Class V', 'Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X', 'Class XI', 'Class XII'].include?(cell['text'])
-          if cell['text_y'].to_f == 291.5
-            grade_cells << cell
-          end
-        elsif ['B', 'G'].include?(cell['text'])
-          if cell['text_y'].to_f == 279.5
-            bg_cells << cell
-          end
-        elsif cell['text'] =~ /^\d+$/
-          y_coord = cell['text_y'].to_f
-          case y_coord
-          when 268.5 then ews_cells << cell
-          end
-        end
-      end
-    end
-
-    return nil if grade_cells.empty?
-
-    # Sort and filter cells
-    [grade_cells, bg_cells].each do |cells|
-      cells.sort_by! { |cell| cell['text_x'].to_f }
-      # cells.reject! { |cell| cell['text_x'].to_f >= 500 }
-    end
-
-    all_data_cells = [
-      ews_cells
-    ]
-
-    all_data_cells.each do |cells|
-      cells.sort_by! { |cell| cell['text_x'].to_f }
-      # cells.reject! { |cell| cell['text_x'].to_f >= 500 }
-    end
+    return nil unless @grades_row && @bg_row && @values_row
 
     # Group B,G pairs, ensuring we have complete pairs
     bg_pairs = {}
-    bg_cells.each_slice(2) do |pair|
+    @bg_row.each_slice(2) do |pair|
       next unless pair.size == 2 && pair[0] && pair[1]  # Skip incomplete pairs
       b, g = pair
       x_mid = (b['text_x'].to_f + g['text_x'].to_f) / 2
@@ -101,9 +70,9 @@ class EwsDataReader
 
     # Match numbers to pairs
     {
-      grade_rows: grade_cells,
+      grade_rows: @grades_row,
       bg_pairs: bg_pairs,
-      ews_numbers: match_numbers_to_pairs(ews_cells, bg_pairs),
+      ews_numbers: match_numbers_to_pairs(@values_row, bg_pairs),
     }
   end
 
