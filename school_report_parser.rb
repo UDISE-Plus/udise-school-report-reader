@@ -231,7 +231,6 @@ class SchoolReportParser
         end
 
       # Academic
-      when "Medium of Instruction"
       when /^Medium (\d)$/
         medium_num = $1
         if next_line && next_line =~ /^(\d+)-(.+)$/
@@ -244,7 +243,6 @@ class SchoolReportParser
         end
 
       # Academic Inspections
-      when "Visit of school for / by"
       when "Acad. Inspections"
         data['academic']['inspections']['visits']['academic'] = next_line.to_i if next_line =~ /^\d+$/
       when "CRC Coordinator"
@@ -336,7 +334,7 @@ class SchoolReportParser
           data['grants']['expenditure']['amount'] = next_line.to_f
         end
 
-      # Add new pattern matches
+      # Medical facilities
       when "Medical checkups"
         data['facilities']['medical']['checkups']['available'] = next_line if next_line
 
