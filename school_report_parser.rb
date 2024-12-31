@@ -16,6 +16,7 @@ class SchoolReportParser
   require_relative 'teacher_data_reader'
   require_relative 'pdf_block_extractor'
   require_relative 'csv_writer'
+  require_relative 'pdf_rectangle_extractor'
 
   def self.extract_to_text(pdf_path, output_dir = nil, write_files = false)
     raise ArgumentError, "PDF file not found" unless File.exist?(pdf_path)
@@ -41,7 +42,7 @@ class SchoolReportParser
     
     # Extract blocks and rectangles
     blocks = PDFBlockExtractor.extract_blocks(reader)
-    rectangles = extract_rectangles(reader)
+    rectangles = PDFRectangleExtractor.extract_rectangles(reader)
     combined_data = combine_blocks_and_rects(blocks, rectangles)
     
     # Extract YAML data
@@ -130,74 +131,6 @@ class SchoolReportParser
           FileUtils.mkdir_p(tmp_dir)
           File.join(tmp_dir, "#{@base_name}#{ext}")
         end
-      end
-    end
-  end
-
-  def self.extract_rectangles(reader)
-    rectangles = []
-    current_color = '0 G'  # Default stroke color (black)
-    current_fill_color = '1 1 1 rg'  # Default fill color (white)
-    current_line_width = 1.0  # Default line width
-
-    reader.pages.each_with_index do |page, index|
-      page_number = index + 1
-
-      page.raw_content.each_line do |line|
-        # Track stroke color changes
-        if line.match?(/[\d.]+ [\d.]+ [\d.]+ RG/) || line.match?(/[\d.]+ G/)
-          current_color = line.strip
-        end
-
-        # Track fill color changes
-        if line.match?(/[\d.]+ [\d.]+ [\d.]+ rg/) || line.match?(/[\d.]+ g/)
-          current_fill_color = line.strip
-        end
-
-        # Track line width changes
-        if line.match?(/[\d.]+\s+w/)
-          if match = line.match(/(\d+\.?\d*)\s+w/)
-            current_line_width = match[1].to_f
-          end
-        end
-
-        # Look for rectangles (table cells)
-        if line.match?(/(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+re/)
-          matches = line.match(/(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+re/)
-          x, y, width, height = matches[1..4].map(&:to_f)
-
-          # Store the rectangle with its properties
-          rectangles << {
-            page: page_number,
-            x: x,
-            y: y,
-            width: width,
-            height: height,
-            stroke_color: current_color,
-            fill_color: current_fill_color,
-            line_width: current_line_width
-          }
-        end
-      end
-    end
-
-    rectangles
-  end
-
-  def self.write_rectangles_to_csv(rectangles, rects_path)
-    CSV.open(rects_path, 'wb') do |csv|
-      csv << ['page', 'x', 'y', 'width', 'height', 'stroke_color', 'fill_color', 'line_width']
-      rectangles.each do |rect|
-        csv << [
-          rect[:page],
-          rect[:x],
-          rect[:y],
-          rect[:width],
-          rect[:height],
-          rect[:stroke_color],
-          rect[:fill_color],
-          rect[:line_width]
-        ]
       end
     end
   end
