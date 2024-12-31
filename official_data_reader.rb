@@ -21,6 +21,8 @@ class OfficialDataReader
         data['official']['affiliation']['secondary'] = next_line if next_line && !next_line.match?(/Affiliation Board-HSec/)
       when "Affiliation Board-HSec"
         data['official']['affiliation']['higher_secondary'] = next_line if next_line && !next_line.match?(/Is this/)
+      when "School Management"
+        data['official']['management'] = next_line if next_line && !next_line.match?(/School Type/)
       end
     end
 

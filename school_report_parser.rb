@@ -215,8 +215,6 @@ class SchoolReportParser
       # School Details
       when "School Category"
         data['school_details']['category'] = next_line if next_line && !next_line.match?(/School Management/)
-      when "School Management"
-        data['school_details']['management'] = next_line if next_line && !next_line.match?(/School Type/)
       when "School Type"
         data['school_details']['type'] = next_line if next_line && !next_line.match?(/Lowest/)
       when "Lowest & Highest Class"

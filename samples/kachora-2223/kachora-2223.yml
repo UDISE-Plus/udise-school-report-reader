@@ -10,11 +10,16 @@ location:
   cluster: KACHORA
   pincode: '283101'
   municipality: NA
+official:
+  established: 2005
+  affiliation:
+    secondary: 2-State Board
+    higher_secondary: 2-State Board
+  management: 5-Private Unaided (Recognized)
 school_details:
   shifts:
     has_shifts: 2-No
   category: 6 - Pr. Up Pr. and Secondary Only
-  management: 5-Private Unaided (Recognized)
   type: 3-Co-educational
   class_range: 1  -   10
   pre_primary: 2-No
@@ -196,11 +201,6 @@ grants:
     amount: 0.0
   expenditure:
     amount: 0.0
-official:
-  established: 2005
-  affiliation:
-    secondary: 2-State Board
-    higher_secondary: 2-State Board
 enrollment_data:
   gen:
     pre-pr:

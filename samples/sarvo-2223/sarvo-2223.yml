@@ -11,11 +11,21 @@ location:
     Post
   ward: '084-N (Chandni Chowk)'
   pincode: '110006'
+official:
+  established: 1945
+  recognition:
+    primary: 1945
+    upper_primary: 1945
+    secondary: 1945
+    higher_secondary: 1945
+  affiliation:
+    secondary: 1-CBSE
+    higher_secondary: 1-CBSE
+  management: 1-Department of Education
 school_details:
   shifts:
     has_shifts: 2-No
   category: 3 - Pr. with Up.Pr. sec. and H.Sec.
-  management: 1-Department of Education
   type: 2-Girls
   class_range: 1  -   12
   pre_primary: 1-Yes
@@ -200,16 +210,6 @@ grants:
     amount: 0.0
   expenditure:
     amount: 0.0
-official:
-  established: 1945
-  recognition:
-    primary: 1945
-    upper_primary: 1945
-    secondary: 1945
-    higher_secondary: 1945
-  affiliation:
-    secondary: 1-CBSE
-    higher_secondary: 1-CBSE
 enrollment_data:
   gen:
     pre-pr:

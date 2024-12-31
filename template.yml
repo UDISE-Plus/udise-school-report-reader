@@ -12,10 +12,13 @@ official:
   affiliation:
     secondary: null
     higher_secondary: null
+  management: null
 
 school_details:
   shifts: {}
   special_focus: {}
+  category: null
+  type: null
 
 infrastructure:
   sanitation:

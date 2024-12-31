@@ -11,11 +11,21 @@ location:
   cluster: CPS GANESHAPURAM
   ward: RACE COURSE - 26
   pincode: '641045'
+official:
+  established: 1964
+  recognition:
+    primary: 1964
+    upper_primary: 1964
+    secondary: 1987
+    higher_secondary: 1987
+  affiliation:
+    secondary: 2-State Board
+    higher_secondary: 2-State Board
+  management: 5-Private Unaided (Recognized)
 school_details:
   shifts:
     has_shifts: 2-No
   category: 3 - Pr. with Up.Pr. sec. and H.Sec.
-  management: 5-Private Unaided (Recognized)
   type: 3-Co-educational
   class_range: 1  -   12
   pre_primary: 1-Yes
@@ -196,16 +206,6 @@ grants:
     amount: 0.0
   expenditure:
     amount: 0.0
-official:
-  established: 1964
-  recognition:
-    primary: 1964
-    upper_primary: 1964
-    secondary: 1987
-    higher_secondary: 1987
-  affiliation:
-    secondary: 2-State Board
-    higher_secondary: 2-State Board
 enrollment_data:
   gen:
     pre-pr:

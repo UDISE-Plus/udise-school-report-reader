@@ -10,11 +10,13 @@ location:
   cluster: Village
   pincode: '143115'
   municipality: NA
+official:
+  established: 1940
+  management: 1-Department of Education
 school_details:
   shifts:
     has_shifts: 2-No
   category: 1 - Primary
-  management: 1-Department of Education
   type: 3-Co-educational
   class_range: 1  -   5
   pre_primary: 1-Yes
@@ -197,8 +199,6 @@ grants:
     amount: 0.0
   expenditure:
     amount: 0.0
-official:
-  established: 1940
 enrollment_data:
   gen:
     pre-pr:
