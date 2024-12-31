@@ -4,50 +4,50 @@ class EwsDataReader
   def initialize(csv_path) = @csv_path = csv_path
 
   def read
-    # Initialize arrays for different row types
-    grade_rows = []
-    bg_rows = []
-    ews_rows = []
+    # Initialize arrays for different cell types
+    grade_cells = []
+    bg_cells = []
+    ews_cells = []
 
-    CSV.foreach(@csv_path, headers: true) do |row|
-      if row['page'] == '1'
-        if ['Pre-Pri.', 'Class I', 'Class II', 'Class III', 'Class IV', 'Class V', 'Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X', 'Class XI', 'Class XII'].include?(row['text'])
-          if row['text_y'].to_f == 291.5
-            grade_rows << row
+    CSV.foreach(@csv_path, headers: true) do |cell|
+      if cell['page'] == '1'
+        if ['Pre-Pri.', 'Class I', 'Class II', 'Class III', 'Class IV', 'Class V', 'Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X', 'Class XI', 'Class XII'].include?(cell['text'])
+          if cell['text_y'].to_f == 291.5
+            grade_cells << cell
           end
-        elsif ['B', 'G'].include?(row['text'])
-          if row['text_y'].to_f == 279.5
-            bg_rows << row
+        elsif ['B', 'G'].include?(cell['text'])
+          if cell['text_y'].to_f == 279.5
+            bg_cells << cell
           end
-        elsif row['text'] =~ /^\d+$/
-          y_coord = row['text_y'].to_f
+        elsif cell['text'] =~ /^\d+$/
+          y_coord = cell['text_y'].to_f
           case y_coord
-          when 268.5 then ews_rows << row
+          when 268.5 then ews_cells << cell
           end
         end
       end
     end
 
-    return nil if grade_rows.empty?
+    return nil if grade_cells.empty?
 
-    # Sort and filter rows
-    [grade_rows, bg_rows].each do |rows|
-      rows.sort_by! { |row| row['text_x'].to_f }
-      # rows.reject! { |row| row['text_x'].to_f >= 500 }
+    # Sort and filter cells
+    [grade_cells, bg_cells].each do |cells|
+      cells.sort_by! { |cell| cell['text_x'].to_f }
+      # cells.reject! { |cell| cell['text_x'].to_f >= 500 }
     end
 
-    all_data_rows = [
-      ews_rows
+    all_data_cells = [
+      ews_cells
     ]
 
-    all_data_rows.each do |rows|
-      rows.sort_by! { |row| row['text_x'].to_f }
-      # rows.reject! { |row| row['text_x'].to_f >= 500 }
+    all_data_cells.each do |cells|
+      cells.sort_by! { |cell| cell['text_x'].to_f }
+      # cells.reject! { |cell| cell['text_x'].to_f >= 500 }
     end
 
     # Group B,G pairs, ensuring we have complete pairs
     bg_pairs = {}
-    bg_rows.each_slice(2) do |pair|
+    bg_cells.each_slice(2) do |pair|
       next unless pair.size == 2 && pair[0] && pair[1]  # Skip incomplete pairs
       b, g = pair
       x_mid = (b['text_x'].to_f + g['text_x'].to_f) / 2
@@ -56,9 +56,9 @@ class EwsDataReader
 
     # Match numbers to pairs
     {
-      grade_rows: grade_rows,
+      grade_rows: grade_cells,
       bg_pairs: bg_pairs,
-      ews_numbers: match_numbers_to_pairs(ews_rows, bg_pairs),
+      ews_numbers: match_numbers_to_pairs(ews_cells, bg_pairs),
     }
   end
 
@@ -73,10 +73,10 @@ class EwsDataReader
         g_x = bg_pair[1]['text_x'].to_f
         
         # Find numbers closest to B and G positions
-        b_num = remaining.find { |row| (row['text_x'].to_f - b_x).abs < threshold }
+        b_num = remaining.find { |cell| (cell['text_x'].to_f - b_x).abs < threshold }
         remaining.delete(b_num) if b_num
 
-        g_num = remaining.find { |row| (row['text_x'].to_f - g_x).abs < threshold }
+        g_num = remaining.find { |cell| (cell['text_x'].to_f - g_x).abs < threshold }
         remaining.delete(g_num) if g_num
         
         numbers[x_mid] = [b_num, g_num]
