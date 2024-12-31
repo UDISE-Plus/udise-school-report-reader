@@ -17,8 +17,6 @@ official:
     higher_secondary: 2-State Board
   management: 5-Private Unaided (Recognized)
 school_details:
-  shifts:
-    has_shifts: 2-No
   category: 6 - Pr. Up Pr. and Secondary Only
   type: 3-Co-educational
   class_range: 1  -   10
@@ -42,6 +40,12 @@ anganwadi:
   boys: 0
   girls: 0
   worker: NA
+building:
+  status: 1-Private
+  boundary_wall: 1-Pucca
+  blocks: 1
+  pucca_blocks: 1
+  has_shifts: 2-No
 infrastructure:
   sanitation:
     toilets:
@@ -67,11 +71,6 @@ infrastructure:
   other_facilities:
     hm_room: 1-Yes
   building:
-    details:
-      status: 1-Private
-      boundary_wall: 1-Pucca
-      blocks: 1
-      pucca_blocks: 1
     accessibility:
       ramps: 2-No
       handrails: NA

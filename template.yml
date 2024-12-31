@@ -40,6 +40,13 @@ anganwadi:
   girls: null
   worker: null
 
+building:
+  status: null
+  boundary_wall: null
+  blocks: null
+  pucca_blocks: null
+  has_shifts: null
+
 infrastructure:
   sanitation:
     toilets:
@@ -64,11 +71,6 @@ infrastructure:
     other_rooms: 0
   other_facilities: {}
   building:
-    details:
-      status: null
-      boundary_wall: null
-      blocks: null
-      pucca_blocks: null
     accessibility:
       ramps: null
       handrails: null

@@ -14,8 +14,6 @@ official:
   established: 1940
   management: 1-Department of Education
 school_details:
-  shifts:
-    has_shifts: 2-No
   category: 1 - Primary
   type: 3-Co-educational
   class_range: 1  -   5
@@ -39,6 +37,12 @@ anganwadi:
   boys: 12
   girls: 10
   worker: 1-Yes
+building:
+  status: 3-Government
+  boundary_wall: 7-Partial
+  blocks: 3
+  pucca_blocks: 3
+  has_shifts: 2-No
 infrastructure:
   sanitation:
     toilets:
@@ -64,11 +68,6 @@ infrastructure:
   other_facilities:
     hm_room: 1-Yes
   building:
-    details:
-      status: 3-Government
-      boundary_wall: 7-Partial
-      blocks: 3
-      pucca_blocks: 3
     accessibility:
       ramps: 1-Yes
       handrails: 1-Yes
