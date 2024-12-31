@@ -765,19 +765,19 @@ enrollment_data:
       girls:
     i:
       boys:
-      girls:
+      girls: 1
     ii:
-      boys:
+      boys: 1
       girls:
     iii:
       boys:
       girls:
     iv:
-      boys:
-      girls:
+      boys: 1
+      girls: 3
     v:
-      boys:
-      girls:
+      boys: 1
+      girls: 1
     vi:
       boys:
       girls:

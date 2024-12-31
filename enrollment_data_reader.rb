@@ -46,9 +46,9 @@ class EnrollmentDataReader
 
     # First pass to collect y-coordinates for categories
     CSV.foreach(@csv_path, headers: true) do |row|
-      if row['page'] == '2' && row['rect_x'].to_f == 27.0
+      if row['page'] == '2' && (row['rect_x'].to_f - 27.0).abs < 5.0
         ALL_CATEGORIES.each do |category|
-          if row['text'] == category[:label]
+          if row['text'].downcase == category[:label].downcase
             @category_y_coords[category[:key]] = row['rect_y'].to_f
           end
         end
@@ -72,7 +72,7 @@ class EnrollmentDataReader
         elsif row['text'] =~ /^\d+$/
           y_coord = row['rect_y'].to_f
           ALL_CATEGORIES.each do |category|
-            if y_coord == @category_y_coords[category[:key]]
+            if @category_y_coords[category[:key]] && (y_coord - @category_y_coords[category[:key]]).abs < 5.0
               category_rows[category[:key]] << row
             end
           end
