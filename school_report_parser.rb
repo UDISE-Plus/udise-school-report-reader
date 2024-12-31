@@ -210,9 +210,7 @@ class SchoolReportParser
 
     # Extract digital facilities data
     digital_facilities_data = DigitalFacilitiesDataReader.read(lines)
-    if digital_facilities_data && digital_facilities_data['infrastructure'] && digital_facilities_data['infrastructure']['digital_facilities']
-      data['infrastructure']['digital_facilities'] = digital_facilities_data['infrastructure']['digital_facilities']
-    end
+    data.merge!(digital_facilities_data) if digital_facilities_data
 
     # Process each line
     lines.each_with_index do |line, i|

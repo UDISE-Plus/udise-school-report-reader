@@ -20,6 +20,20 @@ school_details:
   category: null
   type: null
 
+digital_facilities:
+  ict_lab: null
+  internet: null
+  computers:
+    desktop: 0
+    laptop: 0
+    tablet: 0
+  peripherals:
+    printer: 0
+    projector: 0
+  smart_classroom:
+    digiboard: 0
+    dth: null
+
 infrastructure:
   sanitation:
     toilets:
@@ -42,19 +56,6 @@ infrastructure:
     needs_minor_repair: 0
     needs_major_repair: 0
     other_rooms: 0
-  digital_facilities:
-    ict_lab: null
-    internet: null
-    computers:
-      desktop: 0
-      laptop: 0
-      tablet: 0
-    peripherals:
-      printer: 0
-      projector: 0
-    smart_classroom:
-      digiboard: 0
-      dth: null
   other_facilities: {}
   building:
     details:

@@ -30,6 +30,19 @@ school_details:
   class_range: 1  -   12
   pre_primary: 1-Yes
   is_special_school: 2-No
+digital_facilities:
+  ict_lab: 2-No
+  internet: 1-Yes
+  computers:
+    desktop: 27
+    laptop: 1
+    tablet: 0
+  peripherals:
+    printer: 0
+    projector: 1
+  smart_classroom:
+    digiboard: 24
+    dth: 2-No
 infrastructure:
   sanitation:
     toilets:
@@ -52,19 +65,6 @@ infrastructure:
     needs_minor_repair: 0
     needs_major_repair: 0
     other_rooms: 7
-  digital_facilities:
-    ict_lab: 2-No
-    internet: 1-Yes
-    computers:
-      desktop: 27
-      laptop: 1
-      tablet: 0
-    peripherals:
-      printer: 0
-      projector: 1
-    smart_classroom:
-      digiboard: 24
-      dth: 2-No
   other_facilities:
     hm_room: 1-Yes
   building:
