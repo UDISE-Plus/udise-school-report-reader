@@ -14,6 +14,8 @@ class SchoolReportParser
   require_relative 'rte_html_writer'
   require_relative 'rte_yaml_writer'
   require_relative 'teacher_data_reader'
+  require_relative 'pdf_block_extractor'
+  require_relative 'csv_writer'
 
   def self.extract_to_text(pdf_path, output_dir = nil, write_files = false)
     raise ArgumentError, "PDF file not found" unless File.exist?(pdf_path)
@@ -38,7 +40,7 @@ class SchoolReportParser
     compressed_content = compress_content(content)
     
     # Extract blocks and rectangles
-    blocks = extract_bt_et_blocks(reader)
+    blocks = PDFBlockExtractor.extract_blocks(reader)
     rectangles = extract_rectangles(reader)
     combined_data = combine_blocks_and_rects(blocks, rectangles)
     
@@ -48,7 +50,7 @@ class SchoolReportParser
     # Create temporary file for combined data
     temp_file = Tempfile.new(['combined', '.csv'])
     begin
-      write_combined_to_csv(combined_data, temp_file.path)
+      CSVWriter.write_combined(combined_data, temp_file.path)
       
       # Extract table data using the temp file
       enrollment_data = EnrollmentDataReader.read(temp_file.path)
@@ -85,9 +87,9 @@ class SchoolReportParser
     File.write(paths.compressed_txt, data[:compressed_content])
     
     # Write CSV files
-    write_blocks_to_csv(data[:blocks], paths.blocks_csv)
-    write_rectangles_to_csv(data[:rectangles], paths.rects_csv)
-    write_combined_to_csv(data[:combined_data], paths.combined_csv)
+    CSVWriter.write_blocks(data[:blocks], paths.blocks_csv)
+    CSVWriter.write_rectangles(data[:rectangles], paths.rects_csv)
+    CSVWriter.write_combined(data[:combined_data], paths.combined_csv)
     
     # Write HTML files
     RteHtmlWriter.generate_html(data[:rte_data], paths.rte_html)
@@ -128,70 +130,6 @@ class SchoolReportParser
           FileUtils.mkdir_p(tmp_dir)
           File.join(tmp_dir, "#{@base_name}#{ext}")
         end
-      end
-    end
-  end
-
-  def self.extract_bt_et_blocks(reader)
-    blocks = []
-
-    reader.pages.each_with_index do |page, index|
-      page_number = index + 1
-      current_block = {}
-
-      page.raw_content.each_line do |line|
-        if line.include?('BT')
-          current_block = {
-            page: page_number,
-            start_line: line.strip,
-            text: []  # Initialize as array to collect multiple text blocks
-          }
-        elsif line.match?(/1\s+0\s+0\s+1\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+Tm/)
-          # Only set coordinates if not already set
-          unless current_block[:x] && current_block[:y]
-            matches = line.match(/1\s+0\s+0\s+1\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+Tm/)
-            current_block[:x] = matches[1].to_f
-            current_block[:y] = matches[2].to_f
-          end
-        elsif line.match?(/\/F(\d+)\s+(\d+(\.\d+)?)\s+Tf/)
-          # Only set font if not already set
-          unless current_block[:font] && current_block[:font_size]
-            matches = line.match(/\/F(\d+)\s+(\d+(\.\d+)?)\s+Tf/)
-            current_block[:font] = "F#{matches[1]}"
-            current_block[:font_size] = matches[2].to_f
-          end
-        elsif line.match?(/\((.*?)\)\s*Tj/)
-          # Collect all text blocks, remove escape characters
-          text = line.match(/\((.*?)\)\s*Tj/)[1]
-          text = text.gsub(/\\/, '') # Remove escape characters
-          current_block[:text] << text
-        elsif line.include?('ET')
-          current_block[:end_line] = line.strip
-          # Join all text blocks with space
-          current_block[:text] = current_block[:text].join(' ')
-          # Only add non-empty blocks with coordinates
-          if !current_block[:text].empty? && current_block[:x] && current_block[:y]
-            blocks << current_block.dup
-          end
-        end
-      end
-    end
-
-    blocks
-  end
-
-  def self.write_blocks_to_csv(blocks, csv_path)
-    CSV.open(csv_path, 'wb') do |csv|
-      csv << ['page', 'x', 'y', 'text', 'font', 'font_size']
-      blocks.each do |block|
-        csv << [
-          block[:page],
-          block[:x],
-          block[:y],
-          block[:text],
-          block[:font],
-          block[:font_size]
-        ]
       end
     end
   end
