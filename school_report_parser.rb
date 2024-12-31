@@ -21,6 +21,7 @@ require_relative 'characteristics_reader'
 require_relative 'digital_facilities_data_reader'
 require_relative 'anganwadi_data_reader'
 require_relative 'building_data_reader'
+require_relative 'rooms_data_reader'
 require_relative 'pdf_block_extractor'
 require_relative 'csv_writer'
 require_relative 'pdf_rectangle_extractor'
@@ -159,6 +160,7 @@ class SchoolReportParser
     digital_facilities_data = DigitalFacilitiesDataReader.read(lines)
     anganwadi_data = AnganwadiDataReader.read(lines)
     building_data = BuildingDataReader.read(lines)
+    rooms_data = RoomsDataReader.read(lines)
     teacher_data = TeacherDataReader.read(lines)
     sanitation_data = SanitationDataReader.read(lines)
 
@@ -170,6 +172,7 @@ class SchoolReportParser
     data.merge!(digital_facilities_data) if digital_facilities_data
     data.merge!(anganwadi_data) if anganwadi_data
     data.merge!(building_data) if building_data
+    data.merge!(rooms_data) if rooms_data
     data.merge!(teacher_data) if teacher_data
     if sanitation_data && sanitation_data['infrastructure'] && sanitation_data['infrastructure']['sanitation']
       data['infrastructure']['sanitation'] = sanitation_data['infrastructure']['sanitation']
@@ -192,36 +195,15 @@ class SchoolReportParser
         data['facilities']['basic']['electricity']['available'] = next_line if next_line && !next_line.match?(/Solar/)
       when "Solar Panel"
         data['facilities']['basic']['electricity']['solar_panel'] = next_line if next_line && !next_line.match?(/Medical/)
-      when "Library Availability"
-        data['infrastructure']['library']['available'] = next_line if next_line && !next_line.match?(/Solar/)
-      when "Separate Room for HM"
-        data['infrastructure']['other_facilities']['hm_room'] = next_line if next_line && !next_line.match?(/Drinking/)
       when "Furniture Availability"
         if next_line =~ /^\d+$/
           data['infrastructure']['furniture']['count'] = next_line.to_i
         end
 
       # Infrastructure - Classrooms
-      when "Total Class Rooms"
-        if next_line =~ /^\d+$/
-          data['infrastructure']['classrooms']['total'] = next_line.to_i
-        end
-      when "In Good Condition"
-        if next_line =~ /^\d+$/
-          data['infrastructure']['classrooms']['good_condition'] = next_line.to_i
-        end
-      when "Needs Minor Repair"
-        if next_line =~ /^\d+$/
-          data['infrastructure']['classrooms']['needs_minor_repair'] = next_line.to_i
-        end
-      when "Needs Major Repair"
-        if next_line =~ /^\d+$/
-          data['infrastructure']['classrooms']['needs_major_repair'] = next_line.to_i
-        end
-      when "Other Rooms"
-        if next_line =~ /^\d+$/
-          data['infrastructure']['classrooms']['other_rooms'] = next_line.to_i
-        end
+      when "Total Class Rooms", "In Good Condition", "Needs Minor Repair", "Needs Major Repair", "Other Rooms", "Library Availability", "Library Books", "Library Type", "Librarian", "Separate Room for HM"
+        # These are now handled by RoomsDataReader
+        next
 
       # Academic
       when /^Medium (\d)$/
@@ -330,14 +312,6 @@ class SchoolReportParser
       # Medical facilities
       when "Medical checkups"
         data['facilities']['medical']['checkups']['available'] = next_line if next_line
-
-      # Library details
-      when "Library Books"
-        data['infrastructure']['library']['books']['total'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Library Type"
-        data['infrastructure']['library']['details']['type'] = next_line if next_line
-      when "Librarian"
-        data['infrastructure']['library']['staff']['librarian'] = next_line if next_line
 
       # Sports facilities
       when "Sports Equipment"

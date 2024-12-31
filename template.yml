@@ -1,3 +1,12 @@
+rooms:
+  classrooms:
+    good_condition: 0
+    needs_minor_repair: 0
+    needs_major_repair: 0
+  other: 0
+  library:
+  hm:
+
 basic_info: {}
 
 location: {}
@@ -13,12 +22,6 @@ official:
     secondary: null
     higher_secondary: null
   management: null
-
-school_details:
-  shifts: {}
-  special_focus: {}
-  category: null
-  type: null
 
 digital_facilities:
   ict_lab: null
@@ -66,18 +69,8 @@ infrastructure:
     handwash:
       near_toilet: null
       for_meal: null
-  classrooms:
-    total: 0
-    good_condition: 0
-    needs_minor_repair: 0
-    needs_major_repair: 0
-    other_rooms: 0
-  other_facilities:
-    hm_room:
   furniture:
     count: null
-  library:
-    available: null
 
 facilities:
   residential:

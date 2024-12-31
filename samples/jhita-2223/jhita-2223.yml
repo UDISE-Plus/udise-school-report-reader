@@ -1,4 +1,12 @@
 ---
+rooms:
+  classrooms:
+    good_condition: 5
+    needs_minor_repair: 2
+    needs_major_repair: 0
+  other: 0
+  library: 1-Yes
+  hm: 1-Yes
 basic_info:
   udise_code: '03020400101'
   academic_year: 2022-23
@@ -56,18 +64,8 @@ infrastructure:
     handwash:
       near_toilet: 1-Yes
       for_meal: 1-Yes
-  classrooms:
-    total: 7
-    good_condition: 5
-    needs_minor_repair: 2
-    needs_major_repair: 0
-    other_rooms: 0
-  other_facilities:
-    hm_room: 1-Yes
   furniture:
     count: 270
-  library:
-    available: 1-Yes
 facilities:
   residential:
     details:
