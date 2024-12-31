@@ -4,7 +4,7 @@ page,x,y,text,font,font_size
 1,29.0,804.5,UDISE CODE,F1,7.5
 1,110.15,804.5,07  06  01  07  902,F1,7.5
 1,218.35,804.5,School Name,F1,7.5
-1,299.5,804.5,"Govt. Sarvodaya Kanya Vidyalaya No.1 \(Hindi Medium\), Jama Masjid, Delhi",F1,7.5
+1,299.5,804.5,"Govt. Sarvodaya Kanya Vidyalaya No.1 (Hindi Medium), Jama Masjid, Delhi",F1,7.5
 1,29.0,793.0,State,F2,7.5
 1,110.15,793.5,Delhi,F2,7.0
 1,218.35,793.0,District,F2,7.5
@@ -14,9 +14,9 @@ page,x,y,text,font,font_size
 1,29.0,778.25,Rural / Urban,F2,7.5
 1,110.15,782.0,2-Urban,F2,7.0
 1,218.35,778.25,Cluster,F2,7.5
-1,299.5,782.0,"2162037-North DMC Primary School \(Boys\) ,  Faiz Bazar, Near Darya Ganj Post Office, New Delhi",F2,7.0
+1,299.5,782.0,"2162037-North DMC Primary School (Boys) ,  Faiz Bazar, Near Darya Ganj Post Office, New Delhi",F2,7.0
 1,29.0,763.5,Ward,F2,7.5
-1,110.15,764.0,084-N \(Chandni Chowk\),F2,7.0
+1,110.15,764.0,084-N (Chandni Chowk),F2,7.0
 1,218.35,763.5,Mohalla,F2,7.5
 1,407.7,763.5,Pincode,F2,7.5
 1,461.8,764.0,110006,F2,7.0
@@ -101,7 +101,7 @@ page,x,y,text,font,font_size
 1,72.92,554.5,Toilets,F1,7.0
 1,147.15,554.5,Boys,F1,7.0
 1,176.33,554.5,Girls,F1,7.0
-1,29.0,543.0,Total\(Excluding CWSN\),F2,7.5
+1,29.0,543.0,Total(Excluding CWSN),F2,7.5
 1,164.12,543.5,0,F2,7.0
 1,188.83,543.5,18,F2,7.0
 1,29.0,531.5,Functional,F2,7.5
@@ -148,7 +148,7 @@ page,x,y,text,font,font_size
 1,550.83,485.5,2-No,F2,7.0
 1,410.5,473.5,Medical checkups,F2,7.5
 1,550.83,474.0,2-No,F2,7.0
-1,133.07,458.5,Digital Facilities \(Functional\),F1,7.0
+1,133.07,458.5,Digital Facilities (Functional),F1,7.0
 1,29.0,447.0,ICT Lab,F2,7.5
 1,112.31,447.5,2-No,F2,7.0
 1,131.48,447.0,Internet,F2,7.5
@@ -167,7 +167,7 @@ page,x,y,text,font,font_size
 1,214.78,424.5,2-No,F2,7.0
 1,233.95,423.75,DigiBoard,F2,7.5
 1,328.54,424.5,0,F2,7.0
-1,346.35,458.25,"No.of Students Received \(DCF 5.1 , 5.2\)",F1,7.0
+1,346.35,458.25,"No.of Students Received (DCF 5.1 , 5.2)",F1,7.0
 1,486.96,458.0,Primary,F2,7.5
 1,526.04,458.0,Up.Primary,F2,7.5
 1,340.43,446.5,Free text books,F2,7.5
@@ -192,7 +192,7 @@ page,x,y,text,font,font_size
 1,244.97,386.0,2-No,F2,7.0
 1,264.14,385.5,Material for Training,F2,7.5
 1,353.07,386.0,1-Yes,F2,7.0
-1,106.43,374.5,Grants Details under Samagra Shiksha \(DCF Sl. No.  8.3\),F1,7.0
+1,106.43,374.5,Grants Details under Samagra Shiksha (DCF Sl. No.  8.3),F1,7.0
 1,29.0,362.5,Grants Receipt,F2,7.5
 1,181.36,363.0,0.0,F2,7.0
 1,195.09,362.5,Grants Expenditure,F2,7.5
@@ -222,7 +222,7 @@ page,x,y,text,font,font_size
 1,493.25,362.5,1-Yes,F2,7.0
 1,520.48,362.5,1-Yes,F2,7.0
 1,547.72,362.5,1-Yes,F2,7.0
-1,72.67,347.0,Total no. of Students Enrolled Under Section 12 of the RTE Act In Private Unaided and Specified Category Schools \(DCF Sl. No. 1.42\(a\)\),F1,7.0
+1,72.67,347.0,Total no. of Students Enrolled Under Section 12 of the RTE Act In Private Unaided and Specified Category Schools (DCF Sl. No. 1.42(a)),F1,7.0
 1,43.5,335.0,Pre-Pri.,F2,8.0
 1,104.94,335.0,Class I,F2,8.0
 1,163.94,335.0,Class II,F2,8.0
@@ -268,7 +268,7 @@ page,x,y,text,font,font_size
 1,503.56,312.0,-,F2,7.0
 1,533.61,312.0,-,F2,7.0
 1,563.67,312.0,-,F2,7.0
-1,132.58,297.0,Total no. of Economically Weaker Section*\(EWS\) students Enrolled in Schools \(DCF Sl. No. 1.42\(b\)\),F1,7.0
+1,132.58,297.0,Total no. of Economically Weaker Section*(EWS) students Enrolled in Schools (DCF Sl. No. 1.42(b)),F1,7.0
 1,38.96,285.0,Pre-Pri.,F2,8.0
 1,86.23,285.0,Class I,F2,8.0
 1,125.95,285.0,Class II,F2,8.0
@@ -388,7 +388,7 @@ page,x,y,text,font,font_size
 1,231.37,125.0,Teacher With Professional Qualification,F1,7.0
 1,29.0,113.5,Diploma or Certificate in basic teachers training,F2,7.5
 1,287.72,114.0,10,F2,7.0
-1,299.5,113.5,Bachelor of Elementary Education \(B.El.Ed.\),F2,7.5
+1,299.5,113.5,Bachelor of Elementary Education (B.El.Ed.),F2,7.5
 1,562.11,114.0,0,F2,7.0
 1,29.0,102.0,B.Ed. or Equivalent,F2,7.5
 1,287.72,102.5,24,F2,7.0
@@ -404,12 +404,12 @@ page,x,y,text,font,font_size
 1,562.11,79.5,0,F2,7.0
 1,50.0,20.0,Page 1,F2,9.0
 1,450.0,820.0,Academic Year : 2022-23,F1,9.0
-1,20.0,20.0,Generated On : 30 December 2024 11:29:01 PM\( https://src.udiseplus.gov.in\),F1,8.0
+1,20.0,20.0,Generated On : 30 December 2024 11:29:01 PM( https://src.udiseplus.gov.in),F1,8.0
 2,,,"",,
 2,210.84,820.0,SCHOOL REPORT CARD,F1,15.0
 2,29.0,804.0,UDISE CODE: 07  06  01  07  902,F1,8.0
-2,268.79,804.5,"School Name: Govt. Sarvodaya Kanya Vidyalaya No.1 \(Hindi Medium\), Jama Masjid, Delhi",F1,7.0
-2,29.0,792.0,Enrolment \(By Social Category\),F1,8.0
+2,268.79,804.5,"School Name: Govt. Sarvodaya Kanya Vidyalaya No.1 (Hindi Medium), Jama Masjid, Delhi",F1,7.0
+2,29.0,792.0,Enrolment (By Social Category),F1,8.0
 2,429.07,792.5,"Note : Gen = General,G.Tot = Grand Total",F1,7.0
 2,54.01,780.0,Pre-Pr,F2,8.0
 2,98.46,780.0,I,F2,8.0
@@ -570,7 +570,7 @@ page,x,y,text,font,font_size
 2,431.17,554.0,1,F2,7.0
 2,541.53,553.5,9,F1,7.5
 2,561.83,553.5,9,F1,7.5
-2,29.0,537.5,Enrolment by grade in the current academic session \(by Age in completed years\),F1,8.0
+2,29.0,537.5,Enrolment by grade in the current academic session (by Age in completed years),F1,8.0
 2,30.16,526.5,Class,F1,6.0
 2,54.01,525.5,Pre-Pr,F2,8.0
 2,98.46,525.5,I,F2,8.0
@@ -729,7 +729,7 @@ page,x,y,text,font,font_size
 2,531.71,277.0,922,F1,7.0
 2,552.01,277.0,922,F1,7.0
 2,274.74,258.0,Disclaimer,F1,9.0
-2,27.0,230.0," Though all the efforts have been made to ensure the accuracy and currency of the content on this website \(https://udiseplus.gov.in/ \) the same should not be construed as a statement of law or used for any legal purposes. In case of any ambiguity or doubts, users are advised to verify/check with the appropriate Government Functionary/Authority and/or other source\(s\) and to obtain appropriate professional advice. As per Section 79 of the Information Technology Act 2000\(as amended Act 2008\),This Report is based on voluntary uploading of data by the schools having active UDISE+ codes in a reference year, with 30th September as the reference date, using specially designed data collection formats \(DCF\).The UDISE+ code of a school is allotted by the State/UT  Government where the school is located. The responsibility for the accuracy of the data filled in the DCFs rests with the concerned Nodal Officers,namely Principal/ Vice-Principal/ Head Master/ Head Teacher/ Senior most teacher at the school level, Cluster Resource Officer at the cluster level, Block Education Officer for the  block level District Education Officer at the district level and State MIS coordinator at the Samagra Siksha SPD Office at the State level. The Ministry of Education, therefore, assumes no responsibility or liability for any errors or omissions in the data and indicators reported in the document.Inclusion of name of a school in any of the lists in the portal https://udiseplus.gov.in or any of the reports generated in the portal does not confer the status of recognition to the school by the Ministry of Education, Govt. of India.",F2,7.0
+2,27.0,230.0," Though all the efforts have been made to ensure the accuracy and currency of the content on this website (https://udiseplus.gov.in/ ) the same should not be construed as a statement of law or used for any legal purposes. In case of any ambiguity or doubts, users are advised to verify/check with the appropriate Government Functionary/Authority and/or other source(s) and to obtain appropriate professional advice. As per Section 79 of the Information Technology Act 2000(as amended Act 2008),This Report is based on voluntary uploading of data by the schools having active UDISE+ codes in a reference year, with 30th September as the reference date, using specially designed data collection formats (DCF).The UDISE+ code of a school is allotted by the State/UT  Government where the school is located. The responsibility for the accuracy of the data filled in the DCFs rests with the concerned Nodal Officers,namely Principal/ Vice-Principal/ Head Master/ Head Teacher/ Senior most teacher at the school level, Cluster Resource Officer at the cluster level, Block Education Officer for the  block level District Education Officer at the district level and State MIS coordinator at the Samagra Siksha SPD Office at the State level. The Ministry of Education, therefore, assumes no responsibility or liability for any errors or omissions in the data and indicators reported in the document.Inclusion of name of a school in any of the lists in the portal https://udiseplus.gov.in or any of the reports generated in the portal does not confer the status of recognition to the school by the Ministry of Education, Govt. of India.",F2,7.0
 2,50.0,20.0,Page 2,F2,9.0
 2,450.0,820.0,Academic Year : 2022-23,F1,9.0
-2,20.0,20.0,Generated On : 30 December 2024 11:29:01 PM\( https://src.udiseplus.gov.in\),F1,8.0
+2,20.0,20.0,Generated On : 30 December 2024 11:29:01 PM( https://src.udiseplus.gov.in),F1,8.0

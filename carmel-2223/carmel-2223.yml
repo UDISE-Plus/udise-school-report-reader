@@ -23,7 +23,7 @@ school_details:
   shifts:
     has_shifts: 2-No
   category: 3 - Pr. with Up.Pr. sec. and H.Sec.
-  management: 5-Private Unaided \(Recognized\)
+  management: 5-Private Unaided (Recognized)
   type: 3-Co-educational
   class_range: 1  -   12
   pre_primary: 1-Yes

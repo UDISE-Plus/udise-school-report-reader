@@ -106,8 +106,10 @@ class SchoolReportParser
             current_block[:font_size] = matches[2].to_f
           end
         elsif line.match?(/\((.*?)\)\s*Tj/)
-          # Collect all text blocks
-          current_block[:text] << line.match(/\((.*?)\)\s*Tj/)[1]
+          # Collect all text blocks, remove escape characters
+          text = line.match(/\((.*?)\)\s*Tj/)[1]
+          text = text.gsub(/\\/, '') # Remove escape characters
+          current_block[:text] << text
         elsif line.include?('ET')
           current_block[:end_line] = line.strip
           # Join all text blocks with space
@@ -169,7 +171,7 @@ class SchoolReportParser
   end
 
   def self.extract_data_points(compressed_content)
-    lines = compressed_content.split("\n").map(&:strip)
+    lines = compressed_content.split("\n").map { |line| line.strip.gsub(/\\/, '') }  # Remove escape characters
     current_section = nil
     in_performance_section = false
     current_class = nil

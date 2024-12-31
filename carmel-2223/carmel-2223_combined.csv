@@ -40,7 +40,7 @@ page,text,text_x,text_y,font,font_size,rect_x,rect_y,rect_width,rect_height,stro
 1,Acad. Inspections,457.21,720.5,F2,7.5,455.21,718.5,80.56,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,0,562.11,721.0,F2,7.0,535.78,718.5,32.22,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,School Management,29.0,720.0,F2,7.5,27.0,718.0,134.25,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
-1,5-Private Unaided \(Recognized\),163.25,720.5,F2,7.0,161.25,718.0,134.25,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
+1,5-Private Unaided (Recognized),163.25,720.5,F2,7.0,161.25,718.0,134.25,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,Medium 2,301.5,709.0,F2,7.5,299.5,707.0,75.86,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,"",,,,,375.36,707.0,75.86,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,CRC Coordinator,457.21,709.0,F2,7.5,455.21,707.0,80.56,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
@@ -113,7 +113,7 @@ page,text,text_x,text_y,font,font_size,rect_x,rect_y,rect_width,rect_height,stro
 1,59,394.16,560.5,F1,7.5,324.44,558.5,80.06,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,Drinking Water Available,410.5,560.5,F2,7.5,408.5,558.5,126.88,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,1-Yes,547.72,561.0,F2,7.0,535.38,558.5,32.63,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
-1,Total\(Excluding CWSN\),29.0,549.5,F2,7.5,27.0,547.5,114.41,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
+1,Total(Excluding CWSN),29.0,549.5,F2,7.5,27.0,547.5,114.41,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,61,160.23,550.0,F2,7.0,141.41,547.5,28.6,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,13,188.83,550.0,F2,7.0,170.01,547.5,28.6,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,In Good Condition,204.61,549.0,F2,7.5,202.61,547.0,121.83,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
@@ -157,8 +157,8 @@ page,text,text_x,text_y,font,font_size,rect_x,rect_y,rect_width,rect_height,stro
 1,1-Yes,384.22,480.5,F2,7.0,324.44,478.0,80.06,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,Medical checkups,410.5,480.0,F2,7.5,408.5,478.0,126.88,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,1-Yes,547.72,480.5,F2,7.0,535.38,478.0,32.63,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
-1,Digital Facilities \(Functional\),133.07,465.0,F1,7.0,27.0,463.0,307.43,11.0,0.66275 0.66275 0.66275 RG,0 g,0.01
-1,"No.of Students Received \(DCF 5.1 , 5.2\)",346.35,464.75,F1,7.0,338.43,462.5,146.53,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
+1,Digital Facilities (Functional),133.07,465.0,F1,7.0,27.0,463.0,307.43,11.0,0.66275 0.66275 0.66275 RG,0 g,0.01
+1,"No.of Students Received (DCF 5.1 , 5.2)",346.35,464.75,F1,7.0,338.43,462.5,146.53,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,Primary,486.96,464.5,F2,7.5,484.96,462.5,39.08,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,Up.Primary,526.04,464.5,F2,7.5,524.04,462.5,43.96,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,ICT Lab,29.0,453.5,F2,7.5,27.0,451.5,76.86,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
@@ -216,7 +216,7 @@ page,text,text_x,text_y,font,font_size,rect_x,rect_y,rect_width,rect_height,stro
 1,6.0,501.8,392.0,F2,7.0,486.3,389.5,27.23,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,7.0,529.04,392.0,F2,7.0,513.53,389.5,27.23,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,7.0,556.27,392.0,F2,7.0,540.77,389.5,27.23,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
-1,Grants Details under Samagra Shiksha \(DCF Sl. No.  8.3\),106.43,381.0,F1,7.0,27.0,379.0,346.36,11.0,0.66275 0.66275 0.66275 RG,0 g,0.01
+1,Grants Details under Samagra Shiksha (DCF Sl. No.  8.3),106.43,381.0,F1,7.0,27.0,379.0,346.36,11.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,Avg.School hrs.Tch.,379.36,380.0,F2,7.5,377.36,378.0,81.7,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,8.0,474.57,380.5,F2,7.0,459.06,378.0,27.23,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,8.0,501.8,380.5,F2,7.0,486.3,378.0,27.23,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
@@ -231,7 +231,7 @@ page,text,text_x,text_y,font,font_size,rect_x,rect_y,rect_width,rect_height,stro
 1,1-Yes,493.25,369.0,F2,7.0,486.3,366.5,27.23,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,1-Yes,520.48,369.0,F2,7.0,513.53,366.5,27.23,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,1-Yes,547.72,369.0,F2,7.0,540.77,366.5,27.23,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
-1,Total no. of Students Enrolled Under Section 12 of the RTE Act In Private Unaided and Specified Category Schools \(DCF Sl. No. 1.42\(a\)\),72.67,353.5,F1,7.0,27.0,351.5,541.0,11.0,0.66275 0.66275 0.66275 RG,0 g,0.01
+1,Total no. of Students Enrolled Under Section 12 of the RTE Act In Private Unaided and Specified Category Schools (DCF Sl. No. 1.42(a)),72.67,353.5,F1,7.0,27.0,351.5,541.0,11.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,Pre-Pri.,43.5,341.5,F2,8.0,27.0,339.5,60.11,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,Class I,104.94,341.5,F2,8.0,87.11,339.5,60.11,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,Class II,163.94,341.5,F2,8.0,147.22,339.5,60.11,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
@@ -277,7 +277,7 @@ page,text,text_x,text_y,font,font_size,rect_x,rect_y,rect_width,rect_height,stro
 1,-,503.56,318.5,F2,7.0,477.83,316.5,30.06,11.0,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,-,533.61,318.5,F2,7.0,507.89,316.5,30.06,11.0,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,-,563.67,318.5,F2,7.0,537.94,316.5,30.06,11.0,0.66275 0.66275 0.66275 RG,0 g,0.5
-1,Total no. of Economically Weaker Section*\(EWS\) students Enrolled in Schools \(DCF Sl. No. 1.42\(b\)\),132.58,303.5,F1,7.0,27.0,301.5,541.0,11.0,0.66275 0.66275 0.66275 RG,0 g,0.01
+1,Total no. of Economically Weaker Section*(EWS) students Enrolled in Schools (DCF Sl. No. 1.42(b)),132.58,303.5,F1,7.0,27.0,301.5,541.0,11.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,Pre-Pri.,38.96,291.5,F2,8.0,27.0,289.5,51.04,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,Class I,86.23,291.5,F2,8.0,78.04,289.5,40.83,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,Class II,125.95,291.5,F2,8.0,118.87,289.5,40.83,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
@@ -399,7 +399,7 @@ page,text,text_x,text_y,font,font_size,rect_x,rect_y,rect_width,rect_height,stro
 1,Teacher With Professional Qualification,231.37,131.5,F1,7.0,27.0,129.5,541.0,11.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,Diploma or Certificate in basic teachers training,29.0,120.0,F2,7.5,27.0,118.0,225.42,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,13,287.72,120.5,F2,7.0,252.42,118.0,45.08,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
-1,Bachelor of Elementary Education \(B.El.Ed.\),299.5,120.0,F2,7.5,297.5,118.0,225.42,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
+1,Bachelor of Elementary Education (B.El.Ed.),299.5,120.0,F2,7.5,297.5,118.0,225.42,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,0,562.11,120.5,F2,7.0,522.92,118.0,45.08,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,B.Ed. or Equivalent,29.0,108.5,F2,7.5,27.0,106.5,225.42,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,46,287.72,109.0,F2,7.0,252.42,106.5,45.08,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
@@ -413,7 +413,7 @@ page,text,text_x,text_y,font,font_size,rect_x,rect_y,rect_width,rect_height,stro
 1,0,291.61,86.0,F2,7.0,252.42,83.5,45.08,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
 1,Pursuing any Relevant Professional Course,299.5,85.5,F2,7.5,297.5,83.5,225.42,11.5,0.66275 0.66275 0.66275 RG,0 g,0.01
 1,0,562.11,86.0,F2,7.0,522.92,83.5,45.08,11.5,0.66275 0.66275 0.66275 RG,0 g,0.5
-1,Generated On : 28 December 2024 06:57:07 AM\( https://src.udiseplus.gov.in\),20.0,20.0,F1,8.0,,,,,,,
+1,Generated On : 28 December 2024 06:57:07 AM( https://src.udiseplus.gov.in),20.0,20.0,F1,8.0,,,,,,,
 1,Page 1,50.0,20.0,F2,9.0,,,,,,,
 1,"",0.0,0.0,,0.0,,,,,,,
 2,SCHOOL REPORT CARD,210.84,820.0,F1,15.0,,,,,,,
@@ -421,7 +421,7 @@ page,text,text_x,text_y,font,font_size,rect_x,rect_y,rect_width,rect_height,stro
 2,UDISE CODE: 33  12  01  01  401,29.0,804.0,F1,8.0,27.0,802.0,541.0,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 2,School Name: CARMEL GARDEN MATRICULATION HIGHER SECONDARY SCHOOL,287.16,804.5,F1,7.0,27.0,802.0,541.0,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 2,"Note : Gen = General,G.Tot = Grand Total",429.07,792.5,F1,7.0,27.0,790.0,541.0,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
-2,Enrolment \(By Social Category\),29.0,792.0,F1,8.0,27.0,790.0,541.0,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
+2,Enrolment (By Social Category),29.0,792.0,F1,8.0,27.0,790.0,541.0,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 2,"",,,,,27.0,778.0,22.33,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 2,Pre-Pr,54.01,780.0,F2,8.0,49.33,778.0,32.48,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
 2,I,98.46,780.0,F2,8.0,81.81,778.0,35.53,12.0,0.66275 0.66275 0.66275 RG,0 g,0.01
@@ -1686,10 +1686,10 @@ page,text,text_x,text_y,font,font_size,rect_x,rect_y,rect_width,rect_height,stro
 2,1769,509.47,272.5,F1,7.0,507.1,270.5,20.3,11.0,0.66275 0.66275 0.66275 RG,0 g,0.5
 2,349,531.71,272.5,F1,7.0,527.4,270.5,20.3,11.0,0.66275 0.66275 0.66275 RG,0 g,0.5
 2,2118,550.07,272.5,F1,7.0,547.7,270.5,20.3,11.0,0.66275 0.66275 0.66275 RG,0 g,0.5
-2,Enrolment by grade in the current academic session \(by Age in completed years\),29.0,530.0,F1,8.0,25.0,268.5,545.0,273.5,0 G,0 g,0.5
+2,Enrolment by grade in the current academic session (by Age in completed years),29.0,530.0,F1,8.0,25.0,268.5,545.0,273.5,0 G,0 g,0.5
 2,"",,,,,25.0,264.5,545.0,4.0,0 G,0 g,0.5
 2,Disclaimer,274.74,253.5,F1,9.0,,,,,,,
-2," Though all the efforts have been made to ensure the accuracy and currency of the content on this website \(https://udiseplus.gov.in/ \) the same should not be construed as a statement of law or used for any legal purposes. In case of any ambiguity or doubts, users are advised to verify/check with the appropriate Government Functionary/Authority and/or other source\(s\) and to obtain appropriate professional advice. As per Section 79 of the Information Technology Act 2000\(as amended Act 2008\),This Report is based on voluntary uploading of data by the schools having active UDISE+ codes in a reference year, with 30th September as the reference date, using specially designed data collection formats \(DCF\).The UDISE+ code of a school is allotted by the State/UT  Government where the school is located. The responsibility for the accuracy of the data filled in the DCFs rests with the concerned Nodal Officers,namely Principal/ Vice-Principal/ Head Master/ Head Teacher/ Senior most teacher at the school level, Cluster Resource Officer at the cluster level, Block Education Officer for the  block level District Education Officer at the district level and State MIS coordinator at the Samagra Siksha SPD Office at the State level. The Ministry of Education, therefore, assumes no responsibility or liability for any errors or omissions in the data and indicators reported in the document.Inclusion of name of a school in any of the lists in the portal https://udiseplus.gov.in or any of the reports generated in the portal does not confer the status of recognition to the school by the Ministry of Education, Govt. of India.",27.0,225.5,F2,7.0,25.0,97.5,545.0,144.0,0.66275 0.66275 0.66275 RG,0 g,0.5
-2,Generated On : 28 December 2024 06:57:07 AM\( https://src.udiseplus.gov.in\),20.0,20.0,F1,8.0,,,,,,,
+2," Though all the efforts have been made to ensure the accuracy and currency of the content on this website (https://udiseplus.gov.in/ ) the same should not be construed as a statement of law or used for any legal purposes. In case of any ambiguity or doubts, users are advised to verify/check with the appropriate Government Functionary/Authority and/or other source(s) and to obtain appropriate professional advice. As per Section 79 of the Information Technology Act 2000(as amended Act 2008),This Report is based on voluntary uploading of data by the schools having active UDISE+ codes in a reference year, with 30th September as the reference date, using specially designed data collection formats (DCF).The UDISE+ code of a school is allotted by the State/UT  Government where the school is located. The responsibility for the accuracy of the data filled in the DCFs rests with the concerned Nodal Officers,namely Principal/ Vice-Principal/ Head Master/ Head Teacher/ Senior most teacher at the school level, Cluster Resource Officer at the cluster level, Block Education Officer for the  block level District Education Officer at the district level and State MIS coordinator at the Samagra Siksha SPD Office at the State level. The Ministry of Education, therefore, assumes no responsibility or liability for any errors or omissions in the data and indicators reported in the document.Inclusion of name of a school in any of the lists in the portal https://udiseplus.gov.in or any of the reports generated in the portal does not confer the status of recognition to the school by the Ministry of Education, Govt. of India.",27.0,225.5,F2,7.0,25.0,97.5,545.0,144.0,0.66275 0.66275 0.66275 RG,0 g,0.5
+2,Generated On : 28 December 2024 06:57:07 AM( https://src.udiseplus.gov.in),20.0,20.0,F1,8.0,,,,,,,
 2,Page 2,50.0,20.0,F2,9.0,,,,,,,
 2,"",0.0,0.0,,0.0,,,,,,,
