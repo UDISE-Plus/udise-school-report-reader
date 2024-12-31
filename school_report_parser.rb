@@ -3,6 +3,7 @@ class SchoolReportParser
   require 'yaml'
   require 'csv'
   require 'fileutils'
+  require 'tempfile'
   require_relative 'enrollment_data_reader'
   require_relative 'enrollment_html_writer'
   require_relative 'enrollment_yaml_writer'
@@ -14,87 +15,124 @@ class SchoolReportParser
   require_relative 'rte_yaml_writer'
   require_relative 'teacher_data_reader'
 
-  def self.get_output_path(pdf_path, extension, is_yaml = false)
-    base_name = File.basename(pdf_path, '.pdf')
-    dir_name = File.dirname(pdf_path)
-    
-    if is_yaml
-      File.join(dir_name, "#{base_name}#{extension}")
-    else
-      # Create tmp directory at the root of the project
-      root_dir = File.expand_path('.')
-      tmp_dir = File.join(root_dir, 'tmp')
-      FileUtils.mkdir_p(tmp_dir)
-      File.join(tmp_dir, "#{base_name}#{extension}")
-    end
-  end
-
-  def self.extract_to_text(pdf_path)
+  def self.extract_to_text(pdf_path, output_dir = nil, write_files = false)
     raise ArgumentError, "PDF file not found" unless File.exist?(pdf_path)
 
-    reader = PDF::Reader.new(pdf_path)
-
-    # Create text file with same name as PDF
-    txt_path = get_output_path(pdf_path, '.txt')
-    content = reader.pages.map(&:raw_content).join("\n")
-    File.write(txt_path, content)
-
-    # Create compressed version
-    compressed_content = compress_content(content)
-    compressed_path = get_output_path(pdf_path, '_compressed.txt')
-    File.write(compressed_path, compressed_content)
-
-    # Extract BT-ET blocks to CSV
-    csv_path = get_output_path(pdf_path, '_blocks.csv')
-    extract_bt_et_blocks(reader, csv_path)
-
-    # Extract rectangles to CSV
-    rects_path = get_output_path(pdf_path, '_rects.csv')
-    extract_rectangles(reader, rects_path)
-
-    # Combine blocks and rectangles
-    combined_path = get_output_path(pdf_path, '_combined.csv')
-    combine_blocks_and_rects(csv_path, rects_path, combined_path)
-
-    # Extract data points to YAML
-    data_points = extract_data_points(compressed_content)
-
-    # Get enrollment data
-    enrollment_data = EnrollmentDataReader.read(combined_path)
-
-    # Format enrollment data for YAML
-    if enrollment_data
-      yaml_enrollment = EnrollmentYamlWriter.format_yaml(enrollment_data)
-      data_points['enrollment_data'] = yaml_enrollment
-    end
-
-    ews_data = EwsDataReader.read(combined_path)
-    ews_yaml = EwsYamlWriter.format_yaml(ews_data)
-    data_points['ews_data'] = ews_yaml
-
-    rte_data = RteDataReader.read(combined_path)
-    rte_yaml = RteYamlWriter.format_yaml(rte_data)
-    data_points['rte_data'] = rte_yaml
-
-    # Extract rte table to HTML
-    html_path = get_output_path(pdf_path, '_rte.html')
-    RteHtmlWriter.generate_html(rte_data, html_path)
-
-    yaml_path = get_output_path(pdf_path, '.yml', true)
-    File.write(yaml_path, data_points.to_yaml)
-
-    # Extract enrollment table to HTML
-    enrollment_html_path = get_output_path(pdf_path, '_enrollment.html')
-    EnrollmentHtmlWriter.generate_html(enrollment_data, enrollment_html_path)
-
-    # Extract ews table to HTML
-    ews_html_path = get_output_path(pdf_path, '_ews.html')
-    EwsHtmlWriter.generate_html(ews_data, ews_html_path)
-
-    [txt_path, compressed_path, yaml_path, csv_path, rects_path, combined_path, html_path]
+    # Extract all data first
+    extracted_data = extract_data(pdf_path)
+    
+    # Write files if requested
+    write_output_files(pdf_path, extracted_data, output_dir) if write_files
+    
+    # Return the YAML data
+    extracted_data[:yaml_data]
   end
 
-  def self.extract_bt_et_blocks(reader, csv_path)
+  private
+
+  def self.extract_data(pdf_path)
+    reader = PDF::Reader.new(pdf_path)
+    
+    # Extract raw content
+    content = reader.pages.map(&:raw_content).join("\n")
+    compressed_content = compress_content(content)
+    
+    # Extract blocks and rectangles
+    blocks = extract_bt_et_blocks(reader)
+    rectangles = extract_rectangles(reader)
+    combined_data = combine_blocks_and_rects(blocks, rectangles)
+    
+    # Extract YAML data
+    yaml_data = extract_data_points(compressed_content)
+    
+    # Create temporary file for combined data
+    temp_file = Tempfile.new(['combined', '.csv'])
+    begin
+      write_combined_to_csv(combined_data, temp_file.path)
+      
+      # Extract table data using the temp file
+      enrollment_data = EnrollmentDataReader.read(temp_file.path)
+      ews_data = EwsDataReader.read(temp_file.path)
+      rte_data = RteDataReader.read(temp_file.path)
+      
+      # Format table data for YAML
+      yaml_data['enrollment_data'] = EnrollmentYamlWriter.format_yaml(enrollment_data) if enrollment_data
+      yaml_data['ews_data'] = EwsYamlWriter.format_yaml(ews_data)
+      yaml_data['rte_data'] = RteYamlWriter.format_yaml(rte_data)
+      
+      {
+        content: content,
+        compressed_content: compressed_content,
+        blocks: blocks,
+        rectangles: rectangles,
+        combined_data: combined_data,
+        enrollment_data: enrollment_data,
+        ews_data: ews_data,
+        rte_data: rte_data,
+        yaml_data: yaml_data
+      }
+    ensure
+      temp_file.close
+      temp_file.unlink
+    end
+  end
+
+  def self.write_output_files(pdf_path, data, output_dir)
+    paths = OutputPaths.new(pdf_path, output_dir)
+    
+    # Write text files
+    File.write(paths.txt, data[:content])
+    File.write(paths.compressed_txt, data[:compressed_content])
+    
+    # Write CSV files
+    write_blocks_to_csv(data[:blocks], paths.blocks_csv)
+    write_rectangles_to_csv(data[:rectangles], paths.rects_csv)
+    write_combined_to_csv(data[:combined_data], paths.combined_csv)
+    
+    # Write HTML files
+    RteHtmlWriter.generate_html(data[:rte_data], paths.rte_html)
+    EnrollmentHtmlWriter.generate_html(data[:enrollment_data], paths.enrollment_html)
+    EwsHtmlWriter.generate_html(data[:ews_data], paths.ews_html)
+    
+    # Write YAML file
+    File.write(paths.yaml, data[:yaml_data].to_yaml)
+  end
+
+  class OutputPaths
+    EXTENSIONS = {
+      txt: '.txt',
+      compressed_txt: '_compressed.txt',
+      blocks_csv: '_blocks.csv',
+      rects_csv: '_rects.csv',
+      combined_csv: '_combined.csv',
+      rte_html: '_rte.html',
+      enrollment_html: '_enrollment.html',
+      ews_html: '_ews.html',
+      yaml: '.yml'
+    }
+
+    def initialize(pdf_path, output_dir)
+      @pdf_path = pdf_path
+      @output_dir = output_dir
+      @base_name = File.basename(pdf_path, '.pdf')
+    end
+
+    EXTENSIONS.each do |name, ext|
+      define_method(name) do
+        if @output_dir
+          File.join(@output_dir, "#{@base_name}#{ext}")
+        elsif name == :yaml
+          File.join(File.dirname(@pdf_path), "#{@base_name}#{ext}")
+        else
+          tmp_dir = File.join(File.expand_path('.'), 'tmp')
+          FileUtils.mkdir_p(tmp_dir)
+          File.join(tmp_dir, "#{@base_name}#{ext}")
+        end
+      end
+    end
+  end
+
+  def self.extract_bt_et_blocks(reader)
     blocks = []
 
     reader.pages.each_with_index do |page, index|
@@ -131,12 +169,18 @@ class SchoolReportParser
           current_block[:end_line] = line.strip
           # Join all text blocks with space
           current_block[:text] = current_block[:text].join(' ')
-          blocks << current_block.dup
+          # Only add non-empty blocks with coordinates
+          if !current_block[:text].empty? && current_block[:x] && current_block[:y]
+            blocks << current_block.dup
+          end
         end
       end
     end
 
-    # Write to CSV
+    blocks
+  end
+
+  def self.write_blocks_to_csv(blocks, csv_path)
     CSV.open(csv_path, 'wb') do |csv|
       csv << ['page', 'x', 'y', 'text', 'font', 'font_size']
       blocks.each do |block|
@@ -147,6 +191,226 @@ class SchoolReportParser
           block[:text],
           block[:font],
           block[:font_size]
+        ]
+      end
+    end
+  end
+
+  def self.extract_rectangles(reader)
+    rectangles = []
+    current_color = '0 G'  # Default stroke color (black)
+    current_fill_color = '1 1 1 rg'  # Default fill color (white)
+    current_line_width = 1.0  # Default line width
+
+    reader.pages.each_with_index do |page, index|
+      page_number = index + 1
+
+      page.raw_content.each_line do |line|
+        # Track stroke color changes
+        if line.match?(/[\d.]+ [\d.]+ [\d.]+ RG/) || line.match?(/[\d.]+ G/)
+          current_color = line.strip
+        end
+
+        # Track fill color changes
+        if line.match?(/[\d.]+ [\d.]+ [\d.]+ rg/) || line.match?(/[\d.]+ g/)
+          current_fill_color = line.strip
+        end
+
+        # Track line width changes
+        if line.match?(/[\d.]+\s+w/)
+          if match = line.match(/(\d+\.?\d*)\s+w/)
+            current_line_width = match[1].to_f
+          end
+        end
+
+        # Look for rectangles (table cells)
+        if line.match?(/(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+re/)
+          matches = line.match(/(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+re/)
+          x, y, width, height = matches[1..4].map(&:to_f)
+
+          # Store the rectangle with its properties
+          rectangles << {
+            page: page_number,
+            x: x,
+            y: y,
+            width: width,
+            height: height,
+            stroke_color: current_color,
+            fill_color: current_fill_color,
+            line_width: current_line_width
+          }
+        end
+      end
+    end
+
+    rectangles
+  end
+
+  def self.write_rectangles_to_csv(rectangles, rects_path)
+    CSV.open(rects_path, 'wb') do |csv|
+      csv << ['page', 'x', 'y', 'width', 'height', 'stroke_color', 'fill_color', 'line_width']
+      rectangles.each do |rect|
+        csv << [
+          rect[:page],
+          rect[:x],
+          rect[:y],
+          rect[:width],
+          rect[:height],
+          rect[:stroke_color],
+          rect[:fill_color],
+          rect[:line_width]
+        ]
+      end
+    end
+  end
+
+  def self.combine_blocks_and_rects(blocks, rects)
+    # Filter out blocks with missing coordinates
+    invalid_blocks = blocks.reject { |block| block[:x] && block[:y] || block[:text].to_s.empty? }
+    if invalid_blocks.any?
+      warn "Warning: Found #{invalid_blocks.size} non-empty blocks with missing coordinates"
+      invalid_blocks.each do |block|
+        warn "  - Page #{block[:page]}: '#{block[:text]}'"
+      end
+    end
+    valid_blocks = blocks.select { |block| block[:x] && block[:y] }
+    
+    # Filter out rectangles with missing or invalid coordinates
+    invalid_rects = rects.reject { |rect| rect[:x] && rect[:y] && rect[:width] && rect[:height] && rect[:width] > 0 && rect[:height] > 0 }
+    if invalid_rects.any?
+      warn "Warning: Found #{invalid_rects.size} rectangles with invalid coordinates"
+      invalid_rects.each do |rect|
+        warn "  - Page #{rect[:page]}: x=#{rect[:x]}, y=#{rect[:y]}, w=#{rect[:width]}, h=#{rect[:height]}"
+      end
+    end
+    valid_rects = rects.select { |rect| rect[:x] && rect[:y] && rect[:width] && rect[:height] && rect[:width] > 0 && rect[:height] > 0 }
+    
+    # For each text block, find its smallest containing rectangle
+    combined_data = valid_blocks.map do |block|
+      # Find rectangles on the same page that contain this text block
+      containing_rects = valid_rects.select do |rect|
+        rect[:page] == block[:page] &&
+        block[:x] >= rect[:x] &&
+        block[:x] <= (rect[:x] + rect[:width]) &&
+        block[:y] >= rect[:y] &&
+        block[:y] <= (rect[:y] + rect[:height])
+      end
+
+      # Find the smallest containing rectangle by area
+      smallest_rect = containing_rects.min_by { |r| r[:width] * r[:height] }
+
+      # Create entry with block data and rectangle data (if found)
+      if smallest_rect
+        {
+          page: block[:page],
+          text: block[:text],
+          text_x: block[:x],
+          text_y: block[:y],
+          font: block[:font],
+          font_size: block[:font_size],
+          rect_x: smallest_rect[:x],
+          rect_y: smallest_rect[:y],
+          rect_width: smallest_rect[:width],
+          rect_height: smallest_rect[:height],
+          stroke_color: smallest_rect[:stroke_color],
+          fill_color: smallest_rect[:fill_color],
+          line_width: smallest_rect[:line_width]
+        }
+      else
+        {
+          page: block[:page],
+          text: block[:text],
+          text_x: block[:x],
+          text_y: block[:y],
+          font: block[:font],
+          font_size: block[:font_size],
+          rect_x: nil,
+          rect_y: nil,
+          rect_width: nil,
+          rect_height: nil,
+          stroke_color: nil,
+          fill_color: nil,
+          line_width: nil
+        }
+      end
+    end
+
+    # Add empty rectangles that don't contain any text
+    valid_rects.each do |rect|
+      # Check if this rectangle contains any text blocks
+      has_text = valid_blocks.any? do |block|
+        block[:page] == rect[:page] &&
+        block[:x] >= rect[:x] &&
+        block[:x] <= (rect[:x] + rect[:width]) &&
+        block[:y] >= rect[:y] &&
+        block[:y] <= (rect[:y] + rect[:height])
+      end
+
+      # If it doesn't contain text, add it as an empty entry
+      unless has_text
+        combined_data << {
+          page: rect[:page],
+          text: "",
+          text_x: nil,
+          text_y: nil,
+          font: nil,
+          font_size: nil,
+          rect_x: rect[:x],
+          rect_y: rect[:y],
+          rect_width: rect[:width],
+          rect_height: rect[:height],
+          stroke_color: rect[:stroke_color],
+          fill_color: rect[:fill_color],
+          line_width: rect[:line_width]
+        }
+      end
+    end
+
+    # Sort by page, then y (top to bottom), then x (left to right)
+    combined_data.sort_by! do |data|
+      [
+        data[:page],
+        -(data[:rect_y] || data[:text_y] || 0),  # Negative for top-to-bottom
+        data[:rect_x] || data[:text_x] || 0
+      ]
+    end
+
+    combined_data
+  end
+
+  def self.write_combined_to_csv(combined_data, output_path)
+    CSV.open(output_path, 'wb') do |csv|
+      csv << [
+        'page',
+        'text',
+        'text_x',
+        'text_y',
+        'font',
+        'font_size',
+        'rect_x',
+        'rect_y',
+        'rect_width',
+        'rect_height',
+        'stroke_color',
+        'fill_color',
+        'line_width'
+      ]
+
+      combined_data.each do |data|
+        csv << [
+          data[:page],
+          data[:text],
+          data[:text_x],
+          data[:text_y],
+          data[:font],
+          data[:font_size],
+          data[:rect_x],
+          data[:rect_y],
+          data[:rect_width],
+          data[:rect_height],
+          data[:stroke_color],
+          data[:fill_color],
+          data[:line_width]
         ]
       end
     end
@@ -595,227 +859,5 @@ class SchoolReportParser
     end
 
     result
-  end
-
-  def self.extract_rectangles(reader, rects_path)
-    rectangles = []
-    current_color = '0 G'  # Default stroke color (black)
-    current_fill_color = '1 1 1 rg'  # Default fill color (white)
-    current_line_width = 1.0  # Default line width
-
-    reader.pages.each_with_index do |page, index|
-      page_number = index + 1
-
-      page.raw_content.each_line do |line|
-        # Track stroke color changes
-        if line.match?(/[\d.]+ [\d.]+ [\d.]+ RG/) || line.match?(/[\d.]+ G/)
-          current_color = line.strip
-        end
-
-        # Track fill color changes
-        if line.match?(/[\d.]+ [\d.]+ [\d.]+ rg/) || line.match?(/[\d.]+ g/)
-          current_fill_color = line.strip
-        end
-
-        # Track line width changes
-        if line.match?(/[\d.]+\s+w/)
-          if match = line.match(/(\d+\.?\d*)\s+w/)
-            current_line_width = match[1].to_f
-          end
-        end
-
-        # Look for rectangles (table cells)
-        if line.match?(/(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+re/)
-          matches = line.match(/(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s+re/)
-          x, y, width, height = matches[1..4].map(&:to_f)
-
-          # Store the rectangle with its properties
-          rectangles << {
-            page: page_number,
-            x: x,
-            y: y,
-            width: width,
-            height: height,
-            stroke_color: current_color,
-            fill_color: current_fill_color,
-            line_width: current_line_width
-          }
-        end
-      end
-    end
-
-    # Write to CSV
-    CSV.open(rects_path, 'wb') do |csv|
-      csv << ['page', 'x', 'y', 'width', 'height', 'stroke_color', 'fill_color', 'line_width']
-      rectangles.each do |rect|
-        csv << [
-          rect[:page],
-          rect[:x],
-          rect[:y],
-          rect[:width],
-          rect[:height],
-          rect[:stroke_color],
-          rect[:fill_color],
-          rect[:line_width]
-        ]
-      end
-    end
-  end
-
-  def self.combine_blocks_and_rects(blocks_path, rects_path, output_path)
-    # Read blocks
-    blocks = []
-    CSV.foreach(blocks_path, headers: true) do |row|
-      blocks << {
-        page: row['page'].to_i,
-        x: row['x'].to_f,
-        y: row['y'].to_f,
-        text: row['text'],
-        font: row['font'],
-        font_size: row['font_size'].to_f
-      }
-    end
-
-    # Read rectangles
-    rects = []
-    CSV.foreach(rects_path, headers: true) do |row|
-      rects << {
-        page: row['page'].to_i,
-        x: row['x'].to_f,
-        y: row['y'].to_f,
-        width: row['width'].to_f,
-        height: row['height'].to_f,
-        stroke_color: row['stroke_color'],
-        fill_color: row['fill_color'],
-        line_width: row['line_width'].to_f
-      }
-    end
-
-    # For each text block, find its smallest containing rectangle
-    combined_data = blocks.map do |block|
-      # Find rectangles on the same page that contain this text block
-      containing_rects = rects.select do |rect|
-        rect[:page] == block[:page] &&
-        block[:x] >= rect[:x] &&
-        block[:x] <= (rect[:x] + rect[:width]) &&
-        block[:y] >= rect[:y] &&
-        block[:y] <= (rect[:y] + rect[:height])
-      end
-
-      # Find the smallest containing rectangle by area
-      smallest_rect = containing_rects.min_by { |r| r[:width] * r[:height] }
-
-      # Create entry with block data and rectangle data (if found)
-      if smallest_rect
-        {
-          page: block[:page],
-          text: block[:text],
-          text_x: block[:x],
-          text_y: block[:y],
-          font: block[:font],
-          font_size: block[:font_size],
-          rect_x: smallest_rect[:x],
-          rect_y: smallest_rect[:y],
-          rect_width: smallest_rect[:width],
-          rect_height: smallest_rect[:height],
-          stroke_color: smallest_rect[:stroke_color],
-          fill_color: smallest_rect[:fill_color],
-          line_width: smallest_rect[:line_width]
-        }
-      else
-        {
-          page: block[:page],
-          text: block[:text],
-          text_x: block[:x],
-          text_y: block[:y],
-          font: block[:font],
-          font_size: block[:font_size],
-          rect_x: nil,
-          rect_y: nil,
-          rect_width: nil,
-          rect_height: nil,
-          stroke_color: nil,
-          fill_color: nil,
-          line_width: nil
-        }
-      end
-    end
-
-    # Add empty rectangles that don't contain any text
-    rects.each do |rect|
-      # Check if this rectangle contains any text blocks
-      has_text = blocks.any? do |block|
-        block[:page] == rect[:page] &&
-        block[:x] >= rect[:x] &&
-        block[:x] <= (rect[:x] + rect[:width]) &&
-        block[:y] >= rect[:y] &&
-        block[:y] <= (rect[:y] + rect[:height])
-      end
-
-      # If it doesn't contain text, add it as an empty entry
-      unless has_text
-        combined_data << {
-          page: rect[:page],
-          text: "",
-          text_x: nil,
-          text_y: nil,
-          font: nil,
-          font_size: nil,
-          rect_x: rect[:x],
-          rect_y: rect[:y],
-          rect_width: rect[:width],
-          rect_height: rect[:height],
-          stroke_color: rect[:stroke_color],
-          fill_color: rect[:fill_color],
-          line_width: rect[:line_width]
-        }
-      end
-    end
-
-    # Sort by page, then y (top to bottom), then x (left to right)
-    combined_data.sort_by! do |data|
-      [
-        data[:page],
-        -(data[:rect_y] || data[:text_y] || 0),  # Negative for top-to-bottom
-        data[:rect_x] || data[:text_x] || 0
-      ]
-    end
-
-    # Write combined data to CSV
-    CSV.open(output_path, 'wb') do |csv|
-      csv << [
-        'page',
-        'text',
-        'text_x',
-        'text_y',
-        'font',
-        'font_size',
-        'rect_x',
-        'rect_y',
-        'rect_width',
-        'rect_height',
-        'stroke_color',
-        'fill_color',
-        'line_width'
-      ]
-
-      combined_data.each do |data|
-        csv << [
-          data[:page],
-          data[:text],
-          data[:text_x],
-          data[:text_y],
-          data[:font],
-          data[:font_size],
-          data[:rect_x],
-          data[:rect_y],
-          data[:rect_width],
-          data[:rect_height],
-          data[:stroke_color],
-          data[:fill_color],
-          data[:line_width]
-        ]
-      end
-    end
   end
 end
