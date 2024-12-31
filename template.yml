@@ -2,9 +2,18 @@ basic_info: {}
 
 location: {}
 
+official:
+  established: null
+  recognition:
+    primary: null
+    upper_primary: null
+    secondary: null
+    higher_secondary: null
+  affiliation:
+    secondary: null
+    higher_secondary: null
+
 school_details:
-  recognition: {}
-  affiliation: {}
   shifts: {}
   special_focus: {}
 

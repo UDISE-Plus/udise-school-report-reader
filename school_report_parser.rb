@@ -16,6 +16,7 @@ require_relative 'teacher_data_reader'
 require_relative 'sanitation_data_reader'
 require_relative 'location_data_reader'
 require_relative 'basic_info_data_reader'
+require_relative 'official_data_reader'
 require_relative 'pdf_block_extractor'
 require_relative 'csv_writer'
 require_relative 'pdf_rectangle_extractor'
@@ -202,6 +203,10 @@ class SchoolReportParser
     basic_info_data = BasicInfoDataReader.read(lines)
     data.merge!(basic_info_data) if basic_info_data
 
+    # Extract official data
+    official_data = OfficialDataReader.read(lines)
+    data.merge!(official_data) if official_data
+
     # Process each line
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
@@ -218,20 +223,6 @@ class SchoolReportParser
         data['school_details']['class_range'] = next_line if next_line && !next_line.match?(/Pre Primary/)
       when "Pre Primary"
         data['school_details']['pre_primary'] = next_line if next_line && !next_line.match?(/Medium/)
-      when "Year of Establishment"
-        data['school_details']['established'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Year of Recognition-Pri."
-        data['school_details']['recognition']['primary'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Year of Recognition-Upr.Pri."
-        data['school_details']['recognition']['upper_primary'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Year of Recognition-Sec."
-        data['school_details']['recognition']['secondary'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Year of Recognition-Higher Sec."
-        data['school_details']['recognition']['higher_secondary'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Affiliation Board-Sec"
-        data['school_details']['affiliation']['secondary'] = next_line if next_line && !next_line.match?(/Affiliation Board-HSec/)
-      when "Affiliation Board-HSec"
-        data['school_details']['affiliation']['higher_secondary'] = next_line if next_line && !next_line.match?(/Is this/)
       when "Building Status"
         data['infrastructure']['building']['details']['status'] = next_line if next_line && !next_line.match?(/Boundary/)
       when "Is this a Shift School?"

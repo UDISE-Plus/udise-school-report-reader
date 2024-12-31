@@ -18,7 +18,6 @@ school_details:
   type: 3-Co-educational
   class_range: 1  -   5
   pre_primary: 1-Yes
-  established: 1940
   is_special_school: 2-No
 infrastructure:
   sanitation:
@@ -198,6 +197,8 @@ grants:
     amount: 0.0
   expenditure:
     amount: 0.0
+official:
+  established: 1940
 enrollment_data:
   gen:
     pre-pr:
