@@ -18,6 +18,7 @@ require_relative 'sanitation_data_reader'
 require_relative 'location_data_reader'
 require_relative 'basic_info_data_reader'
 require_relative 'official_data_reader'
+require_relative 'characteristics_reader'
 require_relative 'digital_facilities_data_reader'
 require_relative 'anganwadi_data_reader'
 require_relative 'building_data_reader'
@@ -189,57 +190,34 @@ class SchoolReportParser
     # Load template as base structure
     data = YAML.load_file('template.yml')
 
-    # Extract teacher data
+    # Extract data using readers
+    basic_info_data = BasicInfoDataReader.read(lines)
+    location_data = LocationDataReader.read(lines)
+    official_data = OfficialDataReader.read(lines)
+    characteristics_data = CharacteristicsReader.read(lines)
+    digital_facilities_data = DigitalFacilitiesDataReader.read(lines)
+    anganwadi_data = AnganwadiDataReader.read(lines)
+    building_data = BuildingDataReader.read(lines)
     teacher_data = TeacherDataReader.read(lines)
-    data.merge!(teacher_data) if teacher_data
-
-    # Extract sanitation data
     sanitation_data = SanitationDataReader.read(lines)
+
+    # Merge data from readers
+    data.merge!(basic_info_data) if basic_info_data
+    data.merge!(location_data) if location_data
+    data.merge!(official_data) if official_data
+    data.merge!(characteristics_data) if characteristics_data
+    data.merge!(digital_facilities_data) if digital_facilities_data
+    data.merge!(anganwadi_data) if anganwadi_data
+    data.merge!(building_data) if building_data
+    data.merge!(teacher_data) if teacher_data
     if sanitation_data && sanitation_data['infrastructure'] && sanitation_data['infrastructure']['sanitation']
       data['infrastructure']['sanitation'] = sanitation_data['infrastructure']['sanitation']
     end
 
-    # Extract location data
-    location_data = LocationDataReader.read(lines)
-    data.merge!(location_data) if location_data
-
-    # Extract basic info data
-    basic_info_data = BasicInfoDataReader.read(lines)
-    data.merge!(basic_info_data) if basic_info_data
-
-    # Extract official data
-    official_data = OfficialDataReader.read(lines)
-    data.merge!(official_data) if official_data
-
-    # Extract digital facilities data
-    digital_facilities_data = DigitalFacilitiesDataReader.read(lines)
-    data.merge!(digital_facilities_data) if digital_facilities_data
-
-    # Extract anganwadi data
-    anganwadi_data = AnganwadiDataReader.read(lines)
-    data.merge!(anganwadi_data) if anganwadi_data
-
-    # Extract building data
-    building_data = BuildingDataReader.read(lines)
-    data.deep_merge!(building_data) if building_data
-
-    # Process each line
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
 
       case line
-      # School Details
-      when "School Category"
-        data['school_details']['category'] = next_line if next_line && !next_line.match?(/School Management/)
-      when "School Type"
-        data['school_details']['type'] = next_line if next_line && !next_line.match?(/Lowest/)
-      when "Lowest & Highest Class"
-        data['school_details']['class_range'] = next_line if next_line && !next_line.match?(/Pre Primary/)
-      when "Pre Primary"
-        data['school_details']['pre_primary'] = next_line if next_line && !next_line.match?(/Medium/)
-      when "Is Special School for CWSN?"
-        data['school_details']['is_special_school'] = next_line if next_line && !next_line.match?(/Availability/)
-
       # Infrastructure - Building
       when "Availability of Ramps"
         data['infrastructure']['building']['accessibility']['ramps'] = next_line if next_line && !next_line.match?(/Availability of Hand/)
