@@ -41,11 +41,14 @@ anganwadi:
   worker: null
 
 building:
-  status: null
-  boundary_wall: null
-  blocks: null
-  pucca_blocks: null
-  has_shifts: null
+  status:
+  boundary_wall:
+  blocks:
+  pucca_blocks:
+  has_shifts:
+  accessibility:
+    ramps:
+    handrails:
 
 infrastructure:
   sanitation:
@@ -69,11 +72,8 @@ infrastructure:
     needs_minor_repair: 0
     needs_major_repair: 0
     other_rooms: 0
-  other_facilities: {}
-  building:
-    accessibility:
-      ramps: null
-      handrails: null
+  other_facilities:
+    hm_room:
   furniture:
     count: null
   library:

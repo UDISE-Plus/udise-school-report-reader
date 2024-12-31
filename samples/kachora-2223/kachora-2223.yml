@@ -40,6 +40,9 @@ building:
   blocks: 1
   pucca_blocks: 1
   has_shifts: 2-No
+  accessibility:
+    ramps: 2-No
+    handrails: NA
 infrastructure:
   sanitation:
     toilets:
@@ -64,10 +67,6 @@ infrastructure:
     other_rooms: 0
   other_facilities:
     hm_room: 1-Yes
-  building:
-    accessibility:
-      ramps: 2-No
-      handrails: NA
   furniture:
     count: 100
   library:

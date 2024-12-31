@@ -179,12 +179,6 @@ class SchoolReportParser
       next_line = lines[i + 1]&.strip
 
       case line
-      # Infrastructure - Building
-      when "Availability of Ramps"
-        data['infrastructure']['building']['accessibility']['ramps'] = next_line if next_line && !next_line.match?(/Availability of Hand/)
-      when "Availability of Handrails"
-        data['infrastructure']['building']['accessibility']['handrails'] = next_line if next_line && !next_line.match?(/Anganwadi/)
-
       # Basic Facilities
       when "Drinking Water Available"
         data['facilities']['basic']['water']['available'] = next_line if next_line && !next_line.match?(/Drinking Water Fun/)
