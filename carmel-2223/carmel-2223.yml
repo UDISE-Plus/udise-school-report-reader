@@ -1609,7 +1609,7 @@ enrollment_data:
 ews_data:
   ews:
     pre-pri.:
-      boys:
+      boys: 0
       girls: 0
     class_i:
       boys: 0

@@ -24,24 +24,60 @@ class EwsDataReader
     title_y = @title_row&.first
     return unless title_y
 
-    sorted_rows = @rows.keys.sort.reverse
-    title_index = sorted_rows.index(title_y)
-    return unless title_index
-
     # Find the rows after title
-    rows_after_title = sorted_rows[title_index + 1..title_index + 8].map { |y| @rows[y] }
+    rows_after_title = @rows.select do |y, cells|
+      y < title_y.to_f  # Get all rows below title
+    end.sort_by(&:first).reverse
 
-  # Identify rows by their content
-    grade_rows = rows_after_title.select { |row| row.any? { |cell| GRADES.include?(cell['text']) } }
-    @grades_row = grade_rows.flat_map(&:itself)
-    @bg_row = rows_after_title.find { |row| row.any? { |cell| ['B', 'G'].include?(cell['text']) } }
-    @values_row = rows_after_title.find { |row| row.any? { |cell| cell['text'] == '-' } }
+    # First find the grades row
+    grades_entry = rows_after_title.find { |_, row| row.any? { |cell| GRADES.include?(cell['text']) } }
+    return unless grades_entry
+    @grades_row = grades_entry.last
+    grades_y = grades_entry.first
 
-    # Sort cells within each row by x coordinate
-    [@grades_row, @bg_row, @values_row].each do |row|
+    # Then find B/G row below grades
+    bg_entry = rows_after_title.find { |y, row| 
+      y < grades_y && row.any? { |cell| ['B', 'G'].include?(cell['text']) }
+    }
+    return unless bg_entry
+    @bg_row = bg_entry.last
+    bg_y = bg_entry.first
+
+    # Finally find values row below B/G
+    values_entry = rows_after_title.find { |y, row| 
+      y < bg_y && row.any? { |cell| cell['text'].strip == '-' }
+    }
+    return unless values_entry
+    @values_row = values_entry.last
+
+    # Sort cells within each row by x coordinate and ensure all cells are present
+    [@grades_row, @bg_row].each do |row|
       next unless row
       row.sort_by! { |cell| cell['text_x'].to_f }
     end
+
+    # For values row, ensure we have a value for each B/G pair
+    if @values_row && @bg_row
+      sorted_values = []
+      @bg_row.each_slice(2) do |b, g|
+        b_x = b['text_x'].to_f
+        g_x = g['text_x'].to_f
+        
+        # Find or create value for boys
+        b_val = @values_row.find { |cell| (cell['text_x'].to_f - b_x).abs < 10.0 }
+        b_val ||= { 'text' => '-', 'text_x' => b_x }
+        sorted_values << b_val
+        
+        # Find or create value for girls
+        g_val = @values_row.find { |cell| (cell['text_x'].to_f - g_x).abs < 10.0 }
+        g_val ||= { 'text' => '-', 'text_x' => g_x }
+        sorted_values << g_val
+      end
+      @values_row = sorted_values
+    end
+
+    # Normalize empty values to "-"
+    @values_row&.each { |cell| cell['text'] = '-' if cell['text'].strip.empty? }
 
     # Ensure we have all grades
     found_grades = @grades_row.map { |cell| cell['text'] }
