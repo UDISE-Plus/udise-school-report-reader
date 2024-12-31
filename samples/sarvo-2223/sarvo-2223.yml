@@ -22,12 +22,6 @@ official:
     secondary: 1-CBSE
     higher_secondary: 1-CBSE
   management: 1-Department of Education
-school_details:
-  category: 3 - Pr. with Up.Pr. sec. and H.Sec.
-  type: 2-Girls
-  class_range: 1  -   12
-  pre_primary: 1-Yes
-  is_special_school: 2-No
 digital_facilities:
   ict_lab: 2-No
   internet: 1-Yes
@@ -209,6 +203,12 @@ grants:
     amount: 0.0
   expenditure:
     amount: 0.0
+characteristics:
+  category: 3 - Pr. with Up.Pr. sec. and H.Sec.
+  type: 2-Girls
+  class_range: 1  -   12
+  pre_primary: 1-Yes
+  is_special_school: 2-No
 enrollment_data:
   gen:
     pre-pr:

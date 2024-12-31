@@ -16,12 +16,6 @@ official:
     secondary: 2-State Board
     higher_secondary: 2-State Board
   management: 5-Private Unaided (Recognized)
-school_details:
-  category: 6 - Pr. Up Pr. and Secondary Only
-  type: 3-Co-educational
-  class_range: 1  -   10
-  pre_primary: 2-No
-  is_special_school: 2-No
 digital_facilities:
   ict_lab: 2-No
   internet: 1-Yes
@@ -200,6 +194,12 @@ grants:
     amount: 0.0
   expenditure:
     amount: 0.0
+characteristics:
+  category: 6 - Pr. Up Pr. and Secondary Only
+  type: 3-Co-educational
+  class_range: 1  -   10
+  pre_primary: 2-No
+  is_special_school: 2-No
 enrollment_data:
   gen:
     pre-pr:

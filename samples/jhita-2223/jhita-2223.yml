@@ -13,12 +13,6 @@ location:
 official:
   established: 1940
   management: 1-Department of Education
-school_details:
-  category: 1 - Primary
-  type: 3-Co-educational
-  class_range: 1  -   5
-  pre_primary: 1-Yes
-  is_special_school: 2-No
 digital_facilities:
   ict_lab: 2-No
   internet: 2-No
@@ -198,6 +192,12 @@ grants:
     amount: 0.0
   expenditure:
     amount: 0.0
+characteristics:
+  category: 1 - Primary
+  type: 3-Co-educational
+  class_range: 1  -   5
+  pre_primary: 1-Yes
+  is_special_school: 2-No
 enrollment_data:
   gen:
     pre-pr:
