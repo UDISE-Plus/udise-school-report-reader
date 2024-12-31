@@ -14,6 +14,7 @@ require_relative 'rte_html_writer'
 require_relative 'rte_yaml_writer'
 require_relative 'teacher_data_reader'
 require_relative 'sanitation_data_reader'
+require_relative 'location_data_reader'
 require_relative 'pdf_block_extractor'
 require_relative 'csv_writer'
 require_relative 'pdf_rectangle_extractor'
@@ -192,6 +193,10 @@ class SchoolReportParser
       data['infrastructure']['sanitation'] = sanitation_data['infrastructure']['sanitation']
     end
 
+    # Extract location data
+    location_data = LocationDataReader.read(lines)
+    data.merge!(location_data) if location_data
+
     # Process each line
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
@@ -208,28 +213,6 @@ class SchoolReportParser
         end
       when /Academic Year.*:\s*(\d{4}-\d{2})/
         data['basic_info']['academic_year'] = $1
-
-      # Location
-      when "State"
-        data['location']['state'] = next_line if next_line && !next_line.match?(/District/)
-      when "District"
-        data['location']['district'] = next_line if next_line && !next_line.match?(/Block/)
-      when "Block"
-        data['location']['block'] = next_line if next_line && !next_line.match?(/Rural/)
-      when "Rural / Urban"
-        data['location']['area_type'] = next_line if next_line && !next_line.match?(/Cluster/)
-      when "Pincode"
-        data['location']['pincode'] = next_line if next_line && next_line.match?(/^\d+$/)
-      when "Ward"
-        data['location']['ward'] = next_line if next_line && !next_line.match?(/Mohalla/)
-      when "Cluster"
-        data['location']['cluster'] = next_line if next_line && !next_line.match?(/Ward/)
-      when "Municipality"
-        data['location']['municipality'] = next_line if next_line && !next_line.match?(/Assembly/)
-      when "Assembly Const."
-        data['location']['assembly_constituency'] = next_line if next_line && !next_line.match?(/Parl/)
-      when "Parl. Constituency"
-        data['location']['parliamentary_constituency'] = next_line if next_line && !next_line.match?(/School/)
 
       # School Details
       when "School Category"
