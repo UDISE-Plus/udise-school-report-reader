@@ -24,33 +24,19 @@ class EwsDataReader
     title_y = @title_row&.first
     return unless title_y
 
-    # Find the rows after title
-    rows_after_title = @rows.select do |y, cells|
-      y < title_y.to_f  # Get all rows below title
-    end.sort_by(&:first).reverse
+    # Get all rows below title in descending order
+    rows_after_title = @rows.select { |y, _| y < title_y.to_f }
+                           .sort_by(&:first)
+                           .reverse
 
-    # First find the grades row
-    grades_entry = rows_after_title.find { |_, row| row.any? { |cell| GRADES.include?(cell['text']) } }
-    return unless grades_entry
-    @grades_row = grades_entry.last
-    grades_y = grades_entry.first
+    # Get the next 3 rows after title
+    return unless rows_after_title.size >= 3
+    
+    @grades_row = rows_after_title[0].last
+    @bg_row = rows_after_title[1].last
+    @values_row = rows_after_title[2].last
 
-    # Then find B/G row below grades
-    bg_entry = rows_after_title.find { |y, row| 
-      y < grades_y && row.any? { |cell| ['B', 'G'].include?(cell['text']) }
-    }
-    return unless bg_entry
-    @bg_row = bg_entry.last
-    bg_y = bg_entry.first
-
-    # Finally find values row below B/G
-    values_entry = rows_after_title.find { |y, row| 
-      y < bg_y && row.any? { |cell| cell['text'].strip == '-' }
-    }
-    return unless values_entry
-    @values_row = values_entry.last
-
-    # Sort cells within each row by x coordinate and ensure all cells are present
+    # Sort cells within each row by x coordinate
     [@grades_row, @bg_row].each do |row|
       next unless row
       row.sort_by! { |cell| cell['text_x'].to_f }
