@@ -1,7 +1,52 @@
 class EwsDataReader
+  GRADES = [
+    'Pre-Pri.', 'Class I', 'Class II', 'Class III', 'Class IV', 'Class V',
+    'Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X', 'Class XI', 'Class XII'
+  ]
+
   def self.read(csv_path) = new(csv_path).read
 
-  def initialize(csv_path) = @csv_path = csv_path
+  def initialize(csv_path)
+    @csv_path = csv_path
+    @rows = Hash.new { |h, k| h[k] = [] }
+    
+    # Group cells by rect_y and rect_x
+    CSV.foreach(@csv_path, headers: true) do |cell|
+      next unless cell['page'] == '1'
+
+      rect_y = cell['rect_y'].to_f
+      @rows[rect_y] << cell
+    end
+
+    # Find the title row
+    @title_row = @rows.find { |_, cells| cells.any? { |cell| cell&.dig('text')&.include?('Total no. of Economically Weaker Section*(EWS) students Enrolled in Schools') } }
+    
+    title_y = @title_row&.first
+    return unless title_y
+
+    sorted_rows = @rows.keys.sort
+    title_index = sorted_rows.index(title_y)
+    return unless title_index
+
+    # Find the rows after title
+    rows_after_title = sorted_rows[title_index + 1..title_index + 4].map { |y| @rows[y] }
+    
+    # Identify rows by their content
+    @grades_row = rows_after_title.find { |row| row.any? { |cell| GRADES.include?(cell['text']) } }
+    @bg_row = rows_after_title.find { |row| row.any? { |cell| ['B', 'G'].include?(cell['text']) } }
+    @dashes_row = rows_after_title.find { |row| row.any? { |cell| cell['text'] == '-' } }
+
+    # Sort cells within each row by x coordinate
+    [@grades_row, @bg_row, @dashes_row].each do |row|
+      next unless row
+      row.sort_by! { |cell| cell['text_x'].to_f }
+    end
+
+    puts "Title Row: #{@title_row[1].map { |cell| cell['text'] }}"
+    puts "Grades Row: #{@grades_row&.map { |cell| cell['text'] }}"
+    puts "BG Row: #{@bg_row&.map { |cell| cell['text'] }}"
+    puts "Dashes Row: #{@dashes_row&.map { |cell| cell['text'] }}"
+  end
 
   def read
     # Initialize arrays for different cell types
