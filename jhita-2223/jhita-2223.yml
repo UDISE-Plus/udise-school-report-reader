@@ -1,0 +1,2483 @@
+---
+basic_info:
+  udise_code: '03020400101'
+  academic_year: 2022-23
+location:
+  state: Punjab
+  district: AMRITSAR
+  block: AMRITSAR 1
+  area_type: 1-Rural
+  cluster: Village
+  pincode: '143115'
+  municipality: NA
+school_details:
+  shifts:
+    has_shifts: 2-No
+  category: 1 - Primary
+  management: 1-Department of Education
+  type: 3-Co-educational
+  class_range: 1  -   5
+  pre_primary: 1-Yes
+  established: 1940
+  is_special_school: 2-No
+infrastructure:
+  sanitation:
+    toilets:
+      boys:
+        total: 1
+        functional: 1
+        cwsn: 1
+        urinals: 2
+      girls:
+        total: 2
+        functional: 2
+        cwsn: 0
+        urinals: 0
+    handwash:
+      near_toilet: 1-Yes
+      for_meal: 1-Yes
+  classrooms:
+    total: 7
+    good_condition: 5
+    needs_minor_repair: 2
+    needs_major_repair: 0
+    other_rooms: 0
+  digital_facilities:
+    ict_lab: 2-No
+    internet: 2-No
+    computers:
+      desktop: 5
+      laptop: 0
+      tablet: 0
+    peripherals:
+      printer: 1
+      projector: 1
+    smart_classroom:
+      digiboard: 0
+      dth: 2-No
+  other_facilities:
+    hm_room: 1-Yes
+  building:
+    details:
+      status: 3-Government
+      boundary_wall: 7-Partial
+      blocks: 3
+      pucca_blocks: 3
+    accessibility:
+      ramps: 1-Yes
+      handrails: 1-Yes
+  furniture:
+    count: 270
+  library:
+    available: 1-Yes
+teachers:
+  count_by_level:
+    regular: 7
+    part_time: 0
+    contract: 3
+  qualifications:
+    academic:
+      below_graduate: 1
+      graduate: 2
+      post_graduate_and_above: 7
+    professional:
+      basic_training: 0
+      beled: 0
+      bed: 8
+      med: 0
+      other: 2
+      none: 0
+      special_education: 0
+      pursuing_course: 0
+  demographics:
+    male: 1
+    female: 9
+    transgender: 0
+  training:
+    service:
+      total: 0
+    computer_trained: 7
+  age_distribution:
+    above_55: 0
+  assignments:
+    teaching: {}
+    non_teaching: 10
+  classes_taught:
+    primary: 8
+    upper_primary: 0
+    primary_and_upper_primary: 0
+    secondary_only: 0
+    higher_secondary_only: 0
+    upper_primary_and_secondary: 0
+    secondary_and_higher_secondary: 0
+    pre_primary_only: 0
+    pre_primary_and_primary: 2
+students:
+  facilities:
+    general:
+      transport:
+        primary: 0
+        upper_primary: 0
+    incentives:
+      free_textbooks:
+        primary: 0
+        upper_primary: 0
+      free_uniform:
+        primary: 0
+        upper_primary: 0
+academic:
+  medium_of_instruction:
+    medium_1:
+      code: '13'
+      name: Punjabi
+  inspections:
+    visits:
+      academic: 0
+      crc_coordinator: 10
+      block_level: 3
+      state_district: 1
+  hours:
+    instructional:
+      days:
+        primary: 245
+        upper_primary: 0
+        secondary: 0
+        higher_secondary: 0
+      student_hours:
+        primary: 6.0
+        upper_primary: 0.0
+        secondary: 0.0
+        higher_secondary: 0.0
+      teacher_hours:
+        primary: 6.0
+        upper_primary: 0.0
+        secondary: 0.0
+        higher_secondary: 0.0
+  assessments:
+    cce:
+      implemented:
+        primary: 1-Yes
+        upper_primary: Total no. of Students Enrolled Under Section 12 of the RTE
+          Act In Private Unaided and Specified Category Schools (DCF Sl. No. 1.42(a))
+        secondary: Pre-Pri.
+        higher_secondary: Class I
+facilities:
+  residential:
+    details:
+      type: 3 - Non-Residential
+      minority_school: NA
+  basic:
+    water:
+      available: 1-Yes
+      functional: 1-Yes
+      rain_water_harvesting: 2-No
+    electricity:
+      available: 1-Yes
+      solar_panel: 2-No
+    safety:
+      playground: 1-Yes
+      all_weather_road: 1-Yes
+  medical:
+    checkups:
+      available: 1-Yes
+  anganwadi:
+    at_premises: 1-Yes
+    boys: 12
+    girls: 10
+    worker: 1-Yes
+committees:
+  smc:
+    details:
+      same_as_smdc: NA
+      exists: 1-Yes
+  smdc:
+    details:
+      constituted:
+grants:
+  received:
+    amount: 0.0
+  expenditure:
+    amount: 0.0
+enrollment_data:
+  gen:
+    pre-pr:
+      boys: 3
+      girls: 6
+    i:
+      boys: 2
+      girls:
+    ii:
+      boys: 3
+      girls: 2
+    iii:
+      boys: 2
+      girls: 2
+    iv:
+      boys: 3
+      girls: 4
+    v:
+      boys: 1
+      girls: 2
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  sc:
+    pre-pr:
+      boys: 33
+      girls: 19
+    i:
+      boys: 10
+      girls: 12
+    ii:
+      boys: 16
+      girls: 16
+    iii:
+      boys: 11
+      girls: 12
+    iv:
+      boys: 14
+      girls: 15
+    v:
+      boys: 15
+      girls: 20
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  st:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  obc:
+    pre-pr:
+      boys: 7
+      girls: 7
+    i:
+      boys: 4
+      girls: 2
+    ii:
+      boys: 6
+      girls: 2
+    iii:
+      boys: 2
+      girls: 4
+    iv:
+      boys: 4
+      girls: 1
+    v:
+      boys: 3
+      girls: 3
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  muslim:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  christian:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  sikh:
+    pre-pr:
+      boys: 40
+      girls: 30
+    i:
+      boys: 16
+      girls: 14
+    ii:
+      boys: 22
+      girls: 19
+    iii:
+      boys: 15
+      girls: 14
+    iv:
+      boys: 20
+      girls: 20
+    v:
+      boys: 19
+      girls: 24
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  buddhist:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  parsi:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  jain:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  others:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  aadhaar:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  bpl:
+    pre-pr:
+      boys: 3
+      girls: 2
+    i:
+      boys: 7
+      girls: 1
+    ii:
+      boys: 8
+      girls:
+    iii:
+      boys: 5
+      girls: 5
+    iv:
+      boys: 7
+      girls:
+    v:
+      boys: 4
+      girls: 9
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  repeater:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  cwsn:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_3:
+    pre-pr:
+      boys: 21
+      girls: 13
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_4:
+    pre-pr:
+      boys: 18
+      girls: 19
+    i:
+      boys: 1
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_5:
+    pre-pr:
+      boys: 4
+      girls:
+    i:
+      boys: 12
+      girls: 10
+    ii:
+      boys: 1
+      girls: 3
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_6:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys: 2
+      girls: 3
+    ii:
+      boys: 17
+      girls: 14
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_7:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys: 1
+      girls: 1
+    ii:
+      boys: 5
+      girls: 3
+    iii:
+      boys: 12
+      girls: 10
+    iv:
+      boys: 3
+      girls: 2
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_8:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys: 3
+      girls: 7
+    iv:
+      boys: 13
+      girls: 14
+    v:
+      boys: 3
+      girls: 4
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_9:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys: 1
+      girls:
+    iii:
+      boys:
+      girls: 1
+    iv:
+      boys: 3
+      girls: 2
+    v:
+      boys: 9
+      girls: 18
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_10:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys: 2
+      girls: 1
+    v:
+      boys: 6
+      girls: 2
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_11:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys: 1
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_12:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls: 1
+    v:
+      boys: 1
+      girls: 1
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_13:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_14:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_15:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_16:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_17:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_18:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_19:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_20:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_21:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+  age_22:
+    pre-pr:
+      boys:
+      girls:
+    i:
+      boys:
+      girls:
+    ii:
+      boys:
+      girls:
+    iii:
+      boys:
+      girls:
+    iv:
+      boys:
+      girls:
+    v:
+      boys:
+      girls:
+    vi:
+      boys:
+      girls:
+    vii:
+      boys:
+      girls:
+    viii:
+      boys:
+      girls:
+    ix:
+      boys:
+      girls:
+    x:
+      boys:
+      girls:
+    xi:
+      boys:
+      girls:
+    xii:
+      boys:
+      girls:
+ews_data:
+  ews:
+    pre-pri.:
+      boys: 0
+      girls: 0
+    class_i:
+      boys: 0
+      girls: 0
+    class_ii:
+      boys: 0
+      girls: 0
+    class_iii:
+      boys: 0
+      girls: 0
+    class_iv:
+      boys: 0
+      girls: 0
+    class_v:
+      boys: 0
+      girls: 0
+    class_vi:
+      boys: 0
+      girls: 0
+    class_vii:
+      boys: 0
+      girls: 0
+    class_viii:
+      boys: 0
+      girls: 0
+    class_ix:
+      boys: 0
+      girls: 0
+    class_x:
+      boys: 0
+      girls: 0
+    class_xi:
+      boys: 0
+      girls: 0
+    class_xii:
+      boys: 0
+      girls: 0
+rte_data:
+  rte:
+    54.165:
+    - text: "-"
+      text_x: 39.36
+    - text: "-"
+      text_x: 68.97
+    114.275:
+    - text: "-"
+      text_x: 99.47
+    - text: "-"
+      text_x: 129.08
+    174.385:
+    - text: "-"
+      text_x: 159.58
+    - text: "-"
+      text_x: 189.19
+    234.495:
+    - text: "-"
+      text_x: 219.69
+    - text: "-"
+      text_x: 249.3
+    294.61:
+    - text: "-"
+      text_x: 279.8
+    - text: "-"
+      text_x: 309.42
+    354.725:
+    - text: "-"
+      text_x: 339.92
+    - text: "-"
+      text_x: 369.53
+    414.835:
+    - text: "-"
+      text_x: 400.03
+    - text: "-"
+      text_x: 429.64
+    474.945:
+    - text: "-"
+      text_x: 460.14
+    - text: "-"
+      text_x: 489.75
+    535.0550000000001:
+    - text: "-"
+      text_x: 520.25
+    - text: "-"
+      text_x: 549.86
+  grades:
+  - !ruby/object:CSV::Row
+    header_row: false
+    row:
+    - - page
+      - '1'
+    - - text
+      - Pre-Pri.
+    - - text_x
+      - '43.5'
+    - - text_y
+      - '341.5'
+    - - font
+      - F2
+    - - font_size
+      - '8.0'
+    - - rect_x
+      - '27.0'
+    - - rect_y
+      - '339.5'
+    - - rect_width
+      - '60.11'
+    - - rect_height
+      - '12.0'
+    - - stroke_color
+      - 0.66275 0.66275 0.66275 RG
+    - - fill_color
+      - 0 g
+    - - line_width
+      - '0.01'
+  - !ruby/object:CSV::Row
+    header_row: false
+    row:
+    - - page
+      - '1'
+    - - text
+      - Class I
+    - - text_x
+      - '104.94'
+    - - text_y
+      - '341.5'
+    - - font
+      - F2
+    - - font_size
+      - '8.0'
+    - - rect_x
+      - '87.11'
+    - - rect_y
+      - '339.5'
+    - - rect_width
+      - '60.11'
+    - - rect_height
+      - '12.0'
+    - - stroke_color
+      - 0.66275 0.66275 0.66275 RG
+    - - fill_color
+      - 0 g
+    - - line_width
+      - '0.01'
+  - !ruby/object:CSV::Row
+    header_row: false
+    row:
+    - - page
+      - '1'
+    - - text
+      - Class II
+    - - text_x
+      - '163.94'
+    - - text_y
+      - '341.5'
+    - - font
+      - F2
+    - - font_size
+      - '8.0'
+    - - rect_x
+      - '147.22'
+    - - rect_y
+      - '339.5'
+    - - rect_width
+      - '60.11'
+    - - rect_height
+      - '12.0'
+    - - stroke_color
+      - 0.66275 0.66275 0.66275 RG
+    - - fill_color
+      - 0 g
+    - - line_width
+      - '0.01'
+  - !ruby/object:CSV::Row
+    header_row: false
+    row:
+    - - page
+      - '1'
+    - - text
+      - Class III
+    - - text_x
+      - '222.94'
+    - - text_y
+      - '341.5'
+    - - font
+      - F2
+    - - font_size
+      - '8.0'
+    - - rect_x
+      - '207.33'
+    - - rect_y
+      - '339.5'
+    - - rect_width
+      - '60.11'
+    - - rect_height
+      - '12.0'
+    - - stroke_color
+      - 0.66275 0.66275 0.66275 RG
+    - - fill_color
+      - 0 g
+    - - line_width
+      - '0.01'
+  - !ruby/object:CSV::Row
+    header_row: false
+    row:
+    - - page
+      - '1'
+    - - text
+      - Class IV
+    - - text_x
+      - '282.61'
+    - - text_y
+      - '341.5'
+    - - font
+      - F2
+    - - font_size
+      - '8.0'
+    - - rect_x
+      - '267.44'
+    - - rect_y
+      - '339.5'
+    - - rect_width
+      - '60.11'
+    - - rect_height
+      - '12.0'
+    - - stroke_color
+      - 0.66275 0.66275 0.66275 RG
+    - - fill_color
+      - 0 g
+    - - line_width
+      - '0.01'
+  - !ruby/object:CSV::Row
+    header_row: false
+    row:
+    - - page
+      - '1'
+    - - text
+      - Class V
+    - - text_x
+      - '343.83'
+    - - text_y
+      - '341.5'
+    - - font
+      - F2
+    - - font_size
+      - '8.0'
+    - - rect_x
+      - '327.56'
+    - - rect_y
+      - '339.5'
+    - - rect_width
+      - '60.11'
+    - - rect_height
+      - '12.0'
+    - - stroke_color
+      - 0.66275 0.66275 0.66275 RG
+    - - fill_color
+      - 0 g
+    - - line_width
+      - '0.01'
+  - !ruby/object:CSV::Row
+    header_row: false
+    row:
+    - - page
+      - '1'
+    - - text
+      - Class VI
+    - - text_x
+      - '402.83'
+    - - text_y
+      - '341.5'
+    - - font
+      - F2
+    - - font_size
+      - '8.0'
+    - - rect_x
+      - '387.67'
+    - - rect_y
+      - '339.5'
+    - - rect_width
+      - '60.11'
+    - - rect_height
+      - '12.0'
+    - - stroke_color
+      - 0.66275 0.66275 0.66275 RG
+    - - fill_color
+      - 0 g
+    - - line_width
+      - '0.01'
+  - !ruby/object:CSV::Row
+    header_row: false
+    row:
+    - - page
+      - '1'
+    - - text
+      - Class VII
+    - - text_x
+      - '461.83'
+    - - text_y
+      - '341.5'
+    - - font
+      - F2
+    - - font_size
+      - '8.0'
+    - - rect_x
+      - '447.78'
+    - - rect_y
+      - '339.5'
+    - - rect_width
+      - '60.11'
+    - - rect_height
+      - '12.0'
+    - - stroke_color
+      - 0.66275 0.66275 0.66275 RG
+    - - fill_color
+      - 0 g
+    - - line_width
+      - '0.01'
+  - !ruby/object:CSV::Row
+    header_row: false
+    row:
+    - - page
+      - '1'
+    - - text
+      - Class VIII
+    - - text_x
+      - '520.83'
+    - - text_y
+      - '341.5'
+    - - font
+      - F2
+    - - font_size
+      - '8.0'
+    - - rect_x
+      - '507.89'
+    - - rect_y
+      - '339.5'
+    - - rect_width
+      - '60.11'
+    - - rect_height
+      - '12.0'
+    - - stroke_color
+      - 0.66275 0.66275 0.66275 RG
+    - - fill_color
+      - 0 g
+    - - line_width
+      - '0.01'
+  bg_pairs:
+    54.165:
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - B
+      - - text_x
+        - '39.36'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '27.0'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - G
+      - - text_x
+        - '68.97'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '57.06'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    114.275:
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - B
+      - - text_x
+        - '99.47'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '87.11'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - G
+      - - text_x
+        - '129.08'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '117.17'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    174.385:
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - B
+      - - text_x
+        - '159.58'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '147.22'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - G
+      - - text_x
+        - '189.19'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '177.28'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    234.495:
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - B
+      - - text_x
+        - '219.69'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '207.33'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - G
+      - - text_x
+        - '249.3'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '237.39'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    294.61:
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - B
+      - - text_x
+        - '279.8'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '267.44'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - G
+      - - text_x
+        - '309.42'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '297.5'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    354.725:
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - B
+      - - text_x
+        - '339.92'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '327.56'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - G
+      - - text_x
+        - '369.53'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '357.61'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    414.835:
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - B
+      - - text_x
+        - '400.03'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '387.67'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - G
+      - - text_x
+        - '429.64'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '417.72'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    474.945:
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - B
+      - - text_x
+        - '460.14'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '447.78'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - G
+      - - text_x
+        - '489.75'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '477.83'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    535.0550000000001:
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - B
+      - - text_x
+        - '520.25'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '507.89'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
+    - !ruby/object:CSV::Row
+      header_row: false
+      row:
+      - - page
+        - '1'
+      - - text
+        - G
+      - - text_x
+        - '549.86'
+      - - text_y
+        - '329.5'
+      - - font
+        - F2
+      - - font_size
+        - '8.0'
+      - - rect_x
+        - '537.94'
+      - - rect_y
+        - '327.5'
+      - - rect_width
+        - '30.06'
+      - - rect_height
+        - '12.0'
+      - - stroke_color
+        - 0.66275 0.66275 0.66275 RG
+      - - fill_color
+        - 0 g
+      - - line_width
+        - '0.01'
