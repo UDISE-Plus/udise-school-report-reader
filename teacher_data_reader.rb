@@ -1,41 +1,8 @@
 class TeacherDataReader
   def self.read(lines)
-    data = {
-      'teachers' => {
-        'count_by_level' => {},
-        'qualifications' => {
-          'academic' => {},
-          'professional' => {
-            'basic_training' => nil,
-            'beled' => nil,
-            'bed' => nil,
-            'med' => nil,
-            'other' => nil,
-            'none' => nil,
-            'special_education' => nil,
-            'pursuing_course' => nil
-          }
-        },
-        'demographics' => {},
-        'training' => {
-          'service' => {
-            'total' => nil
-          },
-          'computer_trained' => nil
-        },
-        'age_distribution' => {},
-        'assignments' => {
-          'teaching' => {},
-          'non_teaching' => nil
-        },
-        'classes_taught' => {},
-        'workload' => {
-          'teaching_hours' => {},
-          'non_teaching_hours' => {},
-          'by_subject' => {}
-        }
-      }
-    }
+    require 'yaml'
+    template = YAML.load_file('template.yml')
+    data = { 'teachers' => template['teachers'] }
 
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
