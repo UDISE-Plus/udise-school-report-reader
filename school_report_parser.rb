@@ -2,6 +2,7 @@ class SchoolReportParser
   require 'pdf-reader'
   require 'yaml'
   require 'csv'
+  require 'fileutils'
   require_relative 'enrollment_data_reader'
   require_relative 'enrollment_html_writer'
   require_relative 'enrollment_yaml_writer'
@@ -12,31 +13,46 @@ class SchoolReportParser
   require_relative 'rte_html_writer'
   require_relative 'rte_yaml_writer'
 
+  def self.get_output_path(pdf_path, extension, is_yaml = false)
+    base_name = File.basename(pdf_path, '.pdf')
+    dir_name = File.dirname(pdf_path)
+    
+    if is_yaml
+      File.join(dir_name, "#{base_name}#{extension}")
+    else
+      # Create tmp directory at the root of the project
+      root_dir = File.expand_path('.')
+      tmp_dir = File.join(root_dir, 'tmp')
+      FileUtils.mkdir_p(tmp_dir)
+      File.join(tmp_dir, "#{base_name}#{extension}")
+    end
+  end
+
   def self.extract_to_text(pdf_path)
     raise ArgumentError, "PDF file not found" unless File.exist?(pdf_path)
 
     reader = PDF::Reader.new(pdf_path)
 
     # Create text file with same name as PDF
-    txt_path = pdf_path.sub(/\.pdf$/i, '.txt')
+    txt_path = get_output_path(pdf_path, '.txt')
     content = reader.pages.map(&:raw_content).join("\n")
     File.write(txt_path, content)
 
     # Create compressed version
     compressed_content = compress_content(content)
-    compressed_path = pdf_path.sub(/\.pdf$/i, '_compressed.txt')
+    compressed_path = get_output_path(pdf_path, '_compressed.txt')
     File.write(compressed_path, compressed_content)
 
     # Extract BT-ET blocks to CSV
-    csv_path = pdf_path.sub(/\.pdf$/i, '_blocks.csv')
+    csv_path = get_output_path(pdf_path, '_blocks.csv')
     extract_bt_et_blocks(reader, csv_path)
 
     # Extract rectangles to CSV
-    rects_path = pdf_path.sub(/\.pdf$/i, '_rects.csv')
+    rects_path = get_output_path(pdf_path, '_rects.csv')
     extract_rectangles(reader, rects_path)
 
     # Combine blocks and rectangles
-    combined_path = pdf_path.sub(/\.pdf$/i, '_combined.csv')
+    combined_path = get_output_path(pdf_path, '_combined.csv')
     combine_blocks_and_rects(csv_path, rects_path, combined_path)
 
     # Extract data points to YAML
@@ -60,23 +76,19 @@ class SchoolReportParser
     data_points['rte_data'] = rte_yaml
 
     # Extract rte table to HTML
-    html_path = pdf_path.sub(/\.pdf$/i, '_rte.html')
+    html_path = get_output_path(pdf_path, '_rte.html')
     RteHtmlWriter.generate_html(rte_data, html_path)
 
-    yaml_path = pdf_path.sub(/\.pdf$/i, '.yml')
+    yaml_path = get_output_path(pdf_path, '.yml', true)
     File.write(yaml_path, data_points.to_yaml)
 
     # Extract enrollment table to HTML
-    html_path = pdf_path.sub(/\.pdf$/i, '_enrollment.html')
-    EnrollmentHtmlWriter.generate_html(enrollment_data, html_path)
+    enrollment_html_path = get_output_path(pdf_path, '_enrollment.html')
+    EnrollmentHtmlWriter.generate_html(enrollment_data, enrollment_html_path)
 
     # Extract ews table to HTML
-    html_path = pdf_path.sub(/\.pdf$/i, '_ews.html')
-    EwsHtmlWriter.generate_html(ews_data, html_path)
-
-    # Extract rte table to HTML
-    html_path = pdf_path.sub(/\.pdf$/i, '_rte.html')
-    RteHtmlWriter.generate_html(rte_data, html_path)
+    ews_html_path = get_output_path(pdf_path, '_ews.html')
+    EwsHtmlWriter.generate_html(ews_data, ews_html_path)
 
     [txt_path, compressed_path, yaml_path, csv_path, rects_path, combined_path, html_path]
   end
