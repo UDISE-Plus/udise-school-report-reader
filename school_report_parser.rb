@@ -13,6 +13,7 @@ require_relative 'rte_data_reader'
 require_relative 'rte_html_writer'
 require_relative 'rte_yaml_writer'
 require_relative 'teacher_data_reader'
+require_relative 'sanitation_data_reader'
 require_relative 'pdf_block_extractor'
 require_relative 'csv_writer'
 require_relative 'pdf_rectangle_extractor'
@@ -185,6 +186,12 @@ class SchoolReportParser
     teacher_data = TeacherDataReader.read(lines)
     data.merge!(teacher_data) if teacher_data
 
+    # Extract sanitation data
+    sanitation_data = SanitationDataReader.read(lines)
+    if sanitation_data && sanitation_data['infrastructure'] && sanitation_data['infrastructure']['sanitation']
+      data['infrastructure']['sanitation'] = sanitation_data['infrastructure']['sanitation']
+    end
+
     # Process each line
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
@@ -278,61 +285,7 @@ class SchoolReportParser
       when "Anganwadi Worker"
         data['facilities']['anganwadi']['worker'] = next_line if next_line
 
-      # Infrastructure - Toilets
-      when "Toilets"
-        # Look ahead for toilet data
-        toilet_data = []
-        (i+1..i+20).each do |j|
-          break if j >= lines.length
-          toilet_data << lines[j]
-        end
-
-        # Try to find the values
-        total_idx = toilet_data.index { |l| l =~ /Total.*CWSN/ }
-        if total_idx && total_idx + 2 < toilet_data.length
-          boys = toilet_data[total_idx + 1]
-          girls = toilet_data[total_idx + 2]
-          if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['sanitation']['toilets']['boys']['total'] = boys.to_i
-            data['infrastructure']['sanitation']['toilets']['girls']['total'] = girls.to_i
-          end
-        end
-
-        func_idx = toilet_data.index("Functional")
-        if func_idx && func_idx + 2 < toilet_data.length
-          boys = toilet_data[func_idx + 1]
-          girls = toilet_data[func_idx + 2]
-          if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['sanitation']['toilets']['boys']['functional'] = boys.to_i
-            data['infrastructure']['sanitation']['toilets']['girls']['functional'] = girls.to_i
-          end
-        end
-
-        cwsn_idx = toilet_data.index { |l| l =~ /CWSN Friendly/ }
-        if cwsn_idx && cwsn_idx + 2 < toilet_data.length
-          boys = toilet_data[cwsn_idx + 1]
-          girls = toilet_data[cwsn_idx + 2]
-          if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['sanitation']['toilets']['boys']['cwsn'] = boys.to_i
-            data['infrastructure']['sanitation']['toilets']['girls']['cwsn'] = girls.to_i
-          end
-        end
-
-        urinal_idx = toilet_data.index("Urinal")
-        if urinal_idx && urinal_idx + 2 < toilet_data.length
-          boys = toilet_data[urinal_idx + 1]
-          girls = toilet_data[urinal_idx + 2]
-          if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['sanitation']['toilets']['boys']['urinals'] = boys.to_i
-            data['infrastructure']['sanitation']['toilets']['girls']['urinals'] = girls.to_i
-          end
-        end
-
       # Basic Facilities
-      when "Handwash Near Toilet"
-        data['infrastructure']['sanitation']['handwash']['near_toilet'] = next_line if next_line && !next_line.match?(/Handwash Facility/)
-      when "Handwash Facility for Meal"
-        data['infrastructure']['sanitation']['handwash']['for_meal'] = next_line if next_line && !next_line.match?(/Total Class/)
       when "Drinking Water Available"
         data['facilities']['basic']['water']['available'] = next_line if next_line && !next_line.match?(/Drinking Water Fun/)
       when "Drinking Water Functional"
@@ -399,20 +352,20 @@ class SchoolReportParser
         if lines[i + 18] =~ /^\d+$/
           data['infrastructure']['digital_facilities']['smart_classroom']['digiboard'] = lines[i + 18].to_i
         end
-      when /Students/
-        # Academic
-        when "Medium of Instruction"
-          current_section = nil
-        when /^Medium (\d)$/
-          medium_num = $1
-          if next_line && next_line =~ /^(\d+)-(.+)$/
-            code = $1
-            name = $2.strip
-            data['academic']['medium_of_instruction']["medium_#{medium_num}"] = {
-              'code' => code,
-              'name' => name
-            }
-          end
+
+      # Academic
+      when "Medium of Instruction"
+        current_section = nil
+      when /^Medium (\d)$/
+        medium_num = $1
+        if next_line && next_line =~ /^(\d+)-(.+)$/
+          code = $1
+          name = $2.strip
+          data['academic']['medium_of_instruction']["medium_#{medium_num}"] = {
+            'code' => code,
+            'name' => name
+          }
+        end
 
       # Academic Inspections
       when "Visit of school for / by"
