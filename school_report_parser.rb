@@ -1,23 +1,24 @@
-class SchoolReportParser
-  require 'pdf-reader'
-  require 'yaml'
-  require 'csv'
-  require 'fileutils'
-  require 'tempfile'
-  require_relative 'enrollment_data_reader'
-  require_relative 'enrollment_html_writer'
-  require_relative 'enrollment_yaml_writer'
-  require_relative 'ews_data_reader'
-  require_relative 'ews_html_writer'
-  require_relative 'ews_yaml_writer'
-  require_relative 'rte_data_reader'
-  require_relative 'rte_html_writer'
-  require_relative 'rte_yaml_writer'
-  require_relative 'teacher_data_reader'
-  require_relative 'pdf_block_extractor'
-  require_relative 'csv_writer'
-  require_relative 'pdf_rectangle_extractor'
+require 'pdf-reader'
+require 'yaml'
+require 'csv'
+require 'fileutils'
+require 'tempfile'
+require_relative 'enrollment_data_reader'
+require_relative 'enrollment_html_writer'
+require_relative 'enrollment_yaml_writer'
+require_relative 'ews_data_reader'
+require_relative 'ews_html_writer'
+require_relative 'ews_yaml_writer'
+require_relative 'rte_data_reader'
+require_relative 'rte_html_writer'
+require_relative 'rte_yaml_writer'
+require_relative 'teacher_data_reader'
+require_relative 'pdf_block_extractor'
+require_relative 'csv_writer'
+require_relative 'pdf_rectangle_extractor'
+require_relative 'pdf_content_compressor'
 
+class SchoolReportParser
   def self.extract_to_text(pdf_path, output_dir = nil, write_files = false)
     raise ArgumentError, "PDF file not found" unless File.exist?(pdf_path)
 
@@ -38,7 +39,7 @@ class SchoolReportParser
     
     # Extract raw content
     content = reader.pages.map(&:raw_content).join("\n")
-    compressed_content = compress_content(content)
+    compressed_content = PDFContentCompressor.compress(content)
     
     # Extract blocks and rectangles
     blocks = PDFBlockExtractor.extract_blocks(reader)
@@ -285,41 +286,6 @@ class SchoolReportParser
         ]
       end
     end
-  end
-
-  def self.compress_content(content)
-    compressed = []
-    current_block = []
-    in_bt_block = false
-    current_text = ""
-
-    content.each_line do |line|
-      if line.include?('BT')
-        in_bt_block = true
-        current_block = []
-        current_text = ""
-      elsif line.include?('ET')
-        in_bt_block = false
-        current_text = current_block.join("")
-        compressed << current_text unless current_text.empty?
-      elsif in_bt_block && line =~ /\((.*?)\)\s*Tj/
-        # Extract text between (...) followed by Tj
-        text = $1.strip
-        if text =~ /^(?:Non|Residenti|al|Digit|al Facil|ities)$/
-          # Special handling for split text
-          current_text += text
-          current_block << text
-        else
-          if !current_text.empty?
-            compressed << current_text
-          end
-          current_text = text
-          current_block = [text]
-        end
-      end
-    end
-
-    compressed.reject(&:empty?).join("\n")
   end
 
   def self.extract_data_points(compressed_content)
