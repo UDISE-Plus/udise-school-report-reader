@@ -37,13 +37,10 @@ class TeacherDataReader
       }
     }
 
-    current_section = nil
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
 
       case line
-      when "Teachers"
-        current_section = nil
       when "Regular"
         if next_line =~ /^\d+$/
           data['teachers']['count_by_level']['regular'] = next_line.to_i
@@ -188,7 +185,7 @@ class TeacherDataReader
         section.reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty?) }
       end
     end
-    data['teachers'].reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty? && v != data['teachers']['assignments']) }
+    data['teachers'].reject! { |k, v| v.nil? || (v.is_a?(Hash) && v.empty? && k != 'assignments') }
 
     data
   end

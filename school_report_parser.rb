@@ -189,9 +189,6 @@ class SchoolReportParser
 
   def self.extract_data_points(compressed_content)
     lines = compressed_content.split("\n").map { |line| line.strip.gsub(/\\/, '') }  # Remove escape characters
-    current_section = nil
-    in_performance_section = false
-    current_class = nil
 
     # Load template as base structure
     data = YAML.load_file('template.yml')
@@ -295,8 +292,6 @@ class SchoolReportParser
 
       # Infrastructure - Toilets
       when "Toilets"
-        current_section = 'toilets'
-
         # Look ahead for toilet data
         toilet_data = []
         (i+1..i+20).each do |j|
@@ -395,7 +390,6 @@ class SchoolReportParser
 
       # Digital Facilities
       when /Digital/
-        current_section = 'digital'
         data['infrastructure']['digital_facilities']['ict_lab'] = lines[i + 2] if lines[i + 2] =~ /^[12]-/
         data['infrastructure']['digital_facilities']['internet'] = lines[i + 4] if lines[i + 4] =~ /^[12]-/
         if lines[i + 6] =~ /^\d+$/
@@ -418,21 +412,19 @@ class SchoolReportParser
           data['infrastructure']['digital_facilities']['smart_classroom']['digiboard'] = lines[i + 18].to_i
         end
       when /Students/
-        current_section = nil
-
-      # Academic
-      when "Medium of Instruction"
-        current_section = nil
-      when /^Medium (\d)$/
-        medium_num = $1
-        if next_line && next_line =~ /^(\d+)-(.+)$/
-          code = $1
-          name = $2.strip
-          data['academic']['medium_of_instruction']["medium_#{medium_num}"] = {
-            'code' => code,
-            'name' => name
-          }
-        end
+        # Academic
+        when "Medium of Instruction"
+          current_section = nil
+        when /^Medium (\d)$/
+          medium_num = $1
+          if next_line && next_line =~ /^(\d+)-(.+)$/
+            code = $1
+            name = $2.strip
+            data['academic']['medium_of_instruction']["medium_#{medium_num}"] = {
+              'code' => code,
+              'name' => name
+            }
+          end
 
       # Academic Inspections
       when "Visit of school for / by"
@@ -491,7 +483,6 @@ class SchoolReportParser
 
       # Student Facilities
       when /No\.of Students Received/
-        current_section = 'facilities'
         # Skip the header lines
         i += 2 # Skip "Primary" and "Up.Primary" lines
       when /Free text books/ && current_section == 'facilities'
