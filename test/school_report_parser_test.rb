@@ -9,8 +9,8 @@ class SchoolReportParserTest < Test::Unit::TestCase
     @schools = ['carmel-2223', 'jhita-2223', 'kachora-2223']
     
     @schools.each do |school|
-      if File.exist?("./#{school}/#{school}.yml")
-        FileUtils.cp("./#{school}/#{school}.yml", "./#{school}/#{school}_original.yml")
+      if File.exist?("./samples/#{school}/#{school}.yml")
+        FileUtils.cp("./samples/#{school}/#{school}.yml", "./samples/#{school}/#{school}_original.yml")
       end
     end
     
@@ -18,7 +18,7 @@ class SchoolReportParserTest < Test::Unit::TestCase
     
     @benchmark_yamls = {}
     @schools.each do |school|
-      @benchmark_yamls[school] = safe_yaml_load("./#{school}/#{school}.yml")
+      @benchmark_yamls[school] = safe_yaml_load("./samples/#{school}/#{school}.yml")
     end
   end
 
@@ -28,8 +28,8 @@ class SchoolReportParserTest < Test::Unit::TestCase
 
   def test_yaml_generation_matches_benchmark
     @schools.each do |school|
-      SchoolReportParser.extract_to_text("./#{school}/#{school}.pdf")
-      generated_yaml = safe_yaml_load("./#{school}/#{school}.yml")
+      SchoolReportParser.extract_to_text("./samples/#{school}/#{school}.pdf")
+      generated_yaml = safe_yaml_load("./samples/#{school}/#{school}.yml")
       assert_equal @benchmark_yamls[school], generated_yaml, 
         "Generated YAML for #{school} does not match the benchmark"
     end
@@ -37,8 +37,8 @@ class SchoolReportParserTest < Test::Unit::TestCase
 
   def teardown
     @schools.each do |school|
-      if File.exist?("./#{school}/#{school}_original.yml")
-        FileUtils.mv("./#{school}/#{school}_original.yml", "./#{school}/#{school}.yml")
+      if File.exist?("./samples/#{school}/#{school}_original.yml")
+        FileUtils.mv("./samples/#{school}/#{school}_original.yml", "./samples/#{school}/#{school}.yml")
       end
     end
   end
