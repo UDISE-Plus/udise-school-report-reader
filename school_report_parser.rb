@@ -12,6 +12,7 @@ class SchoolReportParser
   require_relative 'rte_data_reader'
   require_relative 'rte_html_writer'
   require_relative 'rte_yaml_writer'
+  require_relative 'teacher_data_reader'
 
   def self.get_output_path(pdf_path, extension, is_yaml = false)
     base_name = File.basename(pdf_path, '.pdf')
@@ -194,6 +195,10 @@ class SchoolReportParser
 
     # Load template as base structure
     data = YAML.load_file('template.yml')
+
+    # Extract teacher data
+    teacher_data = TeacherDataReader.read(lines)
+    data.merge!(teacher_data) if teacher_data
 
     # Process each line
     lines.each_with_index do |line, i|
@@ -470,101 +475,6 @@ class SchoolReportParser
           data['academic']['assessments']['cce']['implemented']['higher_secondary'] = lines[i + 4] if lines[i + 4]
         end
 
-      # Teachers
-      when "Teachers"
-        current_section = nil
-      when "Regular"
-        if next_line =~ /^\d+$/
-          data['teachers']['count_by_level']['regular'] = next_line.to_i
-        end
-      when "Part-time"
-        if next_line =~ /^\d+$/
-          data['teachers']['count_by_level']['part_time'] = next_line.to_i
-        end
-      when "Contract"
-        if next_line =~ /^\d+$/
-          data['teachers']['count_by_level']['contract'] = next_line.to_i
-        end
-      when "Male"
-        if next_line =~ /^\d+$/
-          data['teachers']['demographics']['male'] = next_line.to_i
-        end
-      when "Female"
-        if next_line =~ /^\d+$/
-          data['teachers']['demographics']['female'] = next_line.to_i
-        end
-      when "Transgender"
-        if next_line =~ /^\d+$/
-          data['teachers']['demographics']['transgender'] = next_line.to_i
-        end
-      
-      # Teacher Assignments and Classes
-      when "Total Teacher Involve in Non Teaching Assignment"
-        if next_line =~ /^\d+$/
-          data['teachers']['assignments']['non_teaching'] = next_line.to_i
-        end
-      when /^(\d+)-(.+)$/
-        category = $2.strip
-        if next_line =~ /^\d+$/
-          key = case category
-          when 'Primary'
-            'primary'
-          when 'Up.Pr.'
-            'upper_primary'
-          when 'Pr. & Up.Pr.'
-            'primary_and_upper_primary'
-          when 'Sec. only'
-            'secondary_only'
-          when 'H Sec only.'
-            'higher_secondary_only'
-          when 'Up pri and Sec.'
-            'upper_primary_and_secondary'
-          when 'Sec and H Sec'
-            'secondary_and_higher_secondary'
-          when 'Pre-Primary Only.'
-            'pre_primary_only'
-          when 'Pre- Pri & Pri'
-            'pre_primary_and_primary'
-          else
-            category.downcase.gsub(/[^a-z0-9]+/, '_').gsub(/^_|_$/, '')
-          end
-
-          data['teachers']['classes_taught'][key] = next_line.to_i
-        end
-
-      # Teacher Qualifications
-      when "Below Graduate"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['academic']['below_graduate'] = next_line.to_i
-        end
-      when "Graduate"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['academic']['graduate'] = next_line.to_i
-        end
-      when "Post Graduate and Above"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['academic']['post_graduate_and_above'] = next_line.to_i
-        end
-      when "Diploma or Certificate in basic teachers training"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['basic_training'] = next_line.to_i
-        end
-      when "B.Ed. or Equivalent"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['bed'] = next_line.to_i
-        end
-      when "M.Ed. or Equivalent"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['med'] = next_line.to_i
-        end
-      when "Total Teacher Trained in Computer"
-        if next_line =~ /^\d+$/
-          data['teachers']['training']['computer_trained'] = next_line.to_i
-        end
-      when "Teachers Aged above 55"
-        if next_line =~ /^\d+$/
-          data['teachers']['age_distribution']['above_55'] = next_line.to_i
-        end
       # Residential Info
       when "Residential School"
         if next_line && next_line =~ /^(\d+)\s*-\s*(.+)$/
@@ -630,19 +540,6 @@ class SchoolReportParser
       when "Librarian"
         data['infrastructure']['library']['staff']['librarian'] = next_line if next_line
 
-      # Teacher training
-      when "No. of Total Teacher Received Service Training"
-        data['teachers']['training']['service']['total'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Special Training Received"
-        data['teachers']['training']['special']['received'] = next_line if next_line
-
-      # Student performance
-      when /Pass % Class (\d+)/
-        class_num = $1
-        if next_line =~ /^\d+\.?\d*$/
-          data['academic']['assessments']['board_results']["class_#{class_num}"]['pass_percentage'] = next_line.to_f
-        end
-
       # Sports facilities
       when "Sports Equipment"
         data['academic']['sports']['equipment']['available'] = next_line if next_line
@@ -668,151 +565,6 @@ class SchoolReportParser
         data['academic']['vocational']['courses']['available'] = next_line if next_line
       when "Vocational Trainer"
         data['academic']['vocational']['trainers']['available'] = next_line if next_line
-      # Teacher workload
-      when /Teaching Hours per Week/
-        if next_line =~ /(\d+)/
-          data['teachers']['workload']['teaching_hours']['per_week'] = $1.to_i
-        end
-      when /Non-Teaching Hours/
-        if next_line =~ /(\d+)/
-          data['teachers']['workload']['non_teaching_hours']['per_week'] = $1.to_i
-        end
-
-      # Teacher subject-wise allocation
-      when /^Subject:\s*(.+?)(?:\s*,\s*Teachers:\s*(\d+))?$/
-        subject = $1.strip
-        count = $2&.to_i || 0
-        data['teachers']['workload']['by_subject'][subject.downcase] = count
-
-      # Student attendance
-      when /Monthly Attendance/
-        current_section = 'attendance'
-      when /^(\w+)\s+(\d+\.?\d*)%$/ && current_section == 'attendance'
-        month = $1.downcase
-        percentage = $2.to_f
-        data['students']['attendance']['monthly'][month] = percentage
-
-      # Language subjects
-      when /^Language (\d+):\s*(.+)$/
-        num = $1
-        lang = $2.strip
-        data['academic']['subjects']['languages']['details']["language_#{num}"] = lang
-
-      # Core subjects
-      when /^Core Subject (\d+):\s*(.+)$/
-        num = $1
-        subject = $2.strip
-        data['academic']['subjects']['core']['details']["subject_#{num}"] = subject
-
-      # Elective subjects
-      when /^Elective (\d+):\s*(.+)$/
-        num = $1
-        subject = $2.strip
-        data['academic']['subjects']['electives']['details']["elective_#{num}"] = subject
-
-      # Classroom usage
-      when /^Room (\d+) Usage:\s*(.+)$/
-        room = $1
-        usage = $2.strip
-        data['infrastructure']['classrooms']['usage'] ||= {}
-        data['infrastructure']['classrooms']['usage'][room] = usage if usage
-
-      # Lab details
-      when /^Lab Type:\s*(.+?)(?:\s*,\s*Capacity:\s*(\d+))?$/
-        type = $1.strip
-        capacity = $2&.to_i
-        if type && capacity
-          data['infrastructure']['classrooms']['labs'] ||= {}
-          data['infrastructure']['classrooms']['labs'][type.downcase] = {
-            'capacity' => capacity
-          }
-        end
-
-      # Special room details
-      when /^Special Room:\s*(.+?)(?:\s*,\s*Purpose:\s*(.+))?$/
-        room = $1.strip
-        purpose = $2&.strip
-        if room && purpose
-          data['infrastructure']['classrooms']['special_rooms'] ||= {}
-          data['infrastructure']['classrooms']['special_rooms'][room.downcase] = {
-            'purpose' => purpose
-          }
-        end
-
-      # Student performance details
-      when /^Class (\d+) Performance$/
-        current_class = $1
-        in_performance_section = true
-      when /^(\w+)\s+(\d+\.?\d*)%$/ && in_performance_section
-        subject = $1.strip.downcase
-        percentage = $2.to_f
-        data['students']['performance']['by_class']["class_#{current_class}"] ||= {}
-        data['students']['performance']['by_class']["class_#{current_class}"][subject] = percentage
-
-      # Committee details
-      when /^Committee:\s*(.+?)(?:\s*,\s*Members:\s*(\d+))?$/
-        committee = $1.strip.downcase
-        members = $2&.to_i
-        data['committees'][committee] ||= {}
-        data['committees'][committee]['members'] = members if members
-
-      # Safety measures
-      when /^Safety Measure:\s*(.+?)(?:\s*,\s*Status:\s*(.+))?$/
-        measure = $1.strip.downcase
-        status = $2&.strip
-        data['facilities']['safety']['measures'] ||= {}
-        data['facilities']['safety']['measures'][measure] = status
-
-      # Medical facilities
-      when /^Medical Facility:\s*(.+?)(?:\s*,\s*Availability:\s*(.+))?$/
-        facility = $1.strip.downcase
-        availability = $2&.strip
-        data['facilities']['medical']['facilities'] ||= {}
-        data['facilities']['medical']['facilities'][facility] = availability
-
-      # Sports facilities
-      when /^Sport:\s*(.+?)(?:\s*,\s*Equipment:\s*(\d+))?$/
-        sport = $1.strip.downcase
-        equipment = $2&.to_i
-        data['academic']['sports']['facilities'][sport] = {
-          'equipment_count' => equipment
-        }
-
-      # Library resources
-      when /^Book Category:\s*(.+?)(?:\s*,\s*Count:\s*(\d+))?$/
-        category = $1.strip.downcase
-        count = $2&.to_i
-        data['infrastructure']['library']['books']['by_category'] ||= {}
-        data['infrastructure']['library']['books']['by_category'][category] = count
-
-      # Grant utilization
-      when /^Grant Type:\s*(.+?)(?:\s*,\s*Utilization:\s*(\d+\.?\d*)%)?$/
-        type = $1.strip.downcase
-        utilization = $2&.to_f
-        data['grants']['utilization']['by_type'] ||= {}
-        data['grants']['utilization']['by_type'][type] = utilization
-      when "Bachelor of Elementary Education (B.El.Ed.)"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['beled'] = next_line.to_i
-        else
-          data['teachers']['qualifications']['professional']['beled'] = 0
-        end
-      when "Other"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['other'] = next_line.to_i
-        end
-      when "None"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['none'] = next_line.to_i
-        end
-      when "Diploma/degree in special Education"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['special_education'] = next_line.to_i
-        end
-      when "Pursuing any Relevant Professional Course"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['pursuing_course'] = next_line.to_i
-        end
       end
     end
 
