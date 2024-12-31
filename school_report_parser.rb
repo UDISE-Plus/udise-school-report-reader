@@ -425,31 +425,4 @@ class SchoolReportParser
 
     data
   end
-
-  def self.roman_to_arabic(roman)
-    roman_values = {
-      'I' => 1,
-      'V' => 5,
-      'X' => 10,
-      'L' => 50,
-      'C' => 100,
-      'D' => 500,
-      'M' => 1000
-    }
-
-    result = 0
-    prev_value = 0
-
-    roman.reverse.each_char do |char|
-      curr_value = roman_values[char]
-      if curr_value >= prev_value
-        result += curr_value
-      else
-        result -= curr_value
-      end
-      prev_value = curr_value
-    end
-
-    result
-  end
 end
