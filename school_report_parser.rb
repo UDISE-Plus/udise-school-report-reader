@@ -8,9 +8,9 @@ class SchoolReportParser
   require_relative 'ews_data_reader'
   require_relative 'ews_html_writer'
   require_relative 'ews_yaml_writer'
-  require_relative 's12_data_reader'
-  require_relative 's12_html_writer'
-  require_relative 's12_yaml_writer'
+  require_relative 'rte_data_reader'
+  require_relative 'rte_html_writer'
+  require_relative 'rte_yaml_writer'
 
   def self.extract_to_text(pdf_path)
     raise ArgumentError, "PDF file not found" unless File.exist?(pdf_path)
@@ -55,9 +55,13 @@ class SchoolReportParser
     ews_yaml = EwsYamlWriter.format_yaml(ews_data)
     data_points['ews_data'] = ews_yaml
 
-    s12_data = S12DataReader.read(combined_path)
-    s12_yaml = S12YamlWriter.format_yaml(s12_data)
-    data_points['s12_data'] = s12_yaml
+    rte_data = RteDataReader.read(combined_path)
+    rte_yaml = RteYamlWriter.format_yaml(rte_data)
+    data_points['rte_data'] = rte_yaml
+
+    # Extract rte table to HTML
+    html_path = pdf_path.sub(/\.pdf$/i, '_rte.html')
+    RteHtmlWriter.generate_html(rte_data, html_path)
 
     yaml_path = pdf_path.sub(/\.pdf$/i, '.yml')
     File.write(yaml_path, data_points.to_yaml)
@@ -70,9 +74,9 @@ class SchoolReportParser
     html_path = pdf_path.sub(/\.pdf$/i, '_ews.html')
     EwsHtmlWriter.generate_html(ews_data, html_path)
 
-    # Extract s12 table to HTML
-    html_path = pdf_path.sub(/\.pdf$/i, '_s12.html')
-    S12HtmlWriter.generate_html(s12_data, html_path)
+    # Extract rte table to HTML
+    html_path = pdf_path.sub(/\.pdf$/i, '_rte.html')
+    RteHtmlWriter.generate_html(rte_data, html_path)
 
     [txt_path, compressed_path, yaml_path, csv_path, rects_path, combined_path, html_path]
   end

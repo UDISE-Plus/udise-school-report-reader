@@ -1,4 +1,4 @@
-class S12DataReader
+class RteDataReader
   GRADES = [
     'Pre-Pri.', 'Class I', 'Class II', 'Class III', 'Class IV', 'Class V',
     'Class VI', 'Class VII', 'Class VIII'
@@ -94,7 +94,7 @@ class S12DataReader
     {
       grade_rows: @grades_row,
       bg_pairs: bg_pairs,
-      s12_numbers: match_numbers_to_pairs(@values_row, bg_pairs),
+      rte_numbers: match_numbers_to_pairs(@values_row, bg_pairs),
     }
   end
 

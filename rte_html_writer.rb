@@ -1,4 +1,4 @@
-class S12HtmlWriter
+class RteHtmlWriter
   def self.generate_html(data, html_path)
     return unless data
 
