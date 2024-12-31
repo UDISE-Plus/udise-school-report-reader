@@ -69,13 +69,8 @@ class RteDataReader
     found_grades = @grades_row.map { |cell| cell['text'] }
     missing_grades = GRADES - found_grades
     if missing_grades.any?
-      puts "Warning: Missing grades: #{missing_grades.join(', ')}"
+      # Removed puts statement
     end
-
-    puts "Title Row: #{@title_row[1].map { |cell| cell['text'] }}"
-    puts "Grades Row: #{@grades_row&.map { |cell| cell['text'] }}"
-    puts "BG Row: #{@bg_row&.map { |cell| cell['text'] }}"
-    puts "values Row: #{@values_row&.map { |cell| cell['text'] }}"
   end
 
   def read
