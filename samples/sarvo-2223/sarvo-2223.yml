@@ -43,6 +43,11 @@ digital_facilities:
   smart_classroom:
     digiboard: 0
     dth: 2-No
+anganwadi:
+  at_premises: 2-No
+  boys: 0
+  girls: 0
+  worker: NA
 infrastructure:
   sanitation:
     toilets:
@@ -80,6 +85,25 @@ infrastructure:
     count: 939
   library:
     available: 1-Yes
+facilities:
+  residential:
+    details:
+      type: 3 - Non-Residential
+      minority_school: 2-No
+  basic:
+    water:
+      available: 1-Yes
+      functional: 1-Yes
+      rain_water_harvesting: 1-Yes
+    electricity:
+      available: 1-Yes
+      solar_panel: 2-No
+    safety:
+      playground: 1-Yes
+      all_weather_road: 1-Yes
+  medical:
+    checkups:
+      available: 2-No
 teachers:
   count_by_level:
     regular: 18
@@ -173,30 +197,6 @@ academic:
         upper_primary: 1-Yes
         secondary: 1-Yes
         higher_secondary: 1-Yes
-facilities:
-  residential:
-    details:
-      type: 3 - Non-Residential
-      minority_school: 2-No
-  basic:
-    water:
-      available: 1-Yes
-      functional: 1-Yes
-      rain_water_harvesting: 1-Yes
-    electricity:
-      available: 1-Yes
-      solar_panel: 2-No
-    safety:
-      playground: 1-Yes
-      all_weather_road: 1-Yes
-  medical:
-    checkups:
-      available: 2-No
-  anganwadi:
-    at_premises: 2-No
-    boys: 0
-    girls: 0
-    worker: NA
 committees:
   smc:
     details:

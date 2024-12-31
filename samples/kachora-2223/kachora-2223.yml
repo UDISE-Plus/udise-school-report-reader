@@ -37,6 +37,11 @@ digital_facilities:
   smart_classroom:
     digiboard: 0
     dth: 2-No
+anganwadi:
+  at_premises: NA
+  boys: 0
+  girls: 0
+  worker: NA
 infrastructure:
   sanitation:
     toilets:
@@ -74,6 +79,25 @@ infrastructure:
     count: 100
   library:
     available: 2-No
+facilities:
+  residential:
+    details:
+      type: 3 - Non-Residential
+      minority_school: 2-No
+  basic:
+    water:
+      available: 1-Yes
+      functional: 1-Yes
+      rain_water_harvesting: 2-No
+    electricity:
+      available: 1-Yes
+      solar_panel: 2-No
+    safety:
+      playground: 1-Yes
+      all_weather_road: 1-Yes
+  medical:
+    checkups:
+      available: 2-No
 teachers:
   count_by_level:
     regular: 7
@@ -165,30 +189,6 @@ academic:
         secondary: 1-Yes
         higher_secondary: Total no. of Students Enrolled Under Section 12 of the RTE
           Act In Private Unaided and Specified Category Schools (DCF Sl. No. 1.42(a))
-facilities:
-  residential:
-    details:
-      type: 3 - Non-Residential
-      minority_school: 2-No
-  basic:
-    water:
-      available: 1-Yes
-      functional: 1-Yes
-      rain_water_harvesting: 2-No
-    electricity:
-      available: 1-Yes
-      solar_panel: 2-No
-    safety:
-      playground: 1-Yes
-      all_weather_road: 1-Yes
-  medical:
-    checkups:
-      available: 2-No
-  anganwadi:
-    at_premises: NA
-    boys: 0
-    girls: 0
-    worker: NA
 committees:
   smc:
     details:

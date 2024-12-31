@@ -215,9 +215,7 @@ class SchoolReportParser
 
     # Extract anganwadi data
     anganwadi_data = AnganwadiDataReader.read(lines)
-    if anganwadi_data && anganwadi_data['facilities'] && anganwadi_data['facilities']['anganwadi']
-      data['facilities']['anganwadi'] = anganwadi_data['facilities']['anganwadi']
-    end
+    data.merge!(anganwadi_data) if anganwadi_data
 
     # Process each line
     lines.each_with_index do |line, i|

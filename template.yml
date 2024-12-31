@@ -34,6 +34,12 @@ digital_facilities:
     digiboard: 0
     dth: null
 
+anganwadi:
+  at_premises: null
+  boys: null
+  girls: null
+  worker: null
+
 infrastructure:
   sanitation:
     toilets:
@@ -70,6 +76,23 @@ infrastructure:
     count: null
   library:
     available: null
+
+facilities:
+  residential:
+    details:
+      type: null
+      minority_school: null
+  basic:
+    water: {}
+    electricity:
+      available: null
+      solar_panel: null
+    safety:
+      playground: null
+      all_weather_road: null
+  medical:
+    checkups:
+      available: null
 
 teachers:
   count_by_level: {}
@@ -142,28 +165,6 @@ academic:
         upper_primary: null
         secondary: null
         higher_secondary: null
-
-facilities:
-  residential:
-    details:
-      type: null
-      minority_school: null
-  basic:
-    water: {}
-    electricity:
-      available: null
-      solar_panel: null
-    safety:
-      playground: null
-      all_weather_road: null
-  medical:
-    checkups:
-      available: null
-  anganwadi:
-    at_premises: null
-    boys: null
-    girls: null
-    worker: null
 
 committees:
   smc:

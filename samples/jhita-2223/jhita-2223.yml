@@ -34,6 +34,11 @@ digital_facilities:
   smart_classroom:
     digiboard: 0
     dth: 2-No
+anganwadi:
+  at_premises: 1-Yes
+  boys: 12
+  girls: 10
+  worker: 1-Yes
 infrastructure:
   sanitation:
     toilets:
@@ -71,6 +76,25 @@ infrastructure:
     count: 270
   library:
     available: 1-Yes
+facilities:
+  residential:
+    details:
+      type: 3 - Non-Residential
+      minority_school: NA
+  basic:
+    water:
+      available: 1-Yes
+      functional: 1-Yes
+      rain_water_harvesting: 2-No
+    electricity:
+      available: 1-Yes
+      solar_panel: 2-No
+    safety:
+      playground: 1-Yes
+      all_weather_road: 1-Yes
+  medical:
+    checkups:
+      available: 1-Yes
 teachers:
   count_by_level:
     regular: 7
@@ -162,30 +186,6 @@ academic:
           Act In Private Unaided and Specified Category Schools (DCF Sl. No. 1.42(a))
         secondary: Pre-Pri.
         higher_secondary: Class I
-facilities:
-  residential:
-    details:
-      type: 3 - Non-Residential
-      minority_school: NA
-  basic:
-    water:
-      available: 1-Yes
-      functional: 1-Yes
-      rain_water_harvesting: 2-No
-    electricity:
-      available: 1-Yes
-      solar_panel: 2-No
-    safety:
-      playground: 1-Yes
-      all_weather_road: 1-Yes
-  medical:
-    checkups:
-      available: 1-Yes
-  anganwadi:
-    at_premises: 1-Yes
-    boys: 12
-    girls: 10
-    worker: 1-Yes
 committees:
   smc:
     details:
