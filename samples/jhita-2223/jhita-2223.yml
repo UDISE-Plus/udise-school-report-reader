@@ -140,34 +140,32 @@ students:
       free_uniform:
         primary: 0
         upper_primary: 0
+activities:
+  inspections:
+    academic: 0
+    crc_coordinator: 10
+    block_level: 3
+    state_district: 1
+  instructional_days:
+    primary: 245
+    upper_primary: 0
+    secondary: 0
+    higher_secondary: 0
+  student_hours:
+    primary: 6.0
+    upper_primary: 0.0
+    secondary: 0.0
+    higher_secondary: 0.0
+  teacher_hours:
+    primary: 6.0
+    upper_primary: 0.0
+    secondary: 0.0
+    higher_secondary: 0.0
 academic:
   medium_of_instruction:
     medium_1:
       code: '13'
       name: Punjabi
-  inspections:
-    visits:
-      academic: 0
-      crc_coordinator: 10
-      block_level: 3
-      state_district: 1
-  hours:
-    instructional:
-      days:
-        primary: 245
-        upper_primary: 0
-        secondary: 0
-        higher_secondary: 0
-      student_hours:
-        primary: 6.0
-        upper_primary: 0.0
-        secondary: 0.0
-        higher_secondary: 0.0
-      teacher_hours:
-        primary: 6.0
-        upper_primary: 0.0
-        secondary: 0.0
-        higher_secondary: 0.0
   assessments:
     cce:
       implemented:

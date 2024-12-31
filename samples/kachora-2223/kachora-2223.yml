@@ -143,34 +143,32 @@ students:
       free_uniform:
         primary: 0
         upper_primary: 0
+activities:
+  inspections:
+    academic: 0
+    crc_coordinator: 0
+    block_level: 0
+    state_district: 0
+  instructional_days:
+    primary: 0
+    upper_primary: 220
+    secondary: 220
+    higher_secondary: 0
+  student_hours:
+    primary: 0.0
+    upper_primary: 6.0
+    secondary: 6.0
+    higher_secondary: 0.0
+  teacher_hours:
+    primary: 0.0
+    upper_primary: 6.3
+    secondary: 6.3
+    higher_secondary: 0.0
 academic:
   medium_of_instruction:
     medium_1:
       code: '04'
       name: Hindi
-  inspections:
-    visits:
-      academic: 0
-      crc_coordinator: 0
-      block_level: 0
-      state_district: 0
-  hours:
-    instructional:
-      days:
-        primary: 0
-        upper_primary: 220
-        secondary: 220
-        higher_secondary: 0
-      student_hours:
-        primary: 0.0
-        upper_primary: 6.0
-        secondary: 6.0
-        higher_secondary: 0.0
-      teacher_hours:
-        primary: 0.0
-        upper_primary: 6.3
-        secondary: 6.3
-        higher_secondary: 0.0
   assessments:
     cce:
       implemented:

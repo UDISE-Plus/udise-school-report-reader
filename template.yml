@@ -128,31 +128,30 @@ students:
         primary: 0
         upper_primary: 0
 
+activities:
+  inspections:
+    academic:
+    crc_coordinator:
+    block_level:
+    state_district:
+  instructional_days:
+    primary:
+    upper_primary:
+    secondary:
+    higher_secondary:
+  student_hours:
+    primary:
+    upper_primary:
+    secondary:
+    higher_secondary:
+  teacher_hours:
+    primary:
+    upper_primary:
+    secondary:
+    higher_secondary:
+
 academic:
   medium_of_instruction: {}
-  inspections:
-    visits:
-      academic: null
-      crc_coordinator: null
-      block_level: null
-      state_district: null
-  hours:
-    instructional:
-      days:
-        primary: null
-        upper_primary: null
-        secondary: null
-        higher_secondary: null
-      student_hours:
-        primary: null
-        upper_primary: null
-        secondary: null
-        higher_secondary: null
-      teacher_hours:
-        primary: null
-        upper_primary: null
-        secondary: null
-        higher_secondary: null
   assessments:
     cce:
       implemented:

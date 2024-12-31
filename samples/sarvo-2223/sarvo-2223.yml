@@ -149,6 +149,27 @@ students:
       free_uniform:
         primary: 0
         upper_primary: 0
+activities:
+  inspections:
+    academic: 5
+    crc_coordinator: 25
+    block_level: 5
+    state_district: 4
+  instructional_days:
+    primary: 220
+    upper_primary: 220
+    secondary: 220
+    higher_secondary: 220
+  student_hours:
+    primary: 5.0
+    upper_primary: 6.0
+    secondary: 6.0
+    higher_secondary: 6.0
+  teacher_hours:
+    primary: 6.3
+    upper_primary: 6.3
+    secondary: 6.3
+    higher_secondary: 6.3
 academic:
   medium_of_instruction:
     medium_1:
@@ -157,29 +178,6 @@ academic:
     medium_2:
       code: '19'
       name: English
-  inspections:
-    visits:
-      academic: 5
-      crc_coordinator: 25
-      block_level: 5
-      state_district: 4
-  hours:
-    instructional:
-      days:
-        primary: 220
-        upper_primary: 220
-        secondary: 220
-        higher_secondary: 220
-      student_hours:
-        primary: 5.0
-        upper_primary: 6.0
-        secondary: 6.0
-        higher_secondary: 6.0
-      teacher_hours:
-        primary: 6.3
-        upper_primary: 6.3
-        secondary: 6.3
-        higher_secondary: 6.3
   assessments:
     cce:
       implemented:

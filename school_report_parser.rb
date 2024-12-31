@@ -27,6 +27,7 @@ require_relative 'csv_writer'
 require_relative 'pdf_rectangle_extractor'
 require_relative 'pdf_content_compressor'
 require_relative 'block_rectangle_combiner'
+require_relative 'activities_data_reader'
 
 class SchoolReportParser
   def self.extract_to_text(pdf_path, output_dir = nil, write_files = false)
@@ -163,6 +164,7 @@ class SchoolReportParser
     rooms_data = RoomsDataReader.read(lines)
     teacher_data = TeacherDataReader.read(lines)
     sanitation_data = SanitationDataReader.read(lines)
+    activities_data = ActivitiesDataReader.read(lines)
 
     # Merge data from readers
     data.merge!(basic_info_data) if basic_info_data
@@ -174,6 +176,7 @@ class SchoolReportParser
     data.merge!(building_data) if building_data
     data.merge!(rooms_data) if rooms_data
     data.merge!(teacher_data) if teacher_data
+    data.merge!(activities_data) if activities_data
     if sanitation_data && sanitation_data['infrastructure'] && sanitation_data['infrastructure']['sanitation']
       data['infrastructure']['sanitation'] = sanitation_data['infrastructure']['sanitation']
     end
@@ -200,11 +203,6 @@ class SchoolReportParser
           data['infrastructure']['furniture']['count'] = next_line.to_i
         end
 
-      # Infrastructure - Classrooms
-      when "Total Class Rooms", "In Good Condition", "Needs Minor Repair", "Needs Major Repair", "Other Rooms", "Library Availability", "Library Books", "Library Type", "Librarian", "Separate Room for HM"
-        # These are now handled by RoomsDataReader
-        next
-
       # Academic
       when /^Medium (\d)$/
         medium_num = $1
@@ -217,38 +215,6 @@ class SchoolReportParser
           }
         end
 
-      # Academic Inspections
-      when "Acad. Inspections"
-        data['academic']['inspections']['visits']['academic'] = next_line.to_i if next_line =~ /^\d+$/
-      when "CRC Coordinator"
-        data['academic']['inspections']['visits']['crc_coordinator'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Block Level Officers"
-        data['academic']['inspections']['visits']['block_level'] = next_line.to_i if next_line =~ /^\d+$/
-      when "State/District Officers"
-        data['academic']['inspections']['visits']['state_district'] = next_line.to_i if next_line =~ /^\d+$/
-
-      # Academic Hours and Days
-      when "Instructional days"
-        if lines[i + 1] =~ /^\d+$/
-          data['academic']['hours']['instructional']['days']['primary'] = lines[i + 1].to_i
-          data['academic']['hours']['instructional']['days']['upper_primary'] = lines[i + 2].to_i if lines[i + 2] =~ /^\d+$/
-          data['academic']['hours']['instructional']['days']['secondary'] = lines[i + 3].to_i if lines[i + 3] =~ /^\d+$/
-          data['academic']['hours']['instructional']['days']['higher_secondary'] = lines[i + 4].to_i if lines[i + 4] =~ /^\d+$/
-        end
-      when "Avg.School hrs.Std."
-        if lines[i + 1] =~ /^\d+\.?\d*$/
-          data['academic']['hours']['instructional']['student_hours']['primary'] = lines[i + 1].to_f
-          data['academic']['hours']['instructional']['student_hours']['upper_primary'] = lines[i + 2].to_f if lines[i + 2] =~ /^\d+\.?\d*$/
-          data['academic']['hours']['instructional']['student_hours']['secondary'] = lines[i + 3].to_f if lines[i + 3] =~ /^\d+\.?\d*$/
-          data['academic']['hours']['instructional']['student_hours']['higher_secondary'] = lines[i + 4].to_f if lines[i + 4] =~ /^\d+\.?\d*$/
-        end
-      when "Avg.School hrs.Tch."
-        if lines[i + 1] =~ /^\d+\.?\d*$/
-          data['academic']['hours']['instructional']['teacher_hours']['primary'] = lines[i + 1].to_f
-          data['academic']['hours']['instructional']['teacher_hours']['upper_primary'] = lines[i + 2].to_f if lines[i + 2] =~ /^\d+\.?\d*$/
-          data['academic']['hours']['instructional']['teacher_hours']['secondary'] = lines[i + 3].to_f if lines[i + 3] =~ /^\d+\.?\d*$/
-          data['academic']['hours']['instructional']['teacher_hours']['higher_secondary'] = lines[i + 4].to_f if lines[i + 4] =~ /^\d+\.?\d*$/
-        end
       when "CCE"
         if next_line
           data['academic']['assessments']['cce']['implemented']['primary'] = next_line
