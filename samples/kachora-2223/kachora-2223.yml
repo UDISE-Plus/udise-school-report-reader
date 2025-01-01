@@ -52,23 +52,23 @@ building:
     ramps: 2-No
     handrails: NA
 infrastructure:
-  sanitation:
-    toilets:
-      boys:
-        total: 2
-        functional: 2
-        cwsn: 1
-        urinals: 0
-      girls:
-        total: 2
-        functional: 2
-        cwsn: 1
-        urinals: 0
-    handwash:
-      near_toilet: 1-Yes
-      for_meal: 1-Yes
   furniture:
     count: 100
+sanitation:
+  toilets:
+    boys:
+      total: 2
+      functional: 2
+      cwsn: 1
+      urinals: 0
+    girls:
+      total: 2
+      functional: 2
+      cwsn: 1
+      urinals: 0
+  handwash:
+    near_toilet: 1-Yes
+    for_meal: 1-Yes
 facilities:
   residential:
     details:

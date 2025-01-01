@@ -1,15 +1,15 @@
 class SanitationDataReader
   FIELD_MAPPINGS = {
     'Handwash Near Toilet' => {
-      key_path: ['infrastructure', 'sanitation', 'handwash', 'near_toilet'],
+      key_path: ['sanitation', 'handwash', 'near_toilet'],
       end_pattern: /Handwash Facility/
     },
     'Handwash Facility for Meal' => {
-      key_path: ['infrastructure', 'sanitation', 'handwash', 'for_meal'],
+      key_path: ['sanitation', 'handwash', 'for_meal'],
       end_pattern: /Total Class/
     },
     'Toilets' => {
-      key_path: ['infrastructure', 'sanitation', 'toilets'],
+      key_path: ['sanitation', 'toilets'],
       is_table: true,
       table_config: {
         sections: [
@@ -53,7 +53,7 @@ class SanitationDataReader
   def self.read(lines)
     require 'yaml'
     template = YAML.load_file('template.yml')
-    data = { 'infrastructure' => { 'sanitation' => template['infrastructure']['sanitation'] } }
+    data = { 'sanitation' => template['infrastructure']['sanitation'] }
 
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
@@ -105,12 +105,12 @@ class SanitationDataReader
     end
 
     # Clean up empty sections
-    data['infrastructure']['sanitation'].each do |key, section|
+    data['sanitation'].each do |key, section|
       if section.is_a?(Hash)
         section.reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty?) }
       end
     end
-    data['infrastructure']['sanitation'].reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty?) }
+    data['sanitation'].reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty?) }
 
     data
   end

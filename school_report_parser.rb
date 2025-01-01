@@ -177,9 +177,7 @@ class SchoolReportParser
     data.merge!(rooms_data) if rooms_data
     data.merge!(teacher_data) if teacher_data
     data.merge!(activities_data) if activities_data
-    if sanitation_data && sanitation_data['infrastructure'] && sanitation_data['infrastructure']['sanitation']
-      data['infrastructure']['sanitation'] = sanitation_data['infrastructure']['sanitation']
-    end
+    data.merge!(sanitation_data) if sanitation_data
 
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip

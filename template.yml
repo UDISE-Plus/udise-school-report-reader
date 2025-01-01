@@ -54,23 +54,24 @@ building:
     handrails:
 
 infrastructure:
-  sanitation:
-    toilets:
-      boys:
-        total: 0
-        functional: 0
-        cwsn: 0
-        urinals: 0
-      girls:
-        total: 0
-        functional: 0
-        cwsn: 0
-        urinals: 0
-    handwash:
-      near_toilet: null
-      for_meal: null
   furniture:
     count: null
+
+sanitation:
+  toilets:
+    boys:
+      total: 0
+      functional: 0
+      cwsn: 0
+      urinals: 0
+    girls:
+      total: 0
+      functional: 0
+      cwsn: 0
+      urinals: 0
+  handwash:
+    near_toilet: null
+    for_meal: null
 
 facilities:
   residential:

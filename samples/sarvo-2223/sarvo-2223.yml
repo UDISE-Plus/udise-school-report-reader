@@ -58,23 +58,23 @@ building:
     ramps: 1-Yes
     handrails: 1-Yes
 infrastructure:
-  sanitation:
-    toilets:
-      boys:
-        total: 0
-        functional: 0
-        cwsn: 0
-        urinals: 0
-      girls:
-        total: 18
-        functional: 18
-        cwsn: 1
-        urinals: 19
-    handwash:
-      near_toilet: 1-Yes
-      for_meal: 1-Yes
   furniture:
     count: 939
+sanitation:
+  toilets:
+    boys:
+      total: 0
+      functional: 0
+      cwsn: 0
+      urinals: 0
+    girls:
+      total: 18
+      functional: 18
+      cwsn: 1
+      urinals: 19
+  handwash:
+    near_toilet: 1-Yes
+    for_meal: 1-Yes
 facilities:
   residential:
     details:
