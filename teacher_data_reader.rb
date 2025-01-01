@@ -90,6 +90,15 @@ class TeacherDataReader
       key_path: ['teachers', 'assignments', 'non_teaching'],
       value_type: :integer,
       extract_pattern: /^(\d+)$/
+    },
+    'Subject:' => {
+      key_path: ['teachers', 'workload', 'by_subject'],
+      value_type: :integer,
+      extract_pattern: /^Subject:\s*(.+?)(?:\s*,\s*Teachers:\s*(\d+))?$/,
+      dynamic_key: true,
+      key_from_match: 1,
+      value_from_match: 2,
+      key_transform: :downcase
     }
   }
 
@@ -128,7 +137,7 @@ class TeacherDataReader
         data['teachers']['workload'] ||= {}
         data['teachers']['workload']['teaching_hours'] = base_data['teachers']['workload']['teaching_hours'] if base_data['teachers']['workload']['teaching_hours']
         data['teachers']['workload']['non_teaching_hours'] = base_data['teachers']['workload']['non_teaching_hours'] if base_data['teachers']['workload']['non_teaching_hours']
-        data['teachers']['workload']['by_subject'] ||= {}
+        data['teachers']['workload']['by_subject'] = base_data['teachers']['workload']['by_subject'] if base_data['teachers']['workload']['by_subject']
       end
     end
 
@@ -165,10 +174,6 @@ class TeacherDataReader
           data['teachers']['classes_taught'][key] = next_line.to_i
         end
 
-      when /^Subject:\s*(.+?)(?:\s*,\s*Teachers:\s*(\d+))?$/
-        subject = $1.strip
-        count = $2&.to_i || 0
-        data['teachers']['workload']['by_subject'][subject.downcase] = count
       when "Other"
         if next_line =~ /^\d+$/
           data['teachers']['qualifications']['professional']['other'] = next_line.to_i
