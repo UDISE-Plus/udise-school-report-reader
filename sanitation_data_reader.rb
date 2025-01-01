@@ -1,4 +1,55 @@
 class SanitationDataReader
+  FIELD_MAPPINGS = {
+    'Handwash Near Toilet' => {
+      key_path: ['infrastructure', 'sanitation', 'handwash', 'near_toilet'],
+      end_pattern: /Handwash Facility/
+    },
+    'Handwash Facility for Meal' => {
+      key_path: ['infrastructure', 'sanitation', 'handwash', 'for_meal'],
+      end_pattern: /Total Class/
+    },
+    'Toilets' => {
+      key_path: ['infrastructure', 'sanitation', 'toilets'],
+      is_table: true,
+      table_config: {
+        sections: [
+          {
+            trigger: /Total.*CWSN/,
+            offset: 1,
+            fields: [
+              { key: ['boys', 'total'], value_type: :integer },
+              { key: ['girls', 'total'], value_type: :integer }
+            ]
+          },
+          {
+            trigger: "Functional",
+            offset: 1,
+            fields: [
+              { key: ['boys', 'functional'], value_type: :integer },
+              { key: ['girls', 'functional'], value_type: :integer }
+            ]
+          },
+          {
+            trigger: /CWSN Friendly/,
+            offset: 1,
+            fields: [
+              { key: ['boys', 'cwsn'], value_type: :integer },
+              { key: ['girls', 'cwsn'], value_type: :integer }
+            ]
+          },
+          {
+            trigger: "Urinal",
+            offset: 1,
+            fields: [
+              { key: ['boys', 'urinals'], value_type: :integer },
+              { key: ['girls', 'urinals'], value_type: :integer }
+            ]
+          }
+        ]
+      }
+    }
+  }
+
   def self.read(lines)
     require 'yaml'
     template = YAML.load_file('template.yml')
@@ -6,61 +57,50 @@ class SanitationDataReader
 
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
-
-      case line
-      when "Toilets"
-        # Look ahead for toilet data
-        toilet_data = []
-        (i+1..i+20).each do |j|
-          break if j >= lines.length
-          toilet_data << lines[j]
-        end
-
-        # Try to find the values
-        total_idx = toilet_data.index { |l| l =~ /Total.*CWSN/ }
-        if total_idx && total_idx + 2 < toilet_data.length
-          boys = toilet_data[total_idx + 1]
-          girls = toilet_data[total_idx + 2]
-          if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['sanitation']['toilets']['boys']['total'] = boys.to_i
-            data['infrastructure']['sanitation']['toilets']['girls']['total'] = girls.to_i
+      
+      if mapping = FIELD_MAPPINGS[line]
+        if mapping[:is_table]
+          # Handle table-like data (toilets)
+          table_data = lines[i+1..i+20] # Look ahead for data
+          mapping[:table_config][:sections].each do |section|
+            idx = table_data.index { |l| l.match?(section[:trigger]) }
+            if idx && idx + section[:offset] + section[:fields].length <= table_data.length
+              section[:fields].each_with_index do |field, field_idx|
+                value = table_data[idx + section[:offset] + field_idx]
+                if value =~ /^\d+$/
+                  # Ensure path exists and set value
+                  current = data
+                  full_path = mapping[:key_path] + field[:key]
+                  full_path[0..-2].each do |key|
+                    current[key] ||= {}
+                    current = current[key]
+                  end
+                  current[full_path.last] = value.to_i
+                end
+              end
+            end
           end
-        end
+        else
+          # Handle simple key-value data
+          next unless next_line
+          next if mapping[:end_pattern] && next_line.match?(mapping[:end_pattern])
 
-        func_idx = toilet_data.index("Functional")
-        if func_idx && func_idx + 2 < toilet_data.length
-          boys = toilet_data[func_idx + 1]
-          girls = toilet_data[func_idx + 2]
-          if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['sanitation']['toilets']['boys']['functional'] = boys.to_i
-            data['infrastructure']['sanitation']['toilets']['girls']['functional'] = girls.to_i
+          # Transform value based on type
+          value = case mapping[:value_type]
+          when :integer
+            next_line.to_i if next_line =~ /^\d+$/
+          else
+            next_line
           end
-        end
 
-        cwsn_idx = toilet_data.index { |l| l =~ /CWSN Friendly/ }
-        if cwsn_idx && cwsn_idx + 2 < toilet_data.length
-          boys = toilet_data[cwsn_idx + 1]
-          girls = toilet_data[cwsn_idx + 2]
-          if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['sanitation']['toilets']['boys']['cwsn'] = boys.to_i
-            data['infrastructure']['sanitation']['toilets']['girls']['cwsn'] = girls.to_i
+          # Always ensure path exists and set the value
+          current = data
+          mapping[:key_path][0..-2].each do |key|
+            current[key] ||= {}
+            current = current[key]
           end
+          current[mapping[:key_path].last] = value
         end
-
-        urinal_idx = toilet_data.index("Urinal")
-        if urinal_idx && urinal_idx + 2 < toilet_data.length
-          boys = toilet_data[urinal_idx + 1]
-          girls = toilet_data[urinal_idx + 2]
-          if boys =~ /^\d+$/ && girls =~ /^\d+$/
-            data['infrastructure']['sanitation']['toilets']['boys']['urinals'] = boys.to_i
-            data['infrastructure']['sanitation']['toilets']['girls']['urinals'] = girls.to_i
-          end
-        end
-
-      when "Handwash Near Toilet"
-        data['infrastructure']['sanitation']['handwash']['near_toilet'] = next_line if next_line && !next_line.match?(/Handwash Facility/)
-      when "Handwash Facility for Meal"
-        data['infrastructure']['sanitation']['handwash']['for_meal'] = next_line if next_line && !next_line.match?(/Total Class/)
       end
     end
 
