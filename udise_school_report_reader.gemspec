@@ -19,6 +19,12 @@ Gem::Specification.new do |spec|
   spec.files = Dir.glob("{lib,test}/**/*") + %w[README.md LICENSE.txt CHANGELOG.md]
   spec.require_paths = ["lib"]
 
+  # Runtime dependencies
+  spec.add_dependency "pdf-reader", "~> 2.0"
+  spec.add_dependency "nokogiri", "~> 1.0"
+  spec.add_dependency "csv", "~> 3.0"
+
+  # Development dependencies
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.0"
