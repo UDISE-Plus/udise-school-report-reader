@@ -1,38 +1,82 @@
+require_relative 'data_reader_base'
+
 class TeacherDataReader
+  include DataReaderBase
+
+  FIELD_MAPPINGS = {
+    'Regular' => {
+      key_path: ['teachers', 'count_by_level', 'regular'],
+      value_type: :integer
+    },
+    'Part-time' => {
+      key_path: ['teachers', 'count_by_level', 'part_time'],
+      value_type: :integer
+    },
+    'Contract' => {
+      key_path: ['teachers', 'count_by_level', 'contract'],
+      value_type: :integer
+    },
+    'Male' => {
+      key_path: ['teachers', 'demographics', 'male'],
+      value_type: :integer
+    },
+    'Female' => {
+      key_path: ['teachers', 'demographics', 'female'],
+      value_type: :integer
+    },
+    'Transgender' => {
+      key_path: ['teachers', 'demographics', 'transgender'],
+      value_type: :integer
+    },
+    'Below Graduate' => {
+      key_path: ['teachers', 'qualifications', 'academic', 'below_graduate'],
+      value_type: :integer
+    },
+    'Graduate' => {
+      key_path: ['teachers', 'qualifications', 'academic', 'graduate'],
+      value_type: :integer
+    },
+    'Post Graduate and Above' => {
+      key_path: ['teachers', 'qualifications', 'academic', 'post_graduate_and_above'],
+      value_type: :integer
+    },
+    'B.Ed. or Equivalent' => {
+      key_path: ['teachers', 'qualifications', 'professional', 'bed'],
+      value_type: :integer
+    },
+    'M.Ed. or Equivalent' => {
+      key_path: ['teachers', 'qualifications', 'professional', 'med'],
+      value_type: :integer
+    },
+    'Diploma or Certificate in basic teachers training' => {
+      key_path: ['teachers', 'qualifications', 'professional', 'basic_training'],
+      value_type: :integer
+    }
+  }
+
   def self.read(lines)
     require 'yaml'
     template = YAML.load_file('template.yml')
     data = { 'teachers' => template['teachers'] }
 
+    # Process base module mappings first
+    base_data = super
+    if base_data&.dig('teachers')
+      data['teachers']['count_by_level'] = base_data['teachers']['count_by_level'] if base_data['teachers']['count_by_level']
+      data['teachers']['demographics'] = base_data['teachers']['demographics'] if base_data['teachers']['demographics']
+      
+      # Handle nested qualifications structure
+      if base_data['teachers']['qualifications']
+        data['teachers']['qualifications'] ||= {}
+        data['teachers']['qualifications']['academic'] = base_data['teachers']['qualifications']['academic'] if base_data['teachers']['qualifications']['academic']
+        data['teachers']['qualifications']['professional'] = base_data['teachers']['qualifications']['professional'] if base_data['teachers']['qualifications']['professional']
+      end
+    end
+
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
 
       case line
-      when "Regular"
-        if next_line =~ /^\d+$/
-          data['teachers']['count_by_level']['regular'] = next_line.to_i
-        end
-      when "Part-time"
-        if next_line =~ /^\d+$/
-          data['teachers']['count_by_level']['part_time'] = next_line.to_i
-        end
-      when "Contract"
-        if next_line =~ /^\d+$/
-          data['teachers']['count_by_level']['contract'] = next_line.to_i
-        end
-      when "Male"
-        if next_line =~ /^\d+$/
-          data['teachers']['demographics']['male'] = next_line.to_i
-        end
-      when "Female"
-        if next_line =~ /^\d+$/
-          data['teachers']['demographics']['female'] = next_line.to_i
-        end
-      when "Transgender"
-        if next_line =~ /^\d+$/
-          data['teachers']['demographics']['transgender'] = next_line.to_i
-        end
-      
       # Teacher Assignments and Classes
       when "Total Teacher Involve in Non Teaching Assignment"
         if next_line =~ /^\d+$/
@@ -67,31 +111,6 @@ class TeacherDataReader
           data['teachers']['classes_taught'][key] = next_line.to_i
         end
 
-      # Teacher Qualifications
-      when "Below Graduate"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['academic']['below_graduate'] = next_line.to_i
-        end
-      when "Graduate"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['academic']['graduate'] = next_line.to_i
-        end
-      when "Post Graduate and Above"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['academic']['post_graduate_and_above'] = next_line.to_i
-        end
-      when "Diploma or Certificate in basic teachers training"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['basic_training'] = next_line.to_i
-        end
-      when "B.Ed. or Equivalent"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['bed'] = next_line.to_i
-        end
-      when "M.Ed. or Equivalent"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['med'] = next_line.to_i
-        end
       when "Total Teacher Trained in Computer"
         if next_line =~ /^\d+$/
           data['teachers']['training']['computer_trained'] = next_line.to_i
