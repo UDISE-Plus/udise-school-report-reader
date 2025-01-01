@@ -67,6 +67,10 @@ class TeacherDataReader
     'Total Teacher Trained in Computer' => {
       key_path: ['teachers', 'training', 'computer_trained'],
       value_type: :integer
+    },
+    'No. of Total Teacher Received Service Training' => {
+      key_path: ['teachers', 'training', 'service', 'total'],
+      value_type: :integer
     }
   }
 
@@ -93,6 +97,7 @@ class TeacherDataReader
         data['teachers']['training'] ||= {}
         data['teachers']['training']['computer_trained'] = base_data['teachers']['training']['computer_trained'] if base_data['teachers']['training']['computer_trained']
         data['teachers']['training']['service'] ||= {}
+        data['teachers']['training']['service']['total'] = base_data['teachers']['training']['service']['total'] if base_data['teachers']['training']['service']&.dig('total')
         data['teachers']['training']['special'] ||= {}
       end
     end
@@ -135,10 +140,6 @@ class TeacherDataReader
           data['teachers']['classes_taught'][key] = next_line.to_i
         end
 
-      when "No. of Total Teacher Received Service Training"
-        if next_line =~ /^\d+$/
-          data['teachers']['training']['service']['total'] = next_line.to_i
-        end
       when "Special Training Received"
         if next_line
           data['teachers']['training']['special'] ||= {}
