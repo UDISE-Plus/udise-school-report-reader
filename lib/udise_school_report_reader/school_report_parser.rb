@@ -21,6 +21,10 @@ module UdiseSchoolReportReader
 
     private
 
+    def self.template_path
+      File.expand_path('../../../template.yml', __FILE__)
+    end
+
     def self.extract_data(pdf_path)
       reader = PDF::Reader.new(pdf_path)
       
@@ -127,7 +131,7 @@ module UdiseSchoolReportReader
       lines = compressed_content.split("\n").map { |line| line.strip.gsub(/\\/, '') }  # Remove escape characters
 
       # Load template as base structure
-      data = YAML.load_file('template.yml')
+      data = YAML.load_file(template_path)
 
       # Extract data using readers
       basic_info_data = BasicInfoDataReader.read(lines)
