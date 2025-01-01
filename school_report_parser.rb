@@ -311,7 +311,7 @@ class SchoolReportParser
         section.reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty?) }
       end
     end
-    data.reject! { |_, v| v.empty? }
+    data.reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty?) }
 
     data
   end
