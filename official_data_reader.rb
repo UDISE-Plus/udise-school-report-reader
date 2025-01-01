@@ -1,39 +1,40 @@
+require_relative 'data_reader_base'
+
 class OfficialDataReader
-  def self.read(lines)
-    require 'yaml'
-    data = { 'official' => YAML.load_file('template.yml')['official'] }
+  include DataReaderBase
 
-    lines.each_with_index do |line, i|
-      next_line = lines[i + 1]&.strip
-
-      case line
-      when "Year of Establishment"
-        data['official']['established'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Year of Recognition-Pri."
-        data['official']['recognition']['primary'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Year of Recognition-Upr.Pri."
-        data['official']['recognition']['upper_primary'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Year of Recognition-Sec."
-        data['official']['recognition']['secondary'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Year of Recognition-Higher Sec."
-        data['official']['recognition']['higher_secondary'] = next_line.to_i if next_line =~ /^\d+$/
-      when "Affiliation Board-Sec"
-        data['official']['affiliation']['secondary'] = next_line if next_line && !next_line.match?(/Affiliation Board-HSec/)
-      when "Affiliation Board-HSec"
-        data['official']['affiliation']['higher_secondary'] = next_line if next_line && !next_line.match?(/Is this/)
-      when "School Management"
-        data['official']['management'] = next_line if next_line && !next_line.match?(/School Type/)
-      end
-    end
-
-    # Clean up empty sections
-    data['official'].each do |key, section|
-      if section.is_a?(Hash)
-        section.reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty?) }
-      end
-    end
-    data['official'].reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty?) }
-
-    data
-  end
+  FIELD_MAPPINGS = {
+    'Year of Establishment' => {
+      key_path: ['official', 'established'],
+      value_type: :integer
+    },
+    'Year of Recognition-Pri.' => {
+      key_path: ['official', 'recognition', 'primary'],
+      value_type: :integer
+    },
+    'Year of Recognition-Upr.Pri.' => {
+      key_path: ['official', 'recognition', 'upper_primary'],
+      value_type: :integer
+    },
+    'Year of Recognition-Sec.' => {
+      key_path: ['official', 'recognition', 'secondary'],
+      value_type: :integer
+    },
+    'Year of Recognition-Higher Sec.' => {
+      key_path: ['official', 'recognition', 'higher_secondary'],
+      value_type: :integer
+    },
+    'Affiliation Board-Sec' => {
+      key_path: ['official', 'affiliation', 'secondary'],
+      end_pattern: /Affiliation Board-HSec/
+    },
+    'Affiliation Board-HSec' => {
+      key_path: ['official', 'affiliation', 'higher_secondary'],
+      end_pattern: /Is this/
+    },
+    'School Management' => {
+      key_path: ['official', 'management'],
+      end_pattern: /School Type/
+    }
+  }
 end 
