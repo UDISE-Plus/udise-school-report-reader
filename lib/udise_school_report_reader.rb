@@ -1,6 +1,7 @@
 require "udise_school_report_reader/version"
 
 # Core functionality
+require_relative "udise_school_report_reader/template_helper"
 require_relative "udise_school_report_reader/pdf_block_extractor"
 require_relative "udise_school_report_reader/pdf_rectangle_extractor"
 require_relative "udise_school_report_reader/pdf_content_compressor"
