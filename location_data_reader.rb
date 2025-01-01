@@ -1,39 +1,47 @@
+require_relative 'data_reader_base'
+
 class LocationDataReader
-  def self.read(lines)
-    require 'yaml'
-    template = YAML.load_file('template.yml')
-    data = { 'location' => template['location'] }
+  include DataReaderBase
 
-    lines.each_with_index do |line, i|
-      next_line = lines[i + 1]&.strip
-
-      case line
-      when "State"
-        data['location']['state'] = next_line if next_line && !next_line.match?(/District/)
-      when "District"
-        data['location']['district'] = next_line if next_line && !next_line.match?(/Block/)
-      when "Block"
-        data['location']['block'] = next_line if next_line && !next_line.match?(/Rural/)
-      when "Rural / Urban"
-        data['location']['area_type'] = next_line if next_line && !next_line.match?(/Cluster/)
-      when "Pincode"
-        data['location']['pincode'] = next_line if next_line && next_line.match?(/^\d+$/)
-      when "Ward"
-        data['location']['ward'] = next_line if next_line && !next_line.match?(/Mohalla/)
-      when "Cluster"
-        data['location']['cluster'] = next_line if next_line && !next_line.match?(/Ward/)
-      when "Municipality"
-        data['location']['municipality'] = next_line if next_line && !next_line.match?(/Assembly/)
-      when "Assembly Const."
-        data['location']['assembly_constituency'] = next_line if next_line && !next_line.match?(/Parl/)
-      when "Parl. Constituency"
-        data['location']['parliamentary_constituency'] = next_line if next_line && !next_line.match?(/School/)
-      end
-    end
-
-    # Clean up empty sections
-    data['location'].reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty?) }
-
-    data
-  end
+  FIELD_MAPPINGS = {
+    'State' => {
+      key_path: ['location', 'state'],
+      end_pattern: /District/
+    },
+    'District' => {
+      key_path: ['location', 'district'],
+      end_pattern: /Block/
+    },
+    'Block' => {
+      key_path: ['location', 'block'],
+      end_pattern: /Rural/
+    },
+    'Rural / Urban' => {
+      key_path: ['location', 'area_type'],
+      end_pattern: /Cluster/
+    },
+    'Pincode' => {
+      key_path: ['location', 'pincode']
+    },
+    'Ward' => {
+      key_path: ['location', 'ward'],
+      end_pattern: /Mohalla/
+    },
+    'Cluster' => {
+      key_path: ['location', 'cluster'],
+      end_pattern: /Ward/
+    },
+    'Municipality' => {
+      key_path: ['location', 'municipality'],
+      end_pattern: /Assembly/
+    },
+    'Assembly Const.' => {
+      key_path: ['location', 'assembly_constituency'],
+      end_pattern: /Parl/
+    },
+    'Parl. Constituency' => {
+      key_path: ['location', 'parliamentary_constituency'],
+      end_pattern: /School/
+    }
+  }
 end 
