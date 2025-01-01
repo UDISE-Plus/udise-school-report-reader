@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.4] - 2024-01-24
+
+### Fixed
+- Fixed template.yml path resolution using ROOT_PATH constant
+- Gem now works correctly when run from any directory
+
 ## [0.1.0] - 2024-01-01
 
 ### Added
