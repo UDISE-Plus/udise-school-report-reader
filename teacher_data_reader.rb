@@ -59,6 +59,10 @@ class TeacherDataReader
     'Diploma/degree in special Education' => {
       key_path: ['teachers', 'qualifications', 'professional', 'special_education'],
       value_type: :integer
+    },
+    'Teachers Aged above 55' => {
+      key_path: ['teachers', 'age_distribution', 'above_55'],
+      value_type: :integer
     }
   }
 
@@ -72,6 +76,7 @@ class TeacherDataReader
     if base_data&.dig('teachers')
       data['teachers']['count_by_level'] = base_data['teachers']['count_by_level'] if base_data['teachers']['count_by_level']
       data['teachers']['demographics'] = base_data['teachers']['demographics'] if base_data['teachers']['demographics']
+      data['teachers']['age_distribution'] = base_data['teachers']['age_distribution'] if base_data['teachers']['age_distribution']
       
       # Handle nested qualifications structure
       if base_data['teachers']['qualifications']
@@ -122,10 +127,6 @@ class TeacherDataReader
       when "Total Teacher Trained in Computer"
         if next_line =~ /^\d+$/
           data['teachers']['training']['computer_trained'] = next_line.to_i
-        end
-      when "Teachers Aged above 55"
-        if next_line =~ /^\d+$/
-          data['teachers']['age_distribution']['above_55'] = next_line.to_i
         end
       when "No. of Total Teacher Received Service Training"
         if next_line =~ /^\d+$/
