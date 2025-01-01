@@ -104,7 +104,8 @@ class TeacherDataReader
 
   def self.read(lines)
     require 'yaml'
-    template = YAML.load_file('template.yml')
+    template_path = File.join(UdiseSchoolReportReader::ROOT_PATH, 'template.yml')
+    template = YAML.load_file(template_path)
     data = { 'teachers' => template['teachers'] }
 
     # Process base module mappings first

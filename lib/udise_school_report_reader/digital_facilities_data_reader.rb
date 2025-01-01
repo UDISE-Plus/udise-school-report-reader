@@ -1,6 +1,7 @@
 class DigitalFacilitiesDataReader
   def self.read(lines)
-    data = { 'digital_facilities' => YAML.load_file('template.yml')['digital_facilities'] }
+    template_path = File.join(UdiseSchoolReportReader::ROOT_PATH, 'template.yml')
+    data = { 'digital_facilities' => YAML.load_file(template_path)['digital_facilities'] }
 
     lines.each_with_index do |line, i|
       case line

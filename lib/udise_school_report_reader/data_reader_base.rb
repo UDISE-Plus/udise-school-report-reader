@@ -6,7 +6,8 @@ module DataReaderBase
   module ClassMethods
     def read(lines)
       require 'yaml'
-      template = YAML.load_file('template.yml')
+      template_path = File.join(UdiseSchoolReportReader::ROOT_PATH, 'template.yml')
+      template = YAML.load_file(template_path)
       data = { base_key => template[base_key] }
 
       lines.each_with_index do |line, i|

@@ -22,7 +22,7 @@ module UdiseSchoolReportReader
     private
 
     def self.template_path
-      File.expand_path('../../../template.yml', __FILE__)
+      File.join(UdiseSchoolReportReader::ROOT_PATH, 'template.yml')
     end
 
     def self.extract_data(pdf_path)

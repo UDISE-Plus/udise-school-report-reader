@@ -1,7 +1,8 @@
 class BasicInfoDataReader
   def self.read(lines)
     require 'yaml'
-    template = YAML.load_file('template.yml')
+    template_path = File.join(UdiseSchoolReportReader::ROOT_PATH, 'template.yml')
+    template = YAML.load_file(template_path)
     data = { 'basic_info' => template['basic_info'] }
 
     lines.each_with_index do |line, i|

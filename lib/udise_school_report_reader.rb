@@ -1,5 +1,9 @@
 require "udise_school_report_reader/version"
 
+module UdiseSchoolReportReader
+  ROOT_PATH = File.expand_path('..', __dir__)
+end
+
 # Core functionality
 require_relative "udise_school_report_reader/pdf_block_extractor"
 require_relative "udise_school_report_reader/pdf_rectangle_extractor"
