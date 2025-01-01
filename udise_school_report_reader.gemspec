@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/UDISE-Plus/udise-school-report-reader"
   spec.metadata["changelog_uri"] = "https://github.com/UDISE-Plus/udise-school-report-reader/blob/master/CHANGELOG.md"
 
-  spec.files = Dir.glob("{lib,test}/**/*") + %w[README.md LICENSE.txt CHANGELOG.md]
+  spec.files = Dir.glob("{lib,test}/**/*") + %w[README.md LICENSE.txt CHANGELOG.md template.yml]
   spec.require_paths = ["lib"]
 
   # Runtime dependencies
