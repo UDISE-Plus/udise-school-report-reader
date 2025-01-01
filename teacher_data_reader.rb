@@ -63,6 +63,10 @@ class TeacherDataReader
     'Teachers Aged above 55' => {
       key_path: ['teachers', 'age_distribution', 'above_55'],
       value_type: :integer
+    },
+    'Total Teacher Trained in Computer' => {
+      key_path: ['teachers', 'training', 'computer_trained'],
+      value_type: :integer
     }
   }
 
@@ -78,11 +82,18 @@ class TeacherDataReader
       data['teachers']['demographics'] = base_data['teachers']['demographics'] if base_data['teachers']['demographics']
       data['teachers']['age_distribution'] = base_data['teachers']['age_distribution'] if base_data['teachers']['age_distribution']
       
-      # Handle nested qualifications structure
+      # Handle nested structures
       if base_data['teachers']['qualifications']
         data['teachers']['qualifications'] ||= {}
         data['teachers']['qualifications']['academic'] = base_data['teachers']['qualifications']['academic'] if base_data['teachers']['qualifications']['academic']
         data['teachers']['qualifications']['professional'] = base_data['teachers']['qualifications']['professional'] if base_data['teachers']['qualifications']['professional']
+      end
+
+      if base_data['teachers']['training']
+        data['teachers']['training'] ||= {}
+        data['teachers']['training']['computer_trained'] = base_data['teachers']['training']['computer_trained'] if base_data['teachers']['training']['computer_trained']
+        data['teachers']['training']['service'] ||= {}
+        data['teachers']['training']['special'] ||= {}
       end
     end
 
@@ -124,10 +135,6 @@ class TeacherDataReader
           data['teachers']['classes_taught'][key] = next_line.to_i
         end
 
-      when "Total Teacher Trained in Computer"
-        if next_line =~ /^\d+$/
-          data['teachers']['training']['computer_trained'] = next_line.to_i
-        end
       when "No. of Total Teacher Received Service Training"
         if next_line =~ /^\d+$/
           data['teachers']['training']['service']['total'] = next_line.to_i
