@@ -109,9 +109,9 @@ teachers:
       beled: 0
       bed: 46
       med: 3
+      special_education: 0
       other: 4
       none: 3
-      special_education: 0
       pursuing_course: 0
   demographics:
     male: 14
