@@ -1,3 +1,5 @@
 .ruby-lsp/
 tmp/
 *.bak 
+.DS_Store
+*.gem 
