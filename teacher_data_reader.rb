@@ -85,6 +85,11 @@ class TeacherDataReader
       key_path: ['teachers', 'workload', 'non_teaching_hours', 'per_week'],
       value_type: :integer,
       extract_pattern: /(\d+)/
+    },
+    'Total Teacher Involve in Non Teaching Assignment' => {
+      key_path: ['teachers', 'assignments', 'non_teaching'],
+      value_type: :integer,
+      extract_pattern: /^(\d+)$/
     }
   }
 
@@ -101,6 +106,9 @@ class TeacherDataReader
       data['teachers']['age_distribution'] = base_data['teachers']['age_distribution'] if base_data['teachers']['age_distribution']
       
       # Handle nested structures
+      data['teachers']['assignments'] ||= {}
+      data['teachers']['assignments']['non_teaching'] = base_data['teachers']['assignments']['non_teaching'] if base_data['teachers']['assignments']&.dig('non_teaching')
+
       if base_data['teachers']['qualifications']
         data['teachers']['qualifications'] ||= {}
         data['teachers']['qualifications']['academic'] = base_data['teachers']['qualifications']['academic'] if base_data['teachers']['qualifications']['academic']
@@ -128,11 +136,6 @@ class TeacherDataReader
       next_line = lines[i + 1]&.strip
 
       case line
-      # Teacher Assignments and Classes
-      when "Total Teacher Involve in Non Teaching Assignment"
-        if next_line =~ /^\d+$/
-          data['teachers']['assignments']['non_teaching'] = next_line.to_i
-        end
       when /^(\d+)-(.+)$/
         category = $2.strip
         if next_line =~ /^\d+$/
