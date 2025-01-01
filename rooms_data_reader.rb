@@ -1,52 +1,72 @@
 class RoomsDataReader
-  def self.read(lines)
-    data = {
-      'rooms' => {
-        'classrooms' => {
-          'good_condition' => 0,
-          'needs_minor_repair' => 0,
-          'needs_major_repair' => 0
-        },
-        'other' => 0,
-        'library' => nil,
-        'hm' => nil
-      }
+  FIELD_MAPPINGS = {
+    'In Good Condition' => {
+      key_path: ['rooms', 'classrooms', 'good_condition'],
+      value_type: :integer,
+      end_pattern: /Needs Minor/
+    },
+    'Needs Minor Repair' => {
+      key_path: ['rooms', 'classrooms', 'needs_minor_repair'],
+      value_type: :integer,
+      end_pattern: /Needs Major/
+    },
+    'Needs Major Repair' => {
+      key_path: ['rooms', 'classrooms', 'needs_major_repair'],
+      value_type: :integer,
+      end_pattern: /Other Rooms/
+    },
+    'Other Rooms' => {
+      key_path: ['rooms', 'other'],
+      value_type: :integer,
+      end_pattern: /Library/
+    },
+    'Library Availability' => {
+      key_path: ['rooms', 'library'],
+      end_pattern: /Solar/
+    },
+    'Separate Room for HM' => {
+      key_path: ['rooms', 'hm'],
+      end_pattern: /Drinking/
     }
+  }
+
+  def self.read(lines)
+    require 'yaml'
+    template = YAML.load_file('template.yml')
+    data = { 'rooms' => template['rooms'] }
 
     lines.each_with_index do |line, i|
       next_line = lines[i + 1]&.strip
+      
+      if mapping = FIELD_MAPPINGS[line]
+        next unless next_line
+        next if mapping[:end_pattern] && next_line.match?(mapping[:end_pattern])
 
-      case line
-      when "In Good Condition"
-        if next_line =~ /^\d+$/
-          data['rooms']['classrooms']['good_condition'] = next_line.to_i
+        # Transform value based on type
+        value = case mapping[:value_type]
+        when :integer
+          next_line.to_i if next_line =~ /^\d+$/
+        else
+          next_line
         end
-      when "Needs Minor Repair"
-        if next_line =~ /^\d+$/
-          data['rooms']['classrooms']['needs_minor_repair'] = next_line.to_i
+
+        # Always ensure path exists and set the value
+        current = data
+        mapping[:key_path][0..-2].each do |key|
+          current[key] ||= {}
+          current = current[key]
         end
-      when "Needs Major Repair"
-        if next_line =~ /^\d+$/
-          data['rooms']['classrooms']['needs_major_repair'] = next_line.to_i
-        end
-      when "Other Rooms"
-        if next_line =~ /^\d+$/
-          data['rooms']['other'] = next_line.to_i
-        end
-      when "Library Availability"
-        data['rooms']['library'] = next_line if next_line && !next_line.match?(/Solar/)
-      when "Separate Room for HM"
-        data['rooms']['hm'] = next_line if next_line && !next_line.match?(/Drinking/)
+        current[mapping[:key_path].last] = value
       end
     end
 
     # Clean up empty sections
-    data['rooms'].each do |_, section|
+    data['rooms'].each do |key, section|
       if section.is_a?(Hash)
         section.reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty?) }
       end
     end
-    data.reject! { |_, v| v.empty? }
+    data['rooms'].reject! { |_, v| v.nil? || (v.is_a?(Hash) && v.empty?) }
 
     data
   end
