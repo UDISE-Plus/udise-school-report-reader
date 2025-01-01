@@ -1,0 +1,41 @@
+require "udise_school_report_reader/version"
+
+# Core functionality
+require_relative "udise_school_report_reader/pdf_block_extractor"
+require_relative "udise_school_report_reader/pdf_rectangle_extractor"
+require_relative "udise_school_report_reader/pdf_content_compressor"
+require_relative "udise_school_report_reader/block_rectangle_combiner"
+
+# Data readers
+require_relative "udise_school_report_reader/data_reader_base"
+require_relative "udise_school_report_reader/activities_data_reader"
+require_relative "udise_school_report_reader/anganwadi_data_reader"
+require_relative "udise_school_report_reader/basic_info_data_reader"
+require_relative "udise_school_report_reader/building_data_reader"
+require_relative "udise_school_report_reader/characteristics_reader"
+require_relative "udise_school_report_reader/digital_facilities_data_reader"
+require_relative "udise_school_report_reader/enrollment_data_reader"
+require_relative "udise_school_report_reader/ews_data_reader"
+require_relative "udise_school_report_reader/location_data_reader"
+require_relative "udise_school_report_reader/official_data_reader"
+require_relative "udise_school_report_reader/rooms_data_reader"
+require_relative "udise_school_report_reader/rte_data_reader"
+require_relative "udise_school_report_reader/sanitation_data_reader"
+require_relative "udise_school_report_reader/teacher_data_reader"
+
+# Writers
+require_relative "udise_school_report_reader/csv_writer"
+require_relative "udise_school_report_reader/enrollment_html_writer"
+require_relative "udise_school_report_reader/enrollment_yaml_writer"
+require_relative "udise_school_report_reader/ews_html_writer"
+require_relative "udise_school_report_reader/ews_yaml_writer"
+require_relative "udise_school_report_reader/rte_html_writer"
+require_relative "udise_school_report_reader/rte_yaml_writer"
+
+# Main parser
+require_relative "udise_school_report_reader/school_report_parser"
+
+module UdiseSchoolReportReader
+  class Error < StandardError; end
+  # Your code goes here...
+end 

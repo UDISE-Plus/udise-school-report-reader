@@ -14,7 +14,9 @@ GEM
     Ascii85 (2.0.1)
     afm (0.2.2)
     bigdecimal (3.1.9)
+    csv (3.3.2)
     hashery (2.1.2)
+    minitest (5.25.4)
     nokogiri (1.18.0-aarch64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.18.0-aarch64-linux-musl)
@@ -32,6 +34,7 @@ GEM
     nokogiri (1.18.0-x86_64-linux-musl)
       racc (~> 1.4)
     racc (1.8.1)
+    rake (13.2.1)
     ruby-rc4 (0.1.5)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
@@ -47,8 +50,11 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  csv
+  minitest
   nokogiri
   pdf-reader!
+  rake
 
 BUNDLED WITH
    2.5.21

@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'fileutils'
-require_relative '../school_report_parser'
+require 'yaml'
+require 'udise_school_report_reader'
 
 class SchoolReportParserTest < Minitest::Test
   def setup
@@ -17,12 +18,14 @@ class SchoolReportParserTest < Minitest::Test
       next unless File.exist?(yaml_path)  # Skip if no benchmark YAML exists
       
       # Generate new YAML data without writing files
-      actual_data = SchoolReportParser.extract_to_text(pdf_path)
+      actual_data = UdiseSchoolReportReader::SchoolReportParser.extract_to_text(pdf_path)
       
       # Compare with benchmark
       expected = YAML.load_file(yaml_path)
       compare_nested_hashes(expected, actual_data, [], school)
     end
+    
+    assert true, "All schools processed successfully"
   end
 
   private
