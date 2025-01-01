@@ -51,6 +51,14 @@ class TeacherDataReader
     'Diploma or Certificate in basic teachers training' => {
       key_path: ['teachers', 'qualifications', 'professional', 'basic_training'],
       value_type: :integer
+    },
+    'Bachelor of Elementary Education (B.El.Ed.)' => {
+      key_path: ['teachers', 'qualifications', 'professional', 'beled'],
+      value_type: :integer
+    },
+    'Diploma/degree in special Education' => {
+      key_path: ['teachers', 'qualifications', 'professional', 'special_education'],
+      value_type: :integer
     }
   }
 
@@ -140,10 +148,6 @@ class TeacherDataReader
         subject = $1.strip
         count = $2&.to_i || 0
         data['teachers']['workload']['by_subject'][subject.downcase] = count
-      when "Bachelor of Elementary Education (B.El.Ed.)"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['beled'] = next_line.to_i
-        end
       when "Other"
         if next_line =~ /^\d+$/
           data['teachers']['qualifications']['professional']['other'] = next_line.to_i
@@ -151,10 +155,6 @@ class TeacherDataReader
       when "None"
         if next_line =~ /^\d+$/
           data['teachers']['qualifications']['professional']['none'] = next_line.to_i
-        end
-      when "Diploma/degree in special Education"
-        if next_line =~ /^\d+$/
-          data['teachers']['qualifications']['professional']['special_education'] = next_line.to_i
         end
       when "Pursuing any Relevant Professional Course"
         if next_line =~ /^\d+$/
