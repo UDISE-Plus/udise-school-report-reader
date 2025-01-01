@@ -21,7 +21,39 @@ class SchoolReportParserTest < Minitest::Test
       
       # Compare with benchmark
       expected = YAML.load_file(yaml_path)
-      assert_equal expected, actual_data, "Generated YAML for #{school} does not match the benchmark"
+      compare_nested_hashes(expected, actual_data, [], school)
+    end
+  end
+
+  private
+
+  def compare_nested_hashes(expected, actual, path = [], school)
+    return if expected == actual
+
+    if expected.is_a?(Hash) && actual.is_a?(Hash)
+      # Check for missing keys
+      (expected.keys - actual.keys).each do |key|
+        flunk "Missing key '#{(path + [key]).join('.')}' in #{school}"
+      end
+
+      # Check for extra keys
+      (actual.keys - expected.keys).each do |key|
+        flunk "Extra key '#{(path + [key]).join('.')}' in #{school}"
+      end
+
+      # Compare values for common keys
+      (expected.keys & actual.keys).each do |key|
+        compare_nested_hashes(expected[key], actual[key], path + [key], school)
+      end
+    elsif expected.is_a?(Array) && actual.is_a?(Array)
+      if expected.length != actual.length
+        flunk "Array length mismatch at '#{path.join('.')}' in #{school}. Expected #{expected.length}, got #{actual.length}"
+      end
+      expected.zip(actual).each_with_index do |(exp_item, act_item), idx|
+        compare_nested_hashes(exp_item, act_item, path + [idx], school)
+      end
+    else
+      assert_equal expected, actual, "Value mismatch at '#{path.join('.')}' in #{school}. Expected #{expected.inspect}, got #{actual.inspect}"
     end
   end
 end 
